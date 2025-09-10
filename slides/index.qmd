@@ -1,0 +1,74 @@
+---
+title: "<span style='color: white;font-size: 0.7em;'>Data Visualization</span>"
+subtitle: "<span style='color: white;'>Behavioral Data Science Toolbox 2025</span>"
+author: "<span style='color: white;'>Lecturers: Annie Johansson and Lilian Ye</span>"
+footer: "<span style='color: white;'>Cover photo made in R by <a href='https://art.djnavarro.net' style='color: pink; text-decoration: underline;'>Danielle Navarro</a></span>"
+format: 
+  revealjs:
+    highlight-style: arrow
+    theme: "white"
+    logo: images/uva_logo.png
+    preview-links: auto
+    progress: true
+    slide-number: true
+    show-slide-number: print
+    smaller: false
+    touch: true
+    css: style.css
+editor: visual
+title-slide-attributes:
+  data-background-image: "images/coverphoto.jpg"
+  data-background-size: auto
+  data-background-opacity: "1.0"
+  data-background-repeat: repeat
+---
+
+```{r, include=FALSE}
+library(tidyverse)
+```
+
+# Course overview 📋 {background-color="#8000FF"}
+
+::: footer
+:::
+
+## Schedule {.smaller .scrollable}
+
++----------------+----------------------------------+--------------------------------------------------------------------------------------------------------------------+-----------------------------------------+
+| When           | What                             | Prepare                                                                                                            | Tutorial                                |
++================+==================================+====================================================================================================================+=========================================+
+| Tuesday, 30/09 | **Data Visualization Session 1** | \[Read\] DV book ch. 1, 3                                                                                          | Kick-off quiz                           |
+|                |                                  |                                                                                                                    |                                         |
+| 15.00 - 18.00  | Good and bad plots               | \[Watch videos\] Fundamentals of Data Visualization                                                                |                                         |
+|                |                                  |                                                                                                                    |                                         |
+|                | ggplot basics                    |                                                                                                                    |                                         |
++----------------+----------------------------------+--------------------------------------------------------------------------------------------------------------------+-----------------------------------------+
+| Friday, 03/10  | **Data Visualization Session 2** | \[Read\] DV Book ch. 3.7, 4.3, 5.3, 5.5, 5.6, 6.0, 6.1, 6.2, 8.1, 8.2, 8.3                                         | Kick-off quiz                           |
+|                |                                  |                                                                                                                    |                                         |
+| 12.30 - 15.30  | Better plots                     | \[Watch videos\] Themes, Recycling Themes, Trend lines / Stats, Color scheme, Multiple plots, Facets, Saving plots | Work on Data Visualization Assignment 1 |
+|                |                                  |                                                                                                                    |                                         |
+| \              |                                  |                                                                                                                    |                                         |
++----------------+----------------------------------+--------------------------------------------------------------------------------------------------------------------+-----------------------------------------+
+| Tuesday, 07/10 | **Data Visualization Session 3** |                                                                                                                    | Data Visualization Assignment 2         |
+|                |                                  |                                                                                                                    |                                         |
+| 15.00 - 18.00  | Introduction to final assignment |                                                                                                                    |                                         |
++----------------+----------------------------------+--------------------------------------------------------------------------------------------------------------------+-----------------------------------------+
+| Friday, 10/10, | **Q&A**                          |                                                                                                                    | Work on Final Assignment                |
+|                |                                  |                                                                                                                    |                                         |
+| 12.30 - 15.30  |                                  |                                                                                                                    |                                         |
++----------------+----------------------------------+--------------------------------------------------------------------------------------------------------------------+-----------------------------------------+
+
+: {tbl-colwidths="\[30,40, 50, 30\]"}
+
+::: footer
+:::
+
+## Assignments
+
+::: footer
+:::
+
+## Deadlines
+
+::: footer
+:::
