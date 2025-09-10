@@ -72,3 +72,9 @@ library(tidyverse)
 
 ::: footer
 :::
+
+## Final assignments .{scrollable}
+
+You can access the detailed assignment page here:
+
+[View Assignments](test-site/test-html-2.html){target="_blank"}
