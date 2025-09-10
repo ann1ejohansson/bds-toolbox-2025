@@ -77,4 +77,4 @@ library(tidyverse)
 
 You can access the detailed assignment page here:
 
-[View Assignments](test-site/test-html-2.html){target="_blank"}
+[View Assignments](test-site/test-md.md){target="_blank"}
