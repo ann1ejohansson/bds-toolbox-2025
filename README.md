@@ -15,14 +15,14 @@
 <td>Tuesday 30/9 15.00-18.00</td>
 <td>GS.11</td>
 <td>Good and Bad Plots / ggplot Basics</td>
-<td>Read: *DV book* ch. 1, 3<br>Watch video: Fundamentals of Data Visualization</td>
+<td>Read: DV book ch. 1, 3<br>Watch video: Fundamentals of Data Visualization</td>
 <td>Kick-off quiz<br>Work on Assignment 1</td>
 </tr>
 <tr>
 <td>Friday 3/10 12.30-15.30</td>
 <td>JKB.25</td>
 <td>Better Plots</td>
-<td>Read: *DV Book* ch. 3.7, 4.3, 5.3, 5.5, 5.6, 6.0, 6.1, 6.2, 8.1, 8.2, 8.3<br>Watch videos: Themes, Recycling themes, Trend lines / stats, Color scheme, Multiple plots, Facets, Saving plots</td>
+<td>Read: DV Book ch. 3.7, 4.3, 5.3, 5.5, 5.6, 6.0, 6.1, 6.2, 8.1, 8.2, 8.3<br>Watch videos: Themes, Recycling themes, Trend lines / stats, Color scheme, Multiple plots, Facets, Saving plots</td>
 <td>Kick-off quiz<br>Work on Assignment 1</td>
 </tr>
 <tr>
