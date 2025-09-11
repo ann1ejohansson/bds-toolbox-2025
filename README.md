@@ -49,6 +49,6 @@
 
 ## Assignment links
 ## Slides
-[](https://ann1ejohansson.github.io/bds-toolbox-2025/)
+[https://ann1ejohansson.github.io/bds-toolbox-2025/](https://ann1ejohansson.github.io/bds-toolbox-2025/)
 ## Materials
 
