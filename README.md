@@ -58,7 +58,7 @@
 ## Materials
 [Data Visualization: A practical introduction (Healy)](https://socviz.co/)
 
-[R for Data Science](https://r4ds.had.co.nz/data-visualisation.html)
+[R for Data Science - Data visualization chapter](https://r4ds.hadley.nz/data-visualize.html)
 
 [Videos on canvas](https://canvas.uva.nl/courses/47312/modules)
 

@@ -99,7 +99,7 @@ Cover photo made in R by [Danielle Navarro](https://art.djnavarro.net){target="_
 ## Materials {.scrollable}
 
 ::: {layout-ncol="3"}
-![[r4ds.had.co.nz](https://r4ds.had.co.nz/data-visualisation.html)](images/book_wickham.png){fig-align="left" height="300"}
+![[r4ds.had.co.nz](https://r4ds.hadley.nz/data-visualize.html)](images/book_wickham.png){fig-align="left" height="300"}
 
 ![[socviz.co](https://socviz.co/)](images/book_healy.jpg){fig-align="left" height="300"}
 
