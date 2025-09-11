@@ -1,7 +1,7 @@
 # Welcome to the BDS Toolbox module: Data Visualization!
 ![Better Plot](images/cartoon-1.png)
 
-## Schedule 
+## 📆 Schedule 
 
 <table>
 <tr>
@@ -47,15 +47,15 @@
 </tr>
 </table>
 
-## Assignment links
+## 📝 Assignments
 [Assignment 1](https://ann1ejohansson.github.io/bds-toolbox-2025/assignments/dv-assignment-1.html)
 
 [Assignment 2](https://ann1ejohansson.github.io/bds-toolbox-2025/assignments/dv-assignment-2.html)
 
-## Slides
+## 📺 Slides
 [https://ann1ejohansson.github.io/bds-toolbox-2025/](https://ann1ejohansson.github.io/bds-toolbox-2025/)
 
-## Materials
+## 📚 Materials
 [Data Visualization: A practical introduction (Healy)](https://socviz.co/)
 
 [R for Data Science - Data visualization chapter](https://r4ds.hadley.nz/data-visualize.html)
