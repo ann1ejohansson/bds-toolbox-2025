@@ -1,6 +1,7 @@
+# Welcome to the BDS Toolbox module: Data Visualization!
 ![Better Plot](images/cartoon-1.png)
 
-# Data Visualization Tutorial Schedule
+## Schedule 
 
 <table>
 <tr>
@@ -45,3 +46,7 @@
 <td colspan="5"><strong>Deadline DV Assignment 2 – Sunday 12/9 23.59</strong></td>
 </tr>
 </table>
+
+## Assignment links
+## Slides
+## Materials
