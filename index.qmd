@@ -2,7 +2,7 @@
 title: "<span style='color: white;font-size: 0.7em;'>Data Visualization</span>"
 subtitle: "<span style='color: white;'>Behavioral Data Science Toolbox 2025</span>"
 author: "<span style='color: white;'>Lecturers: Annie Johansson and Lilian Ye</span>"
-footer: "<span style='color: white;'>Cover photo made in R by <a href='https://art.djnavarro.net' style='color: pink; text-decoration: underline;'>Danielle Navarro</a></span>"
+#footer: "<span style='color: white;'>Cover photo made in R by <a href='https://art.djnavarro.net' style='color: pink; text-decoration: underline;'>Danielle Navarro</a></span>"
 format: 
   revealjs:
     highlight-style: arrow
@@ -26,6 +26,12 @@ title-slide-attributes:
 ```{r, include=FALSE}
 library(tidyverse)
 ```
+
+## 
+
+Slides created using [Quarto](https://quarto.org/){target="_blank"} and [reveal.js](https://revealjs.com/){target="_blank"}
+
+Cover photo made in R by [Danielle Navarro](https://art.djnavarro.net){target="_blank"}
 
 # Course overview 📋 {background-color="#8000FF"}
 
@@ -60,21 +66,50 @@ library(tidyverse)
 
 : {tbl-colwidths="\[30,40, 50, 30\]"}
 
-::: footer
-:::
-
 ## Assignments
 
-::: footer
-:::
+::: {layout-ncol="2"}
+### [Assignment 1](assignments/dv-assignment-1.html){target="_blank"}
+
+-   Part alone, part in a group
+
+-   etc etc
+
+-   X% of the grade
+
+### [Assignment 2](assignments/dv-assignment-2.html){target="_blank"}
+
+-   Work in a group
+
+-   etc etc
+
+-   X% of the grade
+::: 
+
+## Assignment 1
+[View assignment 1 here](assignments/dv-assignment-1.html){target="_blank"}
+
+## Assignment 2
+[View assignment 2 here](assignments/dv-assignment-2.html){target="_blank"}
+
+
 
 ## Deadlines
 
-::: footer
+## Materials {.scrollable}
+
+::: {layout-ncol="3"}
+![[r4ds.had.co.nz](https://r4ds.had.co.nz/data-visualisation.html)](images/book_wickham.png){fig-align="left" height="300"}
+
+![[socviz.co](https://socviz.co/)](images/book_healy.jpg){fig-align="left" height="300"}
+
+![[Videos on canvas](https://canvas.uva.nl/courses/47312/modules)](images/canvas.png){fig-align="left" height="300"}
+
+### Helpful extra resources
+
+-   [Claus Wilke: Fundamentals of Data Viz](https://clauswilke.com/dataviz/)
+
+-   <https://psyteachr.github.io/introdataviz/plotstyle.html>
 :::
 
-## Final assignments .{scrollable}
 
-You can access the detailed assignment page here:
-
-[View Assignments](test-site/test-md.md){target="_blank"}
