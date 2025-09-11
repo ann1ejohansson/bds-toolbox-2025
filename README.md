@@ -1,5 +1,5 @@
 # Welcome to the BDS Toolbox module: Data Visualization!
-![cartoon-1](cartoon-1.png)
+![cartoon-1](images/cartoon-1.png)
 ## Schedule
 
 | Date & Time           | Location | Topic             | Prepare                                                                                                                                           | During Tutorial        |
