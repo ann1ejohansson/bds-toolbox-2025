@@ -53,5 +53,16 @@
 
 ## Slides
 [https://ann1ejohansson.github.io/bds-toolbox-2025/](https://ann1ejohansson.github.io/bds-toolbox-2025/)
-## Materials
 
+## Materials
+[Data Visualization: A practical introduction (Healy)](https://socviz.co/)
+
+[R for Data Science](https://r4ds.had.co.nz/data-visualisation.html)
+
+[Videos on canvas](https://canvas.uva.nl/courses/47312/modules)
+
+### Helpful extra resources
+
+-   [Claus Wilke: Fundamentals of Data Viz](https://clauswilke.com/dataviz/)
+
+-   [ggplot plot-styling tools](https://psyteachr.github.io/introdataviz/plotstyle.html)
