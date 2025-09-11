@@ -48,8 +48,9 @@
 </table>
 
 ## Assignment links
-[Assignment 1](assignments/dv-assignment-1.html)
-[Assignment 2](assignments/dv-assignment-2.html)
+[Assignment 1](https://ann1ejohansson.github.io/bds-toolbox-2025/assignments/dv-assignment-1.html)
+
+[Assignment 2](https://ann1ejohansson.github.io/bds-toolbox-2025/assignments/dv-assignment-2.html)
 
 ## Slides
 [https://ann1ejohansson.github.io/bds-toolbox-2025/](https://ann1ejohansson.github.io/bds-toolbox-2025/)
