@@ -1,4 +1,4 @@
-![Better Plot](betterplot.png)
+![Better Plot](images/cartoon-1.png)
 
 # Data Visualization Tutorial Schedule
 
