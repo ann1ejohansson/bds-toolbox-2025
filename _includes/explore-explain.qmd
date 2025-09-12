@@ -1,0 +1,24 @@
+---
+title: "explore-explain"
+format: html
+editor: visual
+---
+
+::::: columns
+::: {.column width="50%"}
+![](images/{{image_left}}){fig-height="{{height_left}}" .fragment}
+:::
+
+::: {.column width="50%"}
+![](images/{{image_right}}){fig-height="{{height_right}}" .fragment}
+
+- **Exploratory**: {{exploratory_text}}
+
+- **Explanatory**: {{explanatory_text}}
+:::
+:::::
+
+::: footer
+More resources: [clauswilke.com](https://clauswilke.com/dataviz/telling-a-story.html), 
+[susielu.com](https://www.susielu.com/data-viz/storytelling-in-dashboards)
+:::

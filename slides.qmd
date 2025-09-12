@@ -27,16 +27,27 @@ title-slide-attributes:
 library(tidyverse)
 ```
 
-## 
+## Welcome to the BDS Toolbox module Data Visualization! 👋
 
-Slides created using [Quarto](https://quarto.org/){target="_blank"} and [reveal.js](https://revealjs.com/){target="_blank"}
+:::::: columns
+:::: {.column width="50%"}
+::: columns
+Find everything you need for this module on our GitHub page:
 
-Cover photo made in R by [Danielle Navarro](https://art.djnavarro.net){target="_blank"}
+### [**bds-toolbox-2025**](https://github.com/ann1ejohansson/bds-toolbox-2025?tab=readme-ov-file){target="_blank"}
+:::
+::::
 
-# Course overview 📋 {background-color="#8000FF"}
+::: {.column width="50%"}
+![cover photo made in R by [Danielle Navarro](https://art.djnavarro.net){target="_blank"}](images/coverphoto.jpg){fig-align="center" width="95%"}
+:::
+::::::
 
 ::: footer
+Slides made using [quarto](https://quarto.org){target="_blank"}
 :::
+
+# Course overview 📋 {background-color="#8000FF"}
 
 ## Schedule {.smaller .scrollable}
 
@@ -84,15 +95,15 @@ Cover photo made in R by [Danielle Navarro](https://art.djnavarro.net){target="_
 -   etc etc
 
 -   X% of the grade
-::: 
+:::
 
 ## Assignment 1
+
 [View assignment 1 here](assignments/dv-assignment-1.html){target="_blank"}
 
 ## Assignment 2
+
 [View assignment 2 here](assignments/dv-assignment-2.html){target="_blank"}
-
-
 
 ## Deadlines
 
@@ -112,4 +123,121 @@ Cover photo made in R by [Danielle Navarro](https://art.djnavarro.net){target="_
 -   <https://psyteachr.github.io/introdataviz/plotstyle.html>
 :::
 
+# Bad plots 💩 {background-color="#8000FF"}
 
+## Today
+❓ Quiz\
+📊 What makes a plot good (and bad)?\
+🪄 Guiding principles
+
+## Quiz!
+<https://canvas.uva.nl/courses/54361/quizzes>
+
+## 💬
+### Why visualize data?
+
+## 
+
+::::: columns
+::: {.column width="40%"}
+![](images/why-visualize-01.png)
+:::
+::: {.column width="60%"}
+:::fragment
+![](images/why-visualize-02.png)
+:::
+:::
+:::::
+
+# 
+::: {layout-ncol="2"}
+<a href="images/bandjes1.png" target="_blank"> <img src="images/bandjes1.png" width="500" dpi="1000" style="max-width: 100%;"/> </a>
+
+<a href="images/bandjes2.png" target="_blank"> <img src="images/bandjes2.png" dpi="1000" width="500" style="max-width: 100%;"/> </a>
+:::
+
+## Anscombe's quartet {.smaller}
+
+::::: columns
+::: {.column width="50%"}
+![Source: Same stats, different graphs](images/anscombe1.png) ![Source: Wikipedia](images/anscombe2.png)
+:::
+
+::: {.column width="50%"}
+```{r}
+#| echo: true
+#| code-fold: true
+#| fig.height: 10
+library("datasauRus")
+datasaurus_dozen %>% 
+  ggplot2::ggplot(aes(x = x, y = y, color = dataset)) +
+  ggplot2::geom_point() +
+  ggplot2::theme_void() +
+  ggplot2::geom_smooth(method = "lm", color = "gray", fill = "gray", alpha = .5) +
+  ggplot2::theme(legend.position = "none", text = element_text(size = 30)) +
+  ggplot2::facet_wrap(~dataset, ncol = 4)
+```
+:::
+:::::
+
+::: footer
+Packages: [datasauRus](https://jumpingrivers.github.io/datasauRus/), [anscombiser](https://paulnorthrop.github.io/anscombiser/).
+
+More information: [Same Stats, Different Graphs](https://www.autodesk.com/research/publications/same-stats-different-graphs), [socviz.co](https://socviz.co/lookatdata.html#why-look-at-data).
+:::
+
+## Exploratory versus explanatory {.smaller .scrollable}
+
+::: notes
+Exploratory in the sense of data exploration. Exploratory in the sense of visualization exploration (as in previous example, where the same data can be plotted in several ways). In both cases, you can create ugly plots.
+
+We focus on explanatory data viz (also bridge to next). Beautiful plots!
+:::
+
+::::: columns
+::: {.column width="50%"}
+![Source: [Natalia Kiseleva](https://eolay.tilda.ws/datavizcomics/en)](images/exploratory-explanatory-01.png){fig-align="left" width="333"}
+:::
+
+::: {.column width="50%"}
+![Source: [Scott McCloud](https://archive.org/details/understanding-comics/)](images/exploratory-explanatory-02.gif){fig-align="left"}
+
+-   **Exploratory**: examine the structure of your data.
+
+-   **Explanatory:** tell a story with your data.
+:::
+:::::
+
+::: footer
+More resources: [clauswilke.com](https://clauswilke.com/dataviz/telling-a-story.html) (telling a story and making a point), [susielu.com](https://www.susielu.com/data-viz/storytelling-in-dashboards) (different interpretation of exploratory/explanatory).
+:::
+
+
+
+## Exploratory versus explanatory {.smaller .scrollable}
+
+::::: columns
+::: {.column width="50%"}
+![](images/explore-explain-01.gif){fig-height="200"}
+:::
+
+::: {.column width="50%"}
+![](images/explore-explain-02.gif){fig-height="300"}
+:::
+:::::
+
+Source: [storytellingwithdata.com](https://www.storytellingwithdata.com/blog/2014/04/exploratory-vs-explanatory-analysis)
+
+::: footer
+More resources: [clauswilke.com](https://clauswilke.com/dataviz/telling-a-story.html) (telling a story and making a point), [susielu.com](https://www.susielu.com/data-viz/storytelling-in-dashboards) (different interpretation of exploratory/explanatory).
+:::
+
+## Exploratory versus explanatory {.smaller .scrollable}
+
+
+
+## 💬
+
+### What is more important? An eye or an algorithm?
+
+What are the consequences of overrelying on statistical techniques? <br>What are the consequences of overrelying on visualizations?
