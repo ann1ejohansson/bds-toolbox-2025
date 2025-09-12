@@ -7,6 +7,7 @@ format:
   revealjs:
     highlight-style: arrow
     theme: "white"
+    include-navbar: true
     logo: images/uva_logo.png
     preview-links: auto
     progress: true
