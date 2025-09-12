@@ -1,3 +1,32 @@
 project:
-  type: website
-  output-dir: docs
+  type: website          # Tells Quarto this is a website project
+  output-dir: docs       # Where the rendered HTML will be stored
+
+website:
+  title: "BDS Toolbox 2025"
+  description: "Master’s course on data visualization and the data science toolbox."
+  site-url: https://ann1ejohansson.github.io/bds-toolbox-2025/
+
+  navbar:
+    background: primary  # Optional color
+    left:
+      - href: index.qmd
+        text: Home
+      - href: syllabus.qmd
+        text: Syllabus
+      - text: Slides
+        menu:
+          - href: slides/01-intro.html
+            text: "Lecture 1: Introduction"
+          - href: slides/02-design.html
+            text: "Lecture 2: Design Principles"
+          - href: slides/03-tools.html
+            text: "Lecture 3: Tools & Workflows"
+
+format:
+  html:
+    theme: cosmo         # Bootstrap theme (others: flatly, minty, etc.)
+    toc: true            # Table of contents on each page
+    toc-depth: 2
+    number-sections: false
+    code-copy: true      # Adds copy button to code blocks
