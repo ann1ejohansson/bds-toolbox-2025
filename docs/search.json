@@ -1,0 +1,212 @@
+[
+  {
+    "objectID": "slides.html#welcome-to-the-bds-toolbox-module-data-visualization",
+    "href": "slides.html#welcome-to-the-bds-toolbox-module-data-visualization",
+    "title": "Data Visualization",
+    "section": "Welcome to the BDS Toolbox module Data Visualization! 👋",
+    "text": "Welcome to the BDS Toolbox module Data Visualization! 👋\n\n\n\nFind everything you need for this module on our GitHub page:bds-toolbox-2025\n\n\n\n\n\ncover photo made in R by Danielle Navarro\n\n\n\n\nSlides made using quarto"
+  },
+  {
+    "objectID": "slides.html#schedule",
+    "href": "slides.html#schedule",
+    "title": "Data Visualization",
+    "section": "Schedule",
+    "text": "Schedule\n\n\n\n\n\n\n\n\n\nWhen\nWhat\nPrepare\nTutorial\n\n\n\n\nTuesday, 30/09\n15.00 - 18.00\nData Visualization Session 1\nGood and bad plots\nggplot basics\n[Read] DV book ch. 1, 3\n[Watch videos] Fundamentals of Data Visualization\nKick-off quiz\n\n\nFriday, 03/10\n12.30 - 15.30\n\n\nData Visualization Session 2\nBetter plots\n[Read] DV Book ch. 3.7, 4.3, 5.3, 5.5, 5.6, 6.0, 6.1, 6.2, 8.1, 8.2, 8.3\n[Watch videos] Themes, Recycling Themes, Trend lines / Stats, Color scheme, Multiple plots, Facets, Saving plots\nKick-off quiz\nWork on Data Visualization Assignment 1\n\n\nTuesday, 07/10\n15.00 - 18.00\nData Visualization Session 3\nIntroduction to final assignment\n\nData Visualization Assignment 2\n\n\nFriday, 10/10,\n12.30 - 15.30\nQ&A\n\nWork on Final Assignment"
+  },
+  {
+    "objectID": "slides.html#assignments",
+    "href": "slides.html#assignments",
+    "title": "Data Visualization",
+    "section": "Assignments",
+    "text": "Assignments\n\n\n\n\n\n\nAssignment 1\n\nPart alone, part in a group\netc etc\nX% of the grade\n\n\n\nAssignment 2\n\nWork in a group\netc etc\nX% of the grade"
+  },
+  {
+    "objectID": "slides.html#assignment-1-1",
+    "href": "slides.html#assignment-1-1",
+    "title": "Data Visualization",
+    "section": "Assignment 1",
+    "text": "Assignment 1\nView assignment 1 here"
+  },
+  {
+    "objectID": "slides.html#assignment-2-1",
+    "href": "slides.html#assignment-2-1",
+    "title": "Data Visualization",
+    "section": "Assignment 2",
+    "text": "Assignment 2\nView assignment 2 here"
+  },
+  {
+    "objectID": "slides.html#deadlines",
+    "href": "slides.html#deadlines",
+    "title": "Data Visualization",
+    "section": "Deadlines",
+    "text": "Deadlines"
+  },
+  {
+    "objectID": "slides.html#materials",
+    "href": "slides.html#materials",
+    "title": "Data Visualization",
+    "section": "Materials",
+    "text": "Materials\n\n\n\n\n\n\n\n\n\nr4ds.had.co.nz\n\n\n\n\n\n\n\nsocviz.co\n\n\n\n\n\n\n\nVideos on canvas\n\n\n\n\n\n\nHelpful extra resources\n\nClaus Wilke: Fundamentals of Data Viz\nhttps://psyteachr.github.io/introdataviz/plotstyle.html"
+  },
+  {
+    "objectID": "slides.html#today",
+    "href": "slides.html#today",
+    "title": "Data Visualization",
+    "section": "Today",
+    "text": "Today\n❓ Quiz\n📊 What makes a plot good (and bad)?\n🪄 Guiding principles"
+  },
+  {
+    "objectID": "slides.html#quiz",
+    "href": "slides.html#quiz",
+    "title": "Data Visualization",
+    "section": "Quiz!",
+    "text": "Quiz!\nhttps://canvas.uva.nl/courses/54361/quizzes"
+  },
+  {
+    "objectID": "slides.html#section",
+    "href": "slides.html#section",
+    "title": "Data Visualization",
+    "section": "💬",
+    "text": "💬\nWhy visualize data?"
+  },
+  {
+    "objectID": "slides.html#anscombes-quartet",
+    "href": "slides.html#anscombes-quartet",
+    "title": "Data Visualization",
+    "section": "Anscombe’s quartet",
+    "text": "Anscombe’s quartet\n\n\n \n\n\n\nCode\nlibrary(\"datasauRus\")\ndatasaurus_dozen %&gt;% \n  ggplot2::ggplot(aes(x = x, y = y, color = dataset)) +\n  ggplot2::geom_point() +\n  ggplot2::theme_void() +\n  ggplot2::geom_smooth(method = \"lm\", color = \"gray\", fill = \"gray\", alpha = .5) +\n  ggplot2::theme(legend.position = \"none\", text = element_text(size = 30)) +\n  ggplot2::facet_wrap(~dataset, ncol = 4)\n\n\n\n\n\n\n\n\n\n\n\nPackages: datasauRus, anscombiser.\nMore information: Same Stats, Different Graphs, socviz.co."
+  },
+  {
+    "objectID": "slides.html#exploratory-versus-explanatory",
+    "href": "slides.html#exploratory-versus-explanatory",
+    "title": "Data Visualization",
+    "section": "Exploratory versus explanatory",
+    "text": "Exploratory versus explanatory\n\nExploratory in the sense of data exploration. Exploratory in the sense of visualization exploration (as in previous example, where the same data can be plotted in several ways). In both cases, you can create ugly plots.\nWe focus on explanatory data viz (also bridge to next). Beautiful plots!\n\n\n\n\n\n\nSource: Natalia Kiseleva\n\n\n\n\n\n\nSource: Scott McCloud\n\n\n\nExploratory: examine the structure of your data.\nExplanatory: tell a story with your data.\n\n\n\nMore resources: clauswilke.com (telling a story and making a point), susielu.com (different interpretation of exploratory/explanatory)."
+  },
+  {
+    "objectID": "slides.html#exploratory-versus-explanatory-1",
+    "href": "slides.html#exploratory-versus-explanatory-1",
+    "title": "Data Visualization",
+    "section": "Exploratory versus explanatory",
+    "text": "Exploratory versus explanatory\n\n\n\n\n\n\nSource: storytellingwithdata.com\n\nMore resources: clauswilke.com (telling a story and making a point), susielu.com (different interpretation of exploratory/explanatory)."
+  },
+  {
+    "objectID": "slides.html#exploratory-versus-explanatory-2",
+    "href": "slides.html#exploratory-versus-explanatory-2",
+    "title": "Data Visualization",
+    "section": "Exploratory versus explanatory",
+    "text": "Exploratory versus explanatory"
+  },
+  {
+    "objectID": "slides.html#section-3",
+    "href": "slides.html#section-3",
+    "title": "Data Visualization",
+    "section": "💬",
+    "text": "💬\nWhat is more important? An eye or an algorithm?\nWhat are the consequences of overrelying on statistical techniques? What are the consequences of overrelying on visualizations?"
+  },
+  {
+    "objectID": "index.html#welcome-to-the-bds-toolbox-module-data-visualization",
+    "href": "index.html#welcome-to-the-bds-toolbox-module-data-visualization",
+    "title": "Data Visualization",
+    "section": "Welcome to the BDS Toolbox module Data Visualization! 👋",
+    "text": "Welcome to the BDS Toolbox module Data Visualization! 👋\n\n\n\nFind everything you need for this module on our GitHub page:bds-toolbox-2025\n\n\n\n\n\ncover photo made in R by Danielle Navarro\n\n\n\n\nSlides made using quarto"
+  },
+  {
+    "objectID": "index.html#schedule",
+    "href": "index.html#schedule",
+    "title": "Data Visualization",
+    "section": "Schedule",
+    "text": "Schedule\n\n\n\n\n\n\n\n\n\nWhen\nWhat\nPrepare\nTutorial\n\n\n\n\nTuesday, 30/09\n15.00 - 18.00\nData Visualization Session 1\nGood and bad plots\nggplot basics\n[Read] DV book ch. 1, 3\n[Watch videos] Fundamentals of Data Visualization\nKick-off quiz\n\n\nFriday, 03/10\n12.30 - 15.30\n\n\nData Visualization Session 2\nBetter plots\n[Read] DV Book ch. 3.7, 4.3, 5.3, 5.5, 5.6, 6.0, 6.1, 6.2, 8.1, 8.2, 8.3\n[Watch videos] Themes, Recycling Themes, Trend lines / Stats, Color scheme, Multiple plots, Facets, Saving plots\nKick-off quiz\nWork on Data Visualization Assignment 1\n\n\nTuesday, 07/10\n15.00 - 18.00\nData Visualization Session 3\nIntroduction to final assignment\n\nData Visualization Assignment 2\n\n\nFriday, 10/10,\n12.30 - 15.30\nQ&A\n\nWork on Final Assignment"
+  },
+  {
+    "objectID": "index.html#assignments",
+    "href": "index.html#assignments",
+    "title": "Data Visualization",
+    "section": "Assignments",
+    "text": "Assignments\n\n\n\n\n\n\nAssignment 1\n\nPart alone, part in a group\netc etc\nX% of the grade\n\n\n\nAssignment 2\n\nWork in a group\netc etc\nX% of the grade"
+  },
+  {
+    "objectID": "index.html#assignment-1-1",
+    "href": "index.html#assignment-1-1",
+    "title": "Data Visualization",
+    "section": "Assignment 1",
+    "text": "Assignment 1\nView assignment 1 here"
+  },
+  {
+    "objectID": "index.html#assignment-2-1",
+    "href": "index.html#assignment-2-1",
+    "title": "Data Visualization",
+    "section": "Assignment 2",
+    "text": "Assignment 2\nView assignment 2 here"
+  },
+  {
+    "objectID": "index.html#deadlines",
+    "href": "index.html#deadlines",
+    "title": "Data Visualization",
+    "section": "Deadlines",
+    "text": "Deadlines"
+  },
+  {
+    "objectID": "index.html#materials",
+    "href": "index.html#materials",
+    "title": "Data Visualization",
+    "section": "Materials",
+    "text": "Materials\n\n\n\n\n\n\n\n\n\nr4ds.had.co.nz\n\n\n\n\n\n\n\nsocviz.co\n\n\n\n\n\n\n\nVideos on canvas\n\n\n\n\n\n\nHelpful extra resources\n\nClaus Wilke: Fundamentals of Data Viz\nhttps://psyteachr.github.io/introdataviz/plotstyle.html"
+  },
+  {
+    "objectID": "index.html#today",
+    "href": "index.html#today",
+    "title": "Data Visualization",
+    "section": "Today",
+    "text": "Today\n❓ Quiz\n📊 What makes a plot good (and bad)?\n🪄 Guiding principles"
+  },
+  {
+    "objectID": "index.html#quiz",
+    "href": "index.html#quiz",
+    "title": "Data Visualization",
+    "section": "Quiz!",
+    "text": "Quiz!\nhttps://canvas.uva.nl/courses/54361/quizzes"
+  },
+  {
+    "objectID": "index.html#section",
+    "href": "index.html#section",
+    "title": "Data Visualization",
+    "section": "💬",
+    "text": "💬\nWhy visualize data?"
+  },
+  {
+    "objectID": "index.html#anscombes-quartet",
+    "href": "index.html#anscombes-quartet",
+    "title": "Data Visualization",
+    "section": "Anscombe’s quartet",
+    "text": "Anscombe’s quartet\n\n\n \n\n\n\nCode\nlibrary(\"datasauRus\")\ndatasaurus_dozen %&gt;% \n  ggplot2::ggplot(aes(x = x, y = y, color = dataset)) +\n  ggplot2::geom_point() +\n  ggplot2::theme_void() +\n  ggplot2::geom_smooth(method = \"lm\", color = \"gray\", fill = \"gray\", alpha = .5) +\n  ggplot2::theme(legend.position = \"none\", text = element_text(size = 30)) +\n  ggplot2::facet_wrap(~dataset, ncol = 4)\n\n\n\n\n\n\n\n\n\n\n\nPackages: datasauRus, anscombiser.\nMore information: Same Stats, Different Graphs, socviz.co."
+  },
+  {
+    "objectID": "index.html#exploratory-versus-explanatory",
+    "href": "index.html#exploratory-versus-explanatory",
+    "title": "Data Visualization",
+    "section": "Exploratory versus explanatory",
+    "text": "Exploratory versus explanatory\n\nExploratory in the sense of data exploration. Exploratory in the sense of visualization exploration (as in previous example, where the same data can be plotted in several ways). In both cases, you can create ugly plots.\nWe focus on explanatory data viz (also bridge to next). Beautiful plots!\n\n\n\n\n\n\nSource: Natalia Kiseleva\n\n\n\n\n\n\nSource: Scott McCloud\n\n\n\nExploratory: examine the structure of your data.\nExplanatory: tell a story with your data.\n\n\n\nMore resources: clauswilke.com (telling a story and making a point), susielu.com (different interpretation of exploratory/explanatory)."
+  },
+  {
+    "objectID": "index.html#exploratory-versus-explanatory-1",
+    "href": "index.html#exploratory-versus-explanatory-1",
+    "title": "Data Visualization",
+    "section": "Exploratory versus explanatory",
+    "text": "Exploratory versus explanatory\n\n\n\n\n\n\nSource: storytellingwithdata.com\n\nMore resources: clauswilke.com (telling a story and making a point), susielu.com (different interpretation of exploratory/explanatory)."
+  },
+  {
+    "objectID": "index.html#exploratory-versus-explanatory-2",
+    "href": "index.html#exploratory-versus-explanatory-2",
+    "title": "Data Visualization",
+    "section": "Exploratory versus explanatory",
+    "text": "Exploratory versus explanatory"
+  },
+  {
+    "objectID": "index.html#section-3",
+    "href": "index.html#section-3",
+    "title": "Data Visualization",
+    "section": "💬",
+    "text": "💬\nWhat is more important? An eye or an algorithm?\nWhat are the consequences of overrelying on statistical techniques? What are the consequences of overrelying on visualizations?"
+  }
+]
