@@ -8,7 +8,7 @@ format:
     highlight-style: arrow
     include-navbar: true
     logo: images/uva_logo.png
-    preview-links: auto
+    preview-links: false
     progress: true
     slide-number: true
     show-slide-number: print
