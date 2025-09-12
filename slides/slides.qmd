@@ -6,7 +6,6 @@ author: "<span style='color: white;'>Lecturers: Annie Johansson and Lilian Ye</s
 format: 
   revealjs:
     highlight-style: arrow
-    theme: "white"
     include-navbar: true
     logo: images/uva_logo.png
     preview-links: auto
