@@ -14,7 +14,6 @@ format:
     show-slide-number: print
     smaller: false
     touch: true
-    css: style.css
 editor: visual
 title-slide-attributes:
   data-background-image: "images/coverphoto.jpg"
