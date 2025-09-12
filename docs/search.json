@@ -114,16 +114,16 @@
   {
     "objectID": "index.html#schedule",
     "href": "index.html#schedule",
-    "title": "Data Visualization",
-    "section": "Schedule",
-    "text": "Schedule\n\n\n\n\n\n\n\n\n\nWhen\nWhat\nPrepare\nTutorial\n\n\n\n\nTuesday, 30/09\n15.00 - 18.00\nData Visualization Session 1\nGood and bad plots\nggplot basics\n[Read] DV book ch. 1, 3\n[Watch videos] Fundamentals of Data Visualization\nKick-off quiz\n\n\nFriday, 03/10\n12.30 - 15.30\n\n\nData Visualization Session 2\nBetter plots\n[Read] DV Book ch. 3.7, 4.3, 5.3, 5.5, 5.6, 6.0, 6.1, 6.2, 8.1, 8.2, 8.3\n[Watch videos] Themes, Recycling Themes, Trend lines / Stats, Color scheme, Multiple plots, Facets, Saving plots\nKick-off quiz\nWork on Data Visualization Assignment 1\n\n\nTuesday, 07/10\n15.00 - 18.00\nData Visualization Session 3\nIntroduction to final assignment\n\nData Visualization Assignment 2\n\n\nFriday, 10/10,\n12.30 - 15.30\nQ&A\n\nWork on Final Assignment"
+    "title": "BDS Toolbox: Data Visualization",
+    "section": "🗓️Schedule",
+    "text": "🗓️Schedule\n\n\n\n\nDate & Time\n\n\nLocation\n\n\nTopic\n\n\nPrepare\n\n\nDuring Tutorial\n\n\n\n\nTuesday 30/9 15.00-18.00\n\n\nGS.11\n\n\nGood and Bad Plots / ggplot Basics\n\n\nRead: DV book ch. 1, 3Watch video: Fundamentals of Data Visualization\n\n\nKick-off quizWork on Assignment 1\n\n\n\n\nFriday 3/10 12.30-15.30\n\n\nJKB.25\n\n\nBetter Plots\n\n\nRead: DV Book ch. 3.7, 4.3, 5.3, 5.5, 5.6, 6.0, 6.1, 6.2, 8.1, 8.2, 8.3Watch videos: Themes, Recycling themes, Trend lines / stats, Color scheme, Multiple plots, Facets, Saving plots\n\n\nKick-off quizWork on Assignment 1\n\n\n\n\nDeadline DV Assignment 1 – Sunday 5/9 23.59\n\n\n\n\nTuesday 7/10 15.00-18.00\n\n\nGS.11\n\n\n—\n\n\n—\n\n\n—\n\n\n\n\nFriday 10/10 12.30-15.30\n\n\nJKB.25\n\n\nQ&A Session\n\n\n—\n\n\nWork on Assignment 2\n\n\n\n\nDeadline DV Assignment 2 – Sunday 12/9 23.59\n\n\n\n\n\n️📺 Lecture Slides\n\nLecture 1: Introduction\n\n\n\n📂 Repository on GitHub\nBrowse the repository\n\n\n📝 Assignments\nAssignment 1\nAssignment 2\nSubmit both assignments to canvas. Assignment 2 should also be submitted to this site, via a GitHub pull request. Instructions for this can be found on the GitHub landing page."
   },
   {
     "objectID": "index.html#assignments",
     "href": "index.html#assignments",
-    "title": "Data Visualization",
-    "section": "Assignments",
-    "text": "Assignments\n\n\n\n\n\n\nAssignment 1\n\nPart alone, part in a group\netc etc\nX% of the grade\n\n\n\nAssignment 2\n\nWork in a group\netc etc\nX% of the grade"
+    "title": "BDS Toolbox: Data Visualization",
+    "section": "📝 Assignments",
+    "text": "📝 Assignments\nAssignment 1\nAssignment 2\nSubmit both assignments to canvas. Assignment 2 should also be submitted to this site, via a GitHub pull request. Instructions for this can be found on the GitHub landing page. —"
   },
   {
     "objectID": "index.html#assignment-1-1",
@@ -212,30 +212,30 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "BDS Toolbox 2025",
+    "title": "BDS Toolbox: Data Visualization",
     "section": "",
-    "text": "This site hosts all course materials for BDS Toolbox 2025, a master’s-level introduction to data visualization and essential data science tools.\nUse the navigation bar above or the links below to find what you need.\n\n\n\n\nInstructor: Anne Johansson\n\nSemester: Spring 2025\n\nFormat: Lectures + hands-on labs\n\nMain Topics:\n\nEffective data visualization\n\nReproducible workflows\n\nGit & GitHub for collaboration\n\nQuarto for professional documents and slides\n\n\n\n\n\n\n\n\nView the syllabus\n\n\n\n\nLecture 1: Introduction\n\n\n\n\nBrowse the repository\n\n\n\n\n\n\nBrowse the slides before and after class.\n\nClone or fork the repo to practice Git workflows.\n\nOpen .qmd files locally and re-render them with Quarto to experiment.\n\nSubmit exercises or labs via GitHub pull requests, following the instructions in the syllabus.\n\n\n\nTip: If a slide link doesn’t work, make sure you’ve run quarto render and pushed the generated docs/ folder to GitHub."
+    "text": "This site hosts all course materials for the BDS Toolbox module Data Visualization.\nUse the navigation bar above or the links below to find what you need!"
   },
   {
     "objectID": "index.html#course-overview",
     "href": "index.html#course-overview",
-    "title": "BDS Toolbox 2025",
-    "section": "",
-    "text": "Instructor: Anne Johansson\n\nSemester: Spring 2025\n\nFormat: Lectures + hands-on labs\n\nMain Topics:\n\nEffective data visualization\n\nReproducible workflows\n\nGit & GitHub for collaboration\n\nQuarto for professional documents and slides"
+    "title": "BDS Toolbox: Data Visualization",
+    "section": "📋 Course Overview",
+    "text": "📋 Course Overview\n\nInstructors: Abe Hofman, Lilian Ye, Annie Johansson\n\nDates: September 30th - October 12th, 2025\n\nFormat: Lectures + Tutorials\nMain Topics:\n\nEffective data visualization\n\nggplot\nGit & GitHub for collaboration"
   },
   {
     "objectID": "index.html#quick-links",
     "href": "index.html#quick-links",
-    "title": "BDS Toolbox 2025",
-    "section": "",
-    "text": "View the syllabus\n\n\n\n\nLecture 1: Introduction\n\n\n\n\nBrowse the repository"
+    "title": "BDS Toolbox: Data Visualization",
+    "section": "🔗 Quick links",
+    "text": "🔗 Quick links\nLecture Slides\nBrowse the GitHub repository"
   },
   {
     "objectID": "index.html#how-to-use-this-site",
     "href": "index.html#how-to-use-this-site",
-    "title": "BDS Toolbox 2025",
-    "section": "",
-    "text": "Browse the slides before and after class.\n\nClone or fork the repo to practice Git workflows.\n\nOpen .qmd files locally and re-render them with Quarto to experiment.\n\nSubmit exercises or labs via GitHub pull requests, following the instructions in the syllabus.\n\n\n\nTip: If a slide link doesn’t work, make sure you’ve run quarto render and pushed the generated docs/ folder to GitHub."
+    "title": "BDS Toolbox: Data Visualization",
+    "section": "💡 How to Use This Site",
+    "text": "💡 How to Use This Site\n\nBrowse the slides before and after class.\n\nAccess the assignments.\n\nPractice workflows with Git. If you are interested in how to setup a GitHub repository and work with Quarto documents, you can clone the repository and explore the files on your own computer."
   },
   {
     "objectID": "test.html",
@@ -355,5 +355,26 @@
     "title": "Data Visualization",
     "section": "💬",
     "text": "💬\nWhat is more important? An eye or an algorithm?\nWhat are the consequences of overrelying on statistical techniques? What are the consequences of overrelying on visualizations?"
+  },
+  {
+    "objectID": "index.html#welcome-to-the-bds-toolbox-data-visualization-course-site",
+    "href": "index.html#welcome-to-the-bds-toolbox-data-visualization-course-site",
+    "title": "BDS Toolbox: Data Visualization",
+    "section": "",
+    "text": "This site hosts all course materials for the BDS Toolbox module Data Visualization.\nUse the navigation bar above or the links below to find what you need!"
+  },
+  {
+    "objectID": "index.html#welcome-to-bds-toolbox-data-visualization",
+    "href": "index.html#welcome-to-bds-toolbox-data-visualization",
+    "title": "BDS Toolbox: Data Visualization",
+    "section": "",
+    "text": "Use the navigation bar above or the links below to find everything you need for this module."
+  },
+  {
+    "objectID": "index.html#overview",
+    "href": "index.html#overview",
+    "title": "BDS Toolbox: Data Visualization",
+    "section": "📋 Overview",
+    "text": "📋 Overview\n\nInstructors: Abe Hofman, Lilian Ye, Annie Johansson\n\nDates: September 30th - October 12th, 2025\n\nFormat: Lectures + Tutorials\nMain Topics:\n\nEffective data visualization\n\nggplot\nGit & GitHub for collaboration\n\n\nIn this module, you will learn a wide set of data visualisation tools for both static and interactive visualizations. We will also focus on why you should look at your data and what makes a good visualization. You will have access to rich data from the Prowise Servers, to design visualizations from."
   }
 ]
