@@ -14,11 +14,11 @@ website:
         text: Home
       - href: https://github.com/ann1ejohansson/bds-toolbox-2025
         text: GitHub Repository
-      - href: slides/slides.html
+      - href: slides/slides.qmd
         text: Slides
-      - href: assignments/assignment-1.html
+      - href: assignments/assignment-1.qmd
         text: Assignment 1
-      - href: assignments/assignment-2.html
+      - href: assignments/assignment-2.qmd
         text: Assignment 2
       - text: Resources
         menu:
