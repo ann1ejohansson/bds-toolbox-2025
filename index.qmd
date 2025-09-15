@@ -38,7 +38,7 @@ In this module, you will learn a wide set of data visualisation tools for both s
 <td>Tuesday 30/9 15.00-18.00</td>
 <td>GS.11</td>
 <td>Good and Bad Plots / ggplot Basics</td>
-<td>Read: DV book ch. 1, 3<br>Watch video: Fundamentals of Data Visualization</td>
+<td>Read: DV ch. 1 <br>Watch video: Fundamentals of Data Visualization<br>*Optional: Review ggplot basics in DV ch. 3*</td>
 <td>Kick-off quiz<br>Work on Assignment 1</td>
 </tr>
 <tr>

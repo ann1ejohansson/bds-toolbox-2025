@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>BDS Toolbox: Data Visualization – Data Visualization 2025</title>
+<title>assignment-1 – Data Visualization 2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,25 +20,59 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -77,7 +111,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Data Visualization 2025</span>
     </a>
   </div>
@@ -88,7 +122,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
@@ -96,15 +130,15 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">GitHub Repository</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./slides/slides.html"> 
+    <a class="nav-link" href="../slides/slides.html"> 
 <span class="menu-text">Slides</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./assignments/assignment-1.html"> 
+    <a class="nav-link active" href="../assignments/assignment-1.html" aria-current="page"> 
 <span class="menu-text">Assignment 1</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./assignments/assignment-2.html"> 
+    <a class="nav-link" href="../assignments/assignment-2.html"> 
 <span class="menu-text">Assignment 2</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -142,12 +176,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#welcome-to-bds-toolbox-data-visualization" id="toc-welcome-to-bds-toolbox-data-visualization" class="nav-link active" data-scroll-target="#welcome-to-bds-toolbox-data-visualization">Welcome to BDS Toolbox: Data Visualization!</a></li>
-  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">📋 Overview</a></li>
-  <li><a href="#schedule" id="toc-schedule" class="nav-link" data-scroll-target="#schedule">🗓️ Schedule</a></li>
-  <li><a href="#quick-links" id="toc-quick-links" class="nav-link" data-scroll-target="#quick-links">🔗 Quick links</a></li>
-  <li><a href="#assignments" id="toc-assignments" class="nav-link" data-scroll-target="#assignments">📝 Assignments</a></li>
-  <li><a href="#how-to-use-this-site" id="toc-how-to-use-this-site" class="nav-link" data-scroll-target="#how-to-use-this-site">💡 How to Use This Site</a></li>
+  <li><a href="#quarto" id="toc-quarto" class="nav-link active" data-scroll-target="#quarto">Quarto</a></li>
+  <li><a href="#running-code" id="toc-running-code" class="nav-link" data-scroll-target="#running-code">Running Code</a></li>
   </ul>
 </nav>
     </div>
@@ -156,7 +186,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">BDS Toolbox: Data Visualization</h1>
+<h1 class="title">assignment-1</h1>
 </div>
 
 
@@ -173,150 +203,26 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="welcome-to-bds-toolbox-data-visualization" class="level2">
-<h2 class="anchored" data-anchor-id="welcome-to-bds-toolbox-data-visualization">Welcome to BDS Toolbox: Data Visualization!</h2>
-<p>Use the navigation bar above or the links below to find everything you need for this module.</p>
-<hr>
+<section id="quarto" class="level2">
+<h2 class="anchored" data-anchor-id="quarto">Quarto</h2>
+<p>Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <a href="https://quarto.org" class="uri">https://quarto.org</a>.</p>
 </section>
-<section id="overview" class="level2">
-<h2 class="anchored" data-anchor-id="overview">📋 Overview</h2>
-<ul>
-<li><strong>Instructors:</strong> Abe Hofman, Lilian Ye, Annie Johansson<br>
-</li>
-<li><strong>Dates:</strong> September 30th - October 12th, 2025<br>
-</li>
-<li><strong>Format:</strong> Lectures + Tutorials</li>
-<li><strong>Main Topics:</strong>
-<ul>
-<li>Effective data visualization<br>
-</li>
-<li>ggplot</li>
-<li>Git &amp; GitHub for collaboration</li>
-</ul></li>
-</ul>
-<p>In this module, you will learn a wide set of data visualisation tools for both static and interactive visualizations. We will also focus on why you should look at your data and what makes a good visualization. You will have access to rich data from the Prowise Servers, to design visualizations from.</p>
-</section>
-<section id="schedule" class="level2">
-<h2 class="anchored" data-anchor-id="schedule">🗓️ Schedule</h2>
-<div class="table table-striped">
-<table>
-<tbody><tr>
-<th>
-When
-</th>
-<th>
-Where
-</th>
-<th>
-Topic
-</th>
-<th>
-Prepare
-</th>
-<th>
-During Tutorial
-</th>
-</tr>
-<tr>
-<td>
-Tuesday 30/9 15.00-18.00
-</td>
-<td>
-GS.11
-</td>
-<td>
-Good and Bad Plots / ggplot Basics
-</td>
-<td>
-Read: DV ch.&nbsp;1 <br>Watch video: Fundamentals of Data Visualization<br><em>Optional: Review ggplot basics in DV ch.&nbsp;3</em>
-</td>
-<td>
-Kick-off quiz<br>Work on Assignment 1
-</td>
-</tr>
-<tr>
-<td>
-Friday 3/10 12.30-15.30
-</td>
-<td>
-JKB.25
-</td>
-<td>
-Interactive Plots
-</td>
-<td>
-</td>
-<td>
-Kick-off quiz<br>Work on Assignment 1
-</td>
-</tr>
-<tr>
-<td colspan="5">
-<strong>Deadline DV Assignment 1 – Sunday 5/9 23.59</strong>
-</td>
-</tr>
-<tr>
-<td>
-Tuesday 7/10 15.00-18.00
-</td>
-<td>
-GS.11
-</td>
-<td>
-Better Plots
-</td>
-<td>
-Read: DV Book ch.&nbsp;3.7, 4.3, 5.3, 5.5, 5.6, 6.0, 6.1, 6.2, 8.1, 8.2, 8.3<br>Watch videos: Themes, Recycling themes, Trend lines / stats, Color scheme, Multiple plots, Facets, Saving plots
-</td>
-<td>
-</td>
-</tr>
-<tr>
-<td>
-Friday 10/10 12.30-15.30
-</td>
-<td>
-JKB.25
-</td>
-<td>
-Q&amp;A Session
-</td>
-<td>
-<strong>Data Visualizations - First Draft Due</strong>
-</td>
-<td>
-Work on Assignment 2<br>Peer Review
-</td>
-</tr>
-<tr>
-<td colspan="5">
-<strong>Deadline DV Assignment 2 – Sunday 12/9 23.59</strong>
-</td>
-</tr>
-</tbody></table>
+<section id="running-code" class="level2">
+<h2 class="anchored" data-anchor-id="running-code">Running Code</h2>
+<p>When you click the <strong>Render</strong> button a document will be generated that includes both content and the output of embedded code. You can embed code like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
 </div>
-</section>
-<section id="quick-links" class="level2">
-<h2 class="anchored" data-anchor-id="quick-links">🔗 Quick links</h2>
-<p><a href="slides/slides.html" target="_blank">Lecture Slides</a></p>
-<p><a href="https://github.com/ann1ejohansson/bds-toolbox-2025" target="_blank">Browse the GitHub repository</a></p>
-</section>
-<section id="assignments" class="level2">
-<h2 class="anchored" data-anchor-id="assignments">📝 Assignments</h2>
-<p><a href="assignments/assignment-1.html" target="_blank">Assignment 1</a></p>
-<p><a href="assignments/assignment-2.html" target="_blank">Assignment 2</a></p>
-<p>Submit <strong>both</strong> assignments to canvas. Assignment 2 should also be submitted to this site, via a GitHub pull request. Instructions for this can be found <a href="https://github.com/ann1ejohansson/bds-toolbox-2025">on the GitHub landing page</a>. —</p>
-</section>
-<section id="how-to-use-this-site" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-use-this-site">💡 How to Use This Site</h2>
-<ol type="1">
-<li><strong>Browse the slides</strong> before and after class.<br>
-</li>
-<li><strong>Access the assignments.</strong><br>
-</li>
-<li><strong>Practice workflows with Git.</strong> If you are interested in how to setup a GitHub repository and work with Quarto documents, you can clone the repository and explore the files on your own computer.</li>
-</ol>
-<hr>
+</div>
+<p>You can add options to executable code like this</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+</div>
+<p>The <code>echo: false</code> option disables the printing of code (only output is displayed).</p>
 
 
 </section>

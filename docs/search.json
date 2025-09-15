@@ -21,20 +21,6 @@
     "text": "Assignments\n\n\n\n\n\n\nAssignment 1\n\nPart A alone, part B with your group.\nX% of the grade\n\n\n\nAssignment 2\n\nYour final data visualization project.\nWork with your group.\nX% of the grade"
   },
   {
-    "objectID": "slides/slides.html#assignment-1-1",
-    "href": "slides/slides.html#assignment-1-1",
-    "title": "Data Visualization",
-    "section": "Assignment 1",
-    "text": "Assignment 1\nView assignment 1 here"
-  },
-  {
-    "objectID": "slides/slides.html#assignment-2-1",
-    "href": "slides/slides.html#assignment-2-1",
-    "title": "Data Visualization",
-    "section": "Assignment 2",
-    "text": "Assignment 2\nView assignment 2 here"
-  },
-  {
     "objectID": "slides/slides.html#deadlines",
     "href": "slides/slides.html#deadlines",
     "title": "Data Visualization",
@@ -105,55 +91,6 @@
     "text": "💬\nWhat is more important? An eye or an algorithm?\nWhat are the consequences of overrelying on statistical techniques? What are the consequences of overrelying on visualizations?"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "BDS Toolbox: Data Visualization",
-    "section": "",
-    "text": "Use the navigation bar above or the links below to find everything you need for this module."
-  },
-  {
-    "objectID": "index.html#welcome-to-bds-toolbox-data-visualization",
-    "href": "index.html#welcome-to-bds-toolbox-data-visualization",
-    "title": "BDS Toolbox: Data Visualization",
-    "section": "",
-    "text": "Use the navigation bar above or the links below to find everything you need for this module."
-  },
-  {
-    "objectID": "index.html#overview",
-    "href": "index.html#overview",
-    "title": "BDS Toolbox: Data Visualization",
-    "section": "📋 Overview",
-    "text": "📋 Overview\n\nInstructors: Abe Hofman, Lilian Ye, Annie Johansson\n\nDates: September 30th - October 12th, 2025\n\nFormat: Lectures + Tutorials\nMain Topics:\n\nEffective data visualization\n\nggplot\nGit & GitHub for collaboration\n\n\nIn this module, you will learn a wide set of data visualisation tools for both static and interactive visualizations. We will also focus on why you should look at your data and what makes a good visualization. You will have access to rich data from the Prowise Servers, to design visualizations from."
-  },
-  {
-    "objectID": "index.html#schedule",
-    "href": "index.html#schedule",
-    "title": "BDS Toolbox: Data Visualization",
-    "section": "🗓️ Schedule",
-    "text": "🗓️ Schedule\n\n\n\n\nWhen\n\n\nWhere\n\n\nTopic\n\n\nPrepare\n\n\nDuring Tutorial\n\n\n\n\nTuesday 30/9 15.00-18.00\n\n\nGS.11\n\n\nGood and Bad Plots / ggplot Basics\n\n\nRead: DV book ch. 1, 3Watch video: Fundamentals of Data Visualization\n\n\nKick-off quizWork on Assignment 1\n\n\n\n\nFriday 3/10 12.30-15.30\n\n\nJKB.25\n\n\nInteractive Plots\n\n\n\n\nKick-off quizWork on Assignment 1\n\n\n\n\nDeadline DV Assignment 1 – Sunday 5/9 23.59\n\n\n\n\nTuesday 7/10 15.00-18.00\n\n\nGS.11\n\n\nBetter Plots\n\n\nRead: DV Book ch. 3.7, 4.3, 5.3, 5.5, 5.6, 6.0, 6.1, 6.2, 8.1, 8.2, 8.3Watch videos: Themes, Recycling themes, Trend lines / stats, Color scheme, Multiple plots, Facets, Saving plots\n\n\n\n\n\n\nFriday 10/10 12.30-15.30\n\n\nJKB.25\n\n\nQ&A Session\n\n\nData Visualizations - First Draft Due\n\n\nWork on Assignment 2Peer Review\n\n\n\n\nDeadline DV Assignment 2 – Sunday 12/9 23.59"
-  },
-  {
-    "objectID": "index.html#quick-links",
-    "href": "index.html#quick-links",
-    "title": "BDS Toolbox: Data Visualization",
-    "section": "🔗 Quick links",
-    "text": "🔗 Quick links\nLecture Slides\nBrowse the GitHub repository"
-  },
-  {
-    "objectID": "index.html#assignments",
-    "href": "index.html#assignments",
-    "title": "BDS Toolbox: Data Visualization",
-    "section": "📝 Assignments",
-    "text": "📝 Assignments\nAssignment 1\nAssignment 2\nSubmit both assignments to canvas. Assignment 2 should also be submitted to this site, via a GitHub pull request. Instructions for this can be found on the GitHub landing page. —"
-  },
-  {
-    "objectID": "index.html#how-to-use-this-site",
-    "href": "index.html#how-to-use-this-site",
-    "title": "BDS Toolbox: Data Visualization",
-    "section": "💡 How to Use This Site",
-    "text": "💡 How to Use This Site\n\nBrowse the slides before and after class.\n\nAccess the assignments.\n\nPractice workflows with Git. If you are interested in how to setup a GitHub repository and work with Quarto documents, you can clone the repository and explore the files on your own computer."
-  },
-  {
     "objectID": "slides/slides.html#aims",
     "href": "slides/slides.html#aims",
     "title": "Data Visualization",
@@ -180,5 +117,96 @@
     "title": "Data Visualization",
     "section": "Workflow",
     "text": "Workflow\n\nComment your code clearly. We want to understand your thought process.\nWork in the Data Visualization Server, and compile the html document there.\n️⚠ Only upload the html document to GitHub, not the R scripts and especially not any data."
+  },
+  {
+    "objectID": "assignments/assignment-1.html",
+    "href": "assignments/assignment-1.html",
+    "title": "assignment-1",
+    "section": "",
+    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
+  },
+  {
+    "objectID": "assignments/assignment-1.html#quarto",
+    "href": "assignments/assignment-1.html#quarto",
+    "title": "assignment-1",
+    "section": "",
+    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
+  },
+  {
+    "objectID": "assignments/assignment-1.html#running-code",
+    "href": "assignments/assignment-1.html#running-code",
+    "title": "assignment-1",
+    "section": "Running Code",
+    "text": "Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n1 + 1\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed)."
+  },
+  {
+    "objectID": "assignments/assignment-2.html",
+    "href": "assignments/assignment-2.html",
+    "title": "assignment-2",
+    "section": "",
+    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
+  },
+  {
+    "objectID": "assignments/assignment-2.html#quarto",
+    "href": "assignments/assignment-2.html#quarto",
+    "title": "assignment-2",
+    "section": "",
+    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
+  },
+  {
+    "objectID": "assignments/assignment-2.html#running-code",
+    "href": "assignments/assignment-2.html#running-code",
+    "title": "assignment-2",
+    "section": "Running Code",
+    "text": "Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n1 + 1\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed)."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "BDS Toolbox: Data Visualization",
+    "section": "",
+    "text": "Use the navigation bar above or the links below to find everything you need for this module."
+  },
+  {
+    "objectID": "index.html#welcome-to-bds-toolbox-data-visualization",
+    "href": "index.html#welcome-to-bds-toolbox-data-visualization",
+    "title": "BDS Toolbox: Data Visualization",
+    "section": "",
+    "text": "Use the navigation bar above or the links below to find everything you need for this module."
+  },
+  {
+    "objectID": "index.html#overview",
+    "href": "index.html#overview",
+    "title": "BDS Toolbox: Data Visualization",
+    "section": "📋 Overview",
+    "text": "📋 Overview\n\nInstructors: Abe Hofman, Lilian Ye, Annie Johansson\n\nDates: September 30th - October 12th, 2025\n\nFormat: Lectures + Tutorials\nMain Topics:\n\nEffective data visualization\n\nggplot\nGit & GitHub for collaboration\n\n\nIn this module, you will learn a wide set of data visualisation tools for both static and interactive visualizations. We will also focus on why you should look at your data and what makes a good visualization. You will have access to rich data from the Prowise Servers, to design visualizations from."
+  },
+  {
+    "objectID": "index.html#schedule",
+    "href": "index.html#schedule",
+    "title": "BDS Toolbox: Data Visualization",
+    "section": "🗓️ Schedule",
+    "text": "🗓️ Schedule\n\n\n\n\nWhen\n\n\nWhere\n\n\nTopic\n\n\nPrepare\n\n\nDuring Tutorial\n\n\n\n\nTuesday 30/9 15.00-18.00\n\n\nGS.11\n\n\nGood and Bad Plots / ggplot Basics\n\n\nRead: DV ch. 1 Watch video: Fundamentals of Data VisualizationOptional: Review ggplot basics in DV ch. 3\n\n\nKick-off quizWork on Assignment 1\n\n\n\n\nFriday 3/10 12.30-15.30\n\n\nJKB.25\n\n\nInteractive Plots\n\n\n\n\nKick-off quizWork on Assignment 1\n\n\n\n\nDeadline DV Assignment 1 – Sunday 5/9 23.59\n\n\n\n\nTuesday 7/10 15.00-18.00\n\n\nGS.11\n\n\nBetter Plots\n\n\nRead: DV Book ch. 3.7, 4.3, 5.3, 5.5, 5.6, 6.0, 6.1, 6.2, 8.1, 8.2, 8.3Watch videos: Themes, Recycling themes, Trend lines / stats, Color scheme, Multiple plots, Facets, Saving plots\n\n\n\n\n\n\nFriday 10/10 12.30-15.30\n\n\nJKB.25\n\n\nQ&A Session\n\n\nData Visualizations - First Draft Due\n\n\nWork on Assignment 2Peer Review\n\n\n\n\nDeadline DV Assignment 2 – Sunday 12/9 23.59"
+  },
+  {
+    "objectID": "index.html#quick-links",
+    "href": "index.html#quick-links",
+    "title": "BDS Toolbox: Data Visualization",
+    "section": "🔗 Quick links",
+    "text": "🔗 Quick links\nLecture Slides\nBrowse the GitHub repository"
+  },
+  {
+    "objectID": "index.html#assignments",
+    "href": "index.html#assignments",
+    "title": "BDS Toolbox: Data Visualization",
+    "section": "📝 Assignments",
+    "text": "📝 Assignments\nAssignment 1\nAssignment 2\nSubmit both assignments to canvas. Assignment 2 should also be submitted to this site, via a GitHub pull request. Instructions for this can be found on the GitHub landing page. —"
+  },
+  {
+    "objectID": "index.html#how-to-use-this-site",
+    "href": "index.html#how-to-use-this-site",
+    "title": "BDS Toolbox: Data Visualization",
+    "section": "💡 How to Use This Site",
+    "text": "💡 How to Use This Site\n\nBrowse the slides before and after class.\n\nAccess the assignments.\n\nPractice workflows with Git. If you are interested in how to setup a GitHub repository and work with Quarto documents, you can clone the repository and explore the files on your own computer."
   }
 ]
