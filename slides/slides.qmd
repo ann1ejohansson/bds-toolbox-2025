@@ -31,14 +31,14 @@ library(tidyverse)
 :::::: columns
 :::: {.column width="50%"}
 ::: columns
-Find everything you need for this module on our GitHub page:
+Find everything you need for this module on the website:
 
-### [**bds-toolbox-2025**](https://github.com/ann1ejohansson/bds-toolbox-2025?tab=readme-ov-file){target="_blank"}
+### [**data-visualization-2025**](https://ann1ejohansson.github.io/bds-toolbox-2025){target="_blank"}
 :::
 ::::
 
 ::: {.column width="50%"}
-![cover photo made in R by [Danielle Navarro](https://art.djnavarro.net){target="_blank"}](images/coverphoto.jpg){fig-align="center" width="95%"}
+![cover photo made in R by [Danielle Navarro](https://art.djnavarro.net){target="_blank"}](images/coverphoto.jpg){fig-align="center" width="80%"}
 :::
 ::::::
 
@@ -79,32 +79,27 @@ Slides made using [quarto](https://quarto.org){target="_blank"}
 ## Assignments
 
 ::: {layout-ncol="2"}
-### [Assignment 1](assignments/dv-assignment-1.html){target="_blank"}
+### [Assignment 1](../assignments/assignment-1.html){target="_blank"}
 
--   Part alone, part in a group
-
--   etc etc
+-   Part A alone, part B with your group.
 
 -   X% of the grade
 
-### [Assignment 2](assignments/dv-assignment-2.html){target="_blank"}
+### [Assignment 2](../assignments/assignment-2.html){target="_blank"}
 
--   Work in a group
+-   Your final data visualization project.
 
--   etc etc
+-   Work with your group. 
 
 -   X% of the grade
 :::
 
-## Assignment 1
-
-[View assignment 1 here](assignments/dv-assignment-1.html){target="_blank"}
-
-## Assignment 2
-
-[View assignment 2 here](assignments/dv-assignment-2.html){target="_blank"}
-
 ## Deadlines
+
+-   **Assignment 1** – Sunday 5/10 23.59
+-   **First draft of Assignment 2** – Friday 10/10 12.30
+-   **Peer review of Assignment 2** – Friday 10/10 23.59
+-   **Assignment 2** – Sunday 12/10 23.59
 
 ## Materials {.scrollable}
 
@@ -241,3 +236,30 @@ More resources: [clauswilke.com](https://clauswilke.com/dataviz/telling-a-story.
 ### What is more important? An eye or an algorithm?
 
 What are the consequences of overrelying on statistical techniques? <br>What are the consequences of overrelying on visualizations?
+
+# Data Visualization Project 📊 {background-color="#8000FF"}
+
+## Aims
+
+Your goal is to go from exploring the Prowise data to telling a story with it. 
+
+-  Assignment 1: Choose a research question. Explore the data and create a set of visualizations to help you understand the data.
+
+-  Assignment 2: Create a final data visualization that tells a story with the data. Compiled into a html document, and presented in the GitHub repository.
+
+## The data
+
+## Requirements 
+
+-  Use R and R Markdown (or Quarto) to create your visualizations. 
+-  The markdown document should be in the style of a report: explain your research question, and how you came to your conclusion. Not more than 1000 words.  
+-  Include at least one exploratory graph, and explain how it helped you understand the data. 
+-  Only your final, explanatory graph, will be graded. Clearly mark which graph this is.
+
+## Workflow
+
+-  Comment your code clearly. We want to understand your thought process. 
+-  Work in the Data Visualization Server, and compile the html document there.
+-  ️⚠ Only upload the html document to GitHub, not the R scripts and **especially not any data.** 
+
+

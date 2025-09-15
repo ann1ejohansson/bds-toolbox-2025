@@ -4,7 +4,7 @@
     "href": "slides/slides.html#welcome-to-the-bds-toolbox-module-data-visualization",
     "title": "Data Visualization",
     "section": "Welcome to the BDS Toolbox module Data Visualization! 👋",
-    "text": "Welcome to the BDS Toolbox module Data Visualization! 👋\n\n\n\nFind everything you need for this module on our GitHub page:bds-toolbox-2025\n\n\n\n\n\ncover photo made in R by Danielle Navarro\n\n\n\n\nSlides made using quarto"
+    "text": "Welcome to the BDS Toolbox module Data Visualization! 👋\n\n\n\nFind everything you need for this module on the website:data-visualization-2025\n\n\n\n\n\ncover photo made in R by Danielle Navarro\n\n\n\n\nSlides made using quarto"
   },
   {
     "objectID": "slides/slides.html#schedule",
@@ -18,7 +18,7 @@
     "href": "slides/slides.html#assignments",
     "title": "Data Visualization",
     "section": "Assignments",
-    "text": "Assignments\n\n\n\n\n\n\nAssignment 1\n\nPart alone, part in a group\netc etc\nX% of the grade\n\n\n\nAssignment 2\n\nWork in a group\netc etc\nX% of the grade"
+    "text": "Assignments\n\n\n\n\n\n\nAssignment 1\n\nPart A alone, part B with your group.\nX% of the grade\n\n\n\nAssignment 2\n\nYour final data visualization project.\nWork with your group.\nX% of the grade"
   },
   {
     "objectID": "slides/slides.html#assignment-1-1",
@@ -39,7 +39,7 @@
     "href": "slides/slides.html#deadlines",
     "title": "Data Visualization",
     "section": "Deadlines",
-    "text": "Deadlines"
+    "text": "Deadlines\n\nAssignment 1 – Sunday 5/10 23.59\nFirst draft of Assignment 2 – Friday 10/10 12.30\nPeer review of Assignment 2 – Friday 10/10 23.59\nAssignment 2 – Sunday 12/10 23.59"
   },
   {
     "objectID": "slides/slides.html#materials",
@@ -152,5 +152,33 @@
     "title": "BDS Toolbox: Data Visualization",
     "section": "💡 How to Use This Site",
     "text": "💡 How to Use This Site\n\nBrowse the slides before and after class.\n\nAccess the assignments.\n\nPractice workflows with Git. If you are interested in how to setup a GitHub repository and work with Quarto documents, you can clone the repository and explore the files on your own computer."
+  },
+  {
+    "objectID": "slides/slides.html#aims",
+    "href": "slides/slides.html#aims",
+    "title": "Data Visualization",
+    "section": "Aims",
+    "text": "Aims\nYour goal is to go from exploring the Prowise data to telling a story with it.\n\nAssignment 1: Choose a research question. Explore the data and create a set of visualizations to help you understand the data.\nAssignment 2: Create a final data visualization that tells a story with the data. Compiled into a html document, and presented in the GitHub repository."
+  },
+  {
+    "objectID": "slides/slides.html#the-data",
+    "href": "slides/slides.html#the-data",
+    "title": "Data Visualization",
+    "section": "The data",
+    "text": "The data"
+  },
+  {
+    "objectID": "slides/slides.html#requirements",
+    "href": "slides/slides.html#requirements",
+    "title": "Data Visualization",
+    "section": "Requirements",
+    "text": "Requirements\n\nUse R and R Markdown (or Quarto) to create your visualizations.\nThe markdown document should be in the style of a report: explain your research question, and how you came to your conclusion. Not more than 1000 words.\n\nInclude at least one exploratory graph, and explain how it helped you understand the data.\nOnly your final, explanatory graph, will be graded. Clearly mark which graph this is."
+  },
+  {
+    "objectID": "slides/slides.html#workflow",
+    "href": "slides/slides.html#workflow",
+    "title": "Data Visualization",
+    "section": "Workflow",
+    "text": "Workflow\n\nComment your code clearly. We want to understand your thought process.\nWork in the Data Visualization Server, and compile the html document there.\n️⚠ Only upload the html document to GitHub, not the R scripts and especially not any data."
   }
 ]
