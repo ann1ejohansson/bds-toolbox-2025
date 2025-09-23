@@ -13,6 +13,8 @@ rm(list = ls())
 
 ## Instructions
 
+Download the template for this assignment in the [Github Repository](https://github.com/ann1ejohansson/data-visualization-2025) (templates > assignment-1). 
+
 This is the first assignment for the Data Visualization module. The aim here is to get acquainted with the Prowise Learn data, practice with some ggplot basics, and to get you started with working with your visualizations for the final assignment.
 
 With this assignment, you can gain X points, plus X bonus points. Please [refer here](how-do-we-grade.qmd) for an overview of how we grade your data visualizations. Part 1 is completed, and thus also graded, individually. Part 2 should be completed with your assigned group. Please make sure to clearly indicate your group number and names of all group members in your submission. One person should submit the assignment on behalf of the group. If more than one person submits the group assignment, we will only look at one of them.
@@ -21,18 +23,17 @@ The assignment is due on **Sunday October 5th, 2025 at 23:59**. Submit your assi
 
 Your submission for Part 1 should contain the following files:
 
--   R code (style checked & working) in a .Rmd or .R file.\
--   Your (improved) version of the plot, compiled to .html or .pdf.\
--   Your interactive plot, compiled to .html or .pdf.
+-   R code (style checked & working) in a `.Rmd` file \
+-   Your assignment, including both the replicated plot and the interactive plot, compiled to `.html`
 
-with file names in the following structure: `DV-Assignment1-Firstname-Lastname-PartA.Rmd` (or `.R`), `DV-Assignment1-Firstname-Lastname-PartA.pdf` (or `.html`).
+with file names in the following structure: `DV-Assignment1-Firstname-Lastname-PartA.Rmd` and `DV-Assignment1-Firstname-Lastname-PartA.html`.
 
 Your group submission (Part 2) should contain the following files:
 
--   R code (style checked & working) in a .Rmd or .R file.
--   Your plot and short description, compiled to .html or .pdf.
+-   R code (style checked & working) in a `.Rmd` \
+-   Your plot and short description, compiled to `.html`
 
-with file names in the following structure: `DV-Assignment1-GroupX-PartB.Rmd` (or `.R`), `DV-Assignment1-GroupX-PartB.pdf` (or `.html`).
+with file names in the following structure: `DV-Assignment1-GroupX-PartB.Rmd` (or `.R`), `DV-Assignment1-GroupX-PartB.pdf` (or `.html`). When uploading an html file, make sure that it can be opened and the plots are readable. We will not compile the html for you! 
 
 ### ⚠️ Please read this before submitting
 
@@ -347,6 +348,6 @@ Grading:
   + Is the plot creative? [0.5 pt]
   + Is the plot/analysis complex? [0.5 pt]
 
-**Clearly state your group members in your document. And please make sure ALL team members submit the same R code and plots for this group assignment.**
+**Clearly state your group members in your document. And please make sure ONE team member submits the assignment on behalf of the group.**
 
 
