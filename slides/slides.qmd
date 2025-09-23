@@ -33,7 +33,7 @@ library(tidyverse)
 ::: columns
 Find everything you need for this module on the website:
 
-### [**data-visualization-2025**](https://ann1ejohansson.github.io/bds-toolbox-2025){target="_blank"}
+### [**data-visualization-2025**](https://ann1ejohansson.github.io/data-visualization-2025){target="_blank"}
 :::
 ::::
 
@@ -89,7 +89,7 @@ Slides made using [quarto](https://quarto.org){target="_blank"}
 
 -   Your final data visualization project.
 
--   Work with your group. 
+-   Work with your group.
 
 -   X% of the grade
 :::
@@ -240,6 +240,7 @@ What are the consequences of overrelying on statistical techniques? <br>What are
 ## What makes a bad plot bad?
 
 ## 💬 Speed dates
+
 ::::: columns
 ::: {.column width="40%"}
 -   What do you think about this plot?
@@ -254,31 +255,27 @@ What are the consequences of overrelying on statistical techniques? <br>What are
 :::
 :::::
 
-
-
 # Data Visualization Project 📊 {background-color="#8000FF"}
 
 ## Aims
 
-Your goal is to go from exploring the Prowise data to telling a story with it. 
+Your goal is to go from exploring the Prowise data to telling a story with it.
 
--  Assignment 1: Choose a research question. Explore the data and create a set of visualizations to help you understand the data.
+-   Assignment 1: Choose a research question. Explore the data and create a set of visualizations to help you understand the data.
 
--  Assignment 2: Create a final data visualization that tells a story with the data. Compiled into a html document, and presented in the GitHub repository.
+-   Assignment 2: Create a final data visualization that tells a story with the data. Compiled into a html document, and presented in the GitHub repository.
 
 ## The data
 
-## Requirements 
+## Requirements
 
--  Use R and R Markdown (or Quarto) to create your visualizations. 
--  The markdown document should be in the style of a report: explain your research question, and how you came to your conclusion. Not more than 1000 words.  
--  Include at least one exploratory graph, and explain how it helped you understand the data. 
--  Only your final, explanatory graph, will be graded. Clearly mark which graph this is.
+-   Use R and R Markdown (or Quarto) to create your visualizations.
+-   The markdown document should be in the style of a report: explain your research question, and how you came to your conclusion. Not more than 1000 words.\
+-   Include at least one exploratory graph, and explain how it helped you understand the data.
+-   Only your final, explanatory graph, will be graded. Clearly mark which graph this is.
 
 ## Workflow
 
--  Comment your code clearly. We want to understand your thought process. 
--  Work in the Data Visualization Server, and compile the html document there.  
--  ️⚠ Only upload the html document to GitHub, not the R scripts and **especially not any data.** 
-
-
+-   Comment your code clearly. We want to understand your thought process.
+-   Work in the Data Visualization Server, and compile the html document there.\
+-   ️⚠ Only upload the html document to GitHub, not the R scripts and **especially not any data.**
