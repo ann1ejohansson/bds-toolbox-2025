@@ -3,7 +3,7 @@ title: "Data Visualization Assignment 1"
 format: 
   html:
     code-copy: true
-editor: visual
+editor: source
 ---
 
 ```{r actual-setup, include = FALSE}
@@ -13,7 +13,7 @@ rm(list = ls())
 
 ## Instructions
 
-Download the template for this assignment in the [Github Repository](https://github.com/ann1ejohansson/data-visualization-2025) (templates > assignment-1). 
+Download the template for this assignment in the [Github Repository](https://github.com/ann1ejohansson/data-visualization-2025) (templates \> assignment-1).
 
 This is the first assignment for the Data Visualization module. The aim here is to get acquainted with the Prowise Learn data, practice with some ggplot basics, and to get you started with working with your visualizations for the final assignment.
 
@@ -23,17 +23,17 @@ The assignment is due on **Sunday October 5th, 2025 at 23:59**. Submit your assi
 
 Your submission for Part 1 should contain the following files:
 
--   R code (style checked & working) in a `.Rmd` file \
+-   R code (style checked & working) in a `.Rmd` file\
 -   Your assignment, including both the replicated plot and the interactive plot, compiled to `.html`
 
 with file names in the following structure: `DV-Assignment1-Firstname-Lastname-PartA.Rmd` and `DV-Assignment1-Firstname-Lastname-PartA.html`.
 
 Your group submission (Part 2) should contain the following files:
 
--   R code (style checked & working) in a `.Rmd` \
+-   R code (style checked & working) in a `.Rmd`\
 -   Your plot and short description, compiled to `.html`
 
-with file names in the following structure: `DV-Assignment1-GroupX-PartB.Rmd` (or `.R`), `DV-Assignment1-GroupX-PartB.pdf` (or `.html`). When uploading an html file, make sure that it can be opened and the plots are readable. We will not compile the html for you! 
+with file names in the following structure: `DV-Assignment1-GroupX-PartB.Rmd` (or `.R`), `DV-Assignment1-GroupX-PartB.pdf` (or `.html`). When uploading an html file, make sure that it can be opened and the plots are readable. We will not compile the html for you!
 
 ### ⚠️ Please read this before submitting
 
@@ -49,15 +49,16 @@ oefenwebTools::lintrProfile(rstudioapi::getSourceEditorContext()$path)
 
 -   Don't install packages in your code. If we need to install a package that you used, state which packages need to be installed at the beginning of your code.
 
-
 ## Working with the Oefenweb Server
+
 Before starting the assignment, please look at the handout on [How to connect to the Oefenweb Server](working-on-the-server.qmd). This will help you to get started with retrieving data from the server. It also contains a useful tutorial on how to use SQL to retrieve data. Go through this code and make sure you understand it, as you will need it for this assignment.
 
 ## Part 1: Oefenweb Data & Basic ggplot (Individual)
+
 ### A. Replicate this plot
 
-The following code will give you the data necessary to create the plot at the end of this section. Your task is to replicate the plot using `ggplot2`.  
-Don't worry if you cannot reproduce the plots exactly. You can, for example, use different colors and font families. 
+The following code will give you the data necessary to create the plot at the end of this section. Your task is to replicate the plot using `ggplot2`.\
+Don't worry if you cannot reproduce the plots exactly. You can, for example, use different colors and font families.
 
 Grading:
 
@@ -67,12 +68,16 @@ Grading:
 -   Did the code run? \[0.5 pt\]
 -   Were styling issues resolved? (lintr) \[0.5 pt\]
 
-**Bonus points**  
+**Bonus points**
 
 Can you spot any areas where this plot can be improved? 1 extra point will be awarded for changes made, or features added or removed to the visualization. They need to be meaningful and improve the visualization. Simply changing colors or themes will not be rewarded, unless you can motivate why your changes are an improvement.
 
+```{r setup environment, include = TRUE, eval=FALSE}
+knitr::opts_chunk$set(echo = TRUE) # set default echo = TRUE for all code blocks
+rm(list = ls()) # Remove any existing objects in memory
+```
 
-```{r 1A setup}
+```{r 1A setup-2}
 # Install Packages
 # Find everything that the user currently has installed
 all_installed_packages <- installed.packages()[, "Package"]
@@ -177,84 +182,27 @@ Now we can make the first plot. This plot shows us the relation which users (in 
 
 Look at this nice trick to add the %-symbol to the labels: `scale_y_continuous(labels = function(x) paste0(x, "%"))`
 
-```{r 1A plot-1, echo = FALSE, fig.align = "center"}
-plotTheme <- theme(axis.text.x = element_text(angle = 45, hjust = 1),
-                   plot.title = element_text(hjust = 0.5))
-# plots
-gradeBars <- round(apply(table(itemsLogs$question, itemsLogs$grade), 1, prop.table), 2) * 100
-gradeBarsDF <- data.frame(question = c(rep("10 - 2", dim(gradeBars)[1]), rep("100 - 40", dim(gradeBars)[1])),
-                          grade = c(rep(paste0("Grade ", c(3:8)), 2)),
-                          percentage = c(gradeBars[, 1], gradeBars[, 2]))
-
-ann_text <- data.frame(percentage = 30, grade = "Grade 7", question =  "10 - 2")
-plot1 <- ggplot(data = gradeBarsDF, aes(y = percentage, x = grade, fill = question)) +
-  geom_col(position = "dodge") +
-  scale_y_continuous("Percentage", labels = function(x) paste0(x, "%")) +
-  scale_fill_manual("Question", values = c("#1b9e77", "#7570b3")) +
-  labs(title = "Questions answered vs. User Grade", x = "") +
-  geom_text(data = ann_text, aes(x = grade, y = percentage),
-              label = "10 - 2 is mostly practiced by grade 3 users \n and 100 - 40 by users in grade 5",
-            family = "Courier",
-            size = 2) +
-  theme_minimal() +
-  plotTheme
-plot(plot1)
-```
+![](images/replicate-this-plot-1a.png)
 
 For the second plot we look into response times and given answer (correct, incorrect or questionmark). Note that you first have to make a variable with these answers (correct, incorrect, question-mark).
-  
-```{r 1A plot-2, echo = FALSE, fig.align = "center"}
-# response time
-plot2 <- ggplot(data = itemsLogs, aes(x = response_in_seconds,
-                                      linetype = given_answer_type,
-                                      color = given_answer_type)) +
-  facet_grid(. ~ question) +
-  scale_color_manual(values = c("#4daf4a", "#e41a1c", "#377eb8")) +
-  scale_x_continuous(labels = function(x) paste0(x, "s")) +
-  geom_density() +
-  theme_minimal() +
-  labs(title = "Response Time and Answer Given",
-       linetype = "Answer", color = "Answer", x = "Response in Seconds", y  = "Density") +
-  theme(legend.position = "top",
-        strip.text.x = element_text(size = 12, face = "bold")) +
-  plotTheme
-plot(plot2)
-```
+
+![](images/replicate-this-plot-1b.png)
 
 Finally we make a plot with text to have some more information in our visualization:
 
-```{r 1A plot-3, echo=FALSE, fig.align = "center"}
-text <- paste0("Examination of question '10 - 2' and ",
-               "'100 - 40' of the domain 'Substraction'\n (Domain Id: 2). ",
-               "What are the response times of these items and what is\n the ",
-               "grade of users that practise these items?")
-text1 <- ggplot() +
-  annotate("text", x = 8, y = 25, size = 4, label = text) +
-  theme(panel.grid = element_blank(),
-        panel.background = element_blank(),
-        axis.title = element_blank(),
-        axis.text = element_blank(),
-        axis.ticks = element_blank())
-plot(text1)
-```
-
+![](images/replicate-this-plot-1c.png)
 Finally we combine the three plots (one text plot and two figure plots) into one plot by means of the plot_grid function of the `cowplot` package. **This is the visualization that you should replicate in this assignment Part II**.
 
 I used these settings in my rMarkdown code chunk: `fig.height = 8, fig.width = 10, fig.align = "center"`
 
-```{r 1A plot-4, echo = FALSE, fig.height = 8, fig.width = 10, fig.align = "center"}
-bottomRow <- suppressMessages(plot_grid(plot1, plot2))
-suppressWarnings(plot_grid(text1, bottomRow, ncol = 1, rel_heights = c(1, 2)))
-```
-
-
+![](images/replicate-this-plot-1-final.png)
 Tips:
 
-* On plot 1 there is text on the third facet which does not use the default font family  
-* To select nice colors go to http://colorbrewer2.org [or tips on the Data Visualisation slides]
-* Google (or other search engines) are your best friend, especially on stack overflow there are many questions and answers about ggplot2
+-   On plot 1 there is text on the third facet which does not use the default font family\
+-   To select nice colors go to http://colorbrewer2.org \[or tips on the Data Visualisation slides\]
+-   Google (or other search engines) are your best friend, especially on stack overflow there are many questions and answers about ggplot2
 
-Please note that you will only receive bonus points if your extra features are meaningful and improve the visualization. 
+Please note that you will only receive bonus points if your extra features are meaningful and improve the visualization.
 
 When you are done, please close the connection to the database (run this code in the console!):
 
@@ -264,10 +212,9 @@ oefenwebDatabase::close_connections()
 
 ### B. Interactive visualizations with Plotly
 
-Copy the code below to create a plot showcasing ... 
-Now, your assignment is to make this plot interactive using the `plotly` package. You can use the `ggplotly()` function to convert a ggplot object to an interactive plotly object. Focus on adding interactive elements that enhance the user experience and provide additional insights into the data. Remember to keep the plot clear and not overly complicated.
+Copy the code below to create a plot showcasing ... Now, your assignment is to make this plot interactive using the `plotly` package. You can use the `ggplotly()` function to convert a ggplot object to an interactive plotly object. Focus on adding interactive elements that enhance the user experience and provide additional insights into the data. Remember to keep the plot clear and not overly complicated.
 
-Grading: 
+Grading:
 
 -   Does the interactive plot work? \[1 pt\]
 -   Do the interactive elements enhance the user experience? \[1 pt\]
@@ -276,16 +223,17 @@ Grading:
 
 ### A. Specify your research question
 
-In class 1 you indicated your preference for a research question for the final project, and were assigned a group to work with. Together with your group, read the instructions for your assigned research question in [Assignment 2](assignment-2.qmd) again. 
+In class 1 you indicated your preference for a research question for the final project, and were assigned a group to work with. Together with your group, read the instructions for your assigned research question in [Assignment 2](assignment-2.qmd) again.
 
-*  Does your project take an analytical, inference, or predictive approach? Is it clear what is expected in the final data visualization with regards to the approach?  
-*  Who is your target audience? How might this influence choices for your final visualization?
+-   Does your project take an analytical, inference, or predictive approach? Is it clear what is expected in the final data visualization with regards to the approach?\
+-   Who is your target audience? How might this influence choices for your final visualization?
 
 ### B. Connect to Git and load data
-For this project, you will collaborate using Git. Connect your server environment to Git by following these instructions: [Connecting RStudio Server to Git](https://hpc.ugent.be/docs/en/rstudio-server/git-rstudio-server).  
-One person should download the template R project folder and create a new GitHub repository for your group. Add the documents inside the template folder to the repository. If this is done correctly, the resulting repository should have the following folder structure: 
 
-```
+For this project, you will collaborate using Git. Connect your server environment to Git by following these instructions: [Connecting RStudio Server to Git](https://hpc.ugent.be/docs/en/rstudio-server/git-rstudio-server).\
+One person should download the template R project folder and create a new GitHub repository for your group. Add the documents inside the template folder to the repository. If this is done correctly, the resulting repository should have the following folder structure:
+
+```         
 your-project-name/
 ├── .gitignore
 ├── README.md
@@ -297,11 +245,11 @@ your-project-name/
     └── DV-Assignment2-GroupX.html
 ```
 
-The other group members can then clone this repository to their server environment. Make a first commit and push it. Check that the other group members can pull these changes. If this works, you should be properly set up to work together using Git! 
+The other group members can then clone this repository to their server environment. Make a first commit and push it. Check that the other group members can pull these changes. If this works, you should be properly set up to work together using Git!
 
-Feel free to add folders or files within the repository if necessary. Make sure that you maintain the structure such that you follow a [reproducible workflow](https://tellingstorieswithdata.com/03-workflow.html#r-projects-and-file-structure). Additionally, it is important that you never push data to GitHub. If you have to store data, do this in a separate folder outside of your Git repository. Your `.gitignore` file should already contain the following lines: 
+Feel free to add folders or files within the repository if necessary. Make sure that you maintain the structure such that you follow a [reproducible workflow](https://tellingstorieswithdata.com/03-workflow.html#r-projects-and-file-structure). Additionally, it is important that you never push data to GitHub. If you have to store data, do this in a separate folder outside of your Git repository. Your `.gitignore` file should already contain the following lines:
 
-```
+```         
 # Ignore data files
 data/
 *.rds
@@ -314,40 +262,37 @@ data/
 *.rda
 ```
 
-This should prevent you from accidentally pushing data files to GitHub. Still, be mindful not to add any data files to your project repository. 
+This should prevent you from accidentally pushing data files to GitHub. Still, be mindful not to add any data files to your project repository.
 
-Now, load in the necessary data for your visualization. The code for this is available in [Assignment 2](assignment-2.qmd). Use the script `00-load-data.R` in the `code/` folder to load in the data. Examine the data. Discuss with your group: 
+Now, load in the necessary data for your visualization. The code for this is available in [Assignment 2](assignment-2.qmd). Use the script `00-load-data.R` in the `code/` folder to load in the data. Examine the data. Discuss with your group:
 
-*  What is the structure of the data?  
-*  What are the main variables? Can you already make some exploratory plots to understand these variables better?  
-*  What data cleaning steps are necessary? Do you, for example, need to filter out some observations to obtain reliable results?  
-
+-   What is the structure of the data?\
+-   What are the main variables? Can you already make some exploratory plots to understand these variables better?\
+-   What data cleaning steps are necessary? Do you, for example, need to filter out some observations to obtain reliable results?
 
 ### C. Make your first visualization
 
 For this assignment you can make any visualization about the chosen theme of the final project with these minimal requirements:
 
-- use multiple plots
-- change the theme (you can use a default theme or create your own)
-- use a good color-scheme, for example colorblind proof
-- highlight some interesting data points, for example using color or text
+-   use multiple plots
+-   change the theme (you can use a default theme or create your own)
+-   use a good color-scheme, for example colorblind proof
+-   highlight some interesting data points, for example using color or text
 
 Include a description of what you want to communicate, and how you did that. Really work towards making a data visualization that highlights or substantiates a single conclusion. This plot does not have to be the plot for your final project (it probably is not), but use this assignment to get feedback from us on your current ideas.
 
 Grading:
 
-* Aesthetics
-  + Is the plot legible? [1pt]
-  + Do the colors add to the interpretability? [1pt]
-  + Is the plot simple? [0.5 pt]
-* Communication
-  + Is it clear what the plots tries to communicate? [1pt]
-  + Does the plot communicate the described conclusions/description? [1pt]
-  + The plot requires minimal explanation [0.5 pt]
-* Creative/complexity
-  + Is the plot creative? [0.5 pt]
-  + Is the plot/analysis complex? [0.5 pt]
+-   Aesthetics
+    -   Is the plot legible? \[1pt\]
+    -   Do the colors add to the interpretability? \[1pt\]
+    -   Is the plot simple? \[0.5 pt\]
+-   Communication
+    -   Is it clear what the plots tries to communicate? \[1pt\]
+    -   Does the plot communicate the described conclusions/description? \[1pt\]
+    -   The plot requires minimal explanation \[0.5 pt\]
+-   Creative/complexity
+    -   Is the plot creative? \[0.5 pt\]
+    -   Is the plot/analysis complex? \[0.5 pt\]
 
 **Clearly state your group members in your document. And please make sure ONE team member submits the assignment on behalf of the group.**
-
-
