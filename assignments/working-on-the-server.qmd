@@ -40,6 +40,8 @@ if (!"devtools" %in% all_installed_packages) {install.packages("devtools")}
 if (!"oefenwebDatabase" %in% all_installed_packages) {devtools::install_github(repo = "Oefenweb/r-database")}
 if (!"oefenwebTools" %in% all_installed_packages) {devtools::install_github(repo = "Oefenweb/r-tools")}
 if (!"jsonlite" %in% all_installed_packages) {install.packages("jsonlite")}
+if (!"ggplot2" %in% all_installed_packages) {install.packages("ggplot2")}
+if (!"cowplot" %in% all_installed_packages) {install.packages("cowplot")}
 # nolint end
 
 # Load Required Packages
@@ -47,6 +49,8 @@ library(tidyverse)
 library(oefenwebDatabase)
 library(oefenwebTools)
 library(jsonlite)
+library(cowplot)
+library(ggplot2)
 ```
 
 #### Make a connection to the server

@@ -147,6 +147,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-resources">    
         <li>
+    <a class="dropdown-item" href="../assignments/working-on-the-server.html">
+ <span class="dropdown-text">Working on the server</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../assignments/how-do-we-grade.qmd">
+ <span class="dropdown-text">How do we grade your visualizations?</span></a>
+  </li>  
+        <li>
     <a class="dropdown-item" href="https://socviz.co/">
  <span class="dropdown-text">Data Visualization: A Practical Introduction (Healy)</span></a>
   </li>  
@@ -178,8 +186,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
   <li><a href="#working-with-the-oefenweb-server" id="toc-working-with-the-oefenweb-server" class="nav-link" data-scroll-target="#working-with-the-oefenweb-server">Working with the Oefenweb Server</a></li>
-  <li><a href="#part-1-oefenweb-data-basic-ggplot" id="toc-part-1-oefenweb-data-basic-ggplot" class="nav-link" data-scroll-target="#part-1-oefenweb-data-basic-ggplot">Part 1: Oefenweb Data &amp; Basic ggplot</a></li>
-  <li><a href="#part-2-group" id="toc-part-2-group" class="nav-link" data-scroll-target="#part-2-group">Part 2: Group</a></li>
+  <li><a href="#part-1-oefenweb-data-basic-ggplot-individual" id="toc-part-1-oefenweb-data-basic-ggplot-individual" class="nav-link" data-scroll-target="#part-1-oefenweb-data-basic-ggplot-individual">Part 1: Oefenweb Data &amp; Basic ggplot (Individual)</a></li>
+  <li><a href="#part-2-start-on-final-dv-project-group" id="toc-part-2-start-on-final-dv-project-group" class="nav-link" data-scroll-target="#part-2-start-on-final-dv-project-group">Part 2: Start on Final DV Project (Group)</a></li>
   </ul>
 </nav>
     </div>
@@ -208,7 +216,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="instructions" class="level2">
 <h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
 <p>This is the first assignment for the Data Visualization module. The aim here is to get acquainted with the Prowise Learn data, practice with some ggplot basics, and to get you started with working with your visualizations for the final assignment.</p>
-<p>With this assignment, you can gain X points, plus X bonus points. Please <a href="how-do-we-grade.qmd">refer here</a> for an overview of how we grade your data visualizations. Part A is completed, and thus also graded, individually. Part B should be completed with your assigned group. Please make sure to clearly indicate your group number and names of all group members in your submission. One person should submit the assignment on behalf of the group. If more than one person submits the group assignment, we will only look at one of them.</p>
+<p>With this assignment, you can gain X points, plus X bonus points. Please <a href="how-do-we-grade.qmd">refer here</a> for an overview of how we grade your data visualizations. Part 1 is completed, and thus also graded, individually. Part 2 should be completed with your assigned group. Please make sure to clearly indicate your group number and names of all group members in your submission. One person should submit the assignment on behalf of the group. If more than one person submits the group assignment, we will only look at one of them.</p>
 <p>The assignment is due on <strong>Sunday October 5th, 2025 at 23:59</strong>. Submit your assignment to Canvas, under “DV Assignment 1”.</p>
 <p>Your submission for Part 1 should contain the following files:</p>
 <ul>
@@ -244,129 +252,218 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="working-with-the-oefenweb-server">Working with the Oefenweb Server</h2>
 <p>Before starting the assignment, please look at the handout on <a href="../assignments/working-on-the-server.html">How to connect to the Oefenweb Server</a>. This will help you to get started with retrieving data from the server. It also contains a useful tutorial on how to use SQL to retrieve data. Go through this code and make sure you understand it, as you will need it for this assignment.</p>
 </section>
-<section id="part-1-oefenweb-data-basic-ggplot" class="level2">
-<h2 class="anchored" data-anchor-id="part-1-oefenweb-data-basic-ggplot">Part 1: Oefenweb Data &amp; Basic ggplot</h2>
-<p>We are now going to work with real life Oefenweb data to recreate a plot. We’ll first talk you through how to get the necessary data, and then it is up to you to work some ggplot magic!</p>
-<p>Let’s get started by ensuring that you have all the packages installed that you will need later on.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### SET_UP ####</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">TRUE</span>) <span class="co"># set default echo = TRUE for all code blocks</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>()) <span class="co"># Remove any existing objects in memory</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### REQUIREMENTS ####</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Install Packages</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Find everything that the user currently has installed</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>all_installed_packages <span class="ot">&lt;-</span> <span class="fu">installed.packages</span>()[, <span class="st">"Package"</span>]</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Install any missing, but required packages</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># nolint start -- trick to omit some lines from the lintr checker, only if you have a good reason!</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="st">"tidyverse"</span> <span class="sc">%in%</span> all_installed_packages) {<span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)}</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="st">"devtools"</span> <span class="sc">%in%</span> all_installed_packages) {<span class="fu">install.packages</span>(<span class="st">"devtools"</span>)}</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="st">"oefenwebDatabase"</span> <span class="sc">%in%</span> all_installed_packages) {devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="at">repo =</span> <span class="st">"Oefenweb/r-database"</span>)}</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="st">"oefenwebTools"</span> <span class="sc">%in%</span> all_installed_packages) {devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="at">repo =</span> <span class="st">"Oefenweb/r-tools"</span>)}</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="st">"jsonlite"</span> <span class="sc">%in%</span> all_installed_packages) {<span class="fu">install.packages</span>(<span class="st">"jsonlite"</span>)}</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># nolint end</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Load Required Packages</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(oefenwebDatabase)</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(oefenwebTools)</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>We now have everything we need to let our online R Studio environment know how to “communicate” with our Data Server. We can connect with the database by using the following code. This creates a connection to the database that is stored in the variable <code>con</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> oefenwebDatabase<span class="sc">::</span><span class="fu">connect</span>()</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> DBI<span class="sc">::</span><span class="fu">dbGetQuery</span>(con,</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"SELECT id, login_count, new_school_id, grade</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="st">                         FROM users</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="st">                         WHERE id IN</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="st">                            (SELECT new_user_id </span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="st">                             FROM school_classes_users </span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="st">                             WHERE new_school_class_id = 3)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>From this point on, you can use the database connection to retrieve data from the server. What the data actually looks like, and which tables/columns are available can be viewed on the <a href="https://data-visualization.oefenweb.nl/adminer.php?server=127.0.2.1">Adminer</a>. Log in with the your Oefenweb <code>username</code> and <code>password</code>, and select <code>oefenweb_nl_app</code> from the databases.</p>
-<p>We can, for example, use the following SQL statement to retrieve the <code>domains</code> table:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># select all columns (*) from the domains table.</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>my_data_domains <span class="ot">&lt;-</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  DBI<span class="sc">::</span><span class="fu">dbGetQuery</span>(con, <span class="co"># the connection element to our database</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                  <span class="st">"SELECT * FROM `domains`"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>You will receive warnings that let you know how data has been parsed. You can ignore these, or even better suppress them ;)</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>my_data_domains <span class="ot">&lt;-</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">suppressWarnings</span>(DBI<span class="sc">::</span><span class="fu">dbGetQuery</span>(con,</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"SELECT * FROM `domains`"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="part-1-oefenweb-data-basic-ggplot-individual" class="level2">
+<h2 class="anchored" data-anchor-id="part-1-oefenweb-data-basic-ggplot-individual">Part 1: Oefenweb Data &amp; Basic ggplot (Individual)</h2>
 <section id="a.-replicate-this-plot" class="level3">
 <h3 class="anchored" data-anchor-id="a.-replicate-this-plot">A. Replicate this plot</h3>
-<p>Now lets get some item data. In the <code>items</code> table we can find data that contains item information as for example the item question or answer options. We will choose the domain <code>tafels</code> (Multiplication Tables). In the <code>items</code> table we can see that there is no mention of “tafels” anywhere, however, each item does have a <code>domain_id</code> listed. If we look in the <code>domains</code> table we just retrieved, we see that <code>tafels</code> has the <code>id</code> ‘59’. We can use this information to retrieve only the items from the <code>tafels</code> game:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>items <span class="ot">&lt;-</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">suppressWarnings</span>(DBI<span class="sc">::</span><span class="fu">dbGetQuery</span>(con,</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"SELECT *</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="st">                                    FROM `items`</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="st">                                    WHERE `domain_id` = '59'"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Now we manipulate the data and create some new variables that we will need later on. First we convert the continuous variable <code>maximum_response_in_seconds</code> (the total amount of time allowed per item) and turn it into a categorical factor:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>items<span class="sc">$</span>maximum_response_in_seconds <span class="ot">&lt;-</span> <span class="fu">factor</span>(items<span class="sc">$</span>maximum_response_in_seconds,</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>),</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                                            <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"5 seconds"</span>,</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                                                       <span class="st">"10 seconds"</span>,</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                                                       <span class="st">"15 seconds"</span>,</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>                                                       <span class="st">"20 seconds"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Then, we want to know what the actual answer was to a question. Unfortunately, we store <code>question</code> and <code>answer</code>/<code>answer_options</code> data in the format of a JSON string. We thus need to clean the JSON before we can retrieve the answers:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new variable where we will store the result</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>items<span class="sc">$</span>answer <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="fu">nrow</span>(items))</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop over each row to clean the content (you could also use an apply function)</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_len</span>(<span class="fu">nrow</span>(items))) {</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  items<span class="sc">$</span>answer[i] <span class="ot">&lt;-</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.numeric</span>(jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>(items<span class="sc">$</span>answer_options[i])<span class="sc">$</span>answerOptions)</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>We now have a column <code>answer</code> that has the cleaned, numeric, outcome for each question/item. We can use this to create another categorical variable:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Now we determine whether the answer is below or above 50</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>items<span class="sc">$</span>answer_result <span class="ot">&lt;-</span> items<span class="sc">$</span>answer <span class="sc">&lt;=</span> <span class="dv">50</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Finally we make answer_result also a categorical factor variable</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>items<span class="sc">$</span>answer_result <span class="ot">&lt;-</span> <span class="fu">factor</span>(items<span class="sc">$</span>answer_result, <span class="at">levels =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>),</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>                              <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"equal to or below 50"</span>, <span class="st">"above 50"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Ok, now we are ready to make a plot. We will plot the item deadline (maximum_response_time_in_seconds) on the x-axis and the item difficulty (rating) on the y-axis. We group the items into a group with answer equal to or below 50 and above 50.</p>
-<p>The assignment is for you to reproduce the following visualization (or make it even better):</p>
-<!-- * 3pts for correct reproduction  -->
-<!-- * 1pt [bonus] for further improvements -->
+<p>The following code will give you the data necessary to create the plot at the end of this section. Your task is to replicate the plot using <code>ggplot2</code>.<br>
+Don’t worry if you cannot reproduce the plots exactly. You can, for example, use different colors and font families.</p>
 <p>Grading:</p>
 <ul>
 <li>Does the data show the same pattern? [1.5 pt]</li>
 <li>Is the styling the same? [1.5 pt]</li>
-<li>BONUS: Where there extra features added? [0.5 pt]</li>
+<li>BONUS: Where there extra features added? [1 pt]</li>
 <li>Did the code run? [0.5 pt]</li>
 <li>Were styling issues resolved? (lintr) [0.5 pt]</li>
 </ul>
-<p>Please note that you will only receive bonus points if your extra features are meaningful and improve the visualization. Simply changing colors or themes will not be rewarded, unless you can motivate why your changes are an improvement.</p>
-<p>When you are done, please close the connection to the database:</p>
+<p><strong>Bonus points</strong></p>
+<p>Can you spot any areas where this plot can be improved? 1 extra point will be awarded for changes made, or features added or removed to the visualization. They need to be meaningful and improve the visualization. Simply changing colors or themes will not be rewarded, unless you can motivate why your changes are an improvement.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>oefenwebDatabase<span class="sc">::</span><span class="fu">close_connections</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install Packages</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Find everything that the user currently has installed</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>all_installed_packages <span class="ot">&lt;-</span> <span class="fu">installed.packages</span>()[, <span class="st">"Package"</span>]</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Install any missing, but required packages</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># nolint start -- trick to omit some lines from the lintr checker, only if you have a good reason!</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="st">"tidyverse"</span> <span class="sc">%in%</span> all_installed_packages) {<span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)}</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="st">"devtools"</span> <span class="sc">%in%</span> all_installed_packages) {<span class="fu">install.packages</span>(<span class="st">"devtools"</span>)}</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="st">"oefenwebDatabase"</span> <span class="sc">%in%</span> all_installed_packages) {devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="at">repo =</span> <span class="st">"Oefenweb/r-database"</span>)}</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="st">"oefenwebTools"</span> <span class="sc">%in%</span> all_installed_packages) {devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="at">repo =</span> <span class="st">"Oefenweb/r-tools"</span>)}</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="st">"jsonlite"</span> <span class="sc">%in%</span> all_installed_packages) {<span class="fu">install.packages</span>(<span class="st">"jsonlite"</span>)}</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="st">"ggplot2"</span> <span class="sc">%in%</span> all_installed_packages) {<span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>)}</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="st">"cowplot"</span> <span class="sc">%in%</span> all_installed_packages) {<span class="fu">install.packages</span>(<span class="st">"cowplot"</span>)}</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># nolint end</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Load Required Packages</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(oefenwebDatabase)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(oefenwebTools)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(cowplot)</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="co"># make database connection</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> oefenwebDatabase<span class="sc">::</span><span class="fu">connect</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>For this assignment, we will have a look at the two items of the same domain. First we have to get the items from the <code>items</code> table and after that we obtain the <code>log_records</code> of these items.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>item_ids <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">188391</span>, <span class="dv">186408</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>items <span class="ot">&lt;-</span> <span class="fu">suppressWarnings</span>(DBI<span class="sc">::</span><span class="fu">dbGetQuery</span>(con, <span class="fu">paste0</span>(<span class="st">"SELECT *</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="st">                              FROM `items`</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="st">                              WHERE id IN ("</span>, <span class="fu">paste</span>(item_ids, <span class="at">collapse =</span> <span class="st">","</span>), <span class="st">")"</span>)))</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># renaming first column of items data.frame to "item_id"</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(items)[<span class="dv">1</span>] <span class="ot">&lt;-</span> <span class="st">"item_id"</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># obtaining the log_records for the two items of the visualization</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># in this example R code is used "within" a SQL query</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>itemsLogs <span class="ot">&lt;-</span> <span class="fu">suppressWarnings</span>(DBI<span class="sc">::</span><span class="fu">dbGetQuery</span>(con, <span class="fu">paste0</span>(<span class="st">"SELECT *</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="st">                                                        FROM `log_records_2`</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="st">                                                        WHERE `item_id` IN ("</span>,</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>                                                        <span class="fu">paste</span>(<span class="fu">c</span>(items<span class="sc">$</span>item_id), <span class="at">collapse =</span> <span class="st">", "</span>), <span class="st">")"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now that we have the “raw” data, we can start to filter and prepare it for the visualization we want to build.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># make the question and answer_options "json" free</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(items)) {</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  items<span class="sc">$</span>correct_answer[i] <span class="ot">&lt;-</span> jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>(items<span class="sc">$</span>answer_options[i])<span class="sc">$</span>answerOptions[<span class="dv">1</span>]</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  items<span class="sc">$</span>question[i] <span class="ot">&lt;-</span> jsonlite<span class="sc">::</span><span class="fu">fromJSON</span>(items<span class="sc">$</span>question[i])<span class="sc">$</span>question<span class="sc">$</span>content</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># we do a left_join between itemLogs and items table to get the item question and correct_answer into itemsLogs</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>itemsLogs <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">left_join</span>(itemsLogs,</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>                              items[, <span class="fu">c</span>(<span class="st">"item_id"</span>, <span class="st">"question"</span>, <span class="st">"correct_answer"</span>)],</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>                              <span class="at">by =</span> <span class="st">"item_id"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s do some further data preparations. We prefer to change the data instead of changing labels in the plot. If you change the data, the plot and data will resemble each other, hence you can be more certain that you don’t have errors in your visualization.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># transform variables to suitable types</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>itemsLogs<span class="sc">$</span>response_in_seconds <span class="ot">&lt;-</span> itemsLogs<span class="sc">$</span>response_in_milliseconds <span class="sc">/</span> <span class="dv">1000</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>itemsLogs<span class="sc">$</span>correct_answered <span class="ot">&lt;-</span> <span class="fu">as.logical</span>(itemsLogs<span class="sc">$</span>correct_answered)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>itemsLogs<span class="sc">$</span>question <span class="ot">&lt;-</span> <span class="fu">factor</span>(itemsLogs<span class="sc">$</span>question)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># make answer column</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>itemsLogs<span class="sc">$</span>given_answer_type <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(itemsLogs)) {</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (itemsLogs<span class="sc">$</span>correct_answered[i]) {</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    itemsLogs<span class="sc">$</span>given_answer_type[i] <span class="ot">&lt;-</span> <span class="st">"correct"</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    itemsLogs<span class="sc">$</span>given_answer_type[i] <span class="ot">&lt;-</span> <span class="st">"incorrect"</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (itemsLogs<span class="sc">$</span>answer[i] <span class="sc">==</span> <span class="st">"¿"</span>) {</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>      itemsLogs<span class="sc">$</span>given_answer_type[i] <span class="ot">&lt;-</span> <span class="st">"questionmark"</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>itemsLogs<span class="sc">$</span>given_answer_type <span class="ot">&lt;-</span> <span class="fu">factor</span>(itemsLogs<span class="sc">$</span>given_answer_type)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Before we continue we get the grade information from the users table, add this info, do some filtering and change it to a factor:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>users <span class="ot">&lt;-</span> DBI<span class="sc">::</span><span class="fu">dbGetQuery</span>(con, <span class="st">"SELECT id AS new_user_id, grade FROM users"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>itemsLogs <span class="ot">&lt;-</span> dplyr<span class="sc">::</span><span class="fu">left_join</span>(itemsLogs, users, <span class="at">by =</span> <span class="st">"new_user_id"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># filter (with dplyr) to only work with grade 3 to 8</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>itemsLogs <span class="ot">&lt;-</span> itemsLogs <span class="sc">%&gt;%</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(grade <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">8</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.data.frame</span>()</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>itemsLogs<span class="sc">$</span>grade <span class="ot">&lt;-</span> <span class="fu">factor</span>(itemsLogs<span class="sc">$</span>grade, <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">8</span>), <span class="at">labels =</span> <span class="fu">paste0</span>(<span class="st">"Grade "</span>, <span class="fu">c</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">8</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now we can make the first plot. This plot shows us the relation which users (in terms of grade) practice these items. Note that for this plot we don’t use the <code>geom_histogram</code> function. In this case we first calculate the relative frequencies of the number of responses per grade, for each question. We store this information in a data.frame that we than use for plotting. So first make this data.frame! With <code>geom_col()</code> we than plot the bars.</p>
+<p>Look at this nice trick to add the %-symbol to the labels: <code>scale_y_continuous(labels = function(x) paste0(x, "%"))</code></p>
+<p>For the second plot we look into response times and given answer (correct, incorrect or questionmark). Note that you first have to make a variable with these answers (correct, incorrect, question-mark).</p>
+<p>Finally we make a plot with text to have some more information in our visualization:</p>
+<p>Finally we combine the three plots (one text plot and two figure plots) into one plot by means of the plot_grid function of the <code>cowplot</code> package. <strong>This is the visualization that you should replicate in this assignment Part II</strong>.</p>
+<p>I used these settings in my rMarkdown code chunk: <code>fig.height = 8, fig.width = 10, fig.align = "center"</code></p>
+<p>Tips:</p>
+<ul>
+<li>On plot 1 there is text on the third facet which does not use the default font family<br>
+</li>
+<li>To select nice colors go to http://colorbrewer2.org [or tips on the Data Visualisation slides]</li>
+<li>Google (or other search engines) are your best friend, especially on stack overflow there are many questions and answers about ggplot2</li>
+</ul>
+<p>Please note that you will only receive bonus points if your extra features are meaningful and improve the visualization.</p>
+<p>When you are done, please close the connection to the database (run this code in the console!):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>oefenwebDatabase<span class="sc">::</span><span class="fu">close_connections</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="b.-interactive-visualizations-with-plotly" class="level3">
 <h3 class="anchored" data-anchor-id="b.-interactive-visualizations-with-plotly">B. Interactive visualizations with Plotly</h3>
+<p>Copy the code below to create a plot showcasing … Now, your assignment is to make this plot interactive using the <code>plotly</code> package. You can use the <code>ggplotly()</code> function to convert a ggplot object to an interactive plotly object. Focus on adding interactive elements that enhance the user experience and provide additional insights into the data. Remember to keep the plot clear and not overly complicated.</p>
+<p>Grading:</p>
+<ul>
+<li>Does the interactive plot work? [1 pt]</li>
+<li>Do the interactive elements enhance the user experience? [1 pt]</li>
+</ul>
 </section>
 </section>
-<section id="part-2-group" class="level2">
-<h2 class="anchored" data-anchor-id="part-2-group">Part 2: Group</h2>
-<section id="a.-choose-a-research-question" class="level3">
-<h3 class="anchored" data-anchor-id="a.-choose-a-research-question">A. Choose a research question</h3>
+<section id="part-2-start-on-final-dv-project-group" class="level2">
+<h2 class="anchored" data-anchor-id="part-2-start-on-final-dv-project-group">Part 2: Start on Final DV Project (Group)</h2>
+<section id="a.-specify-your-research-question" class="level3">
+<h3 class="anchored" data-anchor-id="a.-specify-your-research-question">A. Specify your research question</h3>
+<p>In class 1 you indicated your preference for a research question for the final project, and were assigned a group to work with. Together with your group, read the instructions for your assigned research question in <a href="../assignments/assignment-2.html">Assignment 2</a> again.</p>
+<ul>
+<li>Does your project take an analytical, inference, or predictive approach? Is it clear what is expected in the final data visualization with regards to the approach?<br>
+</li>
+<li>Who is your target audience? How might this influence choices for your final visualization?</li>
+</ul>
 </section>
-<section id="b." class="level3">
-<h3 class="anchored" data-anchor-id="b.">B.</h3>
+<section id="b.-connect-to-git-and-load-data" class="level3">
+<h3 class="anchored" data-anchor-id="b.-connect-to-git-and-load-data">B. Connect to Git and load data</h3>
+<p>For this project, you will collaborate using Git. Connect your server environment to Git by following these instructions: <a href="https://hpc.ugent.be/docs/en/rstudio-server/git-rstudio-server">Connecting RStudio Server to Git</a>.<br>
+One person should download the template R project folder and create a new GitHub repository for your group. Add the documents inside the template folder to the repository. If this is done correctly, the resulting repository should have the following folder structure:</p>
+<pre><code>your-project-name/
+├── .gitignore
+├── README.md
+├── your-project-name.Rproj
+├── code/
+|   └── 00-load-data.R
+└── report/
+    └── DV-Assignment2-GroupX.Rmd
+    └── DV-Assignment2-GroupX.html</code></pre>
+<p>The other group members can then clone this repository to their server environment. Make a first commit and push it. Check that the other group members can pull these changes. If this works, you should be properly set up to work together using Git!</p>
+<p>Feel free to add folders or files within the repository if necessary. Make sure that you maintain the structure such that you follow a <a href="https://tellingstorieswithdata.com/03-workflow.html#r-projects-and-file-structure">reproducible workflow</a>. Additionally, it is important that you never push data to GitHub. If you have to store data, do this in a separate folder outside of your Git repository. Your <code>.gitignore</code> file should already contain the following lines:</p>
+<pre><code># Ignore data files
+data/
+*.rds
+*.RDS
+*.RData
+*.rdata
+*.csv
+*.tsv
+*.xlsx
+*.rda</code></pre>
+<p>This should prevent you from accidentally pushing data files to GitHub. Still, be mindful not to add any data files to your project repository.</p>
+<p>Now, load in the necessary data for your visualization. The code for this is available in <a href="../assignments/assignment-2.html">Assignment 2</a>. Use the script <code>00-load-data.R</code> in the <code>code/</code> folder to load in the data. Examine the data. Discuss with your group:</p>
+<ul>
+<li>What is the structure of the data?<br>
+</li>
+<li>What are the main variables? Can you already make some exploratory plots to understand these variables better?<br>
+</li>
+<li>What data cleaning steps are necessary? Do you, for example, need to filter out some observations to obtain reliable results?</li>
+</ul>
+</section>
+<section id="c.-make-your-first-visualization" class="level3">
+<h3 class="anchored" data-anchor-id="c.-make-your-first-visualization">C. Make your first visualization</h3>
+<p>For this assignment you can make any visualization about the chosen theme of the final project with these minimal requirements:</p>
+<ul>
+<li>use multiple plots</li>
+<li>change the theme (you can use a default theme or create your own)</li>
+<li>use a good color-scheme, for example colorblind proof</li>
+<li>highlight some interesting data points, for example using color or text</li>
+</ul>
+<p>Include a description of what you want to communicate, and how you did that. Really work towards making a data visualization that highlights or substantiates a single conclusion. This plot does not have to be the plot for your final project (it probably is not), but use this assignment to get feedback from us on your current ideas.</p>
+<p>Grading:</p>
+<ul>
+<li>Aesthetics
+<ul>
+<li>Is the plot legible? [1pt]</li>
+<li>Do the colors add to the interpretability? [1pt]</li>
+<li>Is the plot simple? [0.5 pt]</li>
+</ul></li>
+<li>Communication
+<ul>
+<li>Is it clear what the plots tries to communicate? [1pt]</li>
+<li>Does the plot communicate the described conclusions/description? [1pt]</li>
+<li>The plot requires minimal explanation [0.5 pt]</li>
+</ul></li>
+<li>Creative/complexity
+<ul>
+<li>Is the plot creative? [0.5 pt]</li>
+<li>Is the plot/analysis complex? [0.5 pt]</li>
+</ul></li>
+</ul>
+<p><strong>Clearly state your group members in your document. And please make sure ALL team members submit the same R code and plots for this group assignment.</strong></p>
 
 
 </section>

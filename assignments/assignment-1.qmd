@@ -15,7 +15,7 @@ rm(list = ls())
 
 This is the first assignment for the Data Visualization module. The aim here is to get acquainted with the Prowise Learn data, practice with some ggplot basics, and to get you started with working with your visualizations for the final assignment.
 
-With this assignment, you can gain X points, plus X bonus points. Please [refer here](how-do-we-grade.qmd) for an overview of how we grade your data visualizations. Part A is completed, and thus also graded, individually. Part B should be completed with your assigned group. Please make sure to clearly indicate your group number and names of all group members in your submission. One person should submit the assignment on behalf of the group. If more than one person submits the group assignment, we will only look at one of them.
+With this assignment, you can gain X points, plus X bonus points. Please [refer here](how-do-we-grade.qmd) for an overview of how we grade your data visualizations. Part 1 is completed, and thus also graded, individually. Part 2 should be completed with your assigned group. Please make sure to clearly indicate your group number and names of all group members in your submission. One person should submit the assignment on behalf of the group. If more than one person submits the group assignment, we will only look at one of them.
 
 The assignment is due on **Sunday October 5th, 2025 at 23:59**. Submit your assignment to Canvas, under "DV Assignment 1".
 
@@ -52,21 +52,26 @@ oefenwebTools::lintrProfile(rstudioapi::getSourceEditorContext()$path)
 ## Working with the Oefenweb Server
 Before starting the assignment, please look at the handout on [How to connect to the Oefenweb Server](working-on-the-server.qmd). This will help you to get started with retrieving data from the server. It also contains a useful tutorial on how to use SQL to retrieve data. Go through this code and make sure you understand it, as you will need it for this assignment.
 
-## Part 1: Oefenweb Data & Basic ggplot
+## Part 1: Oefenweb Data & Basic ggplot (Individual)
+### A. Replicate this plot
 
-We are now going to work with real life Oefenweb data to recreate a plot. We'll first talk you through how to get the necessary data, and then it is up to you to work some ggplot magic!
+The following code will give you the data necessary to create the plot at the end of this section. Your task is to replicate the plot using `ggplot2`.  
+Don't worry if you cannot reproduce the plots exactly. You can, for example, use different colors and font families. 
 
-Let's get started by ensuring that you have all the packages installed that you will need later on.
+Grading:
 
-```{r setup, include = TRUE, eval=FALSE}
-#### SET_UP ####
-knitr::opts_chunk$set(echo = TRUE) # set default echo = TRUE for all code blocks
+-   Does the data show the same pattern? \[1.5 pt\]
+-   Is the styling the same? \[1.5 pt\]
+-   BONUS: Where there extra features added? \[1 pt\]
+-   Did the code run? \[0.5 pt\]
+-   Were styling issues resolved? (lintr) \[0.5 pt\]
 
-rm(list = ls()) # Remove any existing objects in memory
-```
+**Bonus points**  
 
-```{r setup-1, include = TRUE, eval=FALSE}
-#### REQUIREMENTS ####
+Can you spot any areas where this plot can be improved? 1 extra point will be awarded for changes made, or features added or removed to the visualization. They need to be meaningful and improve the visualization. Simply changing colors or themes will not be rewarded, unless you can motivate why your changes are an improvement.
+
+
+```{r 1A setup}
 # Install Packages
 # Find everything that the user currently has installed
 all_installed_packages <- installed.packages()[, "Package"]
@@ -77,6 +82,8 @@ if (!"devtools" %in% all_installed_packages) {install.packages("devtools")}
 if (!"oefenwebDatabase" %in% all_installed_packages) {devtools::install_github(repo = "Oefenweb/r-database")}
 if (!"oefenwebTools" %in% all_installed_packages) {devtools::install_github(repo = "Oefenweb/r-tools")}
 if (!"jsonlite" %in% all_installed_packages) {install.packages("jsonlite")}
+if (!"ggplot2" %in% all_installed_packages) {install.packages("ggplot2")}
+if (!"cowplot" %in% all_installed_packages) {install.packages("cowplot")}
 # nolint end
 
 # Load Required Packages
@@ -84,126 +91,262 @@ library(tidyverse)
 library(oefenwebDatabase)
 library(oefenwebTools)
 library(jsonlite)
-```
+library(cowplot)
+library(ggplot2)
 
-We now have everything we need to let our online R Studio environment know how to "communicate" with our Data Server. We can connect with the database by using the following code. This creates a connection to the database that is stored in the variable `con`.
-
-```{r eval=FALSE}
+# make database connection
 con <- oefenwebDatabase::connect()
-data <- DBI::dbGetQuery(con,
-                        "SELECT id, login_count, new_school_id, grade
-                         FROM users
-                         WHERE id IN
-                            (SELECT new_user_id 
-                             FROM school_classes_users 
-                             WHERE new_school_class_id = 3)")
 ```
 
-From this point on, you can use the database connection to retrieve data from the server. What the data actually looks like, and which tables/columns are available can be viewed on the [Adminer](https://data-visualization.oefenweb.nl/adminer.php?server=127.0.2.1). Log in with the your Oefenweb `username` and `password`, and select `oefenweb_nl_app` from the databases.
+For this assignment, we will have a look at the two items of the same domain. First we have to get the items from the `items` table and after that we obtain the `log_records` of these items.
 
-We can, for example, use the following SQL statement to retrieve the `domains` table:
+```{r 1A data}
+item_ids <- c(188391, 186408)
 
-```{r, eval=FALSE}
-# select all columns (*) from the domains table.
-my_data_domains <-
-  DBI::dbGetQuery(con, # the connection element to our database
-                  "SELECT * FROM `domains`")
+items <- suppressWarnings(DBI::dbGetQuery(con, paste0("SELECT *
+                              FROM `items`
+                              WHERE id IN (", paste(item_ids, collapse = ","), ")")))
+
+# renaming first column of items data.frame to "item_id"
+colnames(items)[1] <- "item_id"
+
+# obtaining the log_records for the two items of the visualization
+# in this example R code is used "within" a SQL query
+itemsLogs <- suppressWarnings(DBI::dbGetQuery(con, paste0("SELECT *
+                                                        FROM `log_records_2`
+                                                        WHERE `item_id` IN (",
+                                                        paste(c(items$item_id), collapse = ", "), ")")))
 ```
 
-You will receive warnings that let you know how data has been parsed. You can ignore these, or even better suppress them ;)
+Now that we have the "raw" data, we can start to filter and prepare it for the visualization we want to build.
 
-```{r}
-my_data_domains <-
-  suppressWarnings(DBI::dbGetQuery(con,
-                                   "SELECT * FROM `domains`"))
-```
-
-### A. Replicate this plot
-
-Now lets get some item data. In the `items` table we can find data that contains item information as for example the item question or answer options. We will choose the domain `tafels` (Multiplication Tables). In the `items` table we can see that there is no mention of "tafels" anywhere, however, each item does have a `domain_id` listed. If we look in the `domains` table we just retrieved, we see that `tafels` has the `id` '59'. We can use this information to retrieve only the items from the `tafels` game:
-
-```{r}
-items <-
-  suppressWarnings(DBI::dbGetQuery(con,
-                                   "SELECT *
-                                    FROM `items`
-                                    WHERE `domain_id` = '59'"))
-```
-
-Now we manipulate the data and create some new variables that we will need later on. First we convert the continuous variable `maximum_response_in_seconds` (the total amount of time allowed per item) and turn it into a categorical factor:
-
-```{r}
-items$maximum_response_in_seconds <- factor(items$maximum_response_in_seconds,
-                                            levels = c(5, 10, 15, 20),
-                                            labels = c("5 seconds",
-                                                       "10 seconds",
-                                                       "15 seconds",
-                                                       "20 seconds"))
-```
-
-Then, we want to know what the actual answer was to a question. Unfortunately, we store `question` and `answer`/`answer_options` data in the format of a JSON string. We thus need to clean the JSON before we can retrieve the answers:
-
-```{r}
-# Create a new variable where we will store the result
-items$answer <- numeric(nrow(items))
-
-# Loop over each row to clean the content (you could also use an apply function)
-for (i in seq_len(nrow(items))) {
-  items$answer[i] <-
-    as.numeric(jsonlite::fromJSON(items$answer_options[i])$answerOptions)
+```{r 1A data-prep-1}
+# make the question and answer_options "json" free
+for (i in 1:nrow(items)) {
+  items$correct_answer[i] <- jsonlite::fromJSON(items$answer_options[i])$answerOptions[1]
+  items$question[i] <- jsonlite::fromJSON(items$question[i])$question$content
 }
+
+# we do a left_join between itemLogs and items table to get the item question and correct_answer into itemsLogs
+itemsLogs <- dplyr::left_join(itemsLogs,
+                              items[, c("item_id", "question", "correct_answer")],
+                              by = "item_id")
+
 ```
 
-We now have a column `answer` that has the cleaned, numeric, outcome for each question/item. We can use this to create another categorical variable:
+Let's do some further data preparations. We prefer to change the data instead of changing labels in the plot. If you change the data, the plot and data will resemble each other, hence you can be more certain that you don't have errors in your visualization.
 
-```{r}
-# Now we determine whether the answer is below or above 50
-items$answer_result <- items$answer <= 50
+```{r 1A data-prep-2}
+# transform variables to suitable types
+itemsLogs$response_in_seconds <- itemsLogs$response_in_milliseconds / 1000
+itemsLogs$correct_answered <- as.logical(itemsLogs$correct_answered)
+itemsLogs$question <- factor(itemsLogs$question)
 
-# Finally we make answer_result also a categorical factor variable
-items$answer_result <- factor(items$answer_result, levels = c(TRUE, FALSE),
-                              labels = c("equal to or below 50", "above 50"))
+# make answer column
+itemsLogs$given_answer_type <- NA
+for (i in 1:nrow(itemsLogs)) {
+  if (itemsLogs$correct_answered[i]) {
+    itemsLogs$given_answer_type[i] <- "correct"
+  } else {
+    itemsLogs$given_answer_type[i] <- "incorrect"
+    if (itemsLogs$answer[i] == "¿") {
+      itemsLogs$given_answer_type[i] <- "questionmark"
+    }
+  }
+}
+itemsLogs$given_answer_type <- factor(itemsLogs$given_answer_type)
 ```
 
-Ok, now we are ready to make a plot. We will plot the item deadline (maximum_response_time_in_seconds) on the x-axis and the item difficulty (rating) on the y-axis. We group the items into a group with answer equal to or below 50 and above 50.
+Before we continue we get the grade information from the users table, add this info, do some filtering and change it to a factor:
 
-The assignment is for you to reproduce the following visualization (or make it even better):
+```{r 1A data-prep-3}
+users <- DBI::dbGetQuery(con, "SELECT id AS new_user_id, grade FROM users")
+itemsLogs <- dplyr::left_join(itemsLogs, users, by = "new_user_id")
 
-```{r, echo=FALSE}
-ggplot(data = items,
-       aes(x = maximum_response_in_seconds,
-           y = rating,
-           fill = answer_result)) +
-  geom_boxplot() +
-  labs(x = "Available Response Time",
-       y = "Item Rating/Difficulty",
-       fill = "Item Answer")
+# filter (with dplyr) to only work with grade 3 to 8
+itemsLogs <- itemsLogs %>%
+  filter(grade %in% c(3:8)) %>%
+  as.data.frame()
+
+itemsLogs$grade <- factor(itemsLogs$grade, levels = c(3:8), labels = paste0("Grade ", c(3:8)))
+
 ```
 
-<!-- * 3pts for correct reproduction  -->
+Now we can make the first plot. This plot shows us the relation which users (in terms of grade) practice these items. Note that for this plot we don't use the `geom_histogram` function. In this case we first calculate the relative frequencies of the number of responses per grade, for each question. We store this information in a data.frame that we than use for plotting. So first make this data.frame! With `geom_col()` we than plot the bars.
 
-<!-- * 1pt [bonus] for further improvements -->
+Look at this nice trick to add the %-symbol to the labels: `scale_y_continuous(labels = function(x) paste0(x, "%"))`
 
-Grading:
+```{r 1A plot-1, echo = FALSE, fig.align = "center"}
+plotTheme <- theme(axis.text.x = element_text(angle = 45, hjust = 1),
+                   plot.title = element_text(hjust = 0.5))
+# plots
+gradeBars <- round(apply(table(itemsLogs$question, itemsLogs$grade), 1, prop.table), 2) * 100
+gradeBarsDF <- data.frame(question = c(rep("10 - 2", dim(gradeBars)[1]), rep("100 - 40", dim(gradeBars)[1])),
+                          grade = c(rep(paste0("Grade ", c(3:8)), 2)),
+                          percentage = c(gradeBars[, 1], gradeBars[, 2]))
 
--   Does the data show the same pattern? \[1.5 pt\]
--   Is the styling the same? \[1.5 pt\]
--   BONUS: Where there extra features added? \[0.5 pt\]
--   Did the code run? \[0.5 pt\]
--   Were styling issues resolved? (lintr) \[0.5 pt\]
+ann_text <- data.frame(percentage = 30, grade = "Grade 7", question =  "10 - 2")
+plot1 <- ggplot(data = gradeBarsDF, aes(y = percentage, x = grade, fill = question)) +
+  geom_col(position = "dodge") +
+  scale_y_continuous("Percentage", labels = function(x) paste0(x, "%")) +
+  scale_fill_manual("Question", values = c("#1b9e77", "#7570b3")) +
+  labs(title = "Questions answered vs. User Grade", x = "") +
+  geom_text(data = ann_text, aes(x = grade, y = percentage),
+              label = "10 - 2 is mostly practiced by grade 3 users \n and 100 - 40 by users in grade 5",
+            family = "Courier",
+            size = 2) +
+  theme_minimal() +
+  plotTheme
+plot(plot1)
+```
 
-Please note that you will only receive bonus points if your extra features are meaningful and improve the visualization. Simply changing colors or themes will not be rewarded, unless you can motivate why your changes are an improvement.
+For the second plot we look into response times and given answer (correct, incorrect or questionmark). Note that you first have to make a variable with these answers (correct, incorrect, question-mark).
+  
+```{r 1A plot-2, echo = FALSE, fig.align = "center"}
+# response time
+plot2 <- ggplot(data = itemsLogs, aes(x = response_in_seconds,
+                                      linetype = given_answer_type,
+                                      color = given_answer_type)) +
+  facet_grid(. ~ question) +
+  scale_color_manual(values = c("#4daf4a", "#e41a1c", "#377eb8")) +
+  scale_x_continuous(labels = function(x) paste0(x, "s")) +
+  geom_density() +
+  theme_minimal() +
+  labs(title = "Response Time and Answer Given",
+       linetype = "Answer", color = "Answer", x = "Response in Seconds", y  = "Density") +
+  theme(legend.position = "top",
+        strip.text.x = element_text(size = 12, face = "bold")) +
+  plotTheme
+plot(plot2)
+```
 
-When you are done, please close the connection to the database:
+Finally we make a plot with text to have some more information in our visualization:
 
-```{r}
+```{r 1A plot-3, echo=FALSE, fig.align = "center"}
+text <- paste0("Examination of question '10 - 2' and ",
+               "'100 - 40' of the domain 'Substraction'\n (Domain Id: 2). ",
+               "What are the response times of these items and what is\n the ",
+               "grade of users that practise these items?")
+text1 <- ggplot() +
+  annotate("text", x = 8, y = 25, size = 4, label = text) +
+  theme(panel.grid = element_blank(),
+        panel.background = element_blank(),
+        axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank())
+plot(text1)
+```
+
+Finally we combine the three plots (one text plot and two figure plots) into one plot by means of the plot_grid function of the `cowplot` package. **This is the visualization that you should replicate in this assignment Part II**.
+
+I used these settings in my rMarkdown code chunk: `fig.height = 8, fig.width = 10, fig.align = "center"`
+
+```{r 1A plot-4, echo = FALSE, fig.height = 8, fig.width = 10, fig.align = "center"}
+bottomRow <- suppressMessages(plot_grid(plot1, plot2))
+suppressWarnings(plot_grid(text1, bottomRow, ncol = 1, rel_heights = c(1, 2)))
+```
+
+
+Tips:
+
+* On plot 1 there is text on the third facet which does not use the default font family  
+* To select nice colors go to http://colorbrewer2.org [or tips on the Data Visualisation slides]
+* Google (or other search engines) are your best friend, especially on stack overflow there are many questions and answers about ggplot2
+
+Please note that you will only receive bonus points if your extra features are meaningful and improve the visualization. 
+
+When you are done, please close the connection to the database (run this code in the console!):
+
+```{r 1A close connections}
 oefenwebDatabase::close_connections()
 ```
 
 ### B. Interactive visualizations with Plotly
 
-## Part 2: Group
+Copy the code below to create a plot showcasing ... 
+Now, your assignment is to make this plot interactive using the `plotly` package. You can use the `ggplotly()` function to convert a ggplot object to an interactive plotly object. Focus on adding interactive elements that enhance the user experience and provide additional insights into the data. Remember to keep the plot clear and not overly complicated.
 
-### A. Choose a research question
+Grading: 
 
-### B.
+-   Does the interactive plot work? \[1 pt\]
+-   Do the interactive elements enhance the user experience? \[1 pt\]
+
+## Part 2: Start on Final DV Project (Group)
+
+### A. Specify your research question
+
+In class 1 you indicated your preference for a research question for the final project, and were assigned a group to work with. Together with your group, read the instructions for your assigned research question in [Assignment 2](assignment-2.qmd) again. 
+
+*  Does your project take an analytical, inference, or predictive approach? Is it clear what is expected in the final data visualization with regards to the approach?  
+*  Who is your target audience? How might this influence choices for your final visualization?
+
+### B. Connect to Git and load data
+For this project, you will collaborate using Git. Connect your server environment to Git by following these instructions: [Connecting RStudio Server to Git](https://hpc.ugent.be/docs/en/rstudio-server/git-rstudio-server).  
+One person should download the template R project folder and create a new GitHub repository for your group. Add the documents inside the template folder to the repository. If this is done correctly, the resulting repository should have the following folder structure: 
+
+```
+your-project-name/
+├── .gitignore
+├── README.md
+├── your-project-name.Rproj
+├── code/
+|   └── 00-load-data.R
+└── report/
+    └── DV-Assignment2-GroupX.Rmd
+    └── DV-Assignment2-GroupX.html
+```
+
+The other group members can then clone this repository to their server environment. Make a first commit and push it. Check that the other group members can pull these changes. If this works, you should be properly set up to work together using Git! 
+
+Feel free to add folders or files within the repository if necessary. Make sure that you maintain the structure such that you follow a [reproducible workflow](https://tellingstorieswithdata.com/03-workflow.html#r-projects-and-file-structure). Additionally, it is important that you never push data to GitHub. If you have to store data, do this in a separate folder outside of your Git repository. Your `.gitignore` file should already contain the following lines: 
+
+```
+# Ignore data files
+data/
+*.rds
+*.RDS
+*.RData
+*.rdata
+*.csv
+*.tsv
+*.xlsx
+*.rda
+```
+
+This should prevent you from accidentally pushing data files to GitHub. Still, be mindful not to add any data files to your project repository. 
+
+Now, load in the necessary data for your visualization. The code for this is available in [Assignment 2](assignment-2.qmd). Use the script `00-load-data.R` in the `code/` folder to load in the data. Examine the data. Discuss with your group: 
+
+*  What is the structure of the data?  
+*  What are the main variables? Can you already make some exploratory plots to understand these variables better?  
+*  What data cleaning steps are necessary? Do you, for example, need to filter out some observations to obtain reliable results?  
+
+
+### C. Make your first visualization
+
+For this assignment you can make any visualization about the chosen theme of the final project with these minimal requirements:
+
+- use multiple plots
+- change the theme (you can use a default theme or create your own)
+- use a good color-scheme, for example colorblind proof
+- highlight some interesting data points, for example using color or text
+
+Include a description of what you want to communicate, and how you did that. Really work towards making a data visualization that highlights or substantiates a single conclusion. This plot does not have to be the plot for your final project (it probably is not), but use this assignment to get feedback from us on your current ideas.
+
+Grading:
+
+* Aesthetics
+  + Is the plot legible? [1pt]
+  + Do the colors add to the interpretability? [1pt]
+  + Is the plot simple? [0.5 pt]
+* Communication
+  + Is it clear what the plots tries to communicate? [1pt]
+  + Does the plot communicate the described conclusions/description? [1pt]
+  + The plot requires minimal explanation [0.5 pt]
+* Creative/complexity
+  + Is the plot creative? [0.5 pt]
+  + Is the plot/analysis complex? [0.5 pt]
+
+**Clearly state your group members in your document. And please make sure ALL team members submit the same R code and plots for this group assignment.**
+
+
