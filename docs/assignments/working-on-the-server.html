@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Visualization Assignment 1 – Data Visualization 2025</title>
+<title>Working on the Oefenweb Server – Data Visualization 2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -134,7 +134,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Slides</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../assignments/assignment-1.html" aria-current="page"> 
+    <a class="nav-link" href="../assignments/assignment-1.html"> 
 <span class="menu-text">Assignment 1</span></a>
   </li>  
   <li class="nav-item">
@@ -171,24 +171,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul class="collapse">
-  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
-  <li><a href="#working-with-the-oefenweb-server" id="toc-working-with-the-oefenweb-server" class="nav-link" data-scroll-target="#working-with-the-oefenweb-server">Working with the Oefenweb Server</a></li>
-  <li><a href="#part-1-oefenweb-data-basic-ggplot" id="toc-part-1-oefenweb-data-basic-ggplot" class="nav-link" data-scroll-target="#part-1-oefenweb-data-basic-ggplot">Part 1: Oefenweb Data &amp; Basic ggplot</a></li>
-  <li><a href="#part-2-group" id="toc-part-2-group" class="nav-link" data-scroll-target="#part-2-group">Part 2: Group</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Data Visualization Assignment 1</h1>
+<h1 class="title">Working on the Oefenweb Server</h1>
 </div>
 
 
@@ -205,85 +196,62 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="instructions" class="level2">
-<h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
-<p>This is the first assignment for the Data Visualization module. The aim here is to get acquainted with the Prowise Learn data, practice with some ggplot basics, and to get you started with working with your visualizations for the final assignment.</p>
-<p>With this assignment, you can gain X points, plus X bonus points. Please <a href="how-do-we-grade.qmd">refer here</a> for an overview of how we grade your data visualizations. Part A is completed, and thus also graded, individually. Part B should be completed with your assigned group. Please make sure to clearly indicate your group number and names of all group members in your submission. One person should submit the assignment on behalf of the group. If more than one person submits the group assignment, we will only look at one of them.</p>
-<p>The assignment is due on <strong>Sunday October 5th, 2025 at 23:59</strong>. Submit your assignment to Canvas, under “DV Assignment 1”.</p>
-<p>Your submission for Part 1 should contain the following files:</p>
-<ul>
-<li>R code (style checked &amp; working) in a .Rmd or .R file.<br>
-</li>
-<li>Your (improved) version of the plot, compiled to .html or .pdf.<br>
-</li>
-<li>Your interactive plot, compiled to .html or .pdf.</li>
-</ul>
-<p>with file names in the following structure: <code>DV-Assignment1-Firstname-Lastname-PartA.Rmd</code> (or <code>.R</code>), <code>DV-Assignment1-Firstname-Lastname-PartA.pdf</code> (or <code>.html</code>).</p>
-<p>Your group submission (Part 2) should contain the following files:</p>
-<ul>
-<li>R code (style checked &amp; working) in a .Rmd or .R file.</li>
-<li>Your plot and short description, compiled to .html or .pdf.</li>
-</ul>
-<p>with file names in the following structure: <code>DV-Assignment1-GroupX-PartB.Rmd</code> (or <code>.R</code>), <code>DV-Assignment1-GroupX-PartB.pdf</code> (or <code>.html</code>).</p>
-<section id="please-read-this-before-submitting" class="level3">
-<h3 class="anchored" data-anchor-id="please-read-this-before-submitting">⚠️ Please read this before submitting</h3>
-<p>We want to be able to understand and run your code. This will help us to give you a fair grade. Therefore we ask that - before you submit your code - you:</p>
-<ul>
-<li>Run the Code Style check (i.e.&nbsp;the lintr) with the following code &amp; resolve any issues. If you don’t know what an error means, internet is your best friend! Also, study the lecture slides of the code styling session. Remember that you can win a full point by making sure your code styling is correct.</li>
-</ul>
+<p>In this tutorial, we will learn how to work on the Oefenweb server. The server contains real data from Prowise Learn, which you can use to create visualizations. You will need to connect properly to the server in order to access the data and complete the assignments in the Data Visualization modules.</p>
+<section id="step-1-connect-to-the-server" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-connect-to-the-server">Step 1: Connect to the server</h3>
+<p>You will have signed the GDPR form, and received log-in credentials for the server in an earlier module of this course. Use the same credentials to log in to the data visualization server: <a href="https://data-visualization.oefenweb.nl/rstudio/auth-sign-in">https://data-visualization.oefenweb.nl/rstudio/auth-sign-in</a>.</p>
+<section id="setup-your-environment" class="level4">
+<h4 class="anchored" data-anchor-id="setup-your-environment">Setup your environment</h4>
+<p>When working with RMarkdown, start with a setup chunk. This allows you to change settings for all code chunks in your document. Any chunk settings you set here can be overridden in individual chunks later on. It is also good practice to clear your environment at the start of your script, to avoid any conflicts with existing objects in memory.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>oefenwebTools<span class="sc">::</span><span class="fu">lintrProfile</span>(rstudioapi<span class="sc">::</span><span class="fu">getSourceEditorContext</span>()<span class="sc">$</span>path)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">TRUE</span>) <span class="co"># set default echo = TRUE for all code blocks</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>()) <span class="co"># Remove any existing objects in memory</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<ul>
-<li><p>Clear your environment (<code>rm(list = ls())</code>) and re-run your code. We won’t have anything stored in memory that is not created/retrieved in the script, therefore clearing your environment is a great way to detect any bugs that might accidentally be present.</p></li>
-<li><p>Don’t install packages in your code. If we need to install a package that you used, state which packages need to be installed at the beginning of your code.</p></li>
-</ul>
 </section>
-</section>
-<section id="working-with-the-oefenweb-server" class="level2">
-<h2 class="anchored" data-anchor-id="working-with-the-oefenweb-server">Working with the Oefenweb Server</h2>
-<p>Before starting the assignment, please look at the handout on <a href="../assignments/working-on-the-server.html">How to connect to the Oefenweb Server</a>. This will help you to get started with retrieving data from the server. It also contains a useful tutorial on how to use SQL to retrieve data. Go through this code and make sure you understand it, as you will need it for this assignment.</p>
-</section>
-<section id="part-1-oefenweb-data-basic-ggplot" class="level2">
-<h2 class="anchored" data-anchor-id="part-1-oefenweb-data-basic-ggplot">Part 1: Oefenweb Data &amp; Basic ggplot</h2>
-<p>We are now going to work with real life Oefenweb data to recreate a plot. We’ll first talk you through how to get the necessary data, and then it is up to you to work some ggplot magic!</p>
-<p>Let’s get started by ensuring that you have all the packages installed that you will need later on.</p>
+<section id="install-necessary-packages" class="level4">
+<h4 class="anchored" data-anchor-id="install-necessary-packages">Install necessary packages</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### SET_UP ####</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">TRUE</span>) <span class="co"># set default echo = TRUE for all code blocks</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>()) <span class="co"># Remove any existing objects in memory</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install Packages</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Find everything that the user currently has installed</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>all_installed_packages <span class="ot">&lt;-</span> <span class="fu">installed.packages</span>()[, <span class="st">"Package"</span>]</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Install any missing, but required packages</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># nolint start -- trick to omit some lines from the lintr checker, only if you have a good reason!</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="st">"tidyverse"</span> <span class="sc">%in%</span> all_installed_packages) {<span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)}</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="st">"devtools"</span> <span class="sc">%in%</span> all_installed_packages) {<span class="fu">install.packages</span>(<span class="st">"devtools"</span>)}</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="st">"oefenwebDatabase"</span> <span class="sc">%in%</span> all_installed_packages) {devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="at">repo =</span> <span class="st">"Oefenweb/r-database"</span>)}</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="st">"oefenwebTools"</span> <span class="sc">%in%</span> all_installed_packages) {devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="at">repo =</span> <span class="st">"Oefenweb/r-tools"</span>)}</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="st">"jsonlite"</span> <span class="sc">%in%</span> all_installed_packages) {<span class="fu">install.packages</span>(<span class="st">"jsonlite"</span>)}</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># nolint end</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Load Required Packages</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(oefenwebDatabase)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(oefenwebTools)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### REQUIREMENTS ####</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Install Packages</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Find everything that the user currently has installed</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>all_installed_packages <span class="ot">&lt;-</span> <span class="fu">installed.packages</span>()[, <span class="st">"Package"</span>]</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Install any missing, but required packages</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># nolint start -- trick to omit some lines from the lintr checker, only if you have a good reason!</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="st">"tidyverse"</span> <span class="sc">%in%</span> all_installed_packages) {<span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)}</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="st">"devtools"</span> <span class="sc">%in%</span> all_installed_packages) {<span class="fu">install.packages</span>(<span class="st">"devtools"</span>)}</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="st">"oefenwebDatabase"</span> <span class="sc">%in%</span> all_installed_packages) {devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="at">repo =</span> <span class="st">"Oefenweb/r-database"</span>)}</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="st">"oefenwebTools"</span> <span class="sc">%in%</span> all_installed_packages) {devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="at">repo =</span> <span class="st">"Oefenweb/r-tools"</span>)}</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="st">"jsonlite"</span> <span class="sc">%in%</span> all_installed_packages) {<span class="fu">install.packages</span>(<span class="st">"jsonlite"</span>)}</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># nolint end</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Load Required Packages</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(oefenwebDatabase)</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(oefenwebTools)</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+</section>
+<section id="make-a-connection-to-the-server" class="level4">
+<h4 class="anchored" data-anchor-id="make-a-connection-to-the-server">Make a connection to the server</h4>
 <p>We now have everything we need to let our online R Studio environment know how to “communicate” with our Data Server. We can connect with the database by using the following code. This creates a connection to the database that is stored in the variable <code>con</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> oefenwebDatabase<span class="sc">::</span><span class="fu">connect</span>()</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> DBI<span class="sc">::</span><span class="fu">dbGetQuery</span>(con,</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"SELECT id, login_count, new_school_id, grade</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="st">                         FROM users</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="st">                         WHERE id IN</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="st">                            (SELECT new_user_id </span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="st">                             FROM school_classes_users </span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="st">                             WHERE new_school_class_id = 3)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> oefenwebDatabase<span class="sc">::</span><span class="fu">connect</span>()</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Always run this code in the console; do not leave this line in your script!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="step-2-retrieve-data-from-the-server" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-retrieve-data-from-the-server">Step 2: Retrieve data from the server</h3>
+<section id="retrieve-data-with-an-sql-query" class="level4">
+<h4 class="anchored" data-anchor-id="retrieve-data-with-an-sql-query">Retrieve data with an SQL query</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> DBI<span class="sc">::</span><span class="fu">dbGetQuery</span>(con,</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                        <span class="st">"SELECT id, login_count, new_school_id, grade</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="st">                         FROM users</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="st">                         WHERE id IN</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="st">                            (SELECT new_user_id </span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="st">                             FROM school_classes_users </span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="st">                             WHERE new_school_class_id = 3)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>From this point on, you can use the database connection to retrieve data from the server. What the data actually looks like, and which tables/columns are available can be viewed on the <a href="https://data-visualization.oefenweb.nl/adminer.php?server=127.0.2.1">Adminer</a>. Log in with the your Oefenweb <code>username</code> and <code>password</code>, and select <code>oefenweb_nl_app</code> from the databases.</p>
 <p>We can, for example, use the following SQL statement to retrieve the <code>domains</code> table:</p>
@@ -299,8 +267,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">suppressWarnings</span>(DBI<span class="sc">::</span><span class="fu">dbGetQuery</span>(con,</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                                   <span class="st">"SELECT * FROM `domains`"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="a.-replicate-this-plot" class="level3">
-<h3 class="anchored" data-anchor-id="a.-replicate-this-plot">A. Replicate this plot</h3>
 <p>Now lets get some item data. In the <code>items</code> table we can find data that contains item information as for example the item question or answer options. We will choose the domain <code>tafels</code> (Multiplication Tables). In the <code>items</code> table we can see that there is no mention of “tafels” anywhere, however, each item does have a <code>domain_id</code> listed. If we look in the <code>domains</code> table we just retrieved, we see that <code>tafels</code> has the <code>id</code> ‘59’. We can use this information to retrieve only the items from the <code>tafels</code> game:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>items <span class="ot">&lt;-</span></span>
@@ -309,6 +275,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="st">                                    FROM `items`</span></span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="st">                                    WHERE `domain_id` = '59'"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p><strong>For a review of SQL queries, see the <a href="https://surfdrive.surf.nl/files/index.php/s/S9q2WQ5aY4d1UVP">SQL Handout</a> from the previous module.</strong></p>
+</section>
+</section>
+<section id="step-3-manipulate-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-manipulate-the-data">Step 3: Manipulate the data</h3>
 <p>Now we manipulate the data and create some new variables that we will need later on. First we convert the continuous variable <code>maximum_response_in_seconds</code> (the total amount of time allowed per item) and turn it into a categorical factor:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>items<span class="sc">$</span>maximum_response_in_seconds <span class="ot">&lt;-</span> <span class="fu">factor</span>(items<span class="sc">$</span>maximum_response_in_seconds,</span>
@@ -338,38 +309,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>items<span class="sc">$</span>answer_result <span class="ot">&lt;-</span> <span class="fu">factor</span>(items<span class="sc">$</span>answer_result, <span class="at">levels =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>),</span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>                              <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"equal to or below 50"</span>, <span class="st">"above 50"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="step-4-make-a-visualization" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-make-a-visualization">Step 4: Make a visualization</h3>
 <p>Ok, now we are ready to make a plot. We will plot the item deadline (maximum_response_time_in_seconds) on the x-axis and the item difficulty (rating) on the y-axis. We group the items into a group with answer equal to or below 50 and above 50.</p>
-<p>The assignment is for you to reproduce the following visualization (or make it even better):</p>
-<!-- * 3pts for correct reproduction  -->
-<!-- * 1pt [bonus] for further improvements -->
-<p>Grading:</p>
-<ul>
-<li>Does the data show the same pattern? [1.5 pt]</li>
-<li>Is the styling the same? [1.5 pt]</li>
-<li>BONUS: Where there extra features added? [0.5 pt]</li>
-<li>Did the code run? [0.5 pt]</li>
-<li>Were styling issues resolved? (lintr) [0.5 pt]</li>
-</ul>
-<p>Please note that you will only receive bonus points if your extra features are meaningful and improve the visualization. Simply changing colors or themes will not be rewarded, unless you can motivate why your changes are an improvement.</p>
-<p>When you are done, please close the connection to the database:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>oefenwebDatabase<span class="sc">::</span><span class="fu">close_connections</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> items,</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> maximum_response_in_seconds,</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">y =</span> rating,</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> answer_result)) <span class="sc">+</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Available Response Time"</span>,</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Item Rating/Difficulty"</span>,</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">"Item Answer"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="b.-interactive-visualizations-with-plotly" class="level3">
-<h3 class="anchored" data-anchor-id="b.-interactive-visualizations-with-plotly">B. Interactive visualizations with Plotly</h3>
-</section>
-</section>
-<section id="part-2-group" class="level2">
-<h2 class="anchored" data-anchor-id="part-2-group">Part 2: Group</h2>
-<section id="a.-choose-a-research-question" class="level3">
-<h3 class="anchored" data-anchor-id="a.-choose-a-research-question">A. Choose a research question</h3>
-</section>
-<section id="b." class="level3">
-<h3 class="anchored" data-anchor-id="b.">B.</h3>
+<section id="step-5-disconnect-from-the-server" class="level3">
+<h3 class="anchored" data-anchor-id="step-5-disconnect-from-the-server">Step 5: Disconnect from the server</h3>
+<p>When you are done working on the server, you need to disconnect from the database. You do this with the following code:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>oefenwebDatabase<span class="sc">::</span><span class="fu">close_connections</span>()</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Always run this code in the console; do not leave this line in your script!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
