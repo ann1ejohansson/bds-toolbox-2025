@@ -8,7 +8,7 @@ website:
   site-url: https://ann1ejohansson.github.io/bds-toolbox-2025/
 
   navbar:
-    background: dark  # Optional color
+    background: dark
     left:
       - href: index.qmd
         text: Home
@@ -22,6 +22,10 @@ website:
         text: Assignment 2
       - text: Resources
         menu:
+          - href: assignments/working-on-the-server.qmd
+            text: "Working on the server"
+          - href: assignments/how-do-we-grade.qmd
+            text: "How do we grade your visualizations?"
           - href: https://socviz.co/
             text: "Data Visualization: A Practical Introduction (Healy)"
           - href: https://r4ds.hadley.nz/data-visualize.html
