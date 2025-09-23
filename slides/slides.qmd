@@ -237,6 +237,25 @@ More resources: [clauswilke.com](https://clauswilke.com/dataviz/telling-a-story.
 
 What are the consequences of overrelying on statistical techniques? <br>What are the consequences of overrelying on visualizations?
 
+## What makes a bad plot bad?
+
+## 💬 Speed dates
+::::: columns
+::: {.column width="40%"}
+-   What do you think about this plot?
+
+-   What elements can be improved?
+
+-   Are there still good things with the plot?
+:::
+
+::: {.column width="60%"}
+![Karl Broman](images/broman_worst_graph.jpg)
+:::
+:::::
+
+
+
 # Data Visualization Project 📊 {background-color="#8000FF"}
 
 ## Aims
@@ -259,7 +278,7 @@ Your goal is to go from exploring the Prowise data to telling a story with it.
 ## Workflow
 
 -  Comment your code clearly. We want to understand your thought process. 
--  Work in the Data Visualization Server, and compile the html document there.
+-  Work in the Data Visualization Server, and compile the html document there.  
 -  ️⚠ Only upload the html document to GitHub, not the R scripts and **especially not any data.** 
 
 

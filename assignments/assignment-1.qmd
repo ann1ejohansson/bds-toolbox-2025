@@ -1,26 +1,206 @@
 ---
-title: "assignment-1"
-format: html
+title: "Data Visualization Assignment 1"
+format: 
+  html:
+    code-copy: true
 editor: visual
 ---
 
-## Quarto
-
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
-
-## Running Code
-
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
-
-```{r}
-1 + 1
+```{r actual-setup, include = FALSE}
+knitr::opts_chunk$set(eval = FALSE) 
+rm(list = ls()) 
 ```
 
-You can add options to executable code like this
+## Instructions
 
-```{r}
-#| echo: false
-2 * 2
+This is the first assignment for the Data Visualization module. The aim here is to get acquainted with the Prowise Learn data, practice with some ggplot basics, and to get you started with working with your visualizations for the final assignment.
+
+With this assignment, you can gain X points, plus X bonus points. Please [refer here](how-do-we-grade.qmd) for an overview of how we grade your data visualizations. Part A is completed, and thus also graded, individually. Part B should be completed with your assigned group. Please make sure to clearly indicate your group number and names of all group members in your submission. One person should submit the assignment on behalf of the group. If more than one person submits the group assignment, we will only look at one of them.
+
+The assignment is due on **Sunday October 5th, 2025 at 23:59**. Submit your assignment to Canvas, under "DV Assignment 1".
+
+Your submission for Part 1 should contain the following files:
+
+-   R code (style checked & working) in a .Rmd or .R file.\
+-   Your (improved) version of the plot, compiled to .html or .pdf.\
+-   Your interactive plot, compiled to .html or .pdf.
+
+with file names in the following structure: `DV-Assignment1-Firstname-Lastname-PartA.Rmd` (or `.R`), `DV-Assignment1-Firstname-Lastname-PartA.pdf` (or `.html`).
+
+Your group submission (Part 2) should contain the following files:
+
+-   R code (style checked & working) in a .Rmd or .R file.
+-   Your plot and short description, compiled to .html or .pdf.
+
+with file names in the following structure: `DV-Assignment1-GroupX-PartB.Rmd` (or `.R`), `DV-Assignment1-GroupX-PartB.pdf` (or `.html`).
+
+### ⚠️ Please read this before submitting
+
+We want to be able to understand and run your code. This will help us to give you a fair grade. Therefore we ask that - before you submit your code - you:
+
+-   Run the Code Style check (i.e. the lintr) with the following code & resolve any issues. If you don't know what an error means, internet is your best friend! Also, study the lecture slides of the code styling session. Remember that you can win a full point by making sure your code styling is correct.
+
+```{r eval=FALSE}
+oefenwebTools::lintrProfile(rstudioapi::getSourceEditorContext()$path)  
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
+-   Clear your memory (`rm(list = ls())`) and re-run your code. We won't have anything stored in memory that is not created/retrieved in the script, therefore clearing your memory is a great way to detect any bugs that might accidentally be present.
+
+-   Don't install packages in your code. If we need to install a package that you used, state which packages need to be installed at the beginning of your code.
+
+
+## Part 1: Oefenweb Data & Basic ggplot
+
+We are now going to work with real life Oefenweb data to recreate a plot. We'll first talk you through how to get the necessary data, and then it is up to you to work some ggplot magic!
+
+Let's get started by ensuring that you have all the packages installed that you will need later on.
+
+```{r setup, include = TRUE, eval=FALSE}
+#### SET_UP ####
+knitr::opts_chunk$set(echo = TRUE) # set default echo = TRUE for all code blocks
+
+rm(list = ls()) # Remove any existing objects in memory
+```
+
+```{r setup-1, include = TRUE, eval=FALSE}
+#### REQUIREMENTS ####
+# Install Packages
+# Find everything that the user currently has installed
+all_installed_packages <- installed.packages()[, "Package"]
+# Install any missing, but required packages
+# nolint start -- trick to omit some lines from the lintr checker, only if you have a good reason!
+if (!"tidyverse" %in% all_installed_packages) {install.packages("tidyverse")}
+if (!"devtools" %in% all_installed_packages) {install.packages("devtools")}
+if (!"oefenwebDatabase" %in% all_installed_packages) {devtools::install_github(repo = "Oefenweb/r-database")}
+if (!"oefenwebTools" %in% all_installed_packages) {devtools::install_github(repo = "Oefenweb/r-tools")}
+if (!"jsonlite" %in% all_installed_packages) {install.packages("jsonlite")}
+# nolint end
+
+# Load Required Packages
+library(tidyverse)
+library(oefenwebDatabase)
+library(oefenwebTools)
+library(jsonlite)
+```
+
+We now have everything we need to let our online R Studio environment know how to "communicate" with our Data Server. We can connect with the database by using the following code. This creates a connection to the database that is stored in the variable `con`.
+
+```{r eval=FALSE}
+con <- oefenwebDatabase::connect()
+data <- DBI::dbGetQuery(con,
+                        "SELECT id, login_count, new_school_id, grade
+                         FROM users
+                         WHERE id IN
+                            (SELECT new_user_id 
+                             FROM school_classes_users 
+                             WHERE new_school_class_id = 3)")
+```
+
+From this point on, you can use the database connection to retrieve data from the server. What the data actually looks like, and which tables/columns are available can be viewed on the [Adminer](https://data-visualization.oefenweb.nl/adminer.php?server=127.0.2.1). Log in with the your Oefenweb `username` and `password`, and select `oefenweb_nl_app` from the databases.
+
+We can, for example, use the following SQL statement to retrieve the `domains` table:
+
+```{r, eval=FALSE}
+# select all columns (*) from the domains table.
+my_data_domains <-
+  DBI::dbGetQuery(con, # the connection element to our database
+                  "SELECT * FROM `domains`")
+```
+
+You will receive warnings that let you know how data has been parsed. You can ignore these, or even better suppress them ;)
+
+```{r}
+my_data_domains <-
+  suppressWarnings(DBI::dbGetQuery(con,
+                                   "SELECT * FROM `domains`"))
+```
+
+### A. Replicate this plot
+
+Now lets get some item data. In the `items` table we can find data that contains item information as for example the item question or answer options. We will choose the domain `tafels` (Multiplication Tables). In the `items` table we can see that there is no mention of "tafels" anywhere, however, each item does have a `domain_id` listed. If we look in the `domains` table we just retrieved, we see that `tafels` has the `id` '59'. We can use this information to retrieve only the items from the `tafels` game:
+
+```{r}
+items <-
+  suppressWarnings(DBI::dbGetQuery(con,
+                                   "SELECT *
+                                    FROM `items`
+                                    WHERE `domain_id` = '59'"))
+```
+
+Now we manipulate the data and create some new variables that we will need later on. First we convert the continuous variable `maximum_response_in_seconds` (the total amount of time allowed per item) and turn it into a categorical factor:
+
+```{r}
+items$maximum_response_in_seconds <- factor(items$maximum_response_in_seconds,
+                                            levels = c(5, 10, 15, 20),
+                                            labels = c("5 seconds",
+                                                       "10 seconds",
+                                                       "15 seconds",
+                                                       "20 seconds"))
+```
+
+Then, we want to know what the actual answer was to a question. Unfortunately, we store `question` and `answer`/`answer_options` data in the format of a JSON string. We thus need to clean the JSON before we can retrieve the answers:
+
+```{r}
+# Create a new variable where we will store the result
+items$answer <- numeric(nrow(items))
+
+# Loop over each row to clean the content (you could also use an apply function)
+for (i in seq_len(nrow(items))) {
+  items$answer[i] <-
+    as.numeric(jsonlite::fromJSON(items$answer_options[i])$answerOptions)
+}
+```
+
+We now have a column `answer` that has the cleaned, numeric, outcome for each question/item. We can use this to create another categorical variable:
+
+```{r}
+# Now we determine whether the answer is below or above 50
+items$answer_result <- items$answer <= 50
+
+# Finally we make answer_result also a categorical factor variable
+items$answer_result <- factor(items$answer_result, levels = c(TRUE, FALSE),
+                              labels = c("equal to or below 50", "above 50"))
+```
+
+Ok, now we are ready to make a plot. We will plot the item deadline (maximum_response_time_in_seconds) on the x-axis and the item difficulty (rating) on the y-axis. We group the items into a group with answer equal to or below 50 and above 50.
+
+The assignment is for you to reproduce the following visualization (or make it even better):
+
+```{r, echo=FALSE}
+ggplot(data = items,
+       aes(x = maximum_response_in_seconds,
+           y = rating,
+           fill = answer_result)) +
+  geom_boxplot() +
+  labs(x = "Available Response Time",
+       y = "Item Rating/Difficulty",
+       fill = "Item Answer")
+```
+
+<!-- * 3pts for correct reproduction  -->
+
+<!-- * 1pt [bonus] for further improvements -->
+
+Grading:
+
+-   Does the data show the same pattern? \[1.5 pt\]
+-   Is the styling the same? \[1.5 pt\]
+-   BONUS: Where there extra features added? \[0.5 pt\]
+-   Did the code run? \[0.5 pt\]
+-   Were styling issues resolved? (lintr) \[0.5 pt\]
+
+Please note that you will only receive bonus points if your extra features are meaningful and improve the visualization. Simply changing colors or themes will not be rewarded, unless you can motivate why your changes are an improvement.
+
+When you are done, please close the connection to the database:
+
+```{r}
+oefenwebDatabase::close_connections()
+```
+
+### B. Interactive visualizations with Plotly
+
+## Part 2: Group
+
+### A. Choose a research question
+
+### B.
