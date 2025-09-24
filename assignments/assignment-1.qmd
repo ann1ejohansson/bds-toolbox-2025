@@ -13,7 +13,7 @@ rm(list = ls())
 
 ## Instructions
 
-Download the template for this assignment in the [Github Repository](https://github.com/ann1ejohansson/data-visualization-2025) (templates \> assignment-1).
+Download the templates for this assignment in the [Github Repository](https://github.com/ann1ejohansson/data-visualization-2025) (templates \> assignment-1).
 
 This is the first assignment for the Data Visualization module. The aim here is to get acquainted with the Prowise Learn data, practice with some ggplot basics, and to get you started with working with your visualizations for the final assignment.
 
@@ -180,15 +180,15 @@ itemsLogs$grade <- factor(itemsLogs$grade, levels = c(3:8), labels = paste0("Gra
 
 Now we can make the first plot. This plot shows us the relation which users (in terms of grade) practice these items. Note that for this plot we don't use the `geom_histogram` function. In this case we first calculate the relative frequencies of the number of responses per grade, for each question. We store this information in a data.frame that we than use for plotting. So first make this data.frame! With `geom_col()` we than plot the bars.
 
-Look at this nice trick to add the %-symbol to the labels: `scale_y_continuous(labels = function(x) paste0(x, "%"))`
+Look at this nice trick to add the %-symbol to the labels: `scale_y_continuous(labels = function(x) paste0(x, "%"))`. I used these settings in my rMarkdown code chunk: `fig.height = 4, fig.width = 6, fig.align = "center"`
 
-![](images/replicate-this-plot-1a.png)
+![](images/replicate-this-plot-1a.png)  
 
-For the second plot we look into response times and given answer (correct, incorrect or questionmark). Note that you first have to make a variable with these answers (correct, incorrect, question-mark).
+For the second plot we look into response times and given answer (correct, incorrect or questionmark). Note that you first have to make a variable with these answers (correct, incorrect, question-mark). I used these settings in my rMarkdown code chunk: `fig.height = 4, fig.width = 6, fig.align = "center"`
 
 ![](images/replicate-this-plot-1b.png)
 
-Finally we make a plot with text to have some more information in our visualization:
+Finally we make a plot with text to have some more information in our visualization. I used these settings in my rMarkdown code chunk: `fig.height = 2, fig.width = 10, fig.align = "center"`
 
 ![](images/replicate-this-plot-1c.png)
 Finally we combine the three plots (one text plot and two figure plots) into one plot by means of the plot_grid function of the `cowplot` package. **This is the visualization that you should replicate in this assignment Part II**.
