@@ -1,25 +1,143 @@
 ---
-title: "assignment-2"
+title: "DV Assignment 2 (Final Project)"
 format: html
 ---
 
-## Quarto
+For the final assignment, you will be making a data visualization which aims to answer your chosen research question.
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+**research questions:**
 
-## Running Code
+general points:
 
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+-   adding interactivity?
+-   consider whether to plot one or a couple students, or plot general effects.
+-   add general instructions for analytics / inference / prediction
+-   in your plot, highlight your main conclusion (and if necessary - substantiate with a model)
+-   make sure plot is explanatory
 
-```{r}
-1 + 1
+## Research Questions
+
+### RQ1. Which students are on track and which are not?
+<details> 
+<summary><strong>Expand Instructions</strong></summary>
+
+**Level**: Analytics\
+
+**Instruction:** Visualize the progress of the class within the four basic operation games: addition, subtraction, multiplication, division. It should be useful for the teacher; they should be able to efficiently derive which students are on track in each game and which are not. You can choose one of two ways to define progress in this context:
+
+1.  *Population-based approach:* In the dataset, there is a variable called `q_score`. This is a metric which indicates how the student is performing, relative to the average performance within the same age group. For example, a q-score of 400 indicates that a child is performing equal to an average student in grade 4.
+
+2.  *Within-class approach:* In the dataset, there is a variable called `new_user_domain_rating`. This is the raw ability score of the user within the respective game. Normalize this variable for the class within each game to visualize students’ performance relative to the class average.
+
+```{r q-1-data}
+#| code-fold: true
+#| code-summary: "Data:"
+
+# SQL query here
 ```
 
-You can add options to executable code like this 
+::: {.callout-tip collapse="false"}
+-   Think about how you will deal with children who have no or little data within a specifc domain. (How) will you visualize it? Is it reliable?
 
-```{r}
-#| echo: false
-2 * 2
+-   You do not need to worry about generalizibility to other classes. It should be relevant for the teacher to say something about their students' progress within the current class.
+:::
+
+
+### RQ2. What are the differences in playing behaviors between students that switch games a lot within a given session, compared to students who don't? 
+<details> 
+<summary><strong>Expand Instructions</strong></summary>
+
+**Level:** Inference.  
+
+**Instruction:** Define a high vs. low switcher by looking at the variables `n_different_games` and `duration`. Now, choose one or more of the following variables to relate to switching behavior:
+
+1.  `mean_correct` \
+2.  `n_skip` \
+3.  `n_soft_quits` \
+4.  `difficulty` (or `easy_ratio` / `medium_ratio` / `hard_ratio`) \
+5.  `mean_rt` 
+
+```{r q-2-data}
+#| code-fold: true
+#| code-summary: "Data:"
+
+# SQL query here
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
+::: {.callout-tip collapse="false"}
+-   After defining high/low switchers, it may be useful to look at individual users to get an idea of their playing patterns, before aggregating the data further.  
+
+-   How will you filter the data to get reliable estimates of switching tendencies? 
+
+-   Taking the perspective of the child playing the game, what could be an advantage of switching games often? What could be a disadvantage? Considering this perspective could help formulate your narrative. 
+:::
+
+### RQ3. How does post-error quitting differ between in-school and out-of-school practice? What might moderate these differences?
+<details> 
+<summary><strong>Expand Instructions</strong></summary>
+
+**Level:** Inference
+
+**Instruction:** It is possible that students' motivation differs depending on whether they play in a classroom setting or at home -- a question which we would like you to explore in the data. One way to operationalize motivation in Prowise Learn is post-error quitting. Post-error quitting refers to whether the game was ended prematurely after an error (`post_error_quit`). First, define a variable which indicates whether a student is playing in or out of school:
+
+-  School times are between 8:30 and 15.00 on weekdays. Be aware of [school holidays](https://www.rijksoverheid.nl/onderwerpen/schoolvakanties/overzicht-schoolvakanties-per-schooljaar/overzicht-schoolvakanties-2025-2026)! These should be defined as out-of-school. 
+
+Choose one or more of the following moderators for your final visualization: 
+
+1.  `grade`
+2.  Average `new_user_domain_q_score`  
+3.  Average `quit` (this would define whether a student *generally* quits a lot, regardless of errors).  
+
+```{r q-3-data}
+#| code-fold: true
+#| code-summary: "Data:"
+
+# SQL query here
+# delete LG sessions
+```
+
+::: {.callout-tip collapse="false"}
+-   We have two papers dealing with post-error quitting (although not specifically dealing with this question), read them here and here for inspiration! 
+
+-   You can define errors as binary (error or correct) or sequential (n errors made in a row). 
+:::
+
+
+### RQ4. Can we predict how long a student will look at feedback from different student characteristics and/or play behavior?
+<details> 
+<summary><strong>Expand Instructions</strong></summary>
+
+**Level:** Prediction
+
+**Instruction:** Feedback looking time indicates the time that the feedback was displayed on the screen after a student encountered an error, skipped a response, or had a time-out. Whether or not students engage with the feedback they recieve can serve as important information, both for the developers at Prowise Learn (how do users engage with application features?), and for teachers (how do students engage in their learning process?). Here, you can choose between a number of different variables to add to a regression model:
+
+1.  type of error (incorrect response, skipped response, time-out response). Factor this variable yourself. 
+2.  `grade`
+3.  `gender`
+4.  `q_score`
+5.  `difficulty`
+6.  `show_coins`
+7.  `response_time_in_milliseconds`
+8.  application (language vs. math)
+
+You can be selective or choose all variables. If you choose to omit certain variables, please explain why. If you differentiate between covariates and predictors, please argue your reasoning. 
+
+
+```{r q-4-data}
+#| code-fold: true
+#| code-summary: "Data:"
+
+# SQL query here
+# Delete LG sessions
+# Delete correct responses 
+# "Because the system automatically moves on to the next item after a correct response, we remove these responses."
+```
+
+::: {.callout-tip collapse="false"}
+-   Some games have explicit feedback (feedback which gives more information than right or wrong) -- check this in the variable `informative_feedback`. Make sure you account for this somehow.  
+
+-   It will be useful to start with an exploration about how children look at feedback. How is this variable distributed? Also examine it across games. 
+
+-   Feedback looking time can be defined in a continuous manner (predicting the time looked at feedback), or categorical (can we differentiate different types of 'feedback lookers')? Use the results from your exploration to decide which way is most suitable to define feedback looking. 
+:::
+

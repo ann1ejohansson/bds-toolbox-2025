@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Group X; Names:">
+<meta name="dcterms.date" content="2025-09-25">
 
-<title>DV Assignment 2 (Final Project) – Data Visualization 2025</title>
+<title>BDS Toolbox: DV Assignmnet 1 Part 2 – Data Visualization 2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -57,22 +59,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -111,7 +113,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Data Visualization 2025</span>
     </a>
   </div>
@@ -122,7 +124,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
@@ -130,15 +132,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">GitHub Repository</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../slides/slides.html"> 
+    <a class="nav-link" href="../../slides/slides.html"> 
 <span class="menu-text">Slides</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../assignments/assignment-1.html"> 
+    <a class="nav-link" href="../../assignments/assignment-1.html"> 
 <span class="menu-text">Assignment 1</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../assignments/assignment-2.html" aria-current="page"> 
+    <a class="nav-link" href="../../assignments/assignment-2.html"> 
 <span class="menu-text">Assignment 2</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -147,11 +149,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-resources">    
         <li>
-    <a class="dropdown-item" href="../assignments/working-on-the-server.html">
+    <a class="dropdown-item" href="../../assignments/working-on-the-server.html">
  <span class="dropdown-text">Working on the server</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../assignments/how-do-we-grade.qmd">
+    <a class="dropdown-item" href="../../assignments/how-do-we-grade.qmd">
  <span class="dropdown-text">How do we grade your visualizations?</span></a>
   </li>  
         <li>
@@ -184,7 +186,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#research-questions" id="toc-research-questions" class="nav-link active" data-scroll-target="#research-questions">Research Questions</a></li>
+  <li><a href="#setup-environment" id="toc-setup-environment" class="nav-link active" data-scroll-target="#setup-environment">Setup environment</a></li>
+  <li><a href="#a.-research-question" id="toc-a.-research-question" class="nav-link" data-scroll-target="#a.-research-question">A. Research question</a></li>
+  <li><a href="#b.-connect-to-git-and-load-data" id="toc-b.-connect-to-git-and-load-data" class="nav-link" data-scroll-target="#b.-connect-to-git-and-load-data">B. Connect to Git and load data</a></li>
+  <li><a href="#c.-first-visualization" id="toc-c.-first-visualization" class="nav-link" data-scroll-target="#c.-first-visualization">C. First visualization</a></li>
   </ul>
 </nav>
     </div>
@@ -193,14 +198,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">DV Assignment 2 (Final Project)</h1>
+<h1 class="title">BDS Toolbox: DV Assignmnet 1 Part 2</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Group X; Names: </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 25, 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -210,199 +227,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>For the final assignment, you will be making a data visualization which aims to answer your chosen research question.</p>
-<p><strong>research questions:</strong></p>
-<p>general points:</p>
-<ul>
-<li>adding interactivity?</li>
-<li>consider whether to plot one or a couple students, or plot general effects.</li>
-<li>add general instructions for analytics / inference / prediction</li>
-<li>in your plot, highlight your main conclusion (and if necessary - substantiate with a model)</li>
-<li>make sure plot is explanatory</li>
-</ul>
-<section id="research-questions" class="level2">
-<h2 class="anchored" data-anchor-id="research-questions">Research Questions</h2>
-<section id="rq1.-which-students-are-on-track-and-which-are-not" class="level3">
-<h3 class="anchored" data-anchor-id="rq1.-which-students-are-on-track-and-which-are-not">RQ1. Which students are on track and which are not?</h3>
-<details>
-<summary>
-<strong>Expand Instructions</strong>
-</summary>
-<p><strong>Level</strong>: Analytics<br>
-</p>
-<p><strong>Instruction:</strong> Visualize the progress of the class within the four basic operation games: addition, subtraction, multiplication, division. It should be useful for the teacher; they should be able to efficiently derive which students are on track in each game and which are not. You can choose one of two ways to define progress in this context:</p>
-<ol type="1">
-<li><p><em>Population-based approach:</em> In the dataset, there is a variable called <code>q_score</code>. This is a metric which indicates how the student is performing, relative to the average performance within the same age group. For example, a q-score of 400 indicates that a child is performing equal to an average student in grade 4.</p></li>
-<li><p><em>Within-class approach:</em> In the dataset, there is a variable called <code>new_user_domain_rating</code>. This is the raw ability score of the user within the respective game. Normalize this variable for the class within each game to visualize students’ performance relative to the class average.</p></li>
-</ol>
+<section id="setup-environment" class="level2">
+<h2 class="anchored" data-anchor-id="setup-environment">Setup environment</h2>
 <div class="cell">
-<details class="code-fold">
-<summary>Data:</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SQL query here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">TRUE</span>) <span class="co"># set default echo = TRUE for all code blocks</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>()) <span class="co"># Remove any existing objects in memory</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
-<div class="callout-body-container callout-body">
-<ul>
-<li><p>Think about how you will deal with children who have no or little data within a specifc domain. (How) will you visualize it? Is it reliable?</p></li>
-<li><p>You do not need to worry about generalizibility to other classes. It should be relevant for the teacher to say something about their students’ progress within the current class.</p></li>
-</ul>
-</div>
-</div>
-</div>
-</details></section>
-<section id="rq2.-what-are-the-differences-in-playing-behaviors-between-students-that-switch-games-a-lot-within-a-given-session-compared-to-students-who-dont" class="level3">
-<h3 class="anchored" data-anchor-id="rq2.-what-are-the-differences-in-playing-behaviors-between-students-that-switch-games-a-lot-within-a-given-session-compared-to-students-who-dont">RQ2. What are the differences in playing behaviors between students that switch games a lot within a given session, compared to students who don’t?</h3>
-<details>
-<summary>
-<strong>Expand Instructions</strong>
-</summary>
-<p><strong>Level:</strong> Inference.</p>
-<p><strong>Instruction:</strong> Define a high vs.&nbsp;low switcher by looking at the variables <code>n_different_games</code> and <code>duration</code>. Now, choose one or more of the following variables to relate to switching behavior:</p>
-<ol type="1">
-<li><code>mean_correct</code><br>
-</li>
-<li><code>n_skip</code><br>
-</li>
-<li><code>n_soft_quits</code><br>
-</li>
-<li><code>difficulty</code> (or <code>easy_ratio</code> / <code>medium_ratio</code> / <code>hard_ratio</code>)<br>
-</li>
-<li><code>mean_rt</code></li>
-</ol>
+</section>
+<section id="a.-research-question" class="level2">
+<h2 class="anchored" data-anchor-id="a.-research-question">A. Research question</h2>
+<p>Specify your research question here. It is also a good idea to take notes from your discussion of the research question and add those here.</p>
+</section>
+<section id="b.-connect-to-git-and-load-data" class="level2">
+<h2 class="anchored" data-anchor-id="b.-connect-to-git-and-load-data">B. Connect to Git and load data</h2>
+<p>State the name of your github repository here. If you encountered issues when connecting to the server, or cloning the repository, let us know.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Data:</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SQL query here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load packages, set up database connection</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
-<div class="callout-body-container callout-body">
-<ul>
-<li><p>After defining high/low switchers, it may be useful to look at individual users to get an idea of their playing patterns, before aggregating the data further.</p></li>
-<li><p>How will you filter the data to get reliable estimates of switching tendencies?</p></li>
-<li><p>Taking the perspective of the child playing the game, what could be an advantage of switching games often? What could be a disadvantage? Considering this perspective could help formulate your narrative.</p></li>
-</ul>
-</div>
-</div>
-</div>
-</details></section>
-<section id="rq3.-how-does-post-error-quitting-differ-between-in-school-and-out-of-school-practice-what-might-moderate-these-differences" class="level3">
-<h3 class="anchored" data-anchor-id="rq3.-how-does-post-error-quitting-differ-between-in-school-and-out-of-school-practice-what-might-moderate-these-differences">RQ3. How does post-error quitting differ between in-school and out-of-school practice? What might moderate these differences?</h3>
-<details>
-<summary>
-<strong>Expand Instructions</strong>
-</summary>
-<p><strong>Level:</strong> Inference</p>
-<p><strong>Instruction:</strong> It is possible that students’ motivation differs depending on whether they play in a classroom setting or at home – a question which we would like you to explore in the data. One way to operationalize motivation in Prowise Learn is post-error quitting. Post-error quitting refers to whether the game was ended prematurely after an error (<code>post_error_quit</code>). First, define a variable which indicates whether a student is playing in or out of school:</p>
-<ul>
-<li>School times are between 8:30 and 15.00 on weekdays. Be aware of <a href="https://www.rijksoverheid.nl/onderwerpen/schoolvakanties/overzicht-schoolvakanties-per-schooljaar/overzicht-schoolvakanties-2025-2026">school holidays</a>! These should be defined as out-of-school.</li>
-</ul>
-<p>Choose one or more of the following moderators for your final visualization:</p>
-<ol type="1">
-<li><code>grade</code></li>
-<li>Average <code>new_user_domain_q_score</code><br>
-</li>
-<li>Average <code>quit</code> (this would define whether a student <em>generally</em> quits a lot, regardless of errors).</li>
-</ol>
 <div class="cell">
-<details class="code-fold">
-<summary>Data:</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SQL query here</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># delete LG sessions</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># code to load data for your final visualization </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
-<div class="callout-body-container callout-body">
-<ul>
-<li><p>We have two papers dealing with post-error quitting (although not specifically dealing with this question), read them here and here for inspiration!</p></li>
-<li><p>You can define errors as binary (error or correct) or sequential (n errors made in a row).</p></li>
-</ul>
-</div>
-</div>
-</div>
-</details></section>
-<section id="rq4.-can-we-predict-how-long-a-student-will-look-at-feedback-from-different-student-characteristics-andor-play-behavior" class="level3">
-<h3 class="anchored" data-anchor-id="rq4.-can-we-predict-how-long-a-student-will-look-at-feedback-from-different-student-characteristics-andor-play-behavior">RQ4. Can we predict how long a student will look at feedback from different student characteristics and/or play behavior?</h3>
-<details>
-<summary>
-<strong>Expand Instructions</strong>
-</summary>
-<p><strong>Level:</strong> Prediction</p>
-<p><strong>Instruction:</strong> Feedback looking time indicates the time that the feedback was displayed on the screen after a student encountered an error, skipped a response, or had a time-out. Whether or not students engage with the feedback they recieve can serve as important information, both for the developers at Prowise Learn (how do users engage with application features?), and for teachers (how do students engage in their learning process?). Here, you can choose between a number of different variables to add to a regression model:</p>
-<ol type="1">
-<li>type of error (incorrect response, skipped response, time-out response). Factor this variable yourself.</li>
-<li><code>grade</code></li>
-<li><code>gender</code></li>
-<li><code>q_score</code></li>
-<li><code>difficulty</code></li>
-<li><code>show_coins</code></li>
-<li><code>response_time_in_milliseconds</code></li>
-<li>application (language vs.&nbsp;math)</li>
-</ol>
-<p>You can be selective or choose all variables. If you choose to omit certain variables, please explain why. If you differentiate between covariates and predictors, please argue your reasoning.</p>
+<p>It is a good idea to take notes from your discussion about the data, and add those here.</p>
 <div class="cell">
-<details class="code-fold">
-<summary>Data:</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SQL query here</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Delete LG sessions</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Delete correct responses </span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># "Because the system automatically moves on to the next item after a correct response, we remove these responses."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># code to clean data for your final visualization </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="true" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+</section>
+<section id="c.-first-visualization" class="level2">
+<h2 class="anchored" data-anchor-id="c.-first-visualization">C. First visualization</h2>
+<p>Include code and a description of your first visualization here. If you have specific things you would like feedback on, you can indicate that here too.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># code to produce your first visualization</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse show">
-<div class="callout-body-container callout-body">
-<ul>
-<li><p>Some games have explicit feedback (feedback which gives more information than right or wrong) – check this in the variable <code>informative_feedback</code>. Make sure you account for this somehow.</p></li>
-<li><p>It will be useful to start with an exploration about how children look at feedback. How is this variable distributed? Also examine it across games.</p></li>
-<li><p>Feedback looking time can be defined in a continuous manner (predicting the time looked at feedback), or categorical (can we differentiate different types of ‘feedback lookers’)? Use the results from your exploration to decide which way is most suitable to define feedback looking.</p></li>
-</ul>
-</div>
-</div>
-</div>
+<p><strong>We will only grade the visualization pertaining to part C. If you make exploratory visualizations in part B, feel free to include them in that section, as it may help us to understand your process. If you make more than one visualization in part C, please indicate clearly which visualization we should look at when grading</strong>.</p>
 
 
-</details></section>
 </section>
 
 </main> <!-- /main -->
