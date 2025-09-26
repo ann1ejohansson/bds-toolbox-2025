@@ -1,5 +1,5 @@
 ---
-title: "BDS Toolbox: DV Assignmnet 1 Part 2"
+title: "BDS Toolbox: DV Assignment 1 Part 2"
 author: "Group X; Names: "
 date: "`r Sys.Date()`"
 output: html_document
