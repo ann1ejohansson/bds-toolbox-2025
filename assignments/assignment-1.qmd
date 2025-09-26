@@ -212,12 +212,94 @@ oefenwebDatabase::close_connections()
 
 ### B. Interactive visualizations with Plotly
 
-Copy the code below to create a plot showcasing ... Now, your assignment is to make this plot interactive using the `plotly` package. You can use the `ggplotly()` function to convert a ggplot object to an interactive plotly object. Focus on adding interactive elements that enhance the user experience and provide additional insights into the data. Remember to keep the plot clear and not overly complicated.
+Copy the code below to create a plot showcasing how a given student's ability in Multiplication develops during their first 100 interactions with the game.
+
+Now, your assignment is to:
+
+-   Make this plot interactive using the the `plotly` package. Tip: You can use the `ggplotly()` function to convert a ggplot object to an interactive plotly object.
+-   Add a tooltip that displays additional information when you hover over the plot. Customize the tooltip so that it displays the default plot values and additional insights from **two other variables** (choose yourself). Make sure all of this information is visible when you hover over the plot.
 
 Grading:
 
 -   Does the interactive plot work? \[1 pt\]
--   Do the interactive elements enhance the user experience? \[1 pt\]
+-   Does the tooltip clearly display additional (meaningful) information next to the default plot values? \[1 pt\]
+
+For this assignment, we will examine how the student with `new_user_id = 19872` progresses through the Multiplication game. To do so, we retrieve the student's `log_records`. In the query below, we also obtain additional information about the learning goals associated with the answered items to provide extra context alongside the data stored in the `log_records`. This is achieved by performing left joins between the `log_records` tables and two others: `items_learning_goals` (which links `item_id`'s to `learning_goal_id`'s) and `learning_goals`, which provides further details about the learning goals.
+
+```{r 1B data-prep}
+# Load Required Packages
+library(tidyverse)
+library(oefenwebDatabase)
+library(ggplot2)
+library(viridis)
+library(plotly)
+
+# if you closed your database connection already, connect to the server again:
+con <- oefenwebDatabase::connect()
+
+# get the student's log records on the Multiplication game
+# ... and additional info related to the learning goals
+my_data <- suppressWarnings(DBI::dbGetQuery(
+  con,
+  "SELECT logs.*,
+          item_lgs.learning_goal_id,
+          lgs.short_name,
+          lgs.description,
+          lgs.position
+  FROM log_records_3 AS logs
+  LEFT JOIN items_learning_goals AS item_lgs ON item_lgs.item_id = logs.item_id
+  LEFT JOIN learning_goals AS lgs ON lgs.id = item_lgs.learning_goal_id
+  WHERE new_user_id = '19872'"
+))
+
+```
+
+We are now ready to make the ggplot for this assignment. In this plot, we visualize how the student's `new_user_domain_rating` changes as the student plays within the Multiplication game. We also add an color aesthetic to the plot that indicates for each answered item to which learning goal it belongs.
+
+```{r 1B make-ggplot}
+# plot the student's rating development over time
+my_plot <- my_data %>%
+  ggplot(
+    aes(
+      x = new_user_domain_modified_count,
+      y = new_user_domain_rating,
+      color = reorder(short_name, position) # order by "position" variable
+    )
+  ) +
+  geom_point(
+    size = 3,
+    alpha = .5
+  ) +
+  scale_color_viridis_d() +
+  labs(
+    title = paste0(
+      "Development of user ",
+      unique(my_data$new_user_id),
+      "'s ability in Multiplication"
+    ),
+    x = "Play count",
+    y = "User domain rating",
+    color = "Learning goal"
+  ) +
+  theme_bw() +
+  theme(
+    plot.title = element_text(
+      face = "bold",
+      size = 14
+    )
+  )
+
+print(my_plot)
+```
+
+**Now it's your turn! Turn this static ggplot into an interactive plotly object, and add a customized tooltip that shows additional context next to the default values when you hover over the plot.**
+
+When you are done, please close the connection to the database (run this code in the console!):
+
+```{r 1B close-connection}
+oefenwebDatabase::close_connections()
+```
+
 
 ## Part 2: Start on Final DV Project (Group)
 

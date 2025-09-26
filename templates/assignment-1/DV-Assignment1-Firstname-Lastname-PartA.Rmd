@@ -1,5 +1,5 @@
 ---
-title: "BDS Toolbox: DV Assignmnet 1 Part 1"
+title: "BDS Toolbox: DV Assignment 1 Part 1"
 author: "Your Name Here"
 date: "`r Sys.Date()`"
 output: html_document
@@ -52,7 +52,8 @@ library(ggplot2)
 con <- oefenwebDatabase::connect()
 ```
 
-### Retreive data
+## A. Replicate this plot
+### Retrieve data
 
 ```{r load-data-1}
 
@@ -67,9 +68,15 @@ con <- oefenwebDatabase::connect()
 
 
 ## B. Interactive visualizations with plotly
+### Retrieve data
+
+```{r load-data-2}
+
+```
+
+### Create interactive plot
 
 ```{r plot-2}
 
 ```
 
-### Plot
