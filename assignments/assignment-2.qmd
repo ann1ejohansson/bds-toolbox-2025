@@ -3,6 +3,7 @@ title: "DV Assignment 2 (Final Project)"
 format: html
 ---
 
+## Instructions
 For the second and final assignment of the Data Visualization module, the challenge is to transform raw data into a clear and compelling story. Your goal is to design a visualization using the Oefenweb data that highlights meaningful patterns and provides actionable insights. To aid in this, each research question (substantiated below) is accompanied by a code chunk which gives you the relevant data. You are expected to do some data preparation and/or filtering of this data to obtain clean, reliable results. However, you are not expected to query data from other sources in the database, or perform complicated data manipulations to derive a variable -- focus on using the data given to create a sound data visualization. 
 
 ### The report
