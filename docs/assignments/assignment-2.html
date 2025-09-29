@@ -184,7 +184,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#research-questions" id="toc-research-questions" class="nav-link active" data-scroll-target="#research-questions">Research Questions</a></li>
+  <li><a href="#instructions" id="toc-instructions" class="nav-link active" data-scroll-target="#instructions">Instructions</a></li>
+  <li><a href="#research-questions" id="toc-research-questions" class="nav-link" data-scroll-target="#research-questions">Research Questions</a></li>
   </ul>
 </nav>
     </div>
@@ -210,16 +211,80 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>For the final assignment, you will be making a data visualization which aims to answer your chosen research question.</p>
-<p><strong>research questions:</strong></p>
-<p>general points:</p>
+<section id="instructions" class="level2">
+<h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
+<p>For the second and final assignment of the Data Visualization module, the challenge is to transform raw data into a clear and compelling story. Your goal is to design a visualization using the Oefenweb data that highlights meaningful patterns and provides actionable insights. To aid in this, each research question (substantiated below) is accompanied by a code chunk which gives you the relevant data. You are expected to do some data preparation and/or filtering of this data to obtain clean, reliable results. However, you are not expected to query data from other sources in the database, or perform complicated data manipulations to derive a variable – focus on using the data given to create a sound data visualization.</p>
+<section id="the-report" class="level3">
+<h3 class="anchored" data-anchor-id="the-report">The report</h3>
+<p>You will write the assignment in R Markdown (or Quarto), to produce a report-style document of no more than 1000 words. The final version should be compiled into <code>.html</code> format.</p>
+<p>The report should be a description of the process that led to your final data visualization. You should include:</p>
 <ul>
-<li>adding interactivity?</li>
-<li>consider whether to plot one or a couple students, or plot general effects.</li>
-<li>add general instructions for analytics / inference / prediction</li>
-<li>in your plot, highlight your main conclusion (and if necessary - substantiate with a model)</li>
-<li>make sure plot is explanatory</li>
+<li><p>An explanation of your research question and the target audience for your visualization. What did you want to communicate?</p></li>
+<li><p>A description of your exploratory process, including at least one exploratory graph. This can be the graph that you created in assignment 1, or an updated one. While this graph is intended to illustrate your thought process, its aesthetic- and communicative quality will not be graded. However, we will grade the quality of the report as a whole, which includes communication about how the exploratory graph helped you to understand the data, and influenced your choices for the final, explanatory, data visualization.</p></li>
+<li><p>Your final, explanatory, data visualization. Clearly mark which one of your visualizations this is. Include the visualization, along with an explanation of what it aims to communicate. Importantly, what can you conclude from this visualization? Why is this the best way to communicate this conclusion? This should follow logically from the introduction of your report (research question &amp; exploration).</p></li>
 </ul>
+</section>
+<section id="levels-of-visualization" class="level3">
+<h3 class="anchored" data-anchor-id="levels-of-visualization">Levels of visualization</h3>
+<p>Your chosen research question falls into one of three levels: analytics, inference, or prediction. Each level has different expectations in terms of how the visualization should be constructed and what role statistical modeling plays.</p>
+<section id="analytics" class="level4">
+<h4 class="anchored" data-anchor-id="analytics">Analytics</h4>
+<p>Analytics is about describing and comparing what is happening in the data, often in a way that is directly actionable for a practitioner. At this level, we expect you to create clear, actionable visualizations that are easy to interpret for a practitioner (e.g.&nbsp;a teacher). This should rely less on statistical modeling and more on effective communication of patterns in the data. You do, however, need to make sure that the patterns communicated are reliable.</p>
+</section>
+<section id="inference" class="level4">
+<h4 class="anchored" data-anchor-id="inference">Inference</h4>
+<p>Inference goes one step further: it aims to explain differences or relationships in the data, often by comparing groups or testing hypotheses. We expect a visualization at this level to be supplemented with statistical tests or models (e.g.&nbsp;significance tests). The visualization should not only show patterns but also provide evidence for why the observed differences matter.</p>
+</section>
+<section id="prediction" class="level4">
+<h4 class="anchored" data-anchor-id="prediction">Prediction</h4>
+<p>Prediction focuses on using current information to forecast outcomes. At this level, you should fit and interpret a predictive model (e.g., a linear or logistic regression). The visualization should clearly communicate how well the model performs, what predictors matter, and what can be learned from the model’s outcomes.</p>
+</section>
+</section>
+<section id="workflow" class="level3">
+<h3 class="anchored" data-anchor-id="workflow">Workflow</h3>
+<p>There are several guidelines on workflow which you should follow when collaborating on this project:</p>
+<ul>
+<li><p>Comment your code clearly. This not only helps us to understand your process, but your group members to collaborate efficiently.</p></li>
+<li><p>Use Git. Set up the project following the instructions in Assignment 1.</p></li>
+<li><p>Do not push data to GitHub!</p></li>
+</ul>
+</section>
+<section id="first-draft-and-peer-review" class="level3">
+<h3 class="anchored" data-anchor-id="first-draft-and-peer-review">First draft and peer review</h3>
+<p>We would like you to hand in a first draft of your report before Friday, October 10th, 12:00. There are no specific requirements for this draft, nor will you be graded on it. However, you will engage in a peer review session during the class, where you will give and receive feedback on the draft. This is also a Q&amp;A moment, where you can ask questions about your project. Therefore, the more you have worked on your draft, the more you will get out of this session.</p>
+</section>
+<section id="final-submission" class="level3">
+<h3 class="anchored" data-anchor-id="final-submission">Final submission</h3>
+<p>The final draft of your report and data visualization is due <strong>Sunday, October 12th, 23:59</strong>. You will hand in the assignment on <strong>Canvas and GitHub</strong>. Please hand in the following documents:</p>
+<ul>
+<li><p>Your <code>.Rmd</code> file. Here we will check your code styling and documentation. Run <code>lintr</code> beforehand!</p></li>
+<li><p>Your <code>.html</code> file. Make sure it renders correctly; we will not compile your <code>.Rmd</code> file ourselves. Here, we will grade your report and visualization. Thus if any components are missing, we will not be able to give you points for them.</p></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+General tips
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>Start by working with a <strong>subset</strong> of the data, to get a good idea of the data structure and variables, without running heavy computations. This should make your workflow more efficient.</p></li>
+<li><p>Make sure to <strong>render your final visualization large enough</strong> so it is readable in the html.</p></li>
+<li><p>Consider the subset of your data that you want to visualize. Does it make sense to plot general effects, or showcase your main point with one or a couple of students?</p></li>
+<li><p>Add interactive elements <strong>if you think it adds value to your visualization</strong>.</p></li>
+<li><p><strong>Highlight your main conclusion!</strong><br>
+</p></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+</section>
 <section id="research-questions" class="level2">
 <h2 class="anchored" data-anchor-id="research-questions">Research Questions</h2>
 <section id="rq1.-which-students-are-on-track-and-which-are-not" class="level3">
@@ -228,62 +293,53 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <summary>
 <strong>Expand Instructions</strong>
 </summary>
+<hr>
 <p><strong>Level</strong>: Analytics<br>
 </p>
-<p><strong>Instruction:</strong> Visualize the progress of the class within the four basic operation games: addition, subtraction, multiplication, division. It should be useful for the teacher; they should be able to efficiently derive which students are on track in each game and which are not. You can choose one of two ways to define progress in this context:</p>
+<p><strong>Instruction:</strong> Visualize the progress of the class within the following four Math Garden domains: addition, subtraction, clock reading, and tables. It should be useful for the teacher; they should be able to efficiently derive which students are on track in each game and which are not. For this question, you will only have to look at the class’ progress within domain sessions. You can choose one of two ways to define progress in this context:</p>
 <ol type="1">
-<li><p><em>Population-based approach:</em> In the dataset, there is a variable called <code>q_score</code>. This is a metric which indicates how the student is performing, relative to the average performance within the same age group. For example, a q-score of 400 indicates that a child is performing equal to an average student in grade 4.</p></li>
+<li><p><em>Population-based approach:</em> In the dataset, there is a variable called <code>new_user_domain_q_score</code>. This is a metric which indicates how the student is performing, relative to the average performance of students within the same age group. For example, a q-score of 400 indicates that a child is performing equal to an average student in grade 4.</p></li>
 <li><p><em>Within-class approach:</em> In the dataset, there is a variable called <code>new_user_domain_rating</code>. This is the raw ability score of the user within the respective game. Normalize this variable for the class within each game to visualize students’ performance relative to the class average.</p></li>
 </ol>
 <div class="cell">
 <details class="code-fold">
 <summary>Data:</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SQL query here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
-<div class="callout-body-container callout-body">
-<ul>
-<li><p>Think about how you will deal with children who have no or little data within a specifc domain. (How) will you visualize it? Is it reliable?</p></li>
-<li><p>You do not need to worry about generalizibility to other classes. It should be relevant for the teacher to say something about their students’ progress within the current class.</p></li>
-</ul>
-</div>
-</div>
-</div>
-</details></section>
-<section id="rq2.-what-are-the-differences-in-playing-behaviors-between-students-that-switch-games-a-lot-within-a-given-session-compared-to-students-who-dont" class="level3">
-<h3 class="anchored" data-anchor-id="rq2.-what-are-the-differences-in-playing-behaviors-between-students-that-switch-games-a-lot-within-a-given-session-compared-to-students-who-dont">RQ2. What are the differences in playing behaviors between students that switch games a lot within a given session, compared to students who don’t?</h3>
-<details>
-<summary>
-<strong>Expand Instructions</strong>
-</summary>
-<p><strong>Level:</strong> Inference.</p>
-<p><strong>Instruction:</strong> Define a high vs.&nbsp;low switcher by looking at the variables <code>n_different_games</code> and <code>duration</code>. Now, choose one or more of the following variables to relate to switching behavior:</p>
-<ol type="1">
-<li><code>mean_correct</code><br>
-</li>
-<li><code>n_skip</code><br>
-</li>
-<li><code>n_soft_quits</code><br>
-</li>
-<li><code>difficulty</code> (or <code>easy_ratio</code> / <code>medium_ratio</code> / <code>hard_ratio</code>)<br>
-</li>
-<li><code>mean_rt</code></li>
-</ol>
-<div class="cell">
-<details class="code-fold">
-<summary>Data:</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SQL query here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean Glob Env, load packages and connect to database</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(oefenwebDatabase)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> oefenwebDatabase<span class="sc">::</span><span class="fu">connect</span>()</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># For this RQ, we will visualize the progress of students in class '601481'.</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the following code to retrieve the relevant students' user_id's:</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>student_ids <span class="ot">&lt;-</span> <span class="fu">get_query</span>(</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SELECT *</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="st">  FROM mot_metrics_users</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="st">  WHERE school_class_id = '601481'"</span>,</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">con =</span> con</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(user_id)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Specify the relevant domains</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>domain_ids <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">9</span>, <span class="dv">59</span>)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co"># List student id's and domain id's to use as query parameters</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>params <span class="ot">&lt;-</span> <span class="fu">list</span>(student_ids, domain_ids)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Now get the log records (only domain sessions)</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>logs <span class="ot">&lt;-</span> <span class="fu">get_query</span>(</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SELECT *</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="st">  FROM mot_metrics_logs</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="st">  WHERE session = 'domain'</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="st">  AND user_id IN ({params[[1]]*})</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="st">  AND domain_id IN ({params[[2]]*})"</span>,</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  <span class="at">con =</span> con,</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  <span class="at">params =</span> params</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Close connection</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>oefenwebDatabase<span class="sc">::</span><span class="fu">close_connections</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -299,6 +355,65 @@ Tip
 <div id="callout-2" class="callout-2-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <ul>
+<li><p>Think about how you will deal with children who have no or little data within a specific domain. (How) will you visualize it? Is it reliable?</p></li>
+<li><p>You do not need to worry about generalizibility to other classes. It should be relevant for the teacher to say something about their students’ progress within the current class.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<hr>
+</details></section>
+<section id="rq2.-what-are-the-differences-in-playing-behaviors-between-students-that-switch-games-a-lot-within-a-given-session-compared-to-students-who-dont" class="level3">
+<h3 class="anchored" data-anchor-id="rq2.-what-are-the-differences-in-playing-behaviors-between-students-that-switch-games-a-lot-within-a-given-session-compared-to-students-who-dont">RQ2. What are the differences in playing behaviors between students that switch games a lot within a given session, compared to students who don’t?</h3>
+<details>
+<summary>
+<strong>Expand Instructions</strong>
+</summary>
+<hr>
+<p><strong>Level:</strong> Inference.</p>
+<p><strong>Instruction:</strong> For this RQ, you will look at the data from the <code>mot_metrics_sessions</code> table, which contains different metrics computed at the session level that we think might be related to motivation. Importantly, in this table, a session is defined as active if the user plays games in either environment (Math Garden / Language Sea) without stopping for more than 10 minutes. If no new game is started within 10 minutes, the session ends. In other words, each row marks a period of continuous activity in the learning environment for a given player.</p>
+<p>Define a high vs.&nbsp;low switcher by looking at the variables <code>n_different_games</code> and <code>duration</code>. Now, choose one or more of the following variables to relate to switching behavior:</p>
+<ol type="1">
+<li><code>mean_correct</code><br>
+</li>
+<li><code>n_skip</code><br>
+</li>
+<li><code>n_soft_quits</code><br>
+</li>
+<li><code>difficulty</code> (or <code>easy_ratio</code> / <code>medium_ratio</code> / <code>hard_ratio</code>)<br>
+</li>
+<li><code>mean_rt</code></li>
+</ol>
+<div class="cell">
+<details class="code-fold">
+<summary>Data:</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean Glob Env, load packages and connect to database</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(oefenwebDatabase)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> oefenwebDatabase<span class="sc">::</span><span class="fu">connect</span>()</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Get mot_metrics_sessions data</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>sessions_data <span class="ot">&lt;-</span> <span class="fu">get_query</span>(</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SELECT *</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="st">  FROM mot_metrics_sessions"</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<ul>
 <li><p>After defining high/low switchers, it may be useful to look at individual users to get an idea of their playing patterns, before aggregating the data further.</p></li>
 <li><p>How will you filter the data to get reliable estimates of switching tendencies?</p></li>
 <li><p>Taking the perspective of the child playing the game, what could be an advantage of switching games often? What could be a disadvantage? Considering this perspective could help formulate your narrative.</p></li>
@@ -306,6 +421,7 @@ Tip
 </div>
 </div>
 </div>
+<hr>
 </details></section>
 <section id="rq3.-how-does-post-error-quitting-differ-between-in-school-and-out-of-school-practice-what-might-moderate-these-differences" class="level3">
 <h3 class="anchored" data-anchor-id="rq3.-how-does-post-error-quitting-differ-between-in-school-and-out-of-school-practice-what-might-moderate-these-differences">RQ3. How does post-error quitting differ between in-school and out-of-school practice? What might moderate these differences?</h3>
@@ -313,10 +429,11 @@ Tip
 <summary>
 <strong>Expand Instructions</strong>
 </summary>
+<hr>
 <p><strong>Level:</strong> Inference</p>
 <p><strong>Instruction:</strong> It is possible that students’ motivation differs depending on whether they play in a classroom setting or at home – a question which we would like you to explore in the data. One way to operationalize motivation in Prowise Learn is post-error quitting. Post-error quitting refers to whether the game was ended prematurely after an error (<code>post_error_quit</code>). First, define a variable which indicates whether a student is playing in or out of school:</p>
 <ul>
-<li>School times are between 8:30 and 15.00 on weekdays. Be aware of <a href="https://www.rijksoverheid.nl/onderwerpen/schoolvakanties/overzicht-schoolvakanties-per-schooljaar/overzicht-schoolvakanties-2025-2026">school holidays</a>! These should be defined as out-of-school.</li>
+<li>School times are between 8:30 and 15.00 on weekdays. Be aware of <a href="https://wanneerschoolvakantie.nl/schoolvakanties-2023-2024/">school holidays</a>! These should be defined as out-of-school.</li>
 </ul>
 <p>Choose one or more of the following moderators for your final visualization:</p>
 <ol type="1">
@@ -333,7 +450,7 @@ Tip
 </details>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -342,15 +459,16 @@ Tip
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
+<div id="callout-4" class="callout-4-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <ul>
-<li><p>We have two papers dealing with post-error quitting (although not specifically dealing with this question), read them here and here for inspiration!</p></li>
-<li><p>You can define errors as binary (error or correct) or sequential (n errors made in a row).</p></li>
+<li><p>We have two papers dealing with post-error quitting (although not specifically dealing with this question), read them <a href="https://osf.io/preprints/osf/htzvm_v1">here</a> and <a href="https://osf.io/preprints/psyarxiv/6tduv_v1">here</a> for inspiration!</p></li>
+<li><p>You can define errors as binary (error or correct) or continuous / categorical (with the variable <code>sequential_errors</code>, which denotes the number of errors made in a row at a given item).</p></li>
 </ul>
 </div>
 </div>
 </div>
+<hr>
 </details></section>
 <section id="rq4.-can-we-predict-how-long-a-student-will-look-at-feedback-from-different-student-characteristics-andor-play-behavior" class="level3">
 <h3 class="anchored" data-anchor-id="rq4.-can-we-predict-how-long-a-student-will-look-at-feedback-from-different-student-characteristics-andor-play-behavior">RQ4. Can we predict how long a student will look at feedback from different student characteristics and/or play behavior?</h3>
@@ -358,6 +476,7 @@ Tip
 <summary>
 <strong>Expand Instructions</strong>
 </summary>
+<hr>
 <p><strong>Level:</strong> Prediction</p>
 <p><strong>Instruction:</strong> Feedback looking time indicates the time that the feedback was displayed on the screen after a student encountered an error, skipped a response, or had a time-out. Whether or not students engage with the feedback they recieve can serve as important information, both for the developers at Prowise Learn (how do users engage with application features?), and for teachers (how do students engage in their learning process?). Here, you can choose between a number of different variables to add to a regression model:</p>
 <ol type="1">
@@ -377,11 +496,12 @@ Tip
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SQL query here</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Delete LG sessions</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Delete correct responses </span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># "Because the system automatically moves on to the next item after a correct response, we remove these responses."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># "Because the system automatically moves on to the next item after a correct response, we remove these responses."</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Need motivation logs, domains, and user tables. Also merge these already? </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -390,7 +510,7 @@ Tip
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse show">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse show">
 <div class="callout-body-container callout-body">
 <ul>
 <li><p>Some games have explicit feedback (feedback which gives more information than right or wrong) – check this in the variable <code>informative_feedback</code>. Make sure you account for this somehow.</p></li>
@@ -400,6 +520,7 @@ Tip
 </div>
 </div>
 </div>
+<hr>
 
 
 </details></section>

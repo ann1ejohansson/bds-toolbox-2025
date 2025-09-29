@@ -3,57 +3,88 @@ title: "DV Assignment 2 (Final Project)"
 format: html
 ---
 
+```{r setup running locally, eval = TRUE, include=FALSE}
+# set up when testing the file locally, set eval = FALSE when running on server
+knitr::opts_chunk$set(eval = FALSE)
+```
+
 ## Instructions
-For the second and final assignment of the Data Visualization module, the challenge is to transform raw data into a clear and compelling story. Your goal is to design a visualization using the Oefenweb data that highlights meaningful patterns and provides actionable insights. To aid in this, each research question (substantiated below) is accompanied by a code chunk which gives you the relevant data. You are expected to do some data preparation and/or filtering of this data to obtain clean, reliable results. However, you are not expected to query data from other sources in the database, or perform complicated data manipulations to derive a variable -- focus on using the data given to create a sound data visualization. 
+
+For the second and final assignment of the Data Visualization module, the challenge is to transform raw data into a clear and compelling story. Your goal is to design a visualization using the Oefenweb data that highlights meaningful patterns and provides actionable insights. To aid in this, each research question (substantiated below) is accompanied by a code chunk which gives you the relevant data. You are expected to do some data preparation and/or filtering of this data to obtain clean, reliable results. However, you are not expected to query data from other sources in the database, or perform complicated data manipulations to derive a variable -- focus on using the data given to create a sound data visualization.
 
 ### The report
-You will write the assignment in R Markdown (or Quarto), to produce a report-style document of no more than 1000 words. The final version should be compiled into `.html` format. 
 
-The report should be a description of the process that led to your final data visualization. You should include:  
+You will write the assignment in R Markdown (or Quarto), to produce a report-style document of no more than 1000 words. The final version should be compiled into `.html` format.
 
--  An explanation of your research question and the target audience for your visualization. What did you want to communicate?  
+The report should be a description of the process that led to your final data visualization. You should include:
 
--  A description of your exploratory process, including at least one exploratory graph. This can be the graph that you created in assignment 1, or an updated one. While this graph is intended to illustrate your thought process, its aesthetic- and communicative quality will not be graded. However, we will grade the quality of the report as a whole, which includes communication about how the exploratory graph helped you to understand the data, and influenced your choices for the final, explanatory, data visualization.  
+-   An explanation of your research question and the target audience for your visualization. What did you want to communicate?
 
--  Your final, explanatory, data visualization. Clearly mark which one of your visualizations this is. Include the visualization, along with an explanation of what it aims to communicate. Importantly, what can you conclude from this visualization? Why is this the best way to communicate this conclusion? This should follow logically from the introduction of your report (research question & exploration). 
+-   A description of your exploratory process, including at least one exploratory graph. This can be the graph that you created in assignment 1, or an updated one. While this graph is intended to illustrate your thought process, its aesthetic- and communicative quality will not be graded. However, we will grade the quality of the report as a whole, which includes communication about how the exploratory graph helped you to understand the data, and influenced your choices for the final, explanatory, data visualization.
+
+-   Your final, explanatory, data visualization. Clearly mark which one of your visualizations this is. Include the visualization, along with an explanation of what it aims to communicate. Importantly, what can you conclude from this visualization? Why is this the best way to communicate this conclusion? This should follow logically from the introduction of your report (research question & exploration).
 
 ### Levels of visualization
-Your chosen research question falls into one of three levels: analytics, inference, or prediction. Each level has different expectations in terms of how the visualization should be constructed and what role statistical modeling plays. 
+
+Your chosen research question falls into one of three levels: analytics, inference, or prediction. Each level has different expectations in terms of how the visualization should be constructed and what role statistical modeling plays.
 
 #### Analytics
-Analytics is about describing and comparing what is happening in the data, often in a way that is directly actionable for a practitioner. At this level, we expect you to create clear, actionable visualizations that are easy to interpret for a practitioner (e.g. a teacher). This should rely less on statistical modeling and more on effective communication of patterns in the data. You do, however, need to make sure that the patterns communicated are reliable. 
+
+Analytics is about describing and comparing what is happening in the data, often in a way that is directly actionable for a practitioner. At this level, we expect you to create clear, actionable visualizations that are easy to interpret for a practitioner (e.g. a teacher). This should rely less on statistical modeling and more on effective communication of patterns in the data. You do, however, need to make sure that the patterns communicated are reliable.
 
 #### Inference
-Inference goes one step further: it aims to explain differences or relationships in the data, often by comparing groups or testing hypotheses. We expect a visualization at this level to be supplemented with statistical tests or models (e.g. significance tests). The visualization should not only show patterns but also provide evidence for why the observed differences matter. 
 
-#### Prediction 
-Prediction focuses on using current information to forecast outcomes. At this level, you should fit and interpret a predictive model (e.g., a linear or logistic regression). The visualization should clearly communicate how well the model performs, what predictors matter, and what can be learned from the model's outcomes. 
+Inference goes one step further: it aims to explain differences or relationships in the data, often by comparing groups or testing hypotheses. We expect a visualization at this level to be supplemented with statistical tests or models (e.g. significance tests). The visualization should not only show patterns but also provide evidence for why the observed differences matter.
+
+#### Prediction
+
+Prediction focuses on using current information to forecast outcomes. At this level, you should fit and interpret a predictive model (e.g., a linear or logistic regression). The visualization should clearly communicate how well the model performs, what predictors matter, and what can be learned from the model's outcomes.
 
 ### Workflow
-There are several guidelines on workflow which you should follow when collaborating on this project: 
 
--  Comment your code clearly. This not only helps us to understand your process, but your group members to collaborate efficiently. 
+There are several guidelines on workflow which you should follow when collaborating on this project:
 
--  Use Git. Set up the project following the instructions in Assignment 1. 
+-   Comment your code clearly. This not only helps us to understand your process, but your group members to collaborate efficiently.
 
--  Do not push data to GitHub! 
+-   Use Git. Set up the project following the instructions in Assignment 1.
+
+-   Do not push data to GitHub!
 
 ### First draft and peer review
 
+We would like you to hand in a first draft of your report before Friday, October 10th, 12:00. There are no specific requirements for this draft, nor will you be graded on it. However, you will engage in a peer review session during the class, where you will give and receive feedback on the draft. This is also a Q&A moment, where you can ask questions about your project. Therefore, the more you have worked on your draft, the more you will get out of this session.
 
-### Tips 
-make sure to render the plot large enough so it is readable in the html. 
--   adding interactivity?
--   consider whether to plot one or a couple students, or plot general effects.
--   in your plot, highlight your main conclusion (and if necessary - substantiate with a model)
--   make sure plot is explanatory
--   first work on a **subset** of the data!
+### Final submission
+
+The final draft of your report and data visualization is due **Sunday, October 12th, 23:59**. You will hand in the assignment on **Canvas and GitHub**. Please hand in the following documents:
+
+-   Your `.Rmd` file. Here we will check your code styling and documentation. Run `lintr` beforehand!
+
+-   Your `.html` file. Make sure it renders correctly; we will not compile your `.Rmd` file ourselves. Here, we will grade your report and visualization. Thus if any components are missing, we will not be able to give you points for them.
+
+::: {.callout-tip collapse="false"}
+## General tips
+
+-   Start by working with a **subset** of the data, to get a good idea of the data structure and variables, without running heavy computations. This should make your workflow more efficient.
+
+-   Make sure to **render your final visualization large enough** so it is readable in the html.
+
+-   Consider the subset of your data that you want to visualize. Does it make sense to plot general effects, or showcase your main point with one or a couple of students?
+
+-   Add interactive elements **if you think it adds value to your visualization**.
+
+-   **Highlight your main conclusion!**\
+:::
 
 ## Research Questions
 
 ### RQ1. Which students are on track and which are not?
-<details> 
+
+<details>
+
 <summary><strong>Expand Instructions</strong></summary>
+
+------------------------------------------------------------------------
 
 **Level**: Analytics\
 
@@ -112,22 +143,27 @@ oefenwebDatabase::close_connections()
 -   You do not need to worry about generalizibility to other classes. It should be relevant for the teacher to say something about their students' progress within the current class.
 :::
 
+------------------------------------------------------------------------
 
-### RQ2. What are the differences in playing behaviors between students that switch games a lot within a given session, compared to students who don't? 
-<details> 
+### RQ2. What are the differences in playing behaviors between students that switch games a lot within a given session, compared to students who don't?
+
+<details>
+
 <summary><strong>Expand Instructions</strong></summary>
 
-**Level:** Inference.  
+------------------------------------------------------------------------
+
+**Level:** Inference.
 
 **Instruction:** For this RQ, you will look at the data from the `mot_metrics_sessions` table, which contains different metrics computed at the session level that we think might be related to motivation. Importantly, in this table, a session is defined as active if the user plays games in either environment (Math Garden / Language Sea) without stopping for more than 10 minutes. If no new game is started within 10 minutes, the session ends. In other words, each row marks a period of continuous activity in the learning environment for a given player.
 
 Define a high vs. low switcher by looking at the variables `n_different_games` and `duration`. Now, choose one or more of the following variables to relate to switching behavior:
 
-1.  `mean_correct` \
-2.  `n_skip` \
-3.  `n_soft_quits` \
-4.  `difficulty` (or `easy_ratio` / `medium_ratio` / `hard_ratio`) \
-5.  `mean_rt` 
+1.  `mean_correct`\
+2.  `n_skip`\
+3.  `n_soft_quits`\
+4.  `difficulty` (or `easy_ratio` / `medium_ratio` / `hard_ratio`)\
+5.  `mean_rt`
 
 ```{r q-2-data}
 #| code-fold: true
@@ -149,28 +185,34 @@ sessions_data <- get_query(
 ```
 
 ::: {.callout-tip collapse="false"}
--   After defining high/low switchers, it may be useful to look at individual users to get an idea of their playing patterns, before aggregating the data further.  
+-   After defining high/low switchers, it may be useful to look at individual users to get an idea of their playing patterns, before aggregating the data further.
 
--   How will you filter the data to get reliable estimates of switching tendencies? 
+-   How will you filter the data to get reliable estimates of switching tendencies?
 
--   Taking the perspective of the child playing the game, what could be an advantage of switching games often? What could be a disadvantage? Considering this perspective could help formulate your narrative. 
+-   Taking the perspective of the child playing the game, what could be an advantage of switching games often? What could be a disadvantage? Considering this perspective could help formulate your narrative.
 :::
 
+------------------------------------------------------------------------
+
 ### RQ3. How does post-error quitting differ between in-school and out-of-school practice? What might moderate these differences?
-<details> 
+
+<details>
+
 <summary><strong>Expand Instructions</strong></summary>
+
+------------------------------------------------------------------------
 
 **Level:** Inference
 
 **Instruction:** It is possible that students' motivation differs depending on whether they play in a classroom setting or at home -- a question which we would like you to explore in the data. One way to operationalize motivation in Prowise Learn is post-error quitting. Post-error quitting refers to whether the game was ended prematurely after an error (`post_error_quit`). First, define a variable which indicates whether a student is playing in or out of school:
 
--  School times are between 8:30 and 15.00 on weekdays. Be aware of [school holidays](https://wanneerschoolvakantie.nl/schoolvakanties-2023-2024/)! These should be defined as out-of-school. 
+-   School times are between 8:30 and 15.00 on weekdays. Be aware of [school holidays](https://wanneerschoolvakantie.nl/schoolvakanties-2023-2024/)! These should be defined as out-of-school.
 
-Choose one or more of the following moderators for your final visualization: 
+Choose one or more of the following moderators for your final visualization:
 
 1.  `grade`
-2.  Average `new_user_domain_q_score`  
-3.  Average `quit` (this would define whether a student *generally* quits a lot, regardless of errors).  
+2.  Average `new_user_domain_q_score`\
+3.  Average `quit` (this would define whether a student *generally* quits a lot, regardless of errors).
 
 ```{r q-3-data}
 #| code-fold: true
@@ -181,21 +223,26 @@ Choose one or more of the following moderators for your final visualization:
 ```
 
 ::: {.callout-tip collapse="false"}
--   We have two papers dealing with post-error quitting (although not specifically dealing with this question), read them here and here for inspiration! 
+-   We have two papers dealing with post-error quitting (although not specifically dealing with this question), read them [here](https://osf.io/preprints/osf/htzvm_v1) and [here](https://osf.io/preprints/psyarxiv/6tduv_v1) for inspiration!
 
--   You can define errors as binary (error or correct) or sequential (n errors made in a row). 
+-   You can define errors as binary (error or correct) or continuous / categorical (with the variable `sequential_errors`, which denotes the number of errors made in a row at a given item).
 :::
 
+------------------------------------------------------------------------
 
 ### RQ4. Can we predict how long a student will look at feedback from different student characteristics and/or play behavior?
-<details> 
+
+<details>
+
 <summary><strong>Expand Instructions</strong></summary>
+
+------------------------------------------------------------------------
 
 **Level:** Prediction
 
 **Instruction:** Feedback looking time indicates the time that the feedback was displayed on the screen after a student encountered an error, skipped a response, or had a time-out. Whether or not students engage with the feedback they recieve can serve as important information, both for the developers at Prowise Learn (how do users engage with application features?), and for teachers (how do students engage in their learning process?). Here, you can choose between a number of different variables to add to a regression model:
 
-1.  type of error (incorrect response, skipped response, time-out response). Factor this variable yourself. 
+1.  type of error (incorrect response, skipped response, time-out response). Factor this variable yourself.
 2.  `grade`
 3.  `gender`
 4.  `q_score`
@@ -204,8 +251,7 @@ Choose one or more of the following moderators for your final visualization:
 7.  `response_time_in_milliseconds`
 8.  application (language vs. math)
 
-You can be selective or choose all variables. If you choose to omit certain variables, please explain why. If you differentiate between covariates and predictors, please argue your reasoning. 
-
+You can be selective or choose all variables. If you choose to omit certain variables, please explain why. If you differentiate between covariates and predictors, please argue your reasoning.
 
 ```{r q-4-data}
 #| code-fold: true
@@ -215,13 +261,15 @@ You can be selective or choose all variables. If you choose to omit certain vari
 # Delete LG sessions
 # Delete correct responses 
 # "Because the system automatically moves on to the next item after a correct response, we remove these responses."
+# Need motivation logs, domains, and user tables. Also merge these already? 
 ```
 
 ::: {.callout-tip collapse="false"}
--   Some games have explicit feedback (feedback which gives more information than right or wrong) -- check this in the variable `informative_feedback`. Make sure you account for this somehow.  
+-   Some games have explicit feedback (feedback which gives more information than right or wrong) -- check this in the variable `informative_feedback`. Make sure you account for this somehow.
 
--   It will be useful to start with an exploration about how children look at feedback. How is this variable distributed? Also examine it across games. 
+-   It will be useful to start with an exploration about how children look at feedback. How is this variable distributed? Also examine it across games.
 
--   Feedback looking time can be defined in a continuous manner (predicting the time looked at feedback), or categorical (can we differentiate different types of 'feedback lookers')? Use the results from your exploration to decide which way is most suitable to define feedback looking. 
+-   Feedback looking time can be defined in a continuous manner (predicting the time looked at feedback), or categorical (can we differentiate different types of 'feedback lookers')? Use the results from your exploration to decide which way is most suitable to define feedback looking.
 :::
 
+------------------------------------------------------------------------
