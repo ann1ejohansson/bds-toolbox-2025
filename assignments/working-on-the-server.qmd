@@ -42,6 +42,8 @@ if (!"oefenwebTools" %in% all_installed_packages) {devtools::install_github(repo
 if (!"jsonlite" %in% all_installed_packages) {install.packages("jsonlite")}
 if (!"ggplot2" %in% all_installed_packages) {install.packages("ggplot2")}
 if (!"cowplot" %in% all_installed_packages) {install.packages("cowplot")}
+if (!"viridis" %in% all_installed_packages) {install.packages("viridis")}
+if (!"plotly" %in% all_installed_packages) {install.packages("plotly")}
 # nolint end
 
 # Load Required Packages
@@ -58,20 +60,10 @@ We now have everything we need to let our online R Studio environment know how t
 
 ```{r connection}
 con <- oefenwebDatabase::connect()
-# Always run this code in the console; do not leave this line in your script!
 ```
 
 ### Step 2: Retrieve data from the server
 #### Retrieve data with an SQL query
-```{r retrieve data}
-data <- DBI::dbGetQuery(con,
-                        "SELECT id, login_count, new_school_id, grade
-                         FROM users
-                         WHERE id IN
-                            (SELECT new_user_id 
-                             FROM school_classes_users 
-                             WHERE new_school_class_id = 3)")
-```
 
 From this point on, you can use the database connection to retrieve data from the server. What the data actually looks like, and which tables/columns are available can be viewed on the [Adminer](https://data-visualization.oefenweb.nl/adminer.php?server=127.0.2.1). Log in with the your Oefenweb `username` and `password`, and select `oefenweb_nl_app` from the databases.
 
@@ -92,14 +84,58 @@ my_data_domains <-
                                    "SELECT * FROM `domains`"))
 ```
 
+Recently, we updated the oefenwebDatabase package with a new function: `get_query()`. This function automatically suppresses SQL warnings and uses `glue_sql()` for safe SQL injections (rather than relying on `paste()` or `paste0()`). Retrieving data with `get_query()` looks like this:
+
+```{r get query function}
+# select all columns (*) from the domains table.
+my_data_domains <- get_query(
+  "SELECT * FROM `domains`",
+  con = con # the connection element to our database
+)
+```
+
+The `params` argument can be used to specify certain parameters that you want to call within your SQL statement (with `{params[[i]]}` or `{params[[j]]*}`):
+
+```{r params argument}
+# specify SQL parameters in 'params' list
+domain_group_ids <- c(1, 2, 5)
+application_id <- 1
+params <- list(domain_group_ids, application_id)
+
+# select all columns from the domains table for domains 1:4
+my_data_domains <- get_query(
+  "SELECT *
+  FROM `domains`
+  WHERE `domain_group_id` IN ({params[[1]]*})
+  AND `application_id` = ({params[[2]]})",
+  con = con,
+  params = params
+)
+```
+
+Below an example of a nested query:
+
+```{r nested query}
+data <- get_query(
+  "SELECT `id`, `login_count`, `new_school_id`, `grade`
+  FROM `users`
+  WHERE `id` IN
+    (SELECT `new_user_id`
+    FROM `school_classes_users`
+    WHERE `new_school_class_id` = '3')",
+  con = con
+)
+```
+
 Now lets get some item data. In the `items` table we can find data that contains item information as for example the item question or answer options. We will choose the domain `tafels` (Multiplication Tables). In the `items` table we can see that there is no mention of "tafels" anywhere, however, each item does have a `domain_id` listed. If we look in the `domains` table we just retrieved, we see that `tafels` has the `id` '59'. We can use this information to retrieve only the items from the `tafels` game:
 
 ```{r}
-items <-
-  suppressWarnings(DBI::dbGetQuery(con,
-                                   "SELECT *
-                                    FROM `items`
-                                    WHERE `domain_id` = '59'"))
+items <- get_query(
+  "SELECT *
+  FROM `items`
+  WHERE `domain_id` = '59'",
+  con = con
+)
 ```
 
 **For a review of SQL queries, see the [SQL Handout](https://surfdrive.surf.nl/files/index.php/s/S9q2WQ5aY4d1UVP) from the previous module.**
@@ -160,6 +196,5 @@ When you are done working on the server, you need to disconnect from the databas
 
 ```{r disconnect}
 oefenwebDatabase::close_connections()
-# Always run this code in the console; do not leave this line in your script!
 ```
 

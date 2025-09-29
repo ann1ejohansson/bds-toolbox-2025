@@ -22,7 +22,7 @@ The report should be a description of the process that led to your final data vi
 
 -   A description of your exploratory process, including at least one exploratory graph. This can be the graph that you created in assignment 1, or an updated one. While this graph is intended to illustrate your thought process, its aesthetic- and communicative quality will not be graded. However, we will grade the quality of the report as a whole, which includes communication about how the exploratory graph helped you to understand the data, and influenced your choices for the final, explanatory, data visualization.
 
--   Your final, explanatory, data visualization. Clearly mark which one of your visualizations this is. Include the visualization, along with an explanation of what it aims to communicate. Importantly, what can you conclude from this visualization? Why is this the best way to communicate this conclusion? This should follow logically from the introduction of your report (research question & exploration).
+-   Your final, explanatory, data visualization. Clearly mark which one of your visualizations this is. Include the visualization, along with an explanation of what it aims to communicate. Importantly, what can you conclude from this visualization? Why is this the best way to communicate this conclusion? How robust are your findings? This should follow logically from the introduction of your report (research question & exploration).
 
 ### Levels of visualization
 
@@ -65,7 +65,9 @@ The final draft of your report and data visualization is due **Sunday, October 1
 ::: {.callout-tip collapse="false"}
 ## General tips
 
--   Start by working with a **subset** of the data, to get a good idea of the data structure and variables, without running heavy computations. This should make your workflow more efficient.
+-   Start by working with a **subset** of the data, to get a good idea of the data structure and variables, without running heavy computations. This should make your workflow more efficient. We have provided example R code that shows how to generate a reproducible subset.
+
+-   After developing your workflow, reflect on the robustness of your analysis. Would your findings change when you rerun the analysis on different data, or under altered conditions? Explain why or why not in your conclusion. 
 
 -   Make sure to **render your final visualization large enough** so it is readable in the html.
 
@@ -178,11 +180,37 @@ library(oefenwebDatabase)
 
 con <- oefenwebDatabase::connect()
 
-# Get mot_metrics_sessions data
+# For this RQ, it might be wise to start off with a subset of the
+# `mot_metrics_sessions` table. You can run the code below to create a subset:
+
+# First retrieve all unique users in this table.
+unique_users <- get_query(
+  "SELECT DISTINCT user_id
+  FROM mot_metrics_sessions",
+  con = con
+)
+
+# Now we will randomly select 20% of the users
+set.seed(123)
+sample_users <- sample_frac(unique_users, 0.20) %>%
+  pull(user_id)
+
+# Get the `mot_metrics_sessions` data for the users sampled above
 sessions_data <- get_query(
   "SELECT *
-  FROM mot_metrics_sessions"
+  FROM mot_metrics_sessions
+  WHERE user_id IN ({sample_users*})",
+  con = con
 )
+
+# Check if no. of unique users in the data equals the no. of users we sampled
+length(unique(sessions_data$user_id)) == length(sample_users)
+
+# Remove unnecessary objects
+rm(unique_users, sample_users)
+
+# Close connection
+oefenwebDatabase::close_connections()
 
 ```
 
@@ -220,8 +248,47 @@ Choose one or more of the following moderators for your final visualization:
 #| code-fold: true
 #| code-summary: "Data:"
 
-# SQL query here
-# delete LG sessions
+# Clean Glob Env, load packages and connect to database
+rm(list = ls())
+library(tidyverse)
+library(oefenwebDatabase)
+
+con <- oefenwebDatabase::connect()
+
+# For this RQ, it might be wise to start off with a subset of the
+# `mot_metrics_logs` table. You can run the code below to create a subset:
+
+# First retrieve all unique users in this table.
+# (We'll only look at data from domain sessions)
+unique_users <- get_query(
+  "SELECT DISTINCT user_id
+  FROM mot_metrics_logs
+  WHERE session = 'domain'",
+  con = con
+)
+
+# Now we will randomly select 20% of the users
+set.seed(123)
+sample_users <- sample_frac(unique_users, 0.20) %>%
+  pull(user_id)
+
+# Get the mot_metrics_logs data for the users sampled above
+logs_data <- get_query(
+  "SELECT *
+  FROM mot_metrics_logs
+  WHERE user_id IN ({sample_users*})
+  AND session = 'domain'",
+  con = con
+)
+
+# Check if no. of unique users in the data equals the no. of users we sampled
+length(unique(logs_data$user_id)) == length(sample_users)
+
+# Remove unnecessary objects
+rm(unique_users, sample_users)
+
+# Close connection
+oefenwebDatabase::close_connections()
 ```
 
 ::: {.callout-tip collapse="false"}
@@ -247,7 +314,7 @@ Choose one or more of the following moderators for your final visualization:
 1.  type of error (incorrect response, skipped response, time-out response). Factor this variable yourself.
 2.  `grade`
 3.  `gender`
-4.  `q_score`
+4.  `new_user_domain_q_score`
 5.  `difficulty`
 6.  `show_coins`
 7.  `response_time_in_milliseconds`
@@ -259,11 +326,86 @@ You can be selective or choose all variables. If you choose to omit certain vari
 #| code-fold: true
 #| code-summary: "Data:"
 
-# SQL query here
-# Delete LG sessions
-# Delete correct responses 
-# "Because the system automatically moves on to the next item after a correct response, we remove these responses."
-# Need motivation logs, domains, and user tables. Also merge these already? 
+# Clean Glob Env, load packages and connect to database
+rm(list = ls())
+library(tidyverse)
+library(oefenwebDatabase)
+
+con <- oefenwebDatabase::connect()
+
+# For this RQ, it might be wise to start off with a subset of the
+# `mot_metrics_logs` table. You can run the code below to create a subset:
+
+# First retrieve all unique users in this table.
+# (We'll only look at data from domain sessions)
+unique_users <- get_query(
+  "SELECT DISTINCT user_id
+  FROM mot_metrics_logs
+  WHERE session = 'domain'",
+  con = con
+)
+
+# Now we will randomly select 20% of the users
+set.seed(123)
+sample_users <- sample_frac(unique_users, 0.20) %>%
+  pull(user_id)
+
+# Get the mot_metrics_logs data for the users sampled above
+logs_data <- get_query(
+  "SELECT *
+  FROM mot_metrics_logs
+  WHERE user_id IN ({sample_users*})
+  AND session = 'domain'",
+  con = con
+)
+
+# Check if no. of unique users in the data equals the no. of users we sampled
+length(unique(logs_data$user_id)) == length(sample_users)
+
+# Remove unnecessary objects
+rm(unique_users, sample_users)
+
+
+# The code below adds some variables from the `mot_metrics_domains` and the
+# `mot_metrics_users` tables to the `mot_metrics_logs` data.
+
+# Get mot_metrics_domains table
+domains <- get_query(
+  "SELECT *
+  FROM mot_metrics_domains",
+  con = con
+)
+
+# Get mot_metrics_users table (for information on gender)
+users <- get_query(
+  "SELECT user_id, gender
+  FROM mot_metrics_users",
+  con = con
+) %>%
+  # Some users are present more than once in the data due to being part of
+  # multiple school classes. Since we only need gender, remove duplicate rows
+  distinct(user_id, gender) 
+
+# Delete correct responses from log records
+# (Because the system automatically moves on to the next item after a correct
+# response, there is no 'feedback looking time'.)
+logs_data <- logs_data %>%
+  filter(correct_answered == 0) %>%
+  # add variables from domains table
+  left_join(
+    dplyr::select(
+      domains,
+      c(domain_id, short_name, token, app, informative_feedback)
+    ),
+    by = "domain_id"
+  ) %>%
+  # add gender from users table
+  left_join(
+    users, by = "user_id"
+  )
+
+# Close connection
+oefenwebDatabase::close_connections()
 ```
 
 ::: {.callout-tip collapse="false"}
