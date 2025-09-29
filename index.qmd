@@ -84,12 +84,13 @@ In this module, you will learn a wide set of data visualisation tools for both s
 
 [Assignment 2](assignments/assignment-2.html){target="_blank"}
 
-Submit **both** assignments to canvas. Assignment 2 should also be submitted to this site, via a GitHub pull request. Instructions for this can be found [on the GitHub landing page](https://github.com/ann1ejohansson/data-visualization-2025). ---
+You'll be working with Git and GitHub for both assignments. Refer [here](documents/working-with-git.qmd) for instructions on how to set up your data visualization server account with GitHub. 
+
 
 ## 💡 How to Use This Site
 
 1.  **Browse the slides** before and after class.\
-2.  **Access the assignments.**\
+2.  **Access the assignments and extra resources.**\
 3.  **Practice workflows with Git.** If you are interested in how to setup a GitHub repository and work with Quarto documents, you can clone the repository and explore the files on your own computer.
 
 ------------------------------------------------------------------------
