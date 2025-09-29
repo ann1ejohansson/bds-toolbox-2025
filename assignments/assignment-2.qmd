@@ -17,7 +17,7 @@ The report should be a description of the process that led to your final data vi
 -  Your final, explanatory, data visualization. Clearly mark which one of your visualizations this is. Include the visualization, along with an explanation of what it aims to communicate. Importantly, what can you conclude from this visualization? Why is this the best way to communicate this conclusion? This should follow logically from the introduction of your report (research question & exploration). 
 
 ### Levels of visualization
-Your chosen research question falls into one of three levels: analytics, infernece, or prediction. Each level has different expectations in terms of how the visualization should be constructed and what role statistical modeling plays. 
+Your chosen research question falls into one of three levels: analytics, inference, or prediction. Each level has different expectations in terms of how the visualization should be constructed and what role statistical modeling plays. 
 
 #### Analytics
 Analytics is about describing and comparing what is happening in the data, often in a way that is directly actionable for a practitioner. At this level, we expect you to create clear, actionable visualizations that are easy to interpret for a practitioner (e.g. a teacher). This should rely less on statistical modeling and more on effective communication of patterns in the data. You do, however, need to make sure that the patterns communicated are reliable. 
@@ -46,6 +46,7 @@ make sure to render the plot large enough so it is readable in the html.
 -   consider whether to plot one or a couple students, or plot general effects.
 -   in your plot, highlight your main conclusion (and if necessary - substantiate with a model)
 -   make sure plot is explanatory
+-   first work on a **subset** of the data!
 
 ## Research Questions
 
@@ -55,9 +56,9 @@ make sure to render the plot large enough so it is readable in the html.
 
 **Level**: Analytics\
 
-**Instruction:** Visualize the progress of the class within the four basic operation games: addition, subtraction, multiplication, division. It should be useful for the teacher; they should be able to efficiently derive which students are on track in each game and which are not. You can choose one of two ways to define progress in this context:
+**Instruction:** Visualize the progress of the class within the following four Math Garden domains: addition, subtraction, clock reading, and tables. It should be useful for the teacher; they should be able to efficiently derive which students are on track in each game and which are not. For this question, you will only have to look at the class' progress within domain sessions. You can choose one of two ways to define progress in this context:
 
-1.  *Population-based approach:* In the dataset, there is a variable called `q_score`. This is a metric which indicates how the student is performing, relative to the average performance within the same age group. For example, a q-score of 400 indicates that a child is performing equal to an average student in grade 4.
+1.  *Population-based approach:* In the dataset, there is a variable called `new_user_domain_q_score`. This is a metric which indicates how the student is performing, relative to the average performance of students within the same age group. For example, a q-score of 400 indicates that a child is performing equal to an average student in grade 4.
 
 2.  *Within-class approach:* In the dataset, there is a variable called `new_user_domain_rating`. This is the raw ability score of the user within the respective game. Normalize this variable for the class within each game to visualize students’ performance relative to the class average.
 
@@ -65,11 +66,47 @@ make sure to render the plot large enough so it is readable in the html.
 #| code-fold: true
 #| code-summary: "Data:"
 
-# SQL query here
+# Clean Glob Env, load packages and connect to database
+rm(list = ls())
+library(tidyverse)
+library(oefenwebDatabase)
+
+con <- oefenwebDatabase::connect()
+
+# For this RQ, we will visualize the progress of students in class '601481'.
+# Run the following code to retrieve the relevant students' user_id's:
+student_ids <- get_query(
+  "SELECT *
+  FROM mot_metrics_users
+  WHERE school_class_id = '601481'",
+  con = con
+) %>%
+  pull(user_id)
+
+# Specify the relevant domains
+domain_ids <- c(1, 2, 9, 59)
+
+# List student id's and domain id's to use as query parameters
+params <- list(student_ids, domain_ids)
+
+# Now get the log records (only domain sessions)
+logs <- get_query(
+  "SELECT *
+  FROM mot_metrics_logs
+  WHERE session = 'domain'
+  AND user_id IN ({params[[1]]*})
+  AND domain_id IN ({params[[2]]*})",
+  con = con,
+  params = params
+)
+
+# Close connection
+oefenwebDatabase::close_connections()
+
 ```
 
 ::: {.callout-tip collapse="false"}
--   Think about how you will deal with children who have no or little data within a specifc domain. (How) will you visualize it? Is it reliable?
+-   Think about how you will deal with children who have no or little data within a specific domain. (How) will you visualize it? Is it reliable?
 
 -   You do not need to worry about generalizibility to other classes. It should be relevant for the teacher to say something about their students' progress within the current class.
 :::
@@ -81,7 +118,9 @@ make sure to render the plot large enough so it is readable in the html.
 
 **Level:** Inference.  
 
-**Instruction:** Define a high vs. low switcher by looking at the variables `n_different_games` and `duration`. Now, choose one or more of the following variables to relate to switching behavior:
+**Instruction:** For this RQ, you will look at the data from the `mot_metrics_sessions` table, which contains different metrics computed at the session level that we think might be related to motivation. Importantly, in this table, a session is defined as active if the user plays games in either environment (Math Garden / Language Sea) without stopping for more than 10 minutes. If no new game is started within 10 minutes, the session ends. In other words, each row marks a period of continuous activity in the learning environment for a given player.
+
+Define a high vs. low switcher by looking at the variables `n_different_games` and `duration`. Now, choose one or more of the following variables to relate to switching behavior:
 
 1.  `mean_correct` \
 2.  `n_skip` \
@@ -93,7 +132,19 @@ make sure to render the plot large enough so it is readable in the html.
 #| code-fold: true
 #| code-summary: "Data:"
 
-# SQL query here
+# Clean Glob Env, load packages and connect to database
+rm(list = ls())
+library(tidyverse)
+library(oefenwebDatabase)
+
+con <- oefenwebDatabase::connect()
+
+# Get mot_metrics_sessions data
+sessions_data <- get_query(
+  "SELECT *
+  FROM mot_metrics_sessions"
+)
+
 ```
 
 ::: {.callout-tip collapse="false"}
@@ -112,7 +163,7 @@ make sure to render the plot large enough so it is readable in the html.
 
 **Instruction:** It is possible that students' motivation differs depending on whether they play in a classroom setting or at home -- a question which we would like you to explore in the data. One way to operationalize motivation in Prowise Learn is post-error quitting. Post-error quitting refers to whether the game was ended prematurely after an error (`post_error_quit`). First, define a variable which indicates whether a student is playing in or out of school:
 
--  School times are between 8:30 and 15.00 on weekdays. Be aware of [school holidays](https://www.rijksoverheid.nl/onderwerpen/schoolvakanties/overzicht-schoolvakanties-per-schooljaar/overzicht-schoolvakanties-2025-2026)! These should be defined as out-of-school. 
+-  School times are between 8:30 and 15.00 on weekdays. Be aware of [school holidays](https://wanneerschoolvakantie.nl/schoolvakanties-2023-2024/)! These should be defined as out-of-school. 
 
 Choose one or more of the following moderators for your final visualization: 
 
