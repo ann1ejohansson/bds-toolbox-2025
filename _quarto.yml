@@ -22,9 +22,11 @@ website:
         text: Assignment 2
       - text: Resources
         menu:
-          - href: assignments/working-on-the-server.qmd
+          - href: documents/working-on-the-server.qmd
             text: "Working on the server"
-          - href: assignments/how-do-we-grade.qmd
+          - href: documents/git-workflow.qmd
+            text: "Working with Git"
+          - href: documents/how-do-we-grade.qmd
             text: "How do we grade your visualizations?"
           - href: https://socviz.co/
             text: "Data Visualization: A Practical Introduction (Healy)"
@@ -32,6 +34,7 @@ website:
             text: "R for Data Science - Data visualization chapter"
           - href: https://canvas.uva.nl/courses/47312/modules
             text: "Videos on Canvas"
+
 
 format:
   html:

@@ -71,9 +71,11 @@ The final draft of your report and data visualization is due **Sunday, October 1
 
 -   Consider the subset of your data that you want to visualize. Does it make sense to plot general effects, or showcase your main point with one or a couple of students?
 
--   Add interactive elements **if you think it adds value to your visualization**.
+-   Add interactive elements **only if you think it adds value to your visualization**.
 
--   **Highlight your main conclusion!**\
+-   **Highlight your main conclusion!**. 
+
+-  Before handing in your final visualization, look at the [guiding principles](). Have you met these conditions?\
 :::
 
 ## Research Questions
