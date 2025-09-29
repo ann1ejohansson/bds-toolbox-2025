@@ -7,13 +7,13 @@ editor: source
 ---
 
 ```{r actual-setup, include = FALSE}
-knitr::opts_chunk$set(eval = FALSE) 
-rm(list = ls()) 
+knitr::opts_chunk$set(eval = FALSE)
+rm(list = ls())
 ```
 
 ## Instructions
 
-Download the templates for this assignment in the [Github Repository](https://github.com/ann1ejohansson/data-visualization-2025) (templates \> assignment-1).
+Download the templates for part 1 of this assignment in the [Github Repository](https://github.com/ann1ejohansson/data-visualization-2025) (templates \> assignment-1).
 
 This is the first assignment for the Data Visualization module. The aim here is to get acquainted with the Prowise Learn data, practice with some ggplot basics, and to get you started with working with your visualizations for the final assignment.
 
@@ -42,7 +42,7 @@ We want to be able to understand and run your code. This will help us to give yo
 -   Run the Code Style check (i.e. the lintr) with the following code & resolve any issues. If you don't know what an error means, internet is your best friend! Also, study the lecture slides of the code styling session. Remember that you can win a full point by making sure your code styling is correct.
 
 ```{r eval=FALSE}
-oefenwebTools::lintrProfile(rstudioapi::getSourceEditorContext()$path)  
+lint(rstudioapi::getSourceEditorContext()$path)
 ```
 
 -   Clear your environment (`rm(list = ls())`) and re-run your code. We won't have anything stored in memory that is not created/retrieved in the script, therefore clearing your environment is a great way to detect any bugs that might accidentally be present.
@@ -90,6 +90,9 @@ if (!"oefenwebTools" %in% all_installed_packages) {devtools::install_github(repo
 if (!"jsonlite" %in% all_installed_packages) {install.packages("jsonlite")}
 if (!"ggplot2" %in% all_installed_packages) {install.packages("ggplot2")}
 if (!"cowplot" %in% all_installed_packages) {install.packages("cowplot")}
+if (!"lintr" %in% all_installed_packages) {install.packages("lintr")}
+if (!"viridis" %in% all_installed_packages) {install.packages("viridis")}
+if (!"plotly" %in% all_installed_packages) {install.packages("plotly")}
 # nolint end
 
 # Load Required Packages
@@ -109,19 +112,24 @@ For this assignment, we will have a look at the two items of the same domain. Fi
 ```{r 1A data}
 item_ids <- c(188391, 186408)
 
-items <- suppressWarnings(DBI::dbGetQuery(con, paste0("SELECT *
-                              FROM `items`
-                              WHERE id IN (", paste(item_ids, collapse = ","), ")")))
+items <- get_query(
+  "SELECT *
+  FROM `items`
+  WHERE id IN ({item_ids*})",
+  con = con
+)
 
 # renaming first column of items data.frame to "item_id"
 colnames(items)[1] <- "item_id"
 
 # obtaining the log_records for the two items of the visualization
-# in this example R code is used "within" a SQL query
-itemsLogs <- suppressWarnings(DBI::dbGetQuery(con, paste0("SELECT *
-                                                        FROM `log_records_2`
-                                                        WHERE `item_id` IN (",
-                                                        paste(c(items$item_id), collapse = ", "), ")")))
+items_logs <- get_query(
+  "SELECT *
+  FROM `log_records_2`
+  WHERE `item_id` IN ({items$item_id*})",
+  con = con
+)
+
 ```
 
 Now that we have the "raw" data, we can start to filter and prepare it for the visualization we want to build.
@@ -129,14 +137,18 @@ Now that we have the "raw" data, we can start to filter and prepare it for the v
 ```{r 1A data-prep-1}
 # make the question and answer_options "json" free
 for (i in 1:nrow(items)) {
-  items$correct_answer[i] <- jsonlite::fromJSON(items$answer_options[i])$answerOptions[1]
+  items$correct_answer[i] <-
+    jsonlite::fromJSON(items$answer_options[i])$answerOptions[1]
   items$question[i] <- jsonlite::fromJSON(items$question[i])$question$content
 }
 
-# we do a left_join between itemLogs and items table to get the item question and correct_answer into itemsLogs
-itemsLogs <- dplyr::left_join(itemsLogs,
-                              items[, c("item_id", "question", "correct_answer")],
-                              by = "item_id")
+# we do a left_join between items_logs and items table
+# to get the item question and correct_answer into items_logs
+items_logs <- dplyr::left_join(
+  items_logs,
+  items[, c("item_id", "question", "correct_answer")],
+  by = "item_id"
+)
 
 ```
 
@@ -144,37 +156,46 @@ Let's do some further data preparations. We prefer to change the data instead of
 
 ```{r 1A data-prep-2}
 # transform variables to suitable types
-itemsLogs$response_in_seconds <- itemsLogs$response_in_milliseconds / 1000
-itemsLogs$correct_answered <- as.logical(itemsLogs$correct_answered)
-itemsLogs$question <- factor(itemsLogs$question)
+items_logs$response_in_seconds <- items_logs$response_in_milliseconds / 1000
+items_logs$correct_answered <- as.logical(items_logs$correct_answered)
+items_logs$question <- factor(items_logs$question)
 
 # make answer column
-itemsLogs$given_answer_type <- NA
-for (i in 1:nrow(itemsLogs)) {
-  if (itemsLogs$correct_answered[i]) {
-    itemsLogs$given_answer_type[i] <- "correct"
+items_logs$given_answer_type <- NA
+for (i in 1:nrow(items_logs)) {
+  if (items_logs$correct_answered[i]) {
+    items_logs$given_answer_type[i] <- "correct"
   } else {
-    itemsLogs$given_answer_type[i] <- "incorrect"
-    if (itemsLogs$answer[i] == "¿") {
-      itemsLogs$given_answer_type[i] <- "questionmark"
+    items_logs$given_answer_type[i] <- "incorrect"
+    if (items_logs$answer[i] == "¿") {
+      items_logs$given_answer_type[i] <- "questionmark"
     }
   }
 }
-itemsLogs$given_answer_type <- factor(itemsLogs$given_answer_type)
+items_logs$given_answer_type <- factor(items_logs$given_answer_type)
 ```
 
 Before we continue we get the grade information from the users table, add this info, do some filtering and change it to a factor:
 
 ```{r 1A data-prep-3}
-users <- DBI::dbGetQuery(con, "SELECT id AS new_user_id, grade FROM users")
-itemsLogs <- dplyr::left_join(itemsLogs, users, by = "new_user_id")
+users <- get_query(
+  "SELECT id AS new_user_id, grade
+  FROM users",
+  con = con
+)
+
+items_logs <- dplyr::left_join(items_logs, users, by = "new_user_id")
 
 # filter (with dplyr) to only work with grade 3 to 8
-itemsLogs <- itemsLogs %>%
+items_logs <- items_logs %>%
   filter(grade %in% c(3:8)) %>%
   as.data.frame()
 
-itemsLogs$grade <- factor(itemsLogs$grade, levels = c(3:8), labels = paste0("Grade ", c(3:8)))
+items_logs$grade <- factor(
+  items_logs$grade,
+  levels = c(3:8),
+  labels = paste0("Grade ", c(3:8))
+)
 
 ```
 
@@ -239,8 +260,7 @@ con <- oefenwebDatabase::connect()
 
 # get the student's log records on the Multiplication game
 # ... and additional info related to the learning goals
-my_data <- suppressWarnings(DBI::dbGetQuery(
-  con,
+my_data <- get_query(
   "SELECT logs.*,
           item_lgs.learning_goal_id,
           lgs.short_name,
@@ -249,8 +269,9 @@ my_data <- suppressWarnings(DBI::dbGetQuery(
   FROM log_records_3 AS logs
   LEFT JOIN items_learning_goals AS item_lgs ON item_lgs.item_id = logs.item_id
   LEFT JOIN learning_goals AS lgs ON lgs.id = item_lgs.learning_goal_id
-  WHERE new_user_id = '19872'"
-))
+  WHERE new_user_id = '19872'",
+  con = con
+)
 
 ```
 
