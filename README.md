@@ -1,7 +1,7 @@
 # Welcome to the BDS Toolbox module: Data Visualization!
 ![Better Plot](images/cartoon-1.png)
 
-📍 [Data Visualization 2025](https://ann1ejohansson.github.io/data-visualization-2025)
+## 📍 [Data Visualization 2025](https://ann1ejohansson.github.io/data-visualization-2025)
 
 ## 🔗 Quick links
 
