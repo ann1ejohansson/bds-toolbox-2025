@@ -3,8 +3,8 @@ title: "DV Assignment 2 (Final Project)"
 format: html
 ---
 
-```{r setup running locally, eval = TRUE, include=FALSE}
-# set up when testing the file locally, set eval = FALSE when running on server
+```{r setup, include=FALSE}
+# set eval = TRUE when running on server
 knitr::opts_chunk$set(eval = FALSE)
 ```
 
@@ -140,7 +140,7 @@ oefenwebDatabase::close_connections()
 ::: {.callout-tip collapse="false"}
 -   Think about how you will deal with children who have no or little data within a specific domain. (How) will you visualize it? Is it reliable?
 
--   You do not need to worry about generalizibility to other classes. It should be relevant for the teacher to say something about their students' progress within the current class.
+-   You do not need to worry about generalizability to other classes. It should be relevant for the teacher to say something about their students' progress within the current class.
 :::
 
 ------------------------------------------------------------------------
