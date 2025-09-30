@@ -199,15 +199,15 @@
     "objectID": "slides/slides.html#section",
     "href": "slides/slides.html#section",
     "title": "Data Visualization",
-    "section": "",
-    "text": "Slides made using quartoCover photo made in R by Danielle Navarro"
+    "section": "📌",
+    "text": "📌\ndata-visualization-2025"
   },
   {
     "objectID": "slides/slides.html#section-1",
     "href": "slides/slides.html#section-1",
     "title": "Data Visualization",
-    "section": "📌",
-    "text": "📌\ndata-visualization-2025"
+    "section": "💬",
+    "text": "💬\nWhy visualize data?"
   },
   {
     "objectID": "slides/slides.html#today",
@@ -221,7 +221,7 @@
     "href": "slides/slides.html#section-2",
     "title": "Data Visualization",
     "section": "💬",
-    "text": "💬\nWhy visualize data?"
+    "text": "💬\nWhat is more important? An eye or an algorithm?\nWhat are the consequences of overrelying on statistical techniques? What are the consequences of overrelying on visualizations?"
   },
   {
     "objectID": "slides/slides.html#anscombes-quartet",
@@ -270,7 +270,7 @@
     "href": "slides/slides.html#speed-dates",
     "title": "Data Visualization",
     "section": "💬 Speed dates",
-    "text": "💬 Speed dates\n\n\n\nWhat do you think about this plot?\nWhat elements can be improved?\nAre there still good things with the plot?\n\n\n\n\n\nKarl Broman"
+    "text": "💬 Speed dates\n\n\n\nWhat do you think about this plot?\nWhat elements can be improved?\nAre the problems aesthetic, perceptual, or substantive?"
   },
   {
     "objectID": "slides/slides.html#aims",
@@ -291,21 +291,21 @@
     "href": "slides/slides.html#requirements-assignment-2",
     "title": "Data Visualization",
     "section": "Requirements Assignment 2",
-    "text": "Requirements Assignment 2\n\nUse R Markdown (or Quarto) to create your visualizations.\nThe markdown document should be in the style of a report: explain your research question, and how you came to your conclusion. Not more than 1000 words.\n\nInclude at least one exploratory graph, and explain how it helped you understand the data.\nOnly your final, explanatory graph, will be graded. Clearly mark which graph this is."
+    "text": "Requirements Assignment 2\n\nUse R Markdown (or Quarto) to create your visualizations.\nThe markdown document should be in the style of a report: explain your research question, and how you came to your conclusion. Not more than 1000 words.\n\nInclude an exploratory graph, and explain how it helped you understand the data.\nOnly your final, explanatory graph, will be graded. Clearly mark which graph this is."
   },
   {
     "objectID": "slides/slides.html#workflow",
     "href": "slides/slides.html#workflow",
     "title": "Data Visualization",
     "section": "Workflow",
-    "text": "Workflow\n\nComment your code clearly. We want to understand your thought process.\nWork in the Data Visualization Server, and compile the html document there.\n\n️⚠ Only upload the html document to GitHub, not the R scripts and especially not any data."
+    "text": "Workflow\n\nComment your code clearly. We want to understand your thought process.\nCollaborate within your group using Git & GitHub. You will set up your own project repository connected to the Data Visualization Server.\nMake sure all documents render correctly, and that code is styled and runs.\n️⚠ Do not push any data to GitHub."
   },
   {
     "objectID": "slides/slides.html#workflow-1",
     "href": "slides/slides.html#workflow-1",
     "title": "Data Visualization",
     "section": "Workflow",
-    "text": "Workflow\n\nWorking on the server\nGit setup & workflow\nRubrics"
+    "text": "Workflow\n\nWorking on the server\nGit setup & workflow"
   },
   {
     "objectID": "documents/working-on-the-server.html",
@@ -544,5 +544,82 @@
     "title": "Data Visualization",
     "section": "Tuesday, Sept 30",
     "text": "Tuesday, Sept 30\n\nWhy visualize data?\nWhat makes a plot good (and bad)?\nGuiding principles\nData Visualization Project"
+  },
+  {
+    "objectID": "slides/slides.html#tuesday-sept-30",
+    "href": "slides/slides.html#tuesday-sept-30",
+    "title": "Data Visualization",
+    "section": "Tuesday, Sept 30",
+    "text": "Tuesday, Sept 30\n\nWhy visualize data?\nWhat makes a plot good (and bad)?\nGuiding principles\nData Visualization Project"
+  },
+  {
+    "objectID": "slides/slides.html#tuesday-sept-30-1",
+    "href": "slides/slides.html#tuesday-sept-30-1",
+    "title": "Data Visualization",
+    "section": "Tuesday, Sept 30",
+    "text": "Tuesday, Sept 30\n\nWhy visualize data?\nWhat makes a plot good (and bad)?\nGuiding principles\nData Visualization Project"
+  },
+  {
+    "objectID": "slides/slides.html#why-visualize-data-3",
+    "href": "slides/slides.html#why-visualize-data-3",
+    "title": "Data Visualization",
+    "section": "Why visualize data?",
+    "text": "Why visualize data?"
+  },
+  {
+    "objectID": "slides/slides.html#tuesday-sept-30-2",
+    "href": "slides/slides.html#tuesday-sept-30-2",
+    "title": "Data Visualization",
+    "section": "Tuesday, Sept 30",
+    "text": "Tuesday, Sept 30\n\nWhy visualize data?\nWhat makes a plot good (and bad)?\nGuiding principles\nData Visualization Project"
+  },
+  {
+    "objectID": "slides/slides.html#some-good-examples",
+    "href": "slides/slides.html#some-good-examples",
+    "title": "Data Visualization",
+    "section": "Some good examples",
+    "text": "Some good examples\n Distributions are informative\n\n\n\n\n\n\nNYT Graphic - Obamacare spending\nHow to reproduce a NYT graphic"
+  },
+  {
+    "objectID": "slides/slides.html#tuesday-sept-30-3",
+    "href": "slides/slides.html#tuesday-sept-30-3",
+    "title": "Data Visualization",
+    "section": "Tuesday, Sept 30",
+    "text": "Tuesday, Sept 30\n\nWhy visualize data?\nWhat makes a plot good (and bad)?\nGuiding principles\nData Visualization Project"
+  },
+  {
+    "objectID": "slides/slides.html#tips-for-the-best-viz",
+    "href": "slides/slides.html#tips-for-the-best-viz",
+    "title": "Data Visualization",
+    "section": "Tips for the best viz",
+    "text": "Tips for the best viz\n\nIs it explaining data?\nIs the information complete and correct?\nAre axes correct? (+ Should they have a zero-point?)\nDo the colors work? ( + Do they map to a relevant attribute?)\nAre all elements needed?\nWhat is the data to ink ratio?\nIs it understandable & simple?\nDoes it portray one conclusion?"
+  },
+  {
+    "objectID": "slides/slides.html#break",
+    "href": "slides/slides.html#break",
+    "title": "Data Visualization",
+    "section": "Break",
+    "text": "Break\n\n\nCode\nlibrary(\"RXKCD\")\nRXKCD::getXKCD(which = \"833\")"
+  },
+  {
+    "objectID": "slides/slides.html#tuesday-sept-30-4",
+    "href": "slides/slides.html#tuesday-sept-30-4",
+    "title": "Data Visualization",
+    "section": "Tuesday, Sept 30",
+    "text": "Tuesday, Sept 30\n\nWhy visualize data?\nWhat makes a plot good (and bad)?\nGuiding principles\nData Visualization Project"
+  },
+  {
+    "objectID": "slides/slides.html#first-draft-peer-review",
+    "href": "slides/slides.html#first-draft-peer-review",
+    "title": "Data Visualization",
+    "section": "First draft & peer review",
+    "text": "First draft & peer review\n\nFirst draft due Friday 10/10 12.30 – No requirements.\nPeer review due Friday 10/10 23.59 – Review one other group’s work. You will have time for this during Friday’s class."
+  },
+  {
+    "objectID": "slides/slides.html#grading",
+    "href": "slides/slides.html#grading",
+    "title": "Data Visualization",
+    "section": "Grading",
+    "text": "Grading\n\nAssigment 1: 50%\nIndividual part:\nGroup part:\nAssigment 2: 50%"
   }
 ]
