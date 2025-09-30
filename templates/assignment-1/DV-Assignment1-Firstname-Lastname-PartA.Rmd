@@ -38,6 +38,9 @@ if (!"oefenwebTools" %in% all_installed_packages) {devtools::install_github(repo
 if (!"jsonlite" %in% all_installed_packages) {install.packages("jsonlite")}
 if (!"ggplot2" %in% all_installed_packages) {install.packages("ggplot2")}
 if (!"cowplot" %in% all_installed_packages) {install.packages("cowplot")}
+if (!"lintr" %in% all_installed_packages) {install.packages("lintr")}
+if (!"viridis" %in% all_installed_packages) {install.packages("viridis")}
+if (!"plotly" %in% all_installed_packages) {install.packages("plotly")}
 # nolint end
 
 # Load Required Packages
@@ -47,6 +50,9 @@ library(oefenwebTools)
 library(jsonlite)
 library(cowplot)
 library(ggplot2)
+library(lintr)
+library(viridis)
+library(plotly)
 
 # make database connection
 con <- oefenwebDatabase::connect()
