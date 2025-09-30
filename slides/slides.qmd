@@ -55,13 +55,6 @@ Cover photo made in R by [Danielle Navarro](https://art.djnavarro.net){target="_
 
 # Why visualize data? 👀 {background-color="#8000FF"}
 
-## Tuesday, Sept 30
-
--   **Why visualize data?**
--   What makes a plot good (and bad)?
--   Guiding principles
--   Data Visualization Project
-
 ## 💬
 
 ### Why visualize data?
@@ -126,12 +119,6 @@ What are the consequences of overrelying on statistical techniques? <br>What are
 
 # Bad plots 💩 {background-color="#8000FF"}
 
-## Tuesday, Sept 30
-
--   Why visualize data?
--   **What makes a plot good (and bad)?**
--   Guiding principles
--   Data Visualization Project
 
 ## What makes a bad plot bad?
 
@@ -460,13 +447,6 @@ RXKCD::getXKCD(which = "833")
 ```
 
 # Data Visualization Project 📊 {background-color="#8000FF"}
-
-## Tuesday, Sept 30
-
--   Why visualize data?
--   What makes a plot good (and bad)?
--   Guiding principles
--   **Data Visualization Project**
 
 ## Aims
 
