@@ -1,87 +1,178 @@
 [
   {
-    "objectID": "documents/how-do-we-grade.html",
-    "href": "documents/how-do-we-grade.html",
-    "title": "how-do-we-grade",
+    "objectID": "documents/working-on-the-server.html",
+    "href": "documents/working-on-the-server.html",
+    "title": "Working on the Oefenweb Server",
     "section": "",
-    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
+    "text": "In this tutorial, we will learn how to work on the Oefenweb server. The server contains real data from Prowise Learn, which you can use to create visualizations. You will need to connect properly to the server in order to access the data and complete the assignments in the Data Visualization modules.\n\nStep 1: Connect to the server\nYou will have signed the GDPR form, and received log-in credentials for the server in an earlier module of this course. Use the same credentials to log in to the data visualization server: https://data-visualization.oefenweb.nl/rstudio/auth-sign-in.\n\nSetup your environment\nWhen working with RMarkdown, start with a setup chunk. This allows you to change settings for all code chunks in your document. Any chunk settings you set here can be overridden in individual chunks later on. It is also good practice to clear your environment at the start of your script, to avoid any conflicts with existing objects in memory.\n\nknitr::opts_chunk$set(echo = TRUE) # set default echo = TRUE for all code blocks\n\nrm(list = ls()) # Remove any existing objects in memory\n\n\n\nInstall necessary packages\nLet’s get started by ensuring that you have all the packages installed that you will need later on.\n\n# Install Packages\n# Find everything that the user currently has installed\nall_installed_packages &lt;- installed.packages()[, \"Package\"]\n# Install any missing, but required packages\n# nolint start -- trick to omit some lines from the lintr checker, only if you have a good reason!\nif (!\"tidyverse\" %in% all_installed_packages) {install.packages(\"tidyverse\")}\nif (!\"devtools\" %in% all_installed_packages) {install.packages(\"devtools\")}\nif (!\"oefenwebDatabase\" %in% all_installed_packages) {devtools::install_github(repo = \"Oefenweb/r-database\")}\nif (!\"oefenwebTools\" %in% all_installed_packages) {devtools::install_github(repo = \"Oefenweb/r-tools\")}\nif (!\"jsonlite\" %in% all_installed_packages) {install.packages(\"jsonlite\")}\nif (!\"ggplot2\" %in% all_installed_packages) {install.packages(\"ggplot2\")}\nif (!\"cowplot\" %in% all_installed_packages) {install.packages(\"cowplot\")}\nif (!\"viridis\" %in% all_installed_packages) {install.packages(\"viridis\")}\nif (!\"plotly\" %in% all_installed_packages) {install.packages(\"plotly\")}\n# nolint end\n\n# Load Required Packages\nlibrary(tidyverse)\nlibrary(oefenwebDatabase)\nlibrary(oefenwebTools)\nlibrary(jsonlite)\nlibrary(cowplot)\nlibrary(ggplot2)\n\n\n\nMake a connection to the server\nWe now have everything we need to let our online R Studio environment know how to “communicate” with our Data Server. We can connect with the database by using the following code. This creates a connection to the database that is stored in the variable con.\n\ncon &lt;- oefenwebDatabase::connect()\n\n\n\n\nStep 2: Retrieve data from the server\n\nRetrieve data with an SQL query\nFrom this point on, you can use the database connection to retrieve data from the server. What the data actually looks like, and which tables/columns are available can be viewed on the Adminer. Log in with the your Oefenweb username and password, and select oefenweb_nl_app from the databases.\nWe can, for example, use the following SQL statement to retrieve the domains table:\n\n# select all columns (*) from the domains table.\nmy_data_domains &lt;-\n  DBI::dbGetQuery(con, # the connection element to our database\n                  \"SELECT * FROM `domains`\")\n\nYou will receive warnings that let you know how data has been parsed. You can ignore these, or even better suppress them ;)\n\nmy_data_domains &lt;-\n  suppressWarnings(DBI::dbGetQuery(con,\n                                   \"SELECT * FROM `domains`\"))\n\nRecently, we updated the oefenwebDatabase package with a new function: get_query(). This function automatically suppresses SQL warnings and uses glue_sql() for safe SQL injections (rather than relying on paste() or paste0()). Retrieving data with get_query() looks like this:\n\n# select all columns (*) from the domains table.\nmy_data_domains &lt;- get_query(\n  \"SELECT * FROM `domains`\",\n  con = con # the connection element to our database\n)\n\nThe params argument can be used to specify certain parameters that you want to call within your SQL statement (with {params[[i]]} or {params[[j]]*}):\n\n# specify SQL parameters in 'params' list\ndomain_group_ids &lt;- c(1, 2, 5)\napplication_id &lt;- 1\nparams &lt;- list(domain_group_ids, application_id)\n\n# select all columns from the domains table for domains 1:4\nmy_data_domains &lt;- get_query(\n  \"SELECT *\n  FROM `domains`\n  WHERE `domain_group_id` IN ({params[[1]]*})\n  AND `application_id` = ({params[[2]]})\",\n  con = con,\n  params = params\n)\n\nBelow an example of a nested query:\n\ndata &lt;- get_query(\n  \"SELECT `id`, `login_count`, `new_school_id`, `grade`\n  FROM `users`\n  WHERE `id` IN\n    (SELECT `new_user_id`\n    FROM `school_classes_users`\n    WHERE `new_school_class_id` = '3')\",\n  con = con\n)\n\nNow lets get some item data. In the items table we can find data that contains item information as for example the item question or answer options. We will choose the domain tafels (Multiplication Tables). In the items table we can see that there is no mention of “tafels” anywhere, however, each item does have a domain_id listed. If we look in the domains table we just retrieved, we see that tafels has the id ‘59’. We can use this information to retrieve only the items from the tafels game:\n\nitems &lt;- get_query(\n  \"SELECT *\n  FROM `items`\n  WHERE `domain_id` = '59'\",\n  con = con\n)\n\nFor a review of SQL queries, see the SQL Handout from the previous module.\n\n\n\nStep 3: Manipulate the data\nNow we manipulate the data and create some new variables that we will need later on. First we convert the continuous variable maximum_response_in_seconds (the total amount of time allowed per item) and turn it into a categorical factor:\n\nitems$maximum_response_in_seconds &lt;- factor(items$maximum_response_in_seconds,\n                                            levels = c(5, 10, 15, 20),\n                                            labels = c(\"5 seconds\",\n                                                       \"10 seconds\",\n                                                       \"15 seconds\",\n                                                       \"20 seconds\"))\n\nThen, we want to know what the actual answer was to a question. Unfortunately, we store question and answer/answer_options data in the format of a JSON string. We thus need to clean the JSON before we can retrieve the answers:\n\n# Create a new variable where we will store the result\nitems$answer &lt;- numeric(nrow(items))\n\n# Loop over each row to clean the content (you could also use an apply function)\nfor (i in seq_len(nrow(items))) {\n  items$answer[i] &lt;-\n    as.numeric(jsonlite::fromJSON(items$answer_options[i])$answerOptions)\n}\n\nWe now have a column answer that has the cleaned, numeric, outcome for each question/item. We can use this to create another categorical variable:\n\n# Now we determine whether the answer is below or above 50\nitems$answer_result &lt;- items$answer &lt;= 50\n\n# Finally we make answer_result also a categorical factor variable\nitems$answer_result &lt;- factor(items$answer_result, levels = c(TRUE, FALSE),\n                              labels = c(\"equal to or below 50\", \"above 50\"))\n\n\n\nStep 4: Make a visualization\nOk, now we are ready to make a plot. We will plot the item deadline (maximum_response_time_in_seconds) on the x-axis and the item difficulty (rating) on the y-axis. We group the items into a group with answer equal to or below 50 and above 50.\n\nggplot(data = items,\n       aes(x = maximum_response_in_seconds,\n           y = rating,\n           fill = answer_result)) +\n  geom_boxplot() +\n  labs(x = \"Available Response Time\",\n       y = \"Item Rating/Difficulty\",\n       fill = \"Item Answer\")\n\n\n\nStep 5: Disconnect from the server\nWhen you are done working on the server, you need to disconnect from the database. You do this with the following code:\n\noefenwebDatabase::close_connections()"
   },
   {
-    "objectID": "documents/how-do-we-grade.html#quarto",
-    "href": "documents/how-do-we-grade.html#quarto",
-    "title": "how-do-we-grade",
-    "section": "",
-    "text": "Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
+    "objectID": "slides/slides copy.html#section",
+    "href": "slides/slides copy.html#section",
+    "title": "Data Visualization",
+    "section": "📌",
+    "text": "📌\ndata-visualization-2025"
   },
   {
-    "objectID": "documents/how-do-we-grade.html#running-code",
-    "href": "documents/how-do-we-grade.html#running-code",
-    "title": "how-do-we-grade",
-    "section": "Running Code",
-    "text": "Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n1 + 1\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed)."
+    "objectID": "slides/slides copy.html#tuesday-sept-30",
+    "href": "slides/slides copy.html#tuesday-sept-30",
+    "title": "Data Visualization",
+    "section": "Tuesday, Sept 30",
+    "text": "Tuesday, Sept 30\n\nWhy visualize data?\nWhat makes a plot good (and bad)?\nGuiding principles\nData Visualization Project"
   },
   {
-    "objectID": "documents/git-workflow.html",
-    "href": "documents/git-workflow.html",
-    "title": "Working with Git on the Server",
-    "section": "",
-    "text": "In this tutorial, you will learn how to:\n\nConnect your GitHub account to the online RStudio server\nClone your assigned GitHub repository for the group assignments into Rstudio and initialize Git in your RStudio project, so you can track changes and collaborate with your team"
+    "objectID": "slides/slides copy.html#tuesday-sept-30-1",
+    "href": "slides/slides copy.html#tuesday-sept-30-1",
+    "title": "Data Visualization",
+    "section": "Tuesday, Sept 30",
+    "text": "Tuesday, Sept 30\n\nWhy visualize data?\nWhat makes a plot good (and bad)?\nGuiding principles\nData Visualization Project"
   },
   {
-    "objectID": "documents/git-workflow.html#introduction",
-    "href": "documents/git-workflow.html#introduction",
-    "title": "Working with Git on the Server",
-    "section": "",
-    "text": "In this tutorial, you will learn how to:\n\nConnect your GitHub account to the online RStudio server\nClone your assigned GitHub repository for the group assignments into Rstudio and initialize Git in your RStudio project, so you can track changes and collaborate with your team"
+    "objectID": "slides/slides copy.html#section-1",
+    "href": "slides/slides copy.html#section-1",
+    "title": "Data Visualization",
+    "section": "💬",
+    "text": "💬\nWhy visualize data?"
   },
   {
-    "objectID": "documents/git-workflow.html#connecting-github-to-rstudio",
-    "href": "documents/git-workflow.html#connecting-github-to-rstudio",
-    "title": "Working with Git on the Server",
-    "section": "Connecting GitHub to RStudio",
-    "text": "Connecting GitHub to RStudio\nIn order to be able to connect your online RStudio environment to your group’s GitHub repository, you first have to create a SSH key through the following steps.\n\nStep 1: Create and add SSH key to GitHub\n\nLog into your online RStudio environment: https://data-visualization.oefenweb.nl/rstudio/auth-sign-in.\nCreate a SSH key: Go to Tools &gt; global options &gt; GIT/SVN &gt; click on Create SSH Key... &gt; and click create again; a passphrase is not necessary. Make sure the SSH key type ED25519 is selected in the dropdown menu (should already be selected for you).\n\n \n\nNow go to your Files pane in RStudio and select Show Hidden Files like this:\n\n\n\n\nSSH Key\n\n\n\nYou can find your SSH key in the .ssh folder. Open the file with the public key (ending with .pub) and copy the entire content of the file. We need to add this public key to your GitHub account\n\n \n\nNow open GitHub and go to your Settings. From here, go to SSH and GPG keys, and click on New SSH key. Add the public key you just copied from your online RStudio, and give your key a title (for example, Data viz server).\n\n\n\n\nSSH Key\n\n\nAnd there you go! You have now successfully let your online RStudio environment and your GitHub account know that these are allowed to communicate with each other. We can now clone your assigned GitHub group repository into your RStudio account.\n\n\nStep 2: Adding git-tracked R projects\n\nGo to your group’s GitHub repository and click on the green &lt;&gt; Code button. Choose to clone the repository via SSH and copy the code:\n\n\n\n\nSSH Key\n\n\n\nNow go back to RStudio. On the top right (sort of cubical icon) you can find a project overview Project: (none). Make sure this is in fact set to no project, if you see the name of a different repository/project, click it and select close project.\nMake a new R project for your group assignment: click on New project &gt; Clone Git Repository. Add the code you just copied from GitHub to Repository URL and create the project (the Project directory name will automatically be created for you).\n\n\n\n\nSSH Key\n\n\nIt will now appear as if your RStudio is re-starting; don’t be feared, this is what is supposed to be happening. Projects are temporary representations of your RStudio environment, so that you can work on different projects with different data to keep your work structure clear.\nIf you look in your Files pane, you will see that the folder was selected, which holds all the information that was on the GitHub repository.\nIf you look in your Environment pane, you can now see an extra tab called Git. You have now successfully cloned your repository and let Git track your changes!"
+    "objectID": "slides/slides copy.html#why-visualize-data-2",
+    "href": "slides/slides copy.html#why-visualize-data-2",
+    "title": "Data Visualization",
+    "section": "Why visualize data?",
+    "text": "Why visualize data?"
   },
   {
-    "objectID": "documents/git-workflow.html#now-you-can-work-in-your-project",
-    "href": "documents/git-workflow.html#now-you-can-work-in-your-project",
-    "title": "Working with Git on the Server",
-    "section": "Now you can work in your project",
-    "text": "Now you can work in your project\nOpen this project whenever you are working on the group assignments. You do this by either by clicking on the Project: &lt;your-repo-name&gt; button in the top right corner, or by double-clicking the .Rproj file in your project directory.\nCommit, push, and pull changes via the terminal in the online RStudio editor, or in the tab called Git. Remember to always pull changes into your environment before you start working on the project, and push your changes when you are done working on it. This way, you and your team members will always have access to the most recent version of the project, and you (hopefully) avoid merge conflicts.\nIt is good practice to close the project when you are done working on it, to avoid accidentally making changes to the wrong project the next time you open RStudio."
+    "objectID": "slides/slides copy.html#why-visualize-data-3",
+    "href": "slides/slides copy.html#why-visualize-data-3",
+    "title": "Data Visualization",
+    "section": "Why visualize data?",
+    "text": "Why visualize data?"
   },
   {
-    "objectID": "templates/assignment-1/DV-Assignment1-Firstname-Lastname-PartA.html",
-    "href": "templates/assignment-1/DV-Assignment1-Firstname-Lastname-PartA.html",
-    "title": "BDS Toolbox: DV Assignment 1 Part 1",
-    "section": "",
-    "text": "Use this template to help you get started with your assignment. You can add more code chunks as needed. After knitting, a .html document will be generated in the same folder as this .Rmd file. You should download both documents (.Rmd and .html) from the server and submit them following the instructions on the assignment.\nSome tips if you encounter knitting issues:\nIf you make more than one visualization per part, please indicate clearly which visualization we should look at when grading."
+    "objectID": "slides/slides copy.html#anscombes-quartet",
+    "href": "slides/slides copy.html#anscombes-quartet",
+    "title": "Data Visualization",
+    "section": "Anscombe’s quartet",
+    "text": "Anscombe’s quartet\n\n\n \n\n\n\nCode\nlibrary(\"datasauRus\")\ndatasaurus_dozen %&gt;% \n  ggplot2::ggplot(aes(x = x, y = y, color = dataset)) +\n  ggplot2::geom_point() +\n  ggplot2::theme_void() +\n  ggplot2::geom_smooth(method = \"lm\", color = \"gray\", fill = \"gray\", alpha = .5) +\n  ggplot2::theme(legend.position = \"none\", text = element_text(size = 30)) +\n  ggplot2::facet_wrap(~dataset, ncol = 4)\n\n\n\n\n\n\n\n\n\n\n\nPackages: datasauRus, anscombiser.\nMore information: Same Stats, Different Graphs, socviz.co."
   },
   {
-    "objectID": "templates/assignment-1/DV-Assignment1-Firstname-Lastname-PartA.html#setup-environment",
-    "href": "templates/assignment-1/DV-Assignment1-Firstname-Lastname-PartA.html#setup-environment",
-    "title": "BDS Toolbox: DV Assignment 1 Part 1",
-    "section": "Setup environment",
-    "text": "Setup environment\n\nknitr::opts_chunk$set(echo = TRUE) # set default echo = TRUE for all code blocks\nrm(list = ls()) # Remove any existing objects in memory"
+    "objectID": "slides/slides copy.html#section-2",
+    "href": "slides/slides copy.html#section-2",
+    "title": "Data Visualization",
+    "section": "💬",
+    "text": "💬\nWhat is more important? An eye or an algorithm?\nWhat are the consequences of overrelying on statistical techniques? What are the consequences of overrelying on visualizations?"
   },
   {
-    "objectID": "templates/assignment-1/DV-Assignment1-Firstname-Lastname-PartA.html#a.-replicate-this-plot",
-    "href": "templates/assignment-1/DV-Assignment1-Firstname-Lastname-PartA.html#a.-replicate-this-plot",
-    "title": "BDS Toolbox: DV Assignment 1 Part 1",
-    "section": "A. Replicate this plot",
-    "text": "A. Replicate this plot\n\nLibraries and database connection\n\n# Install Packages\n# Find everything that the user currently has installed\nall_installed_packages &lt;- installed.packages()[, \"Package\"]\n# Install any missing, but required packages\n# nolint start -- trick to omit some lines from the lintr checker, only if you have a good reason!\nif (!\"tidyverse\" %in% all_installed_packages) {install.packages(\"tidyverse\")}\nif (!\"devtools\" %in% all_installed_packages) {install.packages(\"devtools\")}\nif (!\"oefenwebDatabase\" %in% all_installed_packages) {devtools::install_github(repo = \"Oefenweb/r-database\")}\nif (!\"oefenwebTools\" %in% all_installed_packages) {devtools::install_github(repo = \"Oefenweb/r-tools\")}\nif (!\"jsonlite\" %in% all_installed_packages) {install.packages(\"jsonlite\")}\nif (!\"ggplot2\" %in% all_installed_packages) {install.packages(\"ggplot2\")}\nif (!\"cowplot\" %in% all_installed_packages) {install.packages(\"cowplot\")}\nif (!\"lintr\" %in% all_installed_packages) {install.packages(\"lintr\")}\nif (!\"viridis\" %in% all_installed_packages) {install.packages(\"viridis\")}\nif (!\"plotly\" %in% all_installed_packages) {install.packages(\"plotly\")}\n# nolint end\n\n# Load Required Packages\nlibrary(tidyverse)\nlibrary(oefenwebDatabase)\nlibrary(oefenwebTools)\nlibrary(jsonlite)\nlibrary(cowplot)\nlibrary(ggplot2)\nlibrary(lintr)\nlibrary(viridis)\nlibrary(plotly)\n\n# make database connection\ncon &lt;- oefenwebDatabase::connect()"
+    "objectID": "slides/slides copy.html#tuesday-sept-30-2",
+    "href": "slides/slides copy.html#tuesday-sept-30-2",
+    "title": "Data Visualization",
+    "section": "Tuesday, Sept 30",
+    "text": "Tuesday, Sept 30\n\nWhy visualize data?\nWhat makes a plot good (and bad)?\nGuiding principles\nData Visualization Project"
   },
   {
-    "objectID": "templates/assignment-1/DV-Assignment1-Firstname-Lastname-PartA.html#a.-replicate-this-plot-1",
-    "href": "templates/assignment-1/DV-Assignment1-Firstname-Lastname-PartA.html#a.-replicate-this-plot-1",
-    "title": "BDS Toolbox: DV Assignment 1 Part 1",
-    "section": "A. Replicate this plot",
-    "text": "A. Replicate this plot\n\nRetrieve data\n… add more code chunks as needed. \n\n\nCreate plot"
+    "objectID": "slides/slides copy.html#what-makes-a-bad-plot-bad",
+    "href": "slides/slides copy.html#what-makes-a-bad-plot-bad",
+    "title": "Data Visualization",
+    "section": "What makes a bad plot bad?",
+    "text": "What makes a bad plot bad?\n\n\n\nAesthetic (ugly)\nPerceptual (bad)\nSubstantive (wrong)\n\n\n\n\n\nClaus Wilke - Ugly, bad, and wrong figures"
   },
   {
-    "objectID": "templates/assignment-1/DV-Assignment1-Firstname-Lastname-PartA.html#b.-interactive-visualizations-with-plotly",
-    "href": "templates/assignment-1/DV-Assignment1-Firstname-Lastname-PartA.html#b.-interactive-visualizations-with-plotly",
-    "title": "BDS Toolbox: DV Assignment 1 Part 1",
-    "section": "B. Interactive visualizations with plotly",
-    "text": "B. Interactive visualizations with plotly\n\nRetrieve data\n\n\nCreate interactive plot"
+    "objectID": "slides/slides copy.html#speed-dates",
+    "href": "slides/slides copy.html#speed-dates",
+    "title": "Data Visualization",
+    "section": "💬 Speed dates",
+    "text": "💬 Speed dates\n\n\n\nWhat do you think about this plot?\nWhat elements can be improved?\nAre the problems aesthetic, perceptual, or substantive?"
+  },
+  {
+    "objectID": "slides/slides copy.html#exploratory-versus-explanatory",
+    "href": "slides/slides copy.html#exploratory-versus-explanatory",
+    "title": "Data Visualization",
+    "section": "Exploratory versus explanatory",
+    "text": "Exploratory versus explanatory\n\nExploratory in the sense of data exploration. Exploratory in the sense of visualization exploration (as in previous example, where the same data can be plotted in several ways). In both cases, you can create ugly plots.\nWe focus on explanatory data viz (also bridge to next). Beautiful plots!\n\n\n\n\n\n\nSource: Natalia Kiseleva\n\n\n\n\n\n\nSource: Scott McCloud\n\n\n\nExploratory: examine the structure of your data.\nExplanatory: tell a story with your data.\n\n\n\nMore resources: clauswilke.com (telling a story and making a point), susielu.com (different interpretation of exploratory/explanatory)."
+  },
+  {
+    "objectID": "slides/slides copy.html#exploratory-versus-explanatory-1",
+    "href": "slides/slides copy.html#exploratory-versus-explanatory-1",
+    "title": "Data Visualization",
+    "section": "Exploratory versus explanatory",
+    "text": "Exploratory versus explanatory\n\n\n\n\n\n\nSource: storytellingwithdata.com\n\nMore resources: clauswilke.com (telling a story and making a point), susielu.com (different interpretation of exploratory/explanatory)."
+  },
+  {
+    "objectID": "slides/slides copy.html#some-good-examples",
+    "href": "slides/slides copy.html#some-good-examples",
+    "title": "Data Visualization",
+    "section": "Some good examples",
+    "text": "Some good examples\n Distributions are informative\n\n\n\n\n\n\nNYT Graphic - Obamacare spending\nHow to reproduce a NYT graphic"
+  },
+  {
+    "objectID": "slides/slides copy.html#tuesday-sept-30-3",
+    "href": "slides/slides copy.html#tuesday-sept-30-3",
+    "title": "Data Visualization",
+    "section": "Tuesday, Sept 30",
+    "text": "Tuesday, Sept 30\n\nWhy visualize data?\nWhat makes a plot good (and bad)?\nGuiding principles\nData Visualization Project"
+  },
+  {
+    "objectID": "slides/slides copy.html#tips-for-the-best-viz",
+    "href": "slides/slides copy.html#tips-for-the-best-viz",
+    "title": "Data Visualization",
+    "section": "Tips for the best viz",
+    "text": "Tips for the best viz\n\nIs it explaining data?\nIs the information complete and correct?\nAre axes correct? (+ Should they have a zero-point?)\nDo the colors work? ( + Do they map to a relevant attribute?)\nAre all elements needed?\nWhat is the data to ink ratio?\nIs it understandable & simple?\nDoes it portray one conclusion?"
+  },
+  {
+    "objectID": "slides/slides copy.html#break",
+    "href": "slides/slides copy.html#break",
+    "title": "Data Visualization",
+    "section": "Break",
+    "text": "Break\n\n\nCode\nlibrary(\"RXKCD\")\nRXKCD::getXKCD(which = \"833\")"
+  },
+  {
+    "objectID": "slides/slides copy.html#tuesday-sept-30-4",
+    "href": "slides/slides copy.html#tuesday-sept-30-4",
+    "title": "Data Visualization",
+    "section": "Tuesday, Sept 30",
+    "text": "Tuesday, Sept 30\n\nWhy visualize data?\nWhat makes a plot good (and bad)?\nGuiding principles\nData Visualization Project"
+  },
+  {
+    "objectID": "slides/slides copy.html#aims",
+    "href": "slides/slides copy.html#aims",
+    "title": "Data Visualization",
+    "section": "Aims",
+    "text": "Aims\nYour goal is to go from exploring the Prowise data to telling a story with it.\n\nAssignment 1: Choose a research question. Explore the data and create a set of visualizations to help you understand the data.\nAssignment 2: Create a final data visualization that tells a story with the data. Compiled into a html document, and presented in a GitHub repository."
+  },
+  {
+    "objectID": "slides/slides copy.html#requirements-assignment-2",
+    "href": "slides/slides copy.html#requirements-assignment-2",
+    "title": "Data Visualization",
+    "section": "Requirements Assignment 2",
+    "text": "Requirements Assignment 2\n\nUse R Markdown (or Quarto) to create your visualizations.\nThe markdown document should be in the style of a report: explain your research question, and how you came to your conclusion. Not more than 1000 words.\n\nInclude an exploratory graph, and explain how it helped you understand the data.\nOnly your final, explanatory graph, will be graded. Clearly mark which graph this is."
+  },
+  {
+    "objectID": "slides/slides copy.html#workflow",
+    "href": "slides/slides copy.html#workflow",
+    "title": "Data Visualization",
+    "section": "Workflow",
+    "text": "Workflow\n\nComment your code clearly. We want to understand your thought process.\nCollaborate within your group using Git & GitHub. You will set up your own project repository connected to the Data Visualization Server.\nMake sure all documents render correctly, and that code is styled and runs.\n️⚠ Do not push any data to GitHub."
+  },
+  {
+    "objectID": "slides/slides copy.html#workflow-1",
+    "href": "slides/slides copy.html#workflow-1",
+    "title": "Data Visualization",
+    "section": "Workflow",
+    "text": "Workflow\n\nWorking on the server\nGit setup & workflow"
+  },
+  {
+    "objectID": "slides/slides copy.html#first-draft-peer-review",
+    "href": "slides/slides copy.html#first-draft-peer-review",
+    "title": "Data Visualization",
+    "section": "First draft & peer review",
+    "text": "First draft & peer review\n\nFirst draft due Friday 10/10 12.30 – No requirements.\nPeer review due Friday 10/10 23.59 – Review one other group’s work. You will have time for this during Friday’s class."
+  },
+  {
+    "objectID": "slides/slides copy.html#grading",
+    "href": "slides/slides copy.html#grading",
+    "title": "Data Visualization",
+    "section": "Grading",
+    "text": "Grading\n\nAssigment 1: 50%\nIndividual part:\nGroup part:\nAssigment 2: 50%"
   },
   {
     "objectID": "index.html",
@@ -196,25 +287,11 @@
     "text": "Part 2: Start on Final DV Project (Group)\n\nA. Specify your research question\nIn class 1 you indicated your preference for a research question for the final project, and were assigned a group to work with. You were also assigned one of the GitHub repositories from the Oefenweb GitHub account, which you can use to collaborate on your research project. Together with your group, read the instructions for your assigned research question in Assignment 2 again.\n\nDoes your project take an analytical, inference, or predictive approach? Is it clear what is expected in the final data visualization with regards to the approach?\n\nWho is your target audience? How might this influence choices for your final visualization?\n\n\n\nB. Connect to Git and load data\nFor this project, you will collaborate using Git. Connect your server environment to GitHub and clone your assigned GitHub repository into your online RStudio account by following these instructions: Connecting RStudio Server to GitHub. If this is done correctly, the resulting repository should have the following folder structure:\nyour-project-name/\n├── .gitignore\n├── README.md\n├── your-project-name.Rproj\n├── code/\n|   └── 00-load-data.R\n└── report/\n    └── DV-Assignment2-GroupX.Rmd\n    └── DV-Assignment2-GroupX.html\nAll group members should clone the assigned group repository to their server environment. Once you have cloned the repo and initialized Git, make a first commit and push it. Check that the other group members can pull these changes. If this works, you should be properly set up to work together using Git!\nFeel free to add folders or files within the repository if necessary. Make sure that you maintain the structure such that you follow a reproducible workflow. Additionally, it is important that you never push data to GitHub. If you have to store data, do this in a separate folder outside of your Git repository.\nNow, load in the necessary data for your visualization. The code for this is available in Assignment 2. Use the script 00-load-data.R in the code/ folder to load in the data. Examine the data. Discuss with your group:\n\nWhat is the structure of the data?\n\nWhat are the main variables? Can you already make some exploratory plots to understand these variables better?\n\nWhat data cleaning steps are necessary? Do you, for example, need to filter out some observations to obtain reliable results?\n\n\n\nC. Make your first visualization\nFor this assignment you can make any visualization about the chosen theme of the final project with these minimal requirements:\n\nuse multiple plots\nchange the theme (you can use a default theme or create your own)\nuse a good color-scheme, for example colorblind proof\nhighlight some interesting data points, for example using color or text\n\nInclude a description of what you want to communicate, and how you did that. Really work towards making a data visualization that highlights or substantiates a single conclusion. This plot does not have to be the plot for your final project (it probably is not), but use this assignment to get feedback from us on your current ideas.\nGrading:\n\nAesthetics\n\nIs the plot legible? [1pt]\nDo the colors add to the interpretability? [1pt]\nIs the plot simple? [0.5 pt]\n\nCommunication\n\nIs it clear what the plots tries to communicate? [1pt]\nDoes the plot communicate the described conclusions/description? [1pt]\nThe plot requires minimal explanation [0.5 pt]\n\nCreative/complexity\n\nIs the plot creative? [0.5 pt]\nIs the plot/analysis complex? [0.5 pt]\n\n\nClearly state your group members in your document. And please make sure ONE team member submits the assignment on behalf of the group."
   },
   {
-    "objectID": "slides/slides.html#section",
-    "href": "slides/slides.html#section",
-    "title": "Data Visualization",
-    "section": "📌",
-    "text": "📌\ndata-visualization-2025"
-  },
-  {
     "objectID": "slides/slides.html#section-1",
     "href": "slides/slides.html#section-1",
     "title": "Data Visualization",
     "section": "",
     "text": "Slides made using quartoCover photo made in R by Danielle Navarro"
-  },
-  {
-    "objectID": "slides/slides.html#today",
-    "href": "slides/slides.html#today",
-    "title": "Data Visualization",
-    "section": "Today",
-    "text": "Today\n\nWhat makes a plot good (and bad)?\n\nGuiding principles\nData Visualization Project"
   },
   {
     "objectID": "slides/slides.html#section-2",
@@ -224,6 +301,34 @@
     "text": "📌\ndata-visualization-2025"
   },
   {
+    "objectID": "slides/slides.html#tuesday-sept-30",
+    "href": "slides/slides.html#tuesday-sept-30",
+    "title": "Data Visualization",
+    "section": "Tuesday, Sept 30",
+    "text": "Tuesday, Sept 30\n\nWhy visualize data?\nWhat makes a plot good (and bad)?\nGuiding principles\nData Visualization Project"
+  },
+  {
+    "objectID": "slides/slides.html#section-3",
+    "href": "slides/slides.html#section-3",
+    "title": "Data Visualization",
+    "section": "💬",
+    "text": "💬\nWhy visualize data?"
+  },
+  {
+    "objectID": "slides/slides.html#why-visualize-data-2",
+    "href": "slides/slides.html#why-visualize-data-2",
+    "title": "Data Visualization",
+    "section": "Why visualize data?",
+    "text": "Why visualize data?"
+  },
+  {
+    "objectID": "slides/slides.html#why-visualize-data-3",
+    "href": "slides/slides.html#why-visualize-data-3",
+    "title": "Data Visualization",
+    "section": "Why visualize data?",
+    "text": "Why visualize data?"
+  },
+  {
     "objectID": "slides/slides.html#anscombes-quartet",
     "href": "slides/slides.html#anscombes-quartet",
     "title": "Data Visualization",
@@ -231,32 +336,11 @@
     "text": "Anscombe’s quartet\n\n\n \n\n\n\nCode\nlibrary(\"datasauRus\")\ndatasaurus_dozen %&gt;% \n  ggplot2::ggplot(aes(x = x, y = y, color = dataset)) +\n  ggplot2::geom_point() +\n  ggplot2::theme_void() +\n  ggplot2::geom_smooth(method = \"lm\", color = \"gray\", fill = \"gray\", alpha = .5) +\n  ggplot2::theme(legend.position = \"none\", text = element_text(size = 30)) +\n  ggplot2::facet_wrap(~dataset, ncol = 4)\n\n\n\n\n\n\n\n\n\n\n\nPackages: datasauRus, anscombiser.\nMore information: Same Stats, Different Graphs, socviz.co."
   },
   {
-    "objectID": "slides/slides.html#exploratory-versus-explanatory",
-    "href": "slides/slides.html#exploratory-versus-explanatory",
+    "objectID": "slides/slides.html#section-4",
+    "href": "slides/slides.html#section-4",
     "title": "Data Visualization",
-    "section": "Exploratory versus explanatory",
-    "text": "Exploratory versus explanatory\n\nExploratory in the sense of data exploration. Exploratory in the sense of visualization exploration (as in previous example, where the same data can be plotted in several ways). In both cases, you can create ugly plots.\nWe focus on explanatory data viz (also bridge to next). Beautiful plots!\n\n\n\n\n\n\nSource: Natalia Kiseleva\n\n\n\n\n\n\nSource: Scott McCloud\n\n\n\nExploratory: examine the structure of your data.\nExplanatory: tell a story with your data.\n\n\n\nMore resources: clauswilke.com (telling a story and making a point), susielu.com (different interpretation of exploratory/explanatory)."
-  },
-  {
-    "objectID": "slides/slides.html#exploratory-versus-explanatory-1",
-    "href": "slides/slides.html#exploratory-versus-explanatory-1",
-    "title": "Data Visualization",
-    "section": "Exploratory versus explanatory",
-    "text": "Exploratory versus explanatory\n\n\n\n\n\n\nSource: storytellingwithdata.com\n\nMore resources: clauswilke.com (telling a story and making a point), susielu.com (different interpretation of exploratory/explanatory)."
-  },
-  {
-    "objectID": "slides/slides.html#exploratory-versus-explanatory-2",
-    "href": "slides/slides.html#exploratory-versus-explanatory-2",
-    "title": "Data Visualization",
-    "section": "Exploratory versus explanatory",
-    "text": "Exploratory versus explanatory"
-  },
-  {
-    "objectID": "slides/slides.html#section-5",
-    "href": "slides/slides.html#section-5",
-    "title": "Data Visualization",
-    "section": "🔗",
-    "text": "🔗\nChoose RQ"
+    "section": "💬",
+    "text": "💬\nWhat is more important? An eye or an algorithm?\nWhat are the consequences of overrelying on statistical techniques? What are the consequences of overrelying on visualizations?"
   },
   {
     "objectID": "slides/slides.html#what-makes-a-bad-plot-bad",
@@ -273,18 +357,53 @@
     "text": "💬 Speed dates\n\n\n\nWhat do you think about this plot?\nWhat elements can be improved?\nAre the problems aesthetic, perceptual, or substantive?"
   },
   {
+    "objectID": "slides/slides.html#exploratory-versus-explanatory",
+    "href": "slides/slides.html#exploratory-versus-explanatory",
+    "title": "Data Visualization",
+    "section": "Exploratory versus explanatory",
+    "text": "Exploratory versus explanatory\n\nExploratory in the sense of data exploration. Exploratory in the sense of visualization exploration (as in previous example, where the same data can be plotted in several ways). In both cases, you can create ugly plots.\nWe focus on explanatory data viz (also bridge to next). Beautiful plots!\n\n\n\n\n\n\nSource: Natalia Kiseleva\n\n\n\n\n\n\nSource: Scott McCloud\n\n\n\nExploratory: examine the structure of your data.\nExplanatory: tell a story with your data.\n\n\n\nMore resources: clauswilke.com (telling a story and making a point), susielu.com (different interpretation of exploratory/explanatory)."
+  },
+  {
+    "objectID": "slides/slides.html#exploratory-versus-explanatory-1",
+    "href": "slides/slides.html#exploratory-versus-explanatory-1",
+    "title": "Data Visualization",
+    "section": "Exploratory versus explanatory",
+    "text": "Exploratory versus explanatory\n\n\n\n\n\n\nSource: storytellingwithdata.com\n\nMore resources: clauswilke.com (telling a story and making a point), susielu.com (different interpretation of exploratory/explanatory)."
+  },
+  {
+    "objectID": "slides/slides.html#some-good-examples",
+    "href": "slides/slides.html#some-good-examples",
+    "title": "Data Visualization",
+    "section": "Some good examples",
+    "text": "Some good examples\n Distributions are informative\n\n\n\n\n\n\nNYT Graphic - Obamacare spending\nHow to reproduce a NYT graphic"
+  },
+  {
+    "objectID": "slides/slides.html#tuesday-sept-30-1",
+    "href": "slides/slides.html#tuesday-sept-30-1",
+    "title": "Data Visualization",
+    "section": "Tuesday, Sept 30",
+    "text": "Tuesday, Sept 30\n\nWhy visualize data?\nWhat makes a plot good (and bad)?\nGuiding principles\nData Visualization Project"
+  },
+  {
+    "objectID": "slides/slides.html#tips-for-the-best-viz",
+    "href": "slides/slides.html#tips-for-the-best-viz",
+    "title": "Data Visualization",
+    "section": "Tips for the best viz",
+    "text": "Tips for the best viz\n\nIs it explaining data?\nIs the information complete and correct?\nAre axes correct? (+ Should they have a zero-point?)\nDo the colors work? ( + Do they map to a relevant attribute?)\nAre all elements needed?\nWhat is the data to ink ratio?\nIs it understandable & simple?\nDoes it portray one conclusion?"
+  },
+  {
+    "objectID": "slides/slides.html#break",
+    "href": "slides/slides.html#break",
+    "title": "Data Visualization",
+    "section": "Break",
+    "text": "Break\n\n\nCode\nlibrary(\"RXKCD\")\nRXKCD::getXKCD(which = \"833\")"
+  },
+  {
     "objectID": "slides/slides.html#aims",
     "href": "slides/slides.html#aims",
     "title": "Data Visualization",
     "section": "Aims",
     "text": "Aims\nYour goal is to go from exploring the Prowise data to telling a story with it.\n\nAssignment 1: Choose a research question. Explore the data and create a set of visualizations to help you understand the data.\nAssignment 2: Create a final data visualization that tells a story with the data. Compiled into a html document, and presented in a GitHub repository."
-  },
-  {
-    "objectID": "slides/slides.html#the-data",
-    "href": "slides/slides.html#the-data",
-    "title": "Data Visualization",
-    "section": "The data",
-    "text": "The data"
   },
   {
     "objectID": "slides/slides.html#requirements-assignment-2",
@@ -308,307 +427,6 @@
     "text": "Workflow\n\nWorking on the server\nGit setup & workflow"
   },
   {
-    "objectID": "documents/working-on-the-server.html",
-    "href": "documents/working-on-the-server.html",
-    "title": "Working on the Oefenweb Server",
-    "section": "",
-    "text": "In this tutorial, we will learn how to work on the Oefenweb server. The server contains real data from Prowise Learn, which you can use to create visualizations. You will need to connect properly to the server in order to access the data and complete the assignments in the Data Visualization modules.\n\nStep 1: Connect to the server\nYou will have signed the GDPR form, and received log-in credentials for the server in an earlier module of this course. Use the same credentials to log in to the data visualization server: https://data-visualization.oefenweb.nl/rstudio/auth-sign-in.\n\nSetup your environment\nWhen working with RMarkdown, start with a setup chunk. This allows you to change settings for all code chunks in your document. Any chunk settings you set here can be overridden in individual chunks later on. It is also good practice to clear your environment at the start of your script, to avoid any conflicts with existing objects in memory.\n\nknitr::opts_chunk$set(echo = TRUE) # set default echo = TRUE for all code blocks\n\nrm(list = ls()) # Remove any existing objects in memory\n\n\n\nInstall necessary packages\nLet’s get started by ensuring that you have all the packages installed that you will need later on.\n\n# Install Packages\n# Find everything that the user currently has installed\nall_installed_packages &lt;- installed.packages()[, \"Package\"]\n# Install any missing, but required packages\n# nolint start -- trick to omit some lines from the lintr checker, only if you have a good reason!\nif (!\"tidyverse\" %in% all_installed_packages) {install.packages(\"tidyverse\")}\nif (!\"devtools\" %in% all_installed_packages) {install.packages(\"devtools\")}\nif (!\"oefenwebDatabase\" %in% all_installed_packages) {devtools::install_github(repo = \"Oefenweb/r-database\")}\nif (!\"oefenwebTools\" %in% all_installed_packages) {devtools::install_github(repo = \"Oefenweb/r-tools\")}\nif (!\"jsonlite\" %in% all_installed_packages) {install.packages(\"jsonlite\")}\nif (!\"ggplot2\" %in% all_installed_packages) {install.packages(\"ggplot2\")}\nif (!\"cowplot\" %in% all_installed_packages) {install.packages(\"cowplot\")}\nif (!\"viridis\" %in% all_installed_packages) {install.packages(\"viridis\")}\nif (!\"plotly\" %in% all_installed_packages) {install.packages(\"plotly\")}\n# nolint end\n\n# Load Required Packages\nlibrary(tidyverse)\nlibrary(oefenwebDatabase)\nlibrary(oefenwebTools)\nlibrary(jsonlite)\nlibrary(cowplot)\nlibrary(ggplot2)\n\n\n\nMake a connection to the server\nWe now have everything we need to let our online R Studio environment know how to “communicate” with our Data Server. We can connect with the database by using the following code. This creates a connection to the database that is stored in the variable con.\n\ncon &lt;- oefenwebDatabase::connect()\n\n\n\n\nStep 2: Retrieve data from the server\n\nRetrieve data with an SQL query\nFrom this point on, you can use the database connection to retrieve data from the server. What the data actually looks like, and which tables/columns are available can be viewed on the Adminer. Log in with the your Oefenweb username and password, and select oefenweb_nl_app from the databases.\nWe can, for example, use the following SQL statement to retrieve the domains table:\n\n# select all columns (*) from the domains table.\nmy_data_domains &lt;-\n  DBI::dbGetQuery(con, # the connection element to our database\n                  \"SELECT * FROM `domains`\")\n\nYou will receive warnings that let you know how data has been parsed. You can ignore these, or even better suppress them ;)\n\nmy_data_domains &lt;-\n  suppressWarnings(DBI::dbGetQuery(con,\n                                   \"SELECT * FROM `domains`\"))\n\nRecently, we updated the oefenwebDatabase package with a new function: get_query(). This function automatically suppresses SQL warnings and uses glue_sql() for safe SQL injections (rather than relying on paste() or paste0()). Retrieving data with get_query() looks like this:\n\n# select all columns (*) from the domains table.\nmy_data_domains &lt;- get_query(\n  \"SELECT * FROM `domains`\",\n  con = con # the connection element to our database\n)\n\nThe params argument can be used to specify certain parameters that you want to call within your SQL statement (with {params[[i]]} or {params[[j]]*}):\n\n# specify SQL parameters in 'params' list\ndomain_group_ids &lt;- c(1, 2, 5)\napplication_id &lt;- 1\nparams &lt;- list(domain_group_ids, application_id)\n\n# select all columns from the domains table for domains 1:4\nmy_data_domains &lt;- get_query(\n  \"SELECT *\n  FROM `domains`\n  WHERE `domain_group_id` IN ({params[[1]]*})\n  AND `application_id` = ({params[[2]]})\",\n  con = con,\n  params = params\n)\n\nBelow an example of a nested query:\n\ndata &lt;- get_query(\n  \"SELECT `id`, `login_count`, `new_school_id`, `grade`\n  FROM `users`\n  WHERE `id` IN\n    (SELECT `new_user_id`\n    FROM `school_classes_users`\n    WHERE `new_school_class_id` = '3')\",\n  con = con\n)\n\nNow lets get some item data. In the items table we can find data that contains item information as for example the item question or answer options. We will choose the domain tafels (Multiplication Tables). In the items table we can see that there is no mention of “tafels” anywhere, however, each item does have a domain_id listed. If we look in the domains table we just retrieved, we see that tafels has the id ‘59’. We can use this information to retrieve only the items from the tafels game:\n\nitems &lt;- get_query(\n  \"SELECT *\n  FROM `items`\n  WHERE `domain_id` = '59'\",\n  con = con\n)\n\nFor a review of SQL queries, see the SQL Handout from the previous module.\n\n\n\nStep 3: Manipulate the data\nNow we manipulate the data and create some new variables that we will need later on. First we convert the continuous variable maximum_response_in_seconds (the total amount of time allowed per item) and turn it into a categorical factor:\n\nitems$maximum_response_in_seconds &lt;- factor(items$maximum_response_in_seconds,\n                                            levels = c(5, 10, 15, 20),\n                                            labels = c(\"5 seconds\",\n                                                       \"10 seconds\",\n                                                       \"15 seconds\",\n                                                       \"20 seconds\"))\n\nThen, we want to know what the actual answer was to a question. Unfortunately, we store question and answer/answer_options data in the format of a JSON string. We thus need to clean the JSON before we can retrieve the answers:\n\n# Create a new variable where we will store the result\nitems$answer &lt;- numeric(nrow(items))\n\n# Loop over each row to clean the content (you could also use an apply function)\nfor (i in seq_len(nrow(items))) {\n  items$answer[i] &lt;-\n    as.numeric(jsonlite::fromJSON(items$answer_options[i])$answerOptions)\n}\n\nWe now have a column answer that has the cleaned, numeric, outcome for each question/item. We can use this to create another categorical variable:\n\n# Now we determine whether the answer is below or above 50\nitems$answer_result &lt;- items$answer &lt;= 50\n\n# Finally we make answer_result also a categorical factor variable\nitems$answer_result &lt;- factor(items$answer_result, levels = c(TRUE, FALSE),\n                              labels = c(\"equal to or below 50\", \"above 50\"))\n\n\n\nStep 4: Make a visualization\nOk, now we are ready to make a plot. We will plot the item deadline (maximum_response_time_in_seconds) on the x-axis and the item difficulty (rating) on the y-axis. We group the items into a group with answer equal to or below 50 and above 50.\n\nggplot(data = items,\n       aes(x = maximum_response_in_seconds,\n           y = rating,\n           fill = answer_result)) +\n  geom_boxplot() +\n  labs(x = \"Available Response Time\",\n       y = \"Item Rating/Difficulty\",\n       fill = \"Item Answer\")\n\n\n\nStep 5: Disconnect from the server\nWhen you are done working on the server, you need to disconnect from the database. You do this with the following code:\n\noefenwebDatabase::close_connections()"
-  },
-  {
-    "objectID": "slides/slides.html#why-visualize-data-1",
-    "href": "slides/slides.html#why-visualize-data-1",
-    "title": "Data Visualization",
-    "section": "Why visualize data?",
-    "text": "Why visualize data?"
-  },
-  {
-    "objectID": "slides/slides.html#section-4",
-    "href": "slides/slides.html#section-4",
-    "title": "Data Visualization",
-    "section": "💬",
-    "text": "💬\nWhat is more important? An eye or an algorithm?\nWhat are the consequences of overrelying on statistical techniques? What are the consequences of overrelying on visualizations?"
-  },
-  {
-    "objectID": "slides/slides.html#section-3",
-    "href": "slides/slides.html#section-3",
-    "title": "Data Visualization",
-    "section": "💬",
-    "text": "💬\nWhy visualize data?"
-  },
-  {
-    "objectID": "slides/slides.html#why-visualize-data-2",
-    "href": "slides/slides.html#why-visualize-data-2",
-    "title": "Data Visualization",
-    "section": "Why visualize data?",
-    "text": "Why visualize data?"
-  },
-  {
-    "objectID": "slides/slides copy.html#section",
-    "href": "slides/slides copy.html#section",
-    "title": "Data Visualization",
-    "section": "📌",
-    "text": "📌\ndata-visualization-2025"
-  },
-  {
-    "objectID": "slides/slides copy.html#section-1",
-    "href": "slides/slides copy.html#section-1",
-    "title": "Data Visualization",
-    "section": "💬",
-    "text": "💬\nWhy visualize data?"
-  },
-  {
-    "objectID": "slides/slides copy.html#today",
-    "href": "slides/slides copy.html#today",
-    "title": "Data Visualization",
-    "section": "Today",
-    "text": "Today\n\nWhy visualize data?\nWhat makes a plot good (and bad)?\n\nGuiding principles\nData Visualization Project"
-  },
-  {
-    "objectID": "slides/slides copy.html#section-2",
-    "href": "slides/slides copy.html#section-2",
-    "title": "Data Visualization",
-    "section": "💬",
-    "text": "💬\nWhat is more important? An eye or an algorithm?\nWhat are the consequences of overrelying on statistical techniques? What are the consequences of overrelying on visualizations?"
-  },
-  {
-    "objectID": "slides/slides copy.html#why-visualize-data-1",
-    "href": "slides/slides copy.html#why-visualize-data-1",
-    "title": "Data Visualization",
-    "section": "Why visualize data?",
-    "text": "Why visualize data?"
-  },
-  {
-    "objectID": "slides/slides copy.html#why-visualize-data-2",
-    "href": "slides/slides copy.html#why-visualize-data-2",
-    "title": "Data Visualization",
-    "section": "Why visualize data?",
-    "text": "Why visualize data?"
-  },
-  {
-    "objectID": "slides/slides copy.html#anscombes-quartet",
-    "href": "slides/slides copy.html#anscombes-quartet",
-    "title": "Data Visualization",
-    "section": "Anscombe’s quartet",
-    "text": "Anscombe’s quartet\n\n\n \n\n\n\nCode\nlibrary(\"datasauRus\")\ndatasaurus_dozen %&gt;% \n  ggplot2::ggplot(aes(x = x, y = y, color = dataset)) +\n  ggplot2::geom_point() +\n  ggplot2::theme_void() +\n  ggplot2::geom_smooth(method = \"lm\", color = \"gray\", fill = \"gray\", alpha = .5) +\n  ggplot2::theme(legend.position = \"none\", text = element_text(size = 30)) +\n  ggplot2::facet_wrap(~dataset, ncol = 4)\n\n\n\n\n\n\n\n\n\n\n\nPackages: datasauRus, anscombiser.\nMore information: Same Stats, Different Graphs, socviz.co."
-  },
-  {
-    "objectID": "slides/slides copy.html#section-3",
-    "href": "slides/slides copy.html#section-3",
-    "title": "Data Visualization",
-    "section": "💬",
-    "text": "💬\nWhy visualize data?"
-  },
-  {
-    "objectID": "slides/slides copy.html#what-makes-a-bad-plot-bad",
-    "href": "slides/slides copy.html#what-makes-a-bad-plot-bad",
-    "title": "Data Visualization",
-    "section": "What makes a bad plot bad?",
-    "text": "What makes a bad plot bad?\n\n\n\nAesthetic (ugly)\nPerceptual (bad)\nSubstantive (wrong)\n\n\n\n\n\nClaus Wilke - Ugly, bad, and wrong figures"
-  },
-  {
-    "objectID": "slides/slides copy.html#speed-dates",
-    "href": "slides/slides copy.html#speed-dates",
-    "title": "Data Visualization",
-    "section": "💬 Speed dates",
-    "text": "💬 Speed dates\n\n\n\nWhat do you think about this plot?\nWhat elements can be improved?\nAre the problems aesthetic, perceptual, or substantive?"
-  },
-  {
-    "objectID": "slides/slides copy.html#exploratory-versus-explanatory",
-    "href": "slides/slides copy.html#exploratory-versus-explanatory",
-    "title": "Data Visualization",
-    "section": "Exploratory versus explanatory",
-    "text": "Exploratory versus explanatory\n\nExploratory in the sense of data exploration. Exploratory in the sense of visualization exploration (as in previous example, where the same data can be plotted in several ways). In both cases, you can create ugly plots.\nWe focus on explanatory data viz (also bridge to next). Beautiful plots!\n\n\n\n\n\n\nSource: Natalia Kiseleva\n\n\n\n\n\n\nSource: Scott McCloud\n\n\n\nExploratory: examine the structure of your data.\nExplanatory: tell a story with your data.\n\n\n\nMore resources: clauswilke.com (telling a story and making a point), susielu.com (different interpretation of exploratory/explanatory)."
-  },
-  {
-    "objectID": "slides/slides copy.html#exploratory-versus-explanatory-1",
-    "href": "slides/slides copy.html#exploratory-versus-explanatory-1",
-    "title": "Data Visualization",
-    "section": "Exploratory versus explanatory",
-    "text": "Exploratory versus explanatory\n\n\n\n\n\n\nSource: storytellingwithdata.com\n\nMore resources: clauswilke.com (telling a story and making a point), susielu.com (different interpretation of exploratory/explanatory)."
-  },
-  {
-    "objectID": "slides/slides copy.html#aims",
-    "href": "slides/slides copy.html#aims",
-    "title": "Data Visualization",
-    "section": "Aims",
-    "text": "Aims\nYour goal is to go from exploring the Prowise data to telling a story with it.\n\nAssignment 1: Choose a research question. Explore the data and create a set of visualizations to help you understand the data.\nAssignment 2: Create a final data visualization that tells a story with the data. Compiled into a html document, and presented in a GitHub repository."
-  },
-  {
-    "objectID": "slides/slides copy.html#the-data",
-    "href": "slides/slides copy.html#the-data",
-    "title": "Data Visualization",
-    "section": "The data",
-    "text": "The data"
-  },
-  {
-    "objectID": "slides/slides copy.html#requirements-assignment-2",
-    "href": "slides/slides copy.html#requirements-assignment-2",
-    "title": "Data Visualization",
-    "section": "Requirements Assignment 2",
-    "text": "Requirements Assignment 2\n\nUse R Markdown (or Quarto) to create your visualizations.\nThe markdown document should be in the style of a report: explain your research question, and how you came to your conclusion. Not more than 1000 words.\n\nInclude an exploratory graph, and explain how it helped you understand the data.\nOnly your final, explanatory graph, will be graded. Clearly mark which graph this is."
-  },
-  {
-    "objectID": "slides/slides copy.html#workflow",
-    "href": "slides/slides copy.html#workflow",
-    "title": "Data Visualization",
-    "section": "Workflow",
-    "text": "Workflow\n\nComment your code clearly. We want to understand your thought process.\nCollaborate within your group using Git & GitHub. You will set up your own project repository connected to the Data Visualization Server.\nMake sure all documents render correctly, and that code is styled and runs.\n️⚠ Do not push any data to GitHub."
-  },
-  {
-    "objectID": "slides/slides copy.html#workflow-1",
-    "href": "slides/slides copy.html#workflow-1",
-    "title": "Data Visualization",
-    "section": "Workflow",
-    "text": "Workflow\n\nWorking on the server\nGit setup & workflow"
-  },
-  {
-    "objectID": "slides/slides copy.html#some-good-examples",
-    "href": "slides/slides copy.html#some-good-examples",
-    "title": "Data Visualization",
-    "section": "Some good examples",
-    "text": "Some good examples\n Distributions are informative\n\n\n\n\n\n\nNYT Graphic - Obamacare spending\nHow to reproduce a NYT graphic"
-  },
-  {
-    "objectID": "slides/slides copy.html#tips-for-the-best-viz",
-    "href": "slides/slides copy.html#tips-for-the-best-viz",
-    "title": "Data Visualization",
-    "section": "Tips for the best viz",
-    "text": "Tips for the best viz\n\nIs it explaining data?\nIs the information complete and correct?\nAre axes correct? (+ Should they have a zero-point?)\nDo the colors work? ( + Do they map to a relevant attribute?)\nAre all elements needed?\nWhat is the data to ink ratio?\nIs it understandable & simple?\nDoes it portray one conclusion?"
-  },
-  {
-    "objectID": "slides/slides copy.html#break",
-    "href": "slides/slides copy.html#break",
-    "title": "Data Visualization",
-    "section": "Break",
-    "text": "Break\n\n\nCode\nlibrary(\"RXKCD\")\nRXKCD::getXKCD(which = \"833\")"
-  },
-  {
-    "objectID": "slides/slides copy.html#first-draft-peer-review",
-    "href": "slides/slides copy.html#first-draft-peer-review",
-    "title": "Data Visualization",
-    "section": "First draft & peer review",
-    "text": "First draft & peer review\n\nFirst draft due Friday 10/10 12.30 – No requirements.\nPeer review due Friday 10/10 23.59 – Review one other group’s work. You will have time for this during Friday’s class."
-  },
-  {
-    "objectID": "slides/slides copy.html#grading",
-    "href": "slides/slides copy.html#grading",
-    "title": "Data Visualization",
-    "section": "Grading",
-    "text": "Grading\n\nAssigment 1: 50%\nIndividual part:\nGroup part:\nAssigment 2: 50%"
-  },
-  {
-    "objectID": "slides/slides copy.html#section-4",
-    "href": "slides/slides copy.html#section-4",
-    "title": "Data Visualization",
-    "section": "💬",
-    "text": "💬\nWhat is more important? An eye or an algorithm?\nWhat are the consequences of overrelying on statistical techniques? What are the consequences of overrelying on visualizations?"
-  },
-  {
-    "objectID": "slides/slides copy.html#tuesday-sept-30",
-    "href": "slides/slides copy.html#tuesday-sept-30",
-    "title": "Data Visualization",
-    "section": "Tuesday, Sept 30",
-    "text": "Tuesday, Sept 30\n\nWhy visualize data?\nWhat makes a plot good (and bad)?\nGuiding principles\nData Visualization Project"
-  },
-  {
-    "objectID": "slides/slides copy.html#why-visualize-data-3",
-    "href": "slides/slides copy.html#why-visualize-data-3",
-    "title": "Data Visualization",
-    "section": "Why visualize data?",
-    "text": "Why visualize data?"
-  },
-  {
-    "objectID": "slides/slides copy.html#tuesday-sept-30-1",
-    "href": "slides/slides copy.html#tuesday-sept-30-1",
-    "title": "Data Visualization",
-    "section": "Tuesday, Sept 30",
-    "text": "Tuesday, Sept 30\n\nWhy visualize data?\nWhat makes a plot good (and bad)?\nGuiding principles\nData Visualization Project"
-  },
-  {
-    "objectID": "slides/slides copy.html#tuesday-sept-30-2",
-    "href": "slides/slides copy.html#tuesday-sept-30-2",
-    "title": "Data Visualization",
-    "section": "Tuesday, Sept 30",
-    "text": "Tuesday, Sept 30\n\nWhy visualize data?\nWhat makes a plot good (and bad)?\nGuiding principles\nData Visualization Project"
-  },
-  {
-    "objectID": "slides/slides copy.html#tuesday-sept-30-3",
-    "href": "slides/slides copy.html#tuesday-sept-30-3",
-    "title": "Data Visualization",
-    "section": "Tuesday, Sept 30",
-    "text": "Tuesday, Sept 30\n\nWhy visualize data?\nWhat makes a plot good (and bad)?\nGuiding principles\nData Visualization Project"
-  },
-  {
-    "objectID": "slides/slides copy.html#tuesday-sept-30-4",
-    "href": "slides/slides copy.html#tuesday-sept-30-4",
-    "title": "Data Visualization",
-    "section": "Tuesday, Sept 30",
-    "text": "Tuesday, Sept 30\n\nWhy visualize data?\nWhat makes a plot good (and bad)?\nGuiding principles\nData Visualization Project"
-  },
-  {
-    "objectID": "slides/slides.html#tuesday-sept-30",
-    "href": "slides/slides.html#tuesday-sept-30",
-    "title": "Data Visualization",
-    "section": "Tuesday, Sept 30",
-    "text": "Tuesday, Sept 30\n\nWhy visualize data?\nWhat makes a plot good (and bad)?\nGuiding principles\nData Visualization Project"
-  },
-  {
-    "objectID": "slides/slides.html#tuesday-sept-30-1",
-    "href": "slides/slides.html#tuesday-sept-30-1",
-    "title": "Data Visualization",
-    "section": "Tuesday, Sept 30",
-    "text": "Tuesday, Sept 30\n\nWhy visualize data?\nWhat makes a plot good (and bad)?\nGuiding principles\nData Visualization Project"
-  },
-  {
-    "objectID": "slides/slides.html#why-visualize-data-3",
-    "href": "slides/slides.html#why-visualize-data-3",
-    "title": "Data Visualization",
-    "section": "Why visualize data?",
-    "text": "Why visualize data?"
-  },
-  {
-    "objectID": "slides/slides.html#tuesday-sept-30-2",
-    "href": "slides/slides.html#tuesday-sept-30-2",
-    "title": "Data Visualization",
-    "section": "Tuesday, Sept 30",
-    "text": "Tuesday, Sept 30\n\nWhy visualize data?\nWhat makes a plot good (and bad)?\nGuiding principles\nData Visualization Project"
-  },
-  {
-    "objectID": "slides/slides.html#some-good-examples",
-    "href": "slides/slides.html#some-good-examples",
-    "title": "Data Visualization",
-    "section": "Some good examples",
-    "text": "Some good examples\n Distributions are informative\n\n\n\n\n\n\nNYT Graphic - Obamacare spending\nHow to reproduce a NYT graphic"
-  },
-  {
-    "objectID": "slides/slides.html#tuesday-sept-30-3",
-    "href": "slides/slides.html#tuesday-sept-30-3",
-    "title": "Data Visualization",
-    "section": "Tuesday, Sept 30",
-    "text": "Tuesday, Sept 30\n\nWhy visualize data?\nWhat makes a plot good (and bad)?\nGuiding principles\nData Visualization Project"
-  },
-  {
-    "objectID": "slides/slides.html#tips-for-the-best-viz",
-    "href": "slides/slides.html#tips-for-the-best-viz",
-    "title": "Data Visualization",
-    "section": "Tips for the best viz",
-    "text": "Tips for the best viz\n\nIs it explaining data?\nIs the information complete and correct?\nAre axes correct? (+ Should they have a zero-point?)\nDo the colors work? ( + Do they map to a relevant attribute?)\nAre all elements needed?\nWhat is the data to ink ratio?\nIs it understandable & simple?\nDoes it portray one conclusion?"
-  },
-  {
-    "objectID": "slides/slides.html#break",
-    "href": "slides/slides.html#break",
-    "title": "Data Visualization",
-    "section": "Break",
-    "text": "Break\n\n\nCode\nlibrary(\"RXKCD\")\nRXKCD::getXKCD(which = \"833\")"
-  },
-  {
-    "objectID": "slides/slides.html#tuesday-sept-30-4",
-    "href": "slides/slides.html#tuesday-sept-30-4",
-    "title": "Data Visualization",
-    "section": "Tuesday, Sept 30",
-    "text": "Tuesday, Sept 30\n\nWhy visualize data?\nWhat makes a plot good (and bad)?\nGuiding principles\nData Visualization Project"
-  },
-  {
     "objectID": "slides/slides.html#first-draft-peer-review",
     "href": "slides/slides.html#first-draft-peer-review",
     "title": "Data Visualization",
@@ -616,17 +434,73 @@
     "text": "First draft & peer review\n\nFirst draft due Friday 10/10 12.30 – No requirements.\nPeer review due Friday 10/10 23.59 – Review one other group’s work. You will have time for this during Friday’s class."
   },
   {
-    "objectID": "slides/slides.html#grading",
-    "href": "slides/slides.html#grading",
+    "objectID": "slides/slides.html#section-5",
+    "href": "slides/slides.html#section-5",
     "title": "Data Visualization",
-    "section": "Grading",
-    "text": "Grading\n\nAssigment 1: 50%\nIndividual part:\nGroup part:\nAssigment 2: 50%"
+    "section": "🔗",
+    "text": "🔗\nChoose RQ"
   },
   {
-    "objectID": "slides/slides.html#choose-rq",
-    "href": "slides/slides.html#choose-rq",
-    "title": "Data Visualization",
-    "section": "Choose RQ",
-    "text": "Choose RQ\nChoose RQ"
+    "objectID": "templates/assignment-1/DV-Assignment1-Firstname-Lastname-PartA.html",
+    "href": "templates/assignment-1/DV-Assignment1-Firstname-Lastname-PartA.html",
+    "title": "BDS Toolbox: DV Assignment 1 Part 1",
+    "section": "",
+    "text": "Use this template to help you get started with your assignment. You can add more code chunks as needed. After knitting, a .html document will be generated in the same folder as this .Rmd file. You should download both documents (.Rmd and .html) from the server and submit them following the instructions on the assignment.\nSome tips if you encounter knitting issues:\nIf you make more than one visualization per part, please indicate clearly which visualization we should look at when grading."
+  },
+  {
+    "objectID": "templates/assignment-1/DV-Assignment1-Firstname-Lastname-PartA.html#setup-environment",
+    "href": "templates/assignment-1/DV-Assignment1-Firstname-Lastname-PartA.html#setup-environment",
+    "title": "BDS Toolbox: DV Assignment 1 Part 1",
+    "section": "Setup environment",
+    "text": "Setup environment\n\nknitr::opts_chunk$set(echo = TRUE) # set default echo = TRUE for all code blocks\nrm(list = ls()) # Remove any existing objects in memory"
+  },
+  {
+    "objectID": "templates/assignment-1/DV-Assignment1-Firstname-Lastname-PartA.html#a.-replicate-this-plot",
+    "href": "templates/assignment-1/DV-Assignment1-Firstname-Lastname-PartA.html#a.-replicate-this-plot",
+    "title": "BDS Toolbox: DV Assignment 1 Part 1",
+    "section": "A. Replicate this plot",
+    "text": "A. Replicate this plot\n\nLibraries and database connection\n\n# Install Packages\n# Find everything that the user currently has installed\nall_installed_packages &lt;- installed.packages()[, \"Package\"]\n# Install any missing, but required packages\n# nolint start -- trick to omit some lines from the lintr checker, only if you have a good reason!\nif (!\"tidyverse\" %in% all_installed_packages) {install.packages(\"tidyverse\")}\nif (!\"devtools\" %in% all_installed_packages) {install.packages(\"devtools\")}\nif (!\"oefenwebDatabase\" %in% all_installed_packages) {devtools::install_github(repo = \"Oefenweb/r-database\")}\nif (!\"oefenwebTools\" %in% all_installed_packages) {devtools::install_github(repo = \"Oefenweb/r-tools\")}\nif (!\"jsonlite\" %in% all_installed_packages) {install.packages(\"jsonlite\")}\nif (!\"ggplot2\" %in% all_installed_packages) {install.packages(\"ggplot2\")}\nif (!\"cowplot\" %in% all_installed_packages) {install.packages(\"cowplot\")}\nif (!\"lintr\" %in% all_installed_packages) {install.packages(\"lintr\")}\nif (!\"viridis\" %in% all_installed_packages) {install.packages(\"viridis\")}\nif (!\"plotly\" %in% all_installed_packages) {install.packages(\"plotly\")}\n# nolint end\n\n# Load Required Packages\nlibrary(tidyverse)\nlibrary(oefenwebDatabase)\nlibrary(oefenwebTools)\nlibrary(jsonlite)\nlibrary(cowplot)\nlibrary(ggplot2)\nlibrary(lintr)\nlibrary(viridis)\nlibrary(plotly)\n\n# make database connection\ncon &lt;- oefenwebDatabase::connect()"
+  },
+  {
+    "objectID": "templates/assignment-1/DV-Assignment1-Firstname-Lastname-PartA.html#a.-replicate-this-plot-1",
+    "href": "templates/assignment-1/DV-Assignment1-Firstname-Lastname-PartA.html#a.-replicate-this-plot-1",
+    "title": "BDS Toolbox: DV Assignment 1 Part 1",
+    "section": "A. Replicate this plot",
+    "text": "A. Replicate this plot\n\nRetrieve data\n… add more code chunks as needed. \n\n\nCreate plot"
+  },
+  {
+    "objectID": "templates/assignment-1/DV-Assignment1-Firstname-Lastname-PartA.html#b.-interactive-visualizations-with-plotly",
+    "href": "templates/assignment-1/DV-Assignment1-Firstname-Lastname-PartA.html#b.-interactive-visualizations-with-plotly",
+    "title": "BDS Toolbox: DV Assignment 1 Part 1",
+    "section": "B. Interactive visualizations with plotly",
+    "text": "B. Interactive visualizations with plotly\n\nRetrieve data\n\n\nCreate interactive plot"
+  },
+  {
+    "objectID": "documents/git-workflow.html",
+    "href": "documents/git-workflow.html",
+    "title": "Working with Git on the Server",
+    "section": "",
+    "text": "In this tutorial, you will learn how to:\n\nConnect your GitHub account to the online RStudio server\nClone your assigned GitHub repository for the group assignments into Rstudio and initialize Git in your RStudio project, so you can track changes and collaborate with your team"
+  },
+  {
+    "objectID": "documents/git-workflow.html#introduction",
+    "href": "documents/git-workflow.html#introduction",
+    "title": "Working with Git on the Server",
+    "section": "",
+    "text": "In this tutorial, you will learn how to:\n\nConnect your GitHub account to the online RStudio server\nClone your assigned GitHub repository for the group assignments into Rstudio and initialize Git in your RStudio project, so you can track changes and collaborate with your team"
+  },
+  {
+    "objectID": "documents/git-workflow.html#connecting-github-to-rstudio",
+    "href": "documents/git-workflow.html#connecting-github-to-rstudio",
+    "title": "Working with Git on the Server",
+    "section": "Connecting GitHub to RStudio",
+    "text": "Connecting GitHub to RStudio\nIn order to be able to connect your online RStudio environment to your group’s GitHub repository, you first have to create a SSH key through the following steps.\n\nStep 1: Create and add SSH key to GitHub\n\nLog into your online RStudio environment: https://data-visualization.oefenweb.nl/rstudio/auth-sign-in.\nCreate a SSH key: Go to Tools &gt; global options &gt; GIT/SVN &gt; click on Create SSH Key... &gt; and click create again; a passphrase is not necessary. Make sure the SSH key type ED25519 is selected in the dropdown menu (should already be selected for you).\n\n \n\nNow go to your Files pane in RStudio and select Show Hidden Files like this:\n\n\n\n\nSSH Key\n\n\n\nYou can find your SSH key in the .ssh folder. Open the file with the public key (ending with .pub) and copy the entire content of the file. We need to add this public key to your GitHub account\n\n \n\nNow open GitHub and go to your Settings. From here, go to SSH and GPG keys, and click on New SSH key. Add the public key you just copied from your online RStudio, and give your key a title (for example, Data viz server).\n\n\n\n\nSSH Key\n\n\nAnd there you go! You have now successfully let your online RStudio environment and your GitHub account know that these are allowed to communicate with each other. We can now clone your assigned GitHub group repository into your RStudio account.\n\n\nStep 2: Adding git-tracked R projects\n\nGo to your group’s GitHub repository and click on the green &lt;&gt; Code button. Choose to clone the repository via SSH and copy the code:\n\n\n\n\nSSH Key\n\n\n\nNow go back to RStudio. On the top right (sort of cubical icon) you can find a project overview Project: (none). Make sure this is in fact set to no project, if you see the name of a different repository/project, click it and select close project.\nMake a new R project for your group assignment: click on New project &gt; Clone Git Repository. Add the code you just copied from GitHub to Repository URL and create the project (the Project directory name will automatically be created for you).\n\n\n\n\nSSH Key\n\n\nIt will now appear as if your RStudio is re-starting; don’t be feared, this is what is supposed to be happening. Projects are temporary representations of your RStudio environment, so that you can work on different projects with different data to keep your work structure clear.\nIf you look in your Files pane, you will see that the folder was selected, which holds all the information that was on the GitHub repository.\nIf you look in your Environment pane, you can now see an extra tab called Git. You have now successfully cloned your repository and let Git track your changes!"
+  },
+  {
+    "objectID": "documents/git-workflow.html#now-you-can-work-in-your-project",
+    "href": "documents/git-workflow.html#now-you-can-work-in-your-project",
+    "title": "Working with Git on the Server",
+    "section": "Now you can work in your project",
+    "text": "Now you can work in your project\nOpen this project whenever you are working on the group assignments. You do this by either by clicking on the Project: &lt;your-repo-name&gt; button in the top right corner, or by double-clicking the .Rproj file in your project directory.\nCommit, push, and pull changes via the terminal in the online RStudio editor, or in the tab called Git. Remember to always pull changes into your environment before you start working on the project, and push your changes when you are done working on it. This way, you and your team members will always have access to the most recent version of the project, and you (hopefully) avoid merge conflicts.\nIt is good practice to close the project when you are done working on it, to avoid accidentally making changes to the wrong project the next time you open RStudio."
   }
 ]

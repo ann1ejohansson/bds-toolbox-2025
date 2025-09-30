@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://ann1ejohansson.github.io/data-visualization-2025/documents/how-do-we-grade.html</loc>
-    <lastmod>2025-09-30T07:58:45.806Z</lastmod>
+    <loc>https://ann1ejohansson.github.io/data-visualization-2025/documents/working-on-the-server.html</loc>
+    <lastmod>2025-09-29T14:37:56.389Z</lastmod>
   </url>
   <url>
-    <loc>https://ann1ejohansson.github.io/data-visualization-2025/documents/git-workflow.html</loc>
-    <lastmod>2025-09-30T07:53:20.077Z</lastmod>
+    <loc>https://ann1ejohansson.github.io/data-visualization-2025/templates/assignment-2/your-project-name/report/DV-Assignment2-GroupX.html</loc>
+    <lastmod>2025-09-24T16:36:14.748Z</lastmod>
   </url>
   <url>
-    <loc>https://ann1ejohansson.github.io/data-visualization-2025/templates/assignment-1/DV-Assignment1-Firstname-Lastname-PartA.html</loc>
-    <lastmod>2025-09-30T07:03:46.582Z</lastmod>
+    <loc>https://ann1ejohansson.github.io/data-visualization-2025/slides/slides copy.html</loc>
+    <lastmod>2025-09-30T10:43:06.578Z</lastmod>
   </url>
   <url>
     <loc>https://ann1ejohansson.github.io/data-visualization-2025/index.html</loc>
@@ -29,15 +29,11 @@
     <lastmod>2025-09-30T12:31:38.737Z</lastmod>
   </url>
   <url>
-    <loc>https://ann1ejohansson.github.io/data-visualization-2025/templates/assignment-2/your-project-name/report/DV-Assignment2-GroupX.html</loc>
-    <lastmod>2025-09-24T16:36:14.748Z</lastmod>
+    <loc>https://ann1ejohansson.github.io/data-visualization-2025/templates/assignment-1/DV-Assignment1-Firstname-Lastname-PartA.html</loc>
+    <lastmod>2025-09-30T07:03:46.582Z</lastmod>
   </url>
   <url>
-    <loc>https://ann1ejohansson.github.io/data-visualization-2025/documents/working-on-the-server.html</loc>
-    <lastmod>2025-09-29T14:37:56.389Z</lastmod>
-  </url>
-  <url>
-    <loc>https://ann1ejohansson.github.io/data-visualization-2025/slides/slides copy.html</loc>
-    <lastmod>2025-09-30T10:43:06.578Z</lastmod>
+    <loc>https://ann1ejohansson.github.io/data-visualization-2025/documents/git-workflow.html</loc>
+    <lastmod>2025-09-30T07:53:20.077Z</lastmod>
   </url>
 </urlset>
