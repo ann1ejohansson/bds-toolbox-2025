@@ -27,7 +27,9 @@ library(tidyverse)
 ```
 
 # 🏠
-##
+
+## 
+
 :::::: columns
 :::: {.column width="50%"}
 ::: columns
@@ -118,7 +120,6 @@ More information: [Same Stats, Different Graphs](https://www.autodesk.com/resear
 What are the consequences of overrelying on statistical techniques? <br>What are the consequences of overrelying on visualizations?
 
 # Bad plots 💩 {background-color="#8000FF"}
-
 
 ## What makes a bad plot bad?
 
@@ -474,7 +475,7 @@ Your goal is to go from exploring the Prowise data to telling a story with it.
 
 -   [Working on the server](../documents/working-on-the-server.html){target="_blank"}
 
--   [Git setup & workflow](../documents/working-with-git.html){target="_blank"}
+-   [Git setup & workflow](../documents/git-workflow.html){target="_blank"}
 
 ## First draft & peer review
 
@@ -482,10 +483,6 @@ Your goal is to go from exploring the Prowise data to telling a story with it.
 
 -   Peer review due Friday 10/10 23.59 -- Review one other group's work. You will have time for this during Friday's class.
 
-
 ## 🔗
 
 [Choose RQ](https://docs.google.com/spreadsheets/d/1ppRe5PKrdawL8Q4QHAJpa6bfQfbVhmHZiWE7AxGaHSE/edit?gid=0#gid=0){target="_blank"}
-
-
-
