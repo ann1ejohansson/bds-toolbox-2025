@@ -206,8 +206,8 @@
     "objectID": "slides/slides.html#section-1",
     "href": "slides/slides.html#section-1",
     "title": "Data Visualization",
-    "section": "💬",
-    "text": "💬\nWhy visualize data?"
+    "section": "",
+    "text": "Slides made using quartoCover photo made in R by Danielle Navarro"
   },
   {
     "objectID": "slides/slides.html#today",
@@ -220,8 +220,8 @@
     "objectID": "slides/slides.html#section-2",
     "href": "slides/slides.html#section-2",
     "title": "Data Visualization",
-    "section": "💬",
-    "text": "💬\nWhat is more important? An eye or an algorithm?\nWhat are the consequences of overrelying on statistical techniques? What are the consequences of overrelying on visualizations?"
+    "section": "📌",
+    "text": "📌\ndata-visualization-2025"
   },
   {
     "objectID": "slides/slides.html#anscombes-quartet",
@@ -255,8 +255,8 @@
     "objectID": "slides/slides.html#section-5",
     "href": "slides/slides.html#section-5",
     "title": "Data Visualization",
-    "section": "💬",
-    "text": "💬\nWhat is more important? An eye or an algorithm?\nWhat are the consequences of overrelying on statistical techniques? What are the consequences of overrelying on visualizations?"
+    "section": "🔗",
+    "text": "🔗\nChoose RQ"
   },
   {
     "objectID": "slides/slides.html#what-makes-a-bad-plot-bad",
@@ -325,15 +325,15 @@
     "objectID": "slides/slides.html#section-4",
     "href": "slides/slides.html#section-4",
     "title": "Data Visualization",
-    "section": "",
-    "text": "💬\n\n\n\n\n\n\nDo the colors make sense?"
+    "section": "💬",
+    "text": "💬\nWhat is more important? An eye or an algorithm?\nWhat are the consequences of overrelying on statistical techniques? What are the consequences of overrelying on visualizations?"
   },
   {
     "objectID": "slides/slides.html#section-3",
     "href": "slides/slides.html#section-3",
     "title": "Data Visualization",
-    "section": "🔗",
-    "text": "🔗\nChoose RQ"
+    "section": "💬",
+    "text": "💬\nWhy visualize data?"
   },
   {
     "objectID": "slides/slides.html#why-visualize-data-2",

@@ -22,12 +22,12 @@ title-slide-attributes:
   data-background-repeat: repeat
 ---
 
-------------------------------------------------------------------------
-
 ```{r, include=FALSE}
 library(tidyverse)
 ```
 
+# 🏠
+##
 :::::: columns
 :::: {.column width="50%"}
 ::: columns
