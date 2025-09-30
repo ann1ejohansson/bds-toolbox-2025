@@ -227,7 +227,9 @@ Finally we make a plot with text to have some more information in our visualizat
 
 I used these settings in my rMarkdown code chunk: `fig.height = 8, fig.width = 10, fig.align = "center"`
 
-![](images/replicate-this-plot-1-final.png) Tips:
+![](images/replicate-this-plot-final.png)  
+
+Tips:
 
 -   On plot 1 there is text on the third facet which does not use the default font family\
 -   To select nice colors go to http://colorbrewer2.org \[or tips on the Data Visualisation slides\]
