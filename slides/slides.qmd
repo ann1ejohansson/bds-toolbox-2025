@@ -112,6 +112,239 @@ Packages: [datasauRus](https://jumpingrivers.github.io/datasauRus/), [anscombise
 More information: [Same Stats, Different Graphs](https://www.autodesk.com/research/publications/same-stats-different-graphs), [socviz.co](https://socviz.co/lookatdata.html#why-look-at-data).
 :::
 
+
+## 💬
+
+### What is more important? An eye or an algorithm?
+
+What are the consequences of overrelying on statistical techniques? <br>What are the consequences of overrelying on visualizations?
+
+## What makes a bad plot bad?
+::::: columns
+::: {.column width="40%"}
+-  Aesthetic (ugly)
+
+-  Perceptual (bad)
+
+-  Substantive (wrong)
+:::
+
+::: {.column width="60%"}
+![[Claus Wilke - Ugly, bad, and wrong figures](https://clauswilke.com/dataviz/introduction.html)](images/ugly-bad-wrong.png)
+:::
+:::::
+
+## 💬 Speed dates
+
+::::: columns
+::: {.column width="40%"}
+-   What do you think about this plot?
+
+-   What elements can be improved?
+
+-   Are there still good things with the plot?
+:::
+
+::: {.column width="60%"}
+![Karl Broman](images/broman_worst_graph.jpg)
+:::
+:::::
+
+------------------------------------------------------------------------
+
+💬
+
+:::::: columns
+::: {.column width="60%"}
+![reddit.com/r/dataisugly](images/lidl.png){fig-align="left" height="500"}
+:::
+
+:::: {.column width="40%"}
+::: fragment
+-   Misleading (or missing) information?
+-   Many data visualizations might have a hidden agenda, due to e.g. marketing strategies.
+:::
+::::
+::::::
+
+::: footer
+Check out the classic from Darrel Huff [How to Lie with Statistics](https://www.penguin.co.uk/books/13565/how-to-lie-with-statistics-by-darrell-huff-with-pictures-by-mel-calman/9780140136296) [Lessions from How to Lie with Statistics.](https://towardsdatascience.com/lessons-from-how-to-lie-with-statistics-57060c0d2f19)
+:::
+
+------------------------------------------------------------------------
+
+💬
+
+:::::: columns
+::: {.column width="60%"}
+![[Source: reddit.com/r/dataisbeautiful](https://www.reddit.com/r/dataisugly/)](images/data_ink.png){fig-align="left" width="544"}
+:::
+
+:::: {.column width="40%"}
+::: fragment
+-   Data to ink ratio?
+:::
+::::
+::::::
+
+::: footer
+[How to maximize the data-to-ink ratio](https://www.codeconquest.com/blog/data-ink-ratio-explained-with-example/)
+:::
+
+------------------------------------------------------------------------
+
+### Data to ink ratio
+
+::::: columns
+::: {.column width="50%"}
+![](images/data_ink.png)
+:::
+
+::: {.column width="50%"}
+![](images/data_ink2.jpeg){height="500"}
+:::
+:::::
+
+::: footer
+[How to maximize the data-to-ink ratio](https://www.codeconquest.com/blog/data-ink-ratio-explained-with-example/)
+:::
+
+------------------------------------------------------------------------
+
+![](images/treemap.png)
+
+------------------------------------------------------------------------
+
+💬
+
+:::::: columns
+::: {.column width="60%"}
+![](images/colors.jpg){width="490"}
+:::
+
+:::: {.column width="40%"}
+::: fragment
+-   Do the colors make sense?
+:::
+::::
+::::::
+
+------------------------------------------------------------------------
+
+![Do the colors make sense?](images/colors2.png)
+
+------------------------------------------------------------------------
+
+💬
+
+:::::: columns
+::: {.column width="60%"}
+![](images/all_elements_needed.jpeg){width="490"}
+:::
+
+:::: {.column width="40%"}
+::: fragment
+-   Are all elements needed?
+:::
+::::
+::::::
+
+------------------------------------------------------------------------
+
+💬
+
+:::::: columns
+::: {.column width="60%"}
+![](images/axes_correct.jpeg){height="500"}
+:::
+
+:::: {.column width="40%"}
+::: fragment
+-   Are the axes correct?
+:::
+::::
+::::::
+
+------------------------------------------------------------------------
+
+![Is a zero-point needed?](images/ireland.png)
+
+------------------------------------------------------------------------
+
+💬
+
+:::::: columns
+::: {.column width="60%"}
+![](images/stacked1.png)
+:::
+
+:::: {.column width="40%"}
+::: fragment
+-   Is it simple?
+:::
+::::
+::::::
+
+------------------------------------------------------------------------
+
+### ⚠️ Stacked bar charts ⚠️
+
+::::: columns
+::: {.column width="60%"}
+![](images/stacked2.png)
+:::
+
+::: {.column width="40%"}
+![](images/brazil.jpeg)
+:::
+:::::
+
+------------------------------------------------------------------------
+
+### ⚠️ Pie charts ⚠️
+
+![](images/pie1.png)
+
+------------------------------------------------------------------------
+
+### Visualizing proportions
+
+-   Pie chart, stacked bar, or side-by-side bars?
+
+![](images/proportions.png)
+
+<https://clauswilke.com/dataviz/visualizing-proportions.html#>
+
+------------------------------------------------------------------------
+
+![Elementary Perceptual Tasks](images/ept.png)  
+
+::: footer
+Original Source: [Cleveland & McGill (1984). 531-554](https://www.tandfonline.com/doi/abs/10.1080/01621459.1984.10478080); [Further summary and examples](https://bookdown.org/dereksonderegger/141/6-graphing-principles.html)
+:::
+
+------------------------------------------------------------------------
+
+💬
+
+:::::: columns
+::: {.column width="60%"}
+![](images/storytelling_before.png)
+:::
+
+:::: {.column width="40%"}
+::: fragment
+-   Does it support one conclusion?
+:::
+::::
+::::::
+
+------------------------------------------------------------------------
+
+### Storytelling with data - show just one conclusion! 
+
+![](images/storytelling_after.png)
+
 ## Exploratory versus explanatory {.smaller .scrollable}
 
 ::: notes
@@ -156,44 +389,8 @@ Source: [storytellingwithdata.com](https://www.storytellingwithdata.com/blog/201
 More resources: [clauswilke.com](https://clauswilke.com/dataviz/telling-a-story.html) (telling a story and making a point), [susielu.com](https://www.susielu.com/data-viz/storytelling-in-dashboards) (different interpretation of exploratory/explanatory).
 :::
 
-## Exploratory versus explanatory {.smaller .scrollable}
 
-## 💬
 
-### What is more important? An eye or an algorithm?
-
-What are the consequences of overrelying on statistical techniques? <br>What are the consequences of overrelying on visualizations?
-
-## What makes a bad plot bad?
-::::: columns
-::: {.column width="40%"}
--  Aesthetic (ugly)
-
--  Perceptual (bad)
-
--  Substantive (wrong)
-:::
-
-::: {.column width="60%"}
-![[Claus Wilke - Ugly, bad, and wrong figures](https://clauswilke.com/dataviz/introduction.html)](images/ugly-bad-wrong.png)
-:::
-:::::
-
-## 💬 Speed dates
-
-::::: columns
-::: {.column width="40%"}
--   What do you think about this plot?
-
--   What elements can be improved?
-
--   Are there still good things with the plot?
-:::
-
-::: {.column width="60%"}
-![Karl Broman](images/broman_worst_graph.jpg)
-:::
-:::::
 
 # Data Visualization Project 📊 {background-color="#8000FF"}
 
