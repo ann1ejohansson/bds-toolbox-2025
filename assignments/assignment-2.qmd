@@ -28,6 +28,16 @@ The report should be a description of the process that led to your final data vi
 
 -   Your final, explanatory, data visualization. Clearly mark which one of your visualizations this is. Include the visualization, along with an explanation of what it aims to communicate. Importantly, what can you conclude from this visualization? Why is this the best way to communicate this conclusion? How robust are your findings? This should follow logically from the introduction of your report (research question & exploration).
 
+### Grading
+
+The second assignment of the Data Visualization module will be graded on the following elements:
+
+-   **Aesthetics**: The overall visual quality of the plot. Is it clear and legible, with no unnecessary clutter? Do choices like color, labels, or scales enhance readability and interpretation?
+-   **Communication**: How well the visualization conveys its intended message. Can the main point be understood quickly with minimal explanation? Do the title, labels, and layout support effective communication?
+-   **Description**: The quality of the written report. Does it clearly state the research question, what you wanted to communicate, and why this visualization is appropriate? Does it provide a concise interpretation of what can be concluded from the data? Is it explanatory?
+-   **Creativity and Complexity**: The thoughtfulness and depth of the visualization. Does it go beyond a default chart type when appropriate? Were creative or more complex techniques used in a way that adds value without obscuring the message?
+-   **Code Quality and Styling**: The clarity and reproducibility of the R code. Does the code run without errors and generate the submitted plot? Is it well-structured, readable, and consistent with good style practices (i.e., lintr-proof)?
+
 ### Levels of visualization
 
 Your chosen research question falls into one of three levels: analytics, inference, or prediction. Each level has different expectations in terms of how the visualization should be constructed and what role statistical modeling plays.
@@ -71,7 +81,7 @@ The final draft of your report and data visualization is due **Sunday, October 1
 
 -   Start by working with a **subset** of the data, to get a good idea of the data structure and variables, without running heavy computations. This should make your workflow more efficient. We have provided example R code that shows how to generate a reproducible subset.
 
--   After developing your workflow, reflect on the robustness of your analysis. Would your findings change when you rerun the analysis on different data, or under altered conditions? Explain why or why not in your conclusion. 
+-   After developing your workflow, reflect on the robustness of your analysis. Would your findings change when you rerun the analysis on different data, or under altered conditions? Explain why or why not in your conclusion.
 
 -   Make sure to **render your final visualization large enough** so it is readable in the html.
 
@@ -79,9 +89,9 @@ The final draft of your report and data visualization is due **Sunday, October 1
 
 -   Add interactive elements **only if you think it adds value to your visualization**.
 
--   **Highlight your main conclusion!**. 
+-   **Highlight your main conclusion!**.
 
--  Before handing in your final visualization, look at the [guiding principles](). Have you met these conditions?\
+-   Before handing in your final visualization, look at the [guiding principles](). Have you met these conditions?\
 :::
 
 ## Research Questions
