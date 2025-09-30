@@ -346,29 +346,29 @@
     "objectID": "slides/slides copy.html#section",
     "href": "slides/slides copy.html#section",
     "title": "Data Visualization",
-    "section": "",
-    "text": "Slides made using quartoCover photo made in R by Danielle Navarro"
+    "section": "📌",
+    "text": "📌\ndata-visualization-2025"
   },
   {
     "objectID": "slides/slides copy.html#section-1",
     "href": "slides/slides copy.html#section-1",
     "title": "Data Visualization",
-    "section": "📌",
-    "text": "📌\ndata-visualization-2025"
+    "section": "💬",
+    "text": "💬\nWhy visualize data?"
   },
   {
     "objectID": "slides/slides copy.html#today",
     "href": "slides/slides copy.html#today",
     "title": "Data Visualization",
     "section": "Today",
-    "text": "Today\n\nWhat makes a plot good (and bad)?\n\nGuiding principles\nData Visualization Project"
+    "text": "Today\n\nWhy visualize data?\nWhat makes a plot good (and bad)?\n\nGuiding principles\nData Visualization Project"
   },
   {
     "objectID": "slides/slides copy.html#section-2",
     "href": "slides/slides copy.html#section-2",
     "title": "Data Visualization",
     "section": "💬",
-    "text": "💬\nWhy visualize data?"
+    "text": "💬\nWhat is more important? An eye or an algorithm?\nWhat are the consequences of overrelying on statistical techniques? What are the consequences of overrelying on visualizations?"
   },
   {
     "objectID": "slides/slides copy.html#why-visualize-data-1",
@@ -396,7 +396,7 @@
     "href": "slides/slides copy.html#section-3",
     "title": "Data Visualization",
     "section": "💬",
-    "text": "💬\nWhat is more important? An eye or an algorithm?\nWhat are the consequences of overrelying on statistical techniques? What are the consequences of overrelying on visualizations?"
+    "text": "💬\nWhy visualize data?"
   },
   {
     "objectID": "slides/slides copy.html#what-makes-a-bad-plot-bad",
@@ -474,5 +474,75 @@
     "title": "Data Visualization",
     "section": "Tips for the best viz",
     "text": "Tips for the best viz\n\nIs it explaining data?\nIs the information complete and correct?\nAre axes correct? (+ Should they have a zero-point?)\nDo the colors work? ( + Do they map to a relevant attribute?)\nAre all elements needed?\nWhat is the data to ink ratio?\nIs it understandable & simple?\nDoes it portray one conclusion?"
+  },
+  {
+    "objectID": "slides/slides copy.html#break",
+    "href": "slides/slides copy.html#break",
+    "title": "Data Visualization",
+    "section": "Break",
+    "text": "Break\n\n\nCode\nlibrary(\"RXKCD\")\nRXKCD::getXKCD(which = \"833\")"
+  },
+  {
+    "objectID": "slides/slides copy.html#first-draft-peer-review",
+    "href": "slides/slides copy.html#first-draft-peer-review",
+    "title": "Data Visualization",
+    "section": "First draft & peer review",
+    "text": "First draft & peer review\n\nFirst draft due Friday 10/10 12.30 – No requirements.\nPeer review due Friday 10/10 23.59 – Review one other group’s work. You will have time for this during Friday’s class."
+  },
+  {
+    "objectID": "slides/slides copy.html#grading",
+    "href": "slides/slides copy.html#grading",
+    "title": "Data Visualization",
+    "section": "Grading",
+    "text": "Grading\n\nAssigment 1: 50%\nIndividual part:\nGroup part:\nAssigment 2: 50%"
+  },
+  {
+    "objectID": "slides/slides copy.html#section-4",
+    "href": "slides/slides copy.html#section-4",
+    "title": "Data Visualization",
+    "section": "💬",
+    "text": "💬\nWhat is more important? An eye or an algorithm?\nWhat are the consequences of overrelying on statistical techniques? What are the consequences of overrelying on visualizations?"
+  },
+  {
+    "objectID": "slides/slides copy.html#tuesday-sept-30",
+    "href": "slides/slides copy.html#tuesday-sept-30",
+    "title": "Data Visualization",
+    "section": "Tuesday, Sept 30",
+    "text": "Tuesday, Sept 30\n\nWhy visualize data?\nWhat makes a plot good (and bad)?\nGuiding principles\nData Visualization Project"
+  },
+  {
+    "objectID": "slides/slides copy.html#why-visualize-data-3",
+    "href": "slides/slides copy.html#why-visualize-data-3",
+    "title": "Data Visualization",
+    "section": "Why visualize data?",
+    "text": "Why visualize data?"
+  },
+  {
+    "objectID": "slides/slides copy.html#tuesday-sept-30-1",
+    "href": "slides/slides copy.html#tuesday-sept-30-1",
+    "title": "Data Visualization",
+    "section": "Tuesday, Sept 30",
+    "text": "Tuesday, Sept 30\n\nWhy visualize data?\nWhat makes a plot good (and bad)?\nGuiding principles\nData Visualization Project"
+  },
+  {
+    "objectID": "slides/slides copy.html#tuesday-sept-30-2",
+    "href": "slides/slides copy.html#tuesday-sept-30-2",
+    "title": "Data Visualization",
+    "section": "Tuesday, Sept 30",
+    "text": "Tuesday, Sept 30\n\nWhy visualize data?\nWhat makes a plot good (and bad)?\nGuiding principles\nData Visualization Project"
+  },
+  {
+    "objectID": "slides/slides copy.html#tuesday-sept-30-3",
+    "href": "slides/slides copy.html#tuesday-sept-30-3",
+    "title": "Data Visualization",
+    "section": "Tuesday, Sept 30",
+    "text": "Tuesday, Sept 30\n\nWhy visualize data?\nWhat makes a plot good (and bad)?\nGuiding principles\nData Visualization Project"
+  },
+  {
+    "objectID": "slides/slides copy.html#tuesday-sept-30-4",
+    "href": "slides/slides copy.html#tuesday-sept-30-4",
+    "title": "Data Visualization",
+    "section": "Tuesday, Sept 30",
+    "text": "Tuesday, Sept 30\n\nWhy visualize data?\nWhat makes a plot good (and bad)?\nGuiding principles\nData Visualization Project"
   }
 ]

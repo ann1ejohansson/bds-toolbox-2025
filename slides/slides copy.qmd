@@ -26,8 +26,6 @@ title-slide-attributes:
 library(tidyverse)
 ```
 
-## 
-
 :::::: columns
 :::: {.column width="50%"}
 ::: columns
@@ -46,13 +44,21 @@ Cover photo made in R by [Danielle Navarro](https://art.djnavarro.net){target="_
 
 ### [**data-visualization-2025**](https://ann1ejohansson.github.io/data-visualization-2025){target="_blank"}
 
-## Today
+## Tuesday, Sept 30
 
--   What makes a plot good (and bad)?\
+-   Why visualize data?
+-   What makes a plot good (and bad)?
 -   Guiding principles
 -   Data Visualization Project
 
-# Bad plots 💩 {background-color="#8000FF"}
+# Why visualize data? 👀 {background-color="#8000FF"}
+
+## Tuesday, Sept 30
+
+-   **Why visualize data?**
+-   What makes a plot good (and bad)?
+-   Guiding principles
+-   Data Visualization Project
 
 ## 💬
 
@@ -115,6 +121,15 @@ More information: [Same Stats, Different Graphs](https://www.autodesk.com/resear
 ### What is more important? An eye or an algorithm?
 
 What are the consequences of overrelying on statistical techniques? <br>What are the consequences of overrelying on visualizations?
+
+# Bad plots 💩 {background-color="#8000FF"}
+
+## Tuesday, Sept 30
+
+-   Why visualize data?
+-   **What makes a plot good (and bad)?**
+-   Guiding principles
+-   Data Visualization Project
 
 ## What makes a bad plot bad?
 
@@ -407,6 +422,12 @@ More resources: [clauswilke.com](https://clauswilke.com/dataviz/telling-a-story.
 
 # Guiding principles 🪄 {background-color="#8000FF"}
 
+## Tuesday, Sept 30
+
+-   Why visualize data?
+-   What makes a plot good (and bad)?
+-   **Guiding principles**
+-   Data Visualization Project
 
 ## Tips for the best viz
 
@@ -426,8 +447,24 @@ More resources: [clauswilke.com](https://clauswilke.com/dataviz/telling-a-story.
 
 -   Does it portray **one conclusion**?
 
+## Break
+
+```{r}
+#| echo: true
+#| code-fold: true
+#| results: false
+library("RXKCD")
+RXKCD::getXKCD(which = "833")
+```
 
 # Data Visualization Project 📊 {background-color="#8000FF"}
+
+## Tuesday, Sept 30
+
+-   Why visualize data?
+-   What makes a plot good (and bad)?
+-   Guiding principles
+-   **Data Visualization Project**
 
 ## Aims
 
@@ -436,7 +473,6 @@ Your goal is to go from exploring the Prowise data to telling a story with it.
 -   [Assignment 1](../assignments/assignment-1.html){target="_blank"}: Choose a research question. Explore the data and create a set of visualizations to help you understand the data.
 
 -   [Assignment 2](../assignments/assignment-2.html){target="_blank"}: Create a final data visualization that tells a story with the data. Compiled into a html document, and presented in a GitHub repository.
-
 
 ## Requirements Assignment 2
 
@@ -448,8 +484,8 @@ Your goal is to go from exploring the Prowise data to telling a story with it.
 ## Workflow
 
 -   Comment your code clearly. We want to understand your thought process.
--   Collaborate within your group using Git & GitHub. You will set up your own project repository connected to the Data Visualization Server. 
--   Make sure all documents render correctly, and that code is styled and runs. 
+-   Collaborate within your group using Git & GitHub. You will set up your own project repository connected to the Data Visualization Server.
+-   Make sure all documents render correctly, and that code is styled and runs.
 -   ️⚠ **Do not push any data to GitHub.**
 
 ## Workflow
@@ -457,3 +493,16 @@ Your goal is to go from exploring the Prowise data to telling a story with it.
 -   [Working on the server](../documents/working-on-the-server.html){target="_blank"}
 
 -   [Git setup & workflow](../documents/working-with-git.html){target="_blank"}
+
+## First draft & peer review
+
+-   First draft due Friday 10/10 12.30 -- No requirements.
+
+-   Peer review due Friday 10/10 23.59 -- Review one other group's work. You will have time for this during Friday's class.
+
+## Grading
+
+-   Assigment 1: 50%
+-   Individual part:
+-   Group part:
+-   Assigment 2: 50%
