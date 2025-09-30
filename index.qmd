@@ -82,9 +82,9 @@ In this module, you will learn a wide set of data visualisation tools for both s
 
 [Assignment 2](assignments/assignment-2.html){target="_blank"}
 
-You'll be working with Git and GitHub for both assignments. Refer [here](documents/working-with-git.qmd) for instructions on how to set up your data visualization server account with GitHub. 
+You'll be working with Git and GitHub for both assignments. Refer [here](documents/git-workflow.qmd) for instructions on how to set up your data visualization server account with GitHub. 
 
-Indicate your preference for a research question [here](https://docs.google.com/spreadsheets/d/1ppRe5PKrdawL8Q4QHAJpa6bfQfbVhmHZiWE7AxGaHSE/edit)
+Indicate your preference for a research question [here](https://docs.google.com/spreadsheets/d/1ppRe5PKrdawL8Q4QHAJpa6bfQfbVhmHZiWE7AxGaHSE/edit).
 
 ## 🚨 Deadlines
 
@@ -98,11 +98,11 @@ Indicate your preference for a research question [here](https://docs.google.com/
 ## 📚 Materials 
 
 ::: {layout-ncol="3"}
-![[r4ds.had.co.nz](https://r4ds.hadley.nz/data-visualize.html)](../slides/images/book_wickham.png){fig-align="left" height="150"}
+![[r4ds.had.co.nz](https://r4ds.hadley.nz/data-visualize.html)](slides/images/book_wickham.png){fig-align="left" height="150"}
 
-![[socviz.co](https://socviz.co/)](../slides/images/book_healy.jpg){fig-align="left" height="150"}
+![[socviz.co](https://socviz.co/)](slides/images/book_healy.jpg){fig-align="left" height="150"}
 
-![[Videos on canvas](https://canvas.uva.nl/courses/54361/modules)](../slides/images/canvas.png){fig-align="left" height="150"}
+![[Videos on canvas](https://canvas.uva.nl/courses/54361/modules)](slides/images/canvas.png){fig-align="left" height="150"}
 :::
 
 #### Helpful extra resources

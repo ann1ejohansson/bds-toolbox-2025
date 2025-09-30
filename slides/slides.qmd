@@ -60,7 +60,7 @@ Cover photo made in R by [Danielle Navarro](https://art.djnavarro.net){target="_
 
 ### Why visualize data?
 
-## 
+## Why visualize data?  {.smaller}
 
 :::::: columns
 ::: {.column width="40%"}
@@ -74,7 +74,7 @@ Cover photo made in R by [Danielle Navarro](https://art.djnavarro.net){target="_
 ::::
 ::::::
 
-# 
+## Why visualize data?  {.smaller}
 
 ::: {layout-ncol="2"}
 <a href="images/bandjes1.png" target="_blank"> <img src="images/bandjes1.png" width="500" dpi="1000" style="max-width: 100%;"/> </a>
@@ -165,6 +165,19 @@ More resources: [clauswilke.com](https://clauswilke.com/dataviz/telling-a-story.
 What are the consequences of overrelying on statistical techniques? <br>What are the consequences of overrelying on visualizations?
 
 ## What makes a bad plot bad?
+::::: columns
+::: {.column width="40%"}
+-  Aesthetic (ugly)
+
+-  Perceptual (bad)
+
+-  Substantive (wrong)
+:::
+
+::: {.column width="60%"}
+![[Claus Wilke - Ugly, bad, and wrong figures](https://clauswilke.com/dataviz/introduction.html)](images/ugly-bad-wrong.png)
+:::
+:::::
 
 ## 💬 Speed dates
 
