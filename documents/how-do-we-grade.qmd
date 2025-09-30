@@ -1,6 +1,0 @@
----
-title: "How do we grade your data visualizations?"
-format: html
----
-
-## Coming soon ...
