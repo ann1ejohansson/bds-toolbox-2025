@@ -1,5 +1,5 @@
 ---
-title: "git_workflow"
+title: "Working with Git on the Server"
 format: html
 ---
 
@@ -53,3 +53,11 @@ It will now appear as if your RStudio is re-starting; don't be feared, this is w
 If you look in your `Files` pane, you will see that the folder was selected, which holds all the information that was on the GitHub repository.
 
 If you look in your `Environment` pane, you can now see an extra tab called `Git`. You have now successfully cloned your repository and let Git track your changes!
+
+## Now you can work in your project
+
+Open this project whenever you are working on the group assignments. You do this by either by clicking on the `Project: <your-repo-name>` button in the top right corner, or by double-clicking the `.Rproj` file in your project directory.
+
+Commit, push, and pull changes via the terminal in the online RStudio editor, or in the tab called `Git`. **Remember to always pull changes into your environment before you start working on the project, and push your changes when you are done working on it.** This way, you and your team members will always have access to the most recent version of the project, and you (hopefully) avoid merge conflicts.
+
+It is good practice to close the project when you are done working on it, to avoid accidentally making changes to the wrong project the next time you open RStudio.

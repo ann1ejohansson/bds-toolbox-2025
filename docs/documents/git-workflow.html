@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>git_workflow – Data Visualization 2025</title>
+<title>Working with Git on the Server – Data Visualization 2025</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -156,6 +156,7 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#connecting-github-to-rstudio" id="toc-connecting-github-to-rstudio" class="nav-link" data-scroll-target="#connecting-github-to-rstudio">Connecting GitHub to RStudio</a></li>
+  <li><a href="#now-you-can-work-in-your-project" id="toc-now-you-can-work-in-your-project" class="nav-link" data-scroll-target="#now-you-can-work-in-your-project">Now you can work in your project</a></li>
   </ul>
 </nav>
     </div>
@@ -164,7 +165,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">git_workflow</h1>
+<h1 class="title">Working with Git on the Server</h1>
 </div>
 
 
@@ -247,9 +248,15 @@ ul.task-list li input[type="checkbox"] {
 <p>It will now appear as if your RStudio is re-starting; don’t be feared, this is what is supposed to be happening. Projects are temporary representations of your RStudio environment, so that you can work on different projects with different data to keep your work structure clear.</p>
 <p>If you look in your <code>Files</code> pane, you will see that the folder was selected, which holds all the information that was on the GitHub repository.</p>
 <p>If you look in your <code>Environment</code> pane, you can now see an extra tab called <code>Git</code>. You have now successfully cloned your repository and let Git track your changes!</p>
-
-
 </section>
+</section>
+<section id="now-you-can-work-in-your-project" class="level2">
+<h2 class="anchored" data-anchor-id="now-you-can-work-in-your-project">Now you can work in your project</h2>
+<p>Open this project whenever you are working on the group assignments. You do this by either by clicking on the <code>Project: &lt;your-repo-name&gt;</code> button in the top right corner, or by double-clicking the <code>.Rproj</code> file in your project directory.</p>
+<p>Commit, push, and pull changes via the terminal in the online RStudio editor, or in the tab called <code>Git</code>. <strong>Remember to always pull changes into your environment before you start working on the project, and push your changes when you are done working on it.</strong> This way, you and your team members will always have access to the most recent version of the project, and you (hopefully) avoid merge conflicts.</p>
+<p>It is good practice to close the project when you are done working on it, to avoid accidentally making changes to the wrong project the next time you open RStudio.</p>
+
+
 </section>
 
 </main> <!-- /main -->
