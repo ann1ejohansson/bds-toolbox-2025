@@ -30,25 +30,13 @@ The report should be a description of the process that led to your final data vi
 
 ### Grading
 
-The second assignment of the Data Visualization module will be graded as following:
+The second assignment of the Data Visualization module will be graded on the following elements:
 
--   **Aesthetics**
-    -   Is the plot legible? \[1pt\]
-    -   Do the colors add to the interpretability? \[1pt\]
-    -   Is the plot simple? \[0.5 pt\]
--   **Communication**
-    -   Is it clear what the plots tries to communicate? \[1pt\]
-    -   Does the plot communicate the described conclusions/description? \[1pt\]
-    -   The plot requires minimal explanation \[0.5 pt\]
--   **Description**
-    -   XXX
-    -   XXX
--   **Creative/complexity**
-    -   Is the plot creative? \[0.5 pt\]
-    -   Is the plot/analysis complex? \[0.5 pt\]
--   **Code quality & Styling**
-    -   Does the R code run? \[0.5 pt\]
-    -   Is the R code lintr-proof? \[0.5 pt\]
+-   **Aesthetics**: The overall visual quality of the plot. Is it clear and legible, with no unnecessary clutter? Do choices like color, labels, or scales enhance readability and interpretation?
+-   **Communication**: How well the visualization conveys its intended message. Can the main point be understood quickly with minimal explanation? Do the title, labels, and layout support effective communication?
+-   **Description**: The quality of the written report. Does it clearly state the research question, what you wanted to communicate, and why this visualization is appropriate? Does it provide a concise interpretation of what can be concluded from the data? Is it explanatory?
+-   **Creativity and Complexity**: The thoughtfulness and depth of the visualization. Does it go beyond a default chart type when appropriate? Were creative or more complex techniques used in a way that adds value without obscuring the message?
+-   **Code Quality and Styling**: The clarity and reproducibility of the R code. Does the code run without errors and generate the submitted plot? Is it well-structured, readable, and consistent with good style practices (i.e., lintr-proof)?
 
 ### Levels of visualization
 
@@ -93,7 +81,7 @@ The final draft of your report and data visualization is due **Sunday, October 1
 
 -   Start by working with a **subset** of the data, to get a good idea of the data structure and variables, without running heavy computations. This should make your workflow more efficient. We have provided example R code that shows how to generate a reproducible subset.
 
--   After developing your workflow, reflect on the robustness of your analysis. Would your findings change when you rerun the analysis on different data, or under altered conditions? Explain why or why not in your conclusion. 
+-   After developing your workflow, reflect on the robustness of your analysis. Would your findings change when you rerun the analysis on different data, or under altered conditions? Explain why or why not in your conclusion.
 
 -   Make sure to **render your final visualization large enough** so it is readable in the html.
 
@@ -101,9 +89,9 @@ The final draft of your report and data visualization is due **Sunday, October 1
 
 -   Add interactive elements **only if you think it adds value to your visualization**.
 
--   **Highlight your main conclusion!**. 
+-   **Highlight your main conclusion!**.
 
--  Before handing in your final visualization, look at the [guiding principles](). Have you met these conditions?\
+-   Before handing in your final visualization, look at the [guiding principles](). Have you met these conditions?\
 :::
 
 ## Research Questions
