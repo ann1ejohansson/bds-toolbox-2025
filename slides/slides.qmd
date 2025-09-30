@@ -18,116 +18,43 @@ editor: visual
 title-slide-attributes:
   data-background-image: "images/coverphoto.jpg"
   data-background-size: auto
-  data-background-opacity: "1.0"
-  data-background-repeat: repeat
 ---
+
+------------------------------------------------------------------------
 
 ```{r, include=FALSE}
 library(tidyverse)
 ```
 
-## Welcome to the BDS Toolbox module Data Visualization! 👋
+## 
 
 :::::: columns
 :::: {.column width="50%"}
 ::: columns
-Find everything you need for this module on the website:
+Slides made using [quarto](https://quarto.org){target="_blank"}
 
-### [**data-visualization-2025**](https://ann1ejohansson.github.io/data-visualization-2025){target="_blank"}
+Cover photo made in R by [Danielle Navarro](https://art.djnavarro.net){target="_blank"}
 :::
 ::::
 
 ::: {.column width="50%"}
-![cover photo made in R by [Danielle Navarro](https://art.djnavarro.net){target="_blank"}](images/coverphoto.jpg){fig-align="center" width="80%"}
+![](images/coverphoto.jpg){fig-align="center" width="80%"}
 :::
 ::::::
 
-::: footer
-Slides made using [quarto](https://quarto.org){target="_blank"}
-:::
 
-# Course overview 📋 {background-color="#8000FF"}
+## 📌
 
-## Schedule {.smaller .scrollable}
-
-+----------------+----------------------------------+--------------------------------------------------------------------------------------------------------------------+-----------------------------------------+
-| When           | What                             | Prepare                                                                                                            | Tutorial                                |
-+================+==================================+====================================================================================================================+=========================================+
-| Tuesday, 30/09 | **Data Visualization Session 1** | \[Read\] DV book ch. 1, 3                                                                                          | Kick-off quiz                           |
-|                |                                  |                                                                                                                    |                                         |
-| 15.00 - 18.00  | Good and bad plots               | \[Watch videos\] Fundamentals of Data Visualization                                                                |                                         |
-|                |                                  |                                                                                                                    |                                         |
-|                | ggplot basics                    |                                                                                                                    |                                         |
-+----------------+----------------------------------+--------------------------------------------------------------------------------------------------------------------+-----------------------------------------+
-| Friday, 03/10  | **Data Visualization Session 2** | \[Read\] DV Book ch. 3.7, 4.3, 5.3, 5.5, 5.6, 6.0, 6.1, 6.2, 8.1, 8.2, 8.3                                         | Kick-off quiz                           |
-|                |                                  |                                                                                                                    |                                         |
-| 12.30 - 15.30  | Better plots                     | \[Watch videos\] Themes, Recycling Themes, Trend lines / Stats, Color scheme, Multiple plots, Facets, Saving plots | Work on Data Visualization Assignment 1 |
-|                |                                  |                                                                                                                    |                                         |
-| \              |                                  |                                                                                                                    |                                         |
-+----------------+----------------------------------+--------------------------------------------------------------------------------------------------------------------+-----------------------------------------+
-| Tuesday, 07/10 | **Data Visualization Session 3** |                                                                                                                    | Data Visualization Assignment 2         |
-|                |                                  |                                                                                                                    |                                         |
-| 15.00 - 18.00  | Introduction to final assignment |                                                                                                                    |                                         |
-+----------------+----------------------------------+--------------------------------------------------------------------------------------------------------------------+-----------------------------------------+
-| Friday, 10/10, | **Q&A**                          |                                                                                                                    | Work on Final Assignment                |
-|                |                                  |                                                                                                                    |                                         |
-| 12.30 - 15.30  |                                  |                                                                                                                    |                                         |
-+----------------+----------------------------------+--------------------------------------------------------------------------------------------------------------------+-----------------------------------------+
-
-: {tbl-colwidths="\[30,40, 50, 30\]"}
-
-## Assignments
-
-::: {layout-ncol="2"}
-### [Assignment 1](../assignments/assignment-1.html){target="_blank"}
-
--   Part A alone, part B with your group.
-
--   X% of the grade
-
-### [Assignment 2](../assignments/assignment-2.html){target="_blank"}
-
--   Your final data visualization project.
-
--   Work with your group.
-
--   X% of the grade
-:::
-
-## Deadlines
-
--   **Assignment 1** – Sunday 5/10 23.59
--   **First draft of Assignment 2** – Friday 10/10 12.30
--   **Peer review of Assignment 2** – Friday 10/10 23.59
--   **Assignment 2** – Sunday 12/10 23.59
-
-## Materials {.scrollable}
-
-::: {layout-ncol="3"}
-![[r4ds.had.co.nz](https://r4ds.hadley.nz/data-visualize.html)](images/book_wickham.png){fig-align="left" height="300"}
-
-![[socviz.co](https://socviz.co/)](images/book_healy.jpg){fig-align="left" height="300"}
-
-![[Videos on canvas](https://canvas.uva.nl/courses/47312/modules)](images/canvas.png){fig-align="left" height="300"}
-
-### Helpful extra resources
-
--   [Claus Wilke: Fundamentals of Data Viz](https://clauswilke.com/dataviz/)
-
--   <https://psyteachr.github.io/introdataviz/plotstyle.html>
-:::
-
-# Bad plots 💩 {background-color="#8000FF"}
+### [**data-visualization-2025**](https://ann1ejohansson.github.io/data-visualization-2025){target="_blank"}
 
 ## Today
 
-❓ Quiz\
-📊 What makes a plot good (and bad)?\
-🪄 Guiding principles
+-  What makes a plot good (and bad)?\
+-  Guiding principles
+-  Data Visualization Project
 
-## Quiz!
+# Bad plots 💩 {background-color="#8000FF"}
 
-<https://canvas.uva.nl/courses/54361/quizzes>
 
 ## 💬
 
@@ -261,9 +188,9 @@ What are the consequences of overrelying on statistical techniques? <br>What are
 
 Your goal is to go from exploring the Prowise data to telling a story with it.
 
--   Assignment 1: Choose a research question. Explore the data and create a set of visualizations to help you understand the data.
+-   [Assignment 1](../assignments/assignment-1.html){target="_blank"}: Choose a research question. Explore the data and create a set of visualizations to help you understand the data.
 
--   Assignment 2: Create a final data visualization that tells a story with the data. Compiled into a html document, and presented in the GitHub repository.
+-   [Assignment 2](../assignments/assignment-2.html){target="_blank"}: Create a final data visualization that tells a story with the data. Compiled into a html document, and presented in a GitHub repository.
 
 ## The data
 
@@ -279,3 +206,11 @@ Your goal is to go from exploring the Prowise data to telling a story with it.
 -   Comment your code clearly. We want to understand your thought process.
 -   Work in the Data Visualization Server, and compile the html document there.\
 -   ️⚠ Only upload the html document to GitHub, not the R scripts and **especially not any data.**
+
+## Workflow
+
+-   [Working on the server](../documents/working-on-the-server.html){target="_blank"}
+
+-  [Git setup & workflow](../documents/working-with-git.html){target="_blank"}
+
+-  [Rubrics](../documents/how-do-we-grade.html){target="_blank"}
