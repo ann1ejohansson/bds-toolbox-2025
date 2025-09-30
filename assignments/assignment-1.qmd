@@ -325,6 +325,8 @@ my_plot <- my_data %>%
 print(my_plot)
 ```
 
+![](images/interactive.png)
+
 **Now it's your turn! Turn this static ggplot into an interactive plotly object, and add a customized tooltip that shows additional context next to the default values when you hover over the plot.**
 
 When you are done, please close the connection to the database (run this code in the console!):

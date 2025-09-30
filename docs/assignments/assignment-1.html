@@ -155,10 +155,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">Working with Git</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../documents/how-do-we-grade.html">
- <span class="dropdown-text">How do we grade your visualizations?</span></a>
-  </li>  
-        <li>
     <a class="dropdown-item" href="https://socviz.co/">
  <span class="dropdown-text">Data Visualization: A Practical Introduction (Healy)</span></a>
   </li>  
@@ -167,7 +163,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="dropdown-text">R for Data Science - Data visualization chapter</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="https://canvas.uva.nl/courses/47312/modules">
+    <a class="dropdown-item" href="https://canvas.uva.nl/courses/54361/modules">
  <span class="dropdown-text">Videos on Canvas</span></a>
   </li>  
     </ul>
@@ -221,7 +217,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="instructions">Instructions</h2>
 <p>Download the templates for part 1 of this assignment in the <a href="https://github.com/ann1ejohansson/data-visualization-2025">Github Repository</a> (templates &gt; assignment-1).</p>
 <p>This is the first assignment for the Data Visualization module. The aim here is to get acquainted with the Prowise Learn data, practice with some ggplot basics, and to get you started with working with your visualizations for the final assignment.</p>
-<p>With this assignment, you can gain X points, plus X bonus points. Please <a href="how-do-we-grade.qmd">refer here</a> for an overview of how we grade your data visualizations. Part 1 is completed, and thus also graded, individually. Part 2 should be completed with your assigned group. Please make sure to clearly indicate your group number and names of all group members in your submission. One person should submit the assignment on behalf of the group. If more than one person submits the group assignment, we will only look at one of them.</p>
+<p>With this assignment, you can gain 14 points (15 with bonus in part 1A). The points are awarded as following:</p>
+<p>Individual part:</p>
+<ul>
+<li>4 points (plus 1 bonus point) for Part 1A</li>
+<li>2 points for Part 1B</li>
+<li>0.5 point for R code that runs and 0.5 point for lintr-proof code</li>
+</ul>
+<p>Group part:</p>
+<ul>
+<li>6 points for visualization</li>
+<li>0.5 point for R code that runs and 0.5 point for lintr-proof code</li>
+</ul>
+<p>Part 1 is completed, and thus also graded, individually. Part 2 should be completed with your assigned group. Please make sure to clearly indicate your group number and names of all group members in your submission. One person should submit the assignment on behalf of the group. If more than one person submits the group assignment, we will only look at one of them.</p>
 <p>The assignment is due on <strong>Sunday October 5th, 2025 at 23:59</strong>. Submit your assignment to Canvas, under “DV Assignment 1”.</p>
 <p>Your submission for Part 1 should contain the following files:</p>
 <ul>
@@ -232,7 +240,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>with file names in the following structure: <code>DV-Assignment1-Firstname-Lastname-PartA.Rmd</code> and <code>DV-Assignment1-Firstname-Lastname-PartA.html</code>.</p>
 <p>Your group submission (Part 2) should contain the following files:</p>
 <ul>
-<li>R code (style checked &amp; working) in a <code>.Rmd</code><br>
+<li>R code (style checked &amp; working) in a <code>.Rmd</code> file<br>
 </li>
 <li>Your plot and short description, compiled to <code>.html</code></li>
 </ul>
@@ -262,13 +270,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="a.-replicate-this-plot">A. Replicate this plot</h3>
 <p>The following code will give you the data necessary to create the plot at the end of this section. Your task is to replicate the plot using <code>ggplot2</code>.<br>
 Don’t worry if you cannot reproduce the plots exactly. You can, for example, use different colors and font families.</p>
-<p>Grading:</p>
+<p><strong>Grading:</strong></p>
 <ul>
-<li>Does the data show the same pattern? [1.5 pt]</li>
-<li>Is the styling the same? [1.5 pt]</li>
-<li>BONUS: Where there extra features added? [1 pt]</li>
-<li>Did the code run? [0.5 pt]</li>
-<li>Were styling issues resolved? (lintr) [0.5 pt]</li>
+<li><strong>Does the data show the same pattern? [2 pt]</strong></li>
+<li><strong>Is the styling the same? [2 pt]</strong></li>
+<li><strong>BONUS: Where there extra features added? [1 pt]</strong></li>
 </ul>
 <p><strong>Bonus points</strong></p>
 <p>Can you spot any areas where this plot can be improved? 1 extra point will be awarded for changes made, or features added or removed to the visualization. They need to be meaningful and improve the visualization. Simply changing colors or themes will not be rewarded, unless you can motivate why your changes are an improvement.</p>
@@ -394,7 +400,8 @@ Don’t worry if you cannot reproduce the plots exactly. You can, for example, u
 <p>Finally we make a plot with text to have some more information in our visualization. I used these settings in my rMarkdown code chunk: <code>fig.height = 2, fig.width = 10, fig.align = "center"</code></p>
 <p><img src="images/replicate-this-plot-1c.png" class="img-fluid"> Finally we combine the three plots (one text plot and two figure plots) into one plot by means of the plot_grid function of the <code>cowplot</code> package. <strong>This is the visualization that you should replicate in this assignment Part II</strong>.</p>
 <p>I used these settings in my rMarkdown code chunk: <code>fig.height = 8, fig.width = 10, fig.align = "center"</code></p>
-<p><img src="images/replicate-this-plot-1-final.png" class="img-fluid"> Tips:</p>
+<p><img src="images/replicate-this-plot-final.png" class="img-fluid"></p>
+<p>Tips:</p>
 <ul>
 <li>On plot 1 there is text on the third facet which does not use the default font family<br>
 </li>
@@ -415,10 +422,10 @@ Don’t worry if you cannot reproduce the plots exactly. You can, for example, u
 <li>Make this plot interactive using the the <code>plotly</code> package. Tip: You can use the <code>ggplotly()</code> function to convert a ggplot object to an interactive plotly object.</li>
 <li>Add a tooltip that displays additional information when you hover over the plot. Customize the tooltip so that it displays the default plot values and additional insights from <strong>two other variables</strong> (choose yourself). Make sure all of this information is visible when you hover over the plot.</li>
 </ul>
-<p>Grading:</p>
+<p><strong>Grading:</strong></p>
 <ul>
-<li>Does the interactive plot work? [1 pt]</li>
-<li>Does the tooltip clearly display additional (meaningful) information next to the default plot values? [1 pt]</li>
+<li><strong>Does the interactive plot work? [1 pt]</strong></li>
+<li><strong>Does the tooltip clearly display additional (meaningful) information next to the default plot values? [1 pt]</strong></li>
 </ul>
 <p>For this assignment, we will examine how the student with <code>new_user_id = 19872</code> progresses through the Multiplication game. To do so, we retrieve the student’s <code>log_records</code>. In the query below, we also obtain additional information about the learning goals associated with the answered items to provide extra context alongside the data stored in the <code>log_records</code>. This is achieved by performing left joins between the <code>log_records</code> tables and two others: <code>items_learning_goals</code> (which links <code>item_id</code>’s to <code>learning_goal_id</code>’s) and <code>learning_goals</code>, which provides further details about the learning goals.</p>
 <div class="cell">
@@ -483,6 +490,7 @@ Don’t worry if you cannot reproduce the plots exactly. You can, for example, u
 <span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(my_plot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p><img src="images/interactive.png" class="img-fluid"></p>
 <p><strong>Now it’s your turn! Turn this static ggplot into an interactive plotly object, and add a customized tooltip that shows additional context next to the default values when you hover over the plot.</strong></p>
 <p>When you are done, please close the connection to the database (run this code in the console!):</p>
 <div class="cell">
@@ -494,7 +502,7 @@ Don’t worry if you cannot reproduce the plots exactly. You can, for example, u
 <h2 class="anchored" data-anchor-id="part-2-start-on-final-dv-project-group">Part 2: Start on Final DV Project (Group)</h2>
 <section id="a.-specify-your-research-question" class="level3">
 <h3 class="anchored" data-anchor-id="a.-specify-your-research-question">A. Specify your research question</h3>
-<p>In class 1 you indicated your preference for a research question for the final project, and were assigned a group to work with. Together with your group, read the instructions for your assigned research question in <a href="../assignments/assignment-2.html">Assignment 2</a> again.</p>
+<p>In class 1 you indicated your preference for a research question for the final project, and were assigned a group to work with. You were also assigned one of the GitHub repositories from the Oefenweb GitHub account, which you can use to collaborate on your research project. Together with your group, read the instructions for your assigned research question in <a href="../assignments/assignment-2.html">Assignment 2</a> again.</p>
 <ul>
 <li>Does your project take an analytical, inference, or predictive approach? Is it clear what is expected in the final data visualization with regards to the approach?<br>
 </li>
@@ -503,8 +511,7 @@ Don’t worry if you cannot reproduce the plots exactly. You can, for example, u
 </section>
 <section id="b.-connect-to-git-and-load-data" class="level3">
 <h3 class="anchored" data-anchor-id="b.-connect-to-git-and-load-data">B. Connect to Git and load data</h3>
-<p>For this project, you will collaborate using Git. Connect your server environment to Git by following these instructions: <a href="https://hpc.ugent.be/docs/en/rstudio-server/git-rstudio-server">Connecting RStudio Server to Git</a>.<br>
-One person should download the template R project folder and create a new GitHub repository for your group. Add the documents inside the template folder to the repository. If this is done correctly, the resulting repository should have the following folder structure:</p>
+<p>For this project, you will collaborate using Git. Connect your server environment to GitHub and clone your assigned GitHub repository into your online RStudio account by following these instructions: <a href="https://ann1ejohansson.github.io/data-visualization-2025/documents/git-workflow.html">Connecting RStudio Server to GitHub</a>. If this is done correctly, the resulting repository should have the following folder structure:</p>
 <pre><code>your-project-name/
 ├── .gitignore
 ├── README.md
@@ -514,19 +521,8 @@ One person should download the template R project folder and create a new GitHub
 └── report/
     └── DV-Assignment2-GroupX.Rmd
     └── DV-Assignment2-GroupX.html</code></pre>
-<p>The other group members can then clone this repository to their server environment. Make a first commit and push it. Check that the other group members can pull these changes. If this works, you should be properly set up to work together using Git!</p>
-<p>Feel free to add folders or files within the repository if necessary. Make sure that you maintain the structure such that you follow a <a href="https://tellingstorieswithdata.com/03-workflow.html#r-projects-and-file-structure">reproducible workflow</a>. Additionally, it is important that you never push data to GitHub. If you have to store data, do this in a separate folder outside of your Git repository. Your <code>.gitignore</code> file should already contain the following lines:</p>
-<pre><code># Ignore data files
-data/
-*.rds
-*.RDS
-*.RData
-*.rdata
-*.csv
-*.tsv
-*.xlsx
-*.rda</code></pre>
-<p>This should prevent you from accidentally pushing data files to GitHub. Still, be mindful not to add any data files to your project repository.</p>
+<p>All group members should clone the assigned group repository to their server environment. Once you have cloned the repo and initialized Git, make a first commit and push it. Check that the other group members can pull these changes. If this works, you should be properly set up to work together using Git!</p>
+<p>Feel free to add folders or files within the repository if necessary. Make sure that you maintain the structure such that you follow a <a href="https://tellingstorieswithdata.com/03-workflow.html#r-projects-and-file-structure">reproducible workflow</a>. Additionally, it is important that you <strong>never push data to GitHub</strong>. If you have to store data, do this in a separate folder outside of your Git repository.</p>
 <p>Now, load in the necessary data for your visualization. The code for this is available in <a href="../assignments/assignment-2.html">Assignment 2</a>. Use the script <code>00-load-data.R</code> in the <code>code/</code> folder to load in the data. Examine the data. Discuss with your group:</p>
 <ul>
 <li>What is the structure of the data?<br>
@@ -546,21 +542,21 @@ data/
 <li>highlight some interesting data points, for example using color or text</li>
 </ul>
 <p>Include a description of what you want to communicate, and how you did that. Really work towards making a data visualization that highlights or substantiates a single conclusion. This plot does not have to be the plot for your final project (it probably is not), but use this assignment to get feedback from us on your current ideas.</p>
-<p>Grading:</p>
+<p><strong>Grading:</strong></p>
 <ul>
-<li>Aesthetics
+<li><strong>Aesthetics</strong>
 <ul>
 <li>Is the plot legible? [1pt]</li>
 <li>Do the colors add to the interpretability? [1pt]</li>
 <li>Is the plot simple? [0.5 pt]</li>
 </ul></li>
-<li>Communication
+<li><strong>Communication</strong>
 <ul>
 <li>Is it clear what the plots tries to communicate? [1pt]</li>
 <li>Does the plot communicate the described conclusions/description? [1pt]</li>
 <li>The plot requires minimal explanation [0.5 pt]</li>
 </ul></li>
-<li>Creative/complexity
+<li><strong>Creative/complexity</strong>
 <ul>
 <li>Is the plot creative? [0.5 pt]</li>
 <li>Is the plot/analysis complex? [0.5 pt]</li>
