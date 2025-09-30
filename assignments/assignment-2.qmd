@@ -28,6 +28,28 @@ The report should be a description of the process that led to your final data vi
 
 -   Your final, explanatory, data visualization. Clearly mark which one of your visualizations this is. Include the visualization, along with an explanation of what it aims to communicate. Importantly, what can you conclude from this visualization? Why is this the best way to communicate this conclusion? How robust are your findings? This should follow logically from the introduction of your report (research question & exploration).
 
+### Grading
+
+The second assignment of the Data Visualization module will be graded as following:
+
+-   **Aesthetics**
+    -   Is the plot legible? \[1pt\]
+    -   Do the colors add to the interpretability? \[1pt\]
+    -   Is the plot simple? \[0.5 pt\]
+-   **Communication**
+    -   Is it clear what the plots tries to communicate? \[1pt\]
+    -   Does the plot communicate the described conclusions/description? \[1pt\]
+    -   The plot requires minimal explanation \[0.5 pt\]
+-   **Description**
+    -   XXX
+    -   XXX
+-   **Creative/complexity**
+    -   Is the plot creative? \[0.5 pt\]
+    -   Is the plot/analysis complex? \[0.5 pt\]
+-   **Code quality & Styling**
+    -   Does the R code run? \[0.5 pt\]
+    -   Is the R code lintr-proof? \[0.5 pt\]
+
 ### Levels of visualization
 
 Your chosen research question falls into one of three levels: analytics, inference, or prediction. Each level has different expectations in terms of how the visualization should be constructed and what role statistical modeling plays.
