@@ -354,7 +354,7 @@
     "href": "slides/slides copy.html#section-1",
     "title": "Data Visualization",
     "section": "📌",
-    "text": "📌\n\ndata-visualization-2025"
+    "text": "📌\ndata-visualization-2025"
   },
   {
     "objectID": "slides/slides copy.html#today",
@@ -368,7 +368,7 @@
     "href": "slides/slides copy.html#section-2",
     "title": "Data Visualization",
     "section": "💬",
-    "text": "💬\n\nWhy visualize data?"
+    "text": "💬\nWhy visualize data?"
   },
   {
     "objectID": "slides/slides copy.html#why-visualize-data-1",
@@ -389,14 +389,14 @@
     "href": "slides/slides copy.html#anscombes-quartet",
     "title": "Data Visualization",
     "section": "Anscombe’s quartet",
-    "text": "Anscombe’s quartet\n\n\n \n\n\n\nCode\nlibrary(\"datasauRus\")\ndatasaurus_dozen %&gt;% \n  ggplot2::ggplot(aes(x = x, y = y, color = dataset)) +\n  ggplot2::geom_point() +\n  ggplot2::theme_void() +\n  ggplot2::geom_smooth(method = \"lm\", color = \"gray\", fill = \"gray\", alpha = .5) +\n  ggplot2::theme(legend.position = \"none\", text = element_text(size = 30)) +\n  ggplot2::facet_wrap(~dataset, ncol = 4)\n\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\n\n\n\nPackages: datasauRus, anscombiser.\nMore information: Same Stats, Different Graphs, socviz.co."
+    "text": "Anscombe’s quartet\n\n\n \n\n\n\nCode\nlibrary(\"datasauRus\")\ndatasaurus_dozen %&gt;% \n  ggplot2::ggplot(aes(x = x, y = y, color = dataset)) +\n  ggplot2::geom_point() +\n  ggplot2::theme_void() +\n  ggplot2::geom_smooth(method = \"lm\", color = \"gray\", fill = \"gray\", alpha = .5) +\n  ggplot2::theme(legend.position = \"none\", text = element_text(size = 30)) +\n  ggplot2::facet_wrap(~dataset, ncol = 4)\n\n\n\n\n\n\n\n\n\n\n\nPackages: datasauRus, anscombiser.\nMore information: Same Stats, Different Graphs, socviz.co."
   },
   {
     "objectID": "slides/slides copy.html#section-3",
     "href": "slides/slides copy.html#section-3",
     "title": "Data Visualization",
     "section": "💬",
-    "text": "💬\n\nWhat is more important? An eye or an algorithm?\nWhat are the consequences of overrelying on statistical techniques? What are the consequences of overrelying on visualizations?"
+    "text": "💬\nWhat is more important? An eye or an algorithm?\nWhat are the consequences of overrelying on statistical techniques? What are the consequences of overrelying on visualizations?"
   },
   {
     "objectID": "slides/slides copy.html#what-makes-a-bad-plot-bad",
@@ -410,21 +410,21 @@
     "href": "slides/slides copy.html#speed-dates",
     "title": "Data Visualization",
     "section": "💬 Speed dates",
-    "text": "💬 Speed dates\n\n\n\nWhat do you think about this plot?\nWhat elements can be improved?\nAre there still good things with the plot?\n\n\n\n\n\nKarl Broman\n\n\n\n\n\n💬\n\n\n\n\n\nreddit.com/r/dataisugly\n\n\n\n\n\nMisleading (or missing) information?\nMany data visualizations might have a hidden agenda, due to e.g. marketing strategies.\n\n\n\n\n\nCheck out the classic from Darrel Huff How to Lie with Statistics Lessions from How to Lie with Statistics.\n\n\n💬\n\n\n\n\n\nSource: reddit.com/r/dataisbeautiful\n\n\n\n\n\nData to ink ratio?\n\n\n\n\n\nHow to maximize the data-to-ink ratio\n\n\n\nData to ink ratio\n\n\n\n\n\n\n\n\nHow to maximize the data-to-ink ratio\n\n\n\n\n💬\n\n\n\n\n\n\nDo the colors make sense?\n\n\n\n\n\n\n\n\nDo the colors make sense?\n\n\n\n💬\n\n\n\n\n\n\nAre all elements needed?\n\n\n\n\n\n💬\n\n\n\n\n\n\nAre the axes correct?\n\n\n\n\n\n\n\n\nIs a zero-point needed?\n\n\n\n💬\n\n\n\n\n\n\nIs it simple?\n\n\n\n\n\n\n\n⚠️ Stacked bar charts ⚠️\n\n\n\n\n\n\n\n\n\n\n⚠️ Pie charts ⚠️\n\n\n\n\nVisualizing proportions\n\nPie chart, stacked bar, or side-by-side bars?\n\n\nhttps://clauswilke.com/dataviz/visualizing-proportions.html#\n\n\n\n\nElementary Perceptual Tasks\n\n\n\nOriginal Source: Cleveland & McGill (1984). 531-554; Further summary and examples\n\n\n💬\n\n\n\n\n\n\nDoes it support one conclusion?\n\n\n\n\n\n\n\nStorytelling with data - show just one conclusion!"
+    "text": "💬 Speed dates\n\n\n\nWhat do you think about this plot?\nWhat elements can be improved?\nAre the problems aesthetic, perceptual, or substantive?"
   },
   {
     "objectID": "slides/slides copy.html#exploratory-versus-explanatory",
     "href": "slides/slides copy.html#exploratory-versus-explanatory",
     "title": "Data Visualization",
     "section": "Exploratory versus explanatory",
-    "text": "Exploratory versus explanatory\n\nExploratory in the sense of data exploration. Exploratory in the sense of visualization exploration (as in previous example, where the same data can be plotted in several ways). In both cases, you can create ugly plots.\nWe focus on explanatory data viz (also bridge to next). Beautiful plots!\n\n\n\n\n\n\nSource: Natalia Kiseleva\n\n\n\n\n\n\nSource: Scott McCloud\n\n\n\nExploratory: examine the structure of your data.\nExplanatory: tell a story with your data.\n\n\n\n\nMore resources: clauswilke.com (telling a story and making a point), susielu.com (different interpretation of exploratory/explanatory)."
+    "text": "Exploratory versus explanatory\n\nExploratory in the sense of data exploration. Exploratory in the sense of visualization exploration (as in previous example, where the same data can be plotted in several ways). In both cases, you can create ugly plots.\nWe focus on explanatory data viz (also bridge to next). Beautiful plots!\n\n\n\n\n\n\nSource: Natalia Kiseleva\n\n\n\n\n\n\nSource: Scott McCloud\n\n\n\nExploratory: examine the structure of your data.\nExplanatory: tell a story with your data.\n\n\n\nMore resources: clauswilke.com (telling a story and making a point), susielu.com (different interpretation of exploratory/explanatory)."
   },
   {
     "objectID": "slides/slides copy.html#exploratory-versus-explanatory-1",
     "href": "slides/slides copy.html#exploratory-versus-explanatory-1",
     "title": "Data Visualization",
     "section": "Exploratory versus explanatory",
-    "text": "Exploratory versus explanatory\n\n\n\n\n\n\n\nSource: storytellingwithdata.com\n\nMore resources: clauswilke.com (telling a story and making a point), susielu.com (different interpretation of exploratory/explanatory)."
+    "text": "Exploratory versus explanatory\n\n\n\n\n\n\nSource: storytellingwithdata.com\n\nMore resources: clauswilke.com (telling a story and making a point), susielu.com (different interpretation of exploratory/explanatory)."
   },
   {
     "objectID": "slides/slides copy.html#aims",
@@ -445,20 +445,34 @@
     "href": "slides/slides copy.html#requirements-assignment-2",
     "title": "Data Visualization",
     "section": "Requirements Assignment 2",
-    "text": "Requirements Assignment 2\n\nUse R Markdown (or Quarto) to create your visualizations.\nThe markdown document should be in the style of a report: explain your research question, and how you came to your conclusion. Not more than 1000 words.\n\nInclude at least one exploratory graph, and explain how it helped you understand the data.\nOnly your final, explanatory graph, will be graded. Clearly mark which graph this is."
+    "text": "Requirements Assignment 2\n\nUse R Markdown (or Quarto) to create your visualizations.\nThe markdown document should be in the style of a report: explain your research question, and how you came to your conclusion. Not more than 1000 words.\n\nInclude an exploratory graph, and explain how it helped you understand the data.\nOnly your final, explanatory graph, will be graded. Clearly mark which graph this is."
   },
   {
     "objectID": "slides/slides copy.html#workflow",
     "href": "slides/slides copy.html#workflow",
     "title": "Data Visualization",
     "section": "Workflow",
-    "text": "Workflow\n\nComment your code clearly. We want to understand your thought process.\nWork in the Data Visualization Server, and compile the html document there.\n\n️⚠ Only upload the html document to GitHub, not the R scripts and especially not any data."
+    "text": "Workflow\n\nComment your code clearly. We want to understand your thought process.\nCollaborate within your group using Git & GitHub. You will set up your own project repository connected to the Data Visualization Server.\nMake sure all documents render correctly, and that code is styled and runs.\n️⚠ Do not push any data to GitHub."
   },
   {
     "objectID": "slides/slides copy.html#workflow-1",
     "href": "slides/slides copy.html#workflow-1",
     "title": "Data Visualization",
     "section": "Workflow",
-    "text": "Workflow\n\nWorking on the server\nGit setup & workflow\nRubrics"
+    "text": "Workflow\n\nWorking on the server\nGit setup & workflow"
+  },
+  {
+    "objectID": "slides/slides copy.html#some-good-examples",
+    "href": "slides/slides copy.html#some-good-examples",
+    "title": "Data Visualization",
+    "section": "Some good examples",
+    "text": "Some good examples\n Distributions are informative\n\n\n\n\n\n\nNYT Graphic - Obamacare spending\nHow to reproduce a NYT graphic"
+  },
+  {
+    "objectID": "slides/slides copy.html#tips-for-the-best-viz",
+    "href": "slides/slides copy.html#tips-for-the-best-viz",
+    "title": "Data Visualization",
+    "section": "Tips for the best viz",
+    "text": "Tips for the best viz\n\nIs it explaining data?\nIs the information complete and correct?\nAre axes correct? (+ Should they have a zero-point?)\nDo the colors work? ( + Do they map to a relevant attribute?)\nAre all elements needed?\nWhat is the data to ink ratio?\nIs it understandable & simple?\nDoes it portray one conclusion?"
   }
 ]
