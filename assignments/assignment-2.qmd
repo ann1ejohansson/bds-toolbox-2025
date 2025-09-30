@@ -94,6 +94,14 @@ The final draft of your report and data visualization is due **Sunday, October 1
 -   Before handing in your final visualization, look at the [guiding principles](). Have you met these conditions?\
 :::
 
+## Codebooks
+We have prepared the first steps to retrieve your data, and this code can be found under each research question. In addition, there are codebooks available to help you make sense of the variables: 
+
+-  [This codebook](https://surfdrive.surf.nl/files/index.php/s/kgsJNvwlDHuNrDW) if you are working with research question 1. 
+
+-  [This codebook](https://docs.google.com/spreadsheets/d/1d1MtZAPZK2Orgr7QN388aoT085zE3FQ_9jn8eyxX9g8/edit?gid=0#gid=0) if you are working with motivation metric data, i.e., research questions 2, 3, or 4.
+
+
 ## Research Questions
 
 ### RQ1. Which students are on track and which are not?
