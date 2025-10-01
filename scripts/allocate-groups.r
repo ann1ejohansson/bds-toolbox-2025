@@ -94,7 +94,8 @@ allocate_groups <- function(data) {
 # students[which(students$RQ == "RQ1"), "RQ"] <- "RQ2"
 # students[1:2, "RQ"] <- "RQ1"
 
-students <- read.csv("scripts/test.csv", header = TRUE)
+students <- read.csv("choose-rq.csv", header = TRUE)
+names(students)[1] <- "Name"
 
 # ---------------------------
 # Allocate groups 
@@ -118,4 +119,7 @@ final_groups <- do.call(rbind, lapply(seq_along(groups), function(i) {
 rownames(final_groups) <- NULL
 print(final_groups)
 table(final_groups$Group)
-#save(final_groups, file = "final_groups.RData")
+write.csv(final_groups, file = "final_groups.csv")
+
+merged <- merge(students[, c("Name", "Github.username")], final_groups, by = c("Name"))
+write.csv(merged, file = "final_groups_username.csv")

@@ -502,5 +502,75 @@
     "title": "Working with Git on the Server",
     "section": "Now you can work in your project",
     "text": "Now you can work in your project\nOpen this project whenever you are working on the group assignments. You do this by either by clicking on the Project: &lt;your-repo-name&gt; button in the top right corner, or by double-clicking the .Rproj file in your project directory.\nCommit, push, and pull changes via the terminal in the online RStudio editor, or in the tab called Git. Remember to always pull changes into your environment before you start working on the project, and push your changes when you are done working on it. This way, you and your team members will always have access to the most recent version of the project, and you (hopefully) avoid merge conflicts.\nIt is good practice to close the project when you are done working on it, to avoid accidentally making changes to the wrong project the next time you open RStudio."
+  },
+  {
+    "objectID": "slides/slides.html#friday-oct-3",
+    "href": "slides/slides.html#friday-oct-3",
+    "title": "Data Visualization",
+    "section": "Friday, Oct 3",
+    "text": "Friday, Oct 3\n\nInteractive visualizations with plotly\nWork on assignment 1"
+  },
+  {
+    "objectID": "slides/slides.html#git",
+    "href": "slides/slides.html#git",
+    "title": "Data Visualization",
+    "section": "Git",
+    "text": "Git\n\n&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD\nSome content\n=======\nSome conflicted content\n&gt;&gt;&gt;&gt;&gt;&gt;&gt; new_branch"
+  },
+  {
+    "objectID": "slides/slides.html#git-conflicts",
+    "href": "slides/slides.html#git-conflicts",
+    "title": "Data Visualization",
+    "section": "Git conflicts",
+    "text": "Git conflicts\n\n&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD\nSome content\n=======\nSome conflicted content\n&gt;&gt;&gt;&gt;&gt;&gt;&gt; new_branch\n\n\nHappens when two people change the same file, and then try to push to GitHub.\nIdentify the content that you want to keep and delete the rest\nDelete the &lt;&lt;&lt;&lt;&lt;&lt;&lt;, =======, and &gt;&gt;&gt;&gt;&gt;&gt;&gt; lines\nSave the file, add, commit, and push again\nNeed to resolve via command line?\nAvoid by always starting you work session with a git pull (and make sure you don’t have uncommitted changes)\nAlso communicate who is working on what"
+  },
+  {
+    "objectID": "slides/slides.html#git-conflicts-1",
+    "href": "slides/slides.html#git-conflicts-1",
+    "title": "Data Visualization",
+    "section": "Git conflicts",
+    "text": "Git conflicts\n\n&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD\nSome content\n=======\nSome conflicted content\n&gt;&gt;&gt;&gt;&gt;&gt;&gt; new_branch\n\n\nHappens when two people change the same file, and then try to push to GitHub.\nIdentify the content that you want to keep and delete the rest\nDelete the &lt;&lt;&lt;&lt;&lt;&lt;&lt;, =======, and &gt;&gt;&gt;&gt;&gt;&gt;&gt; lines\nSave the file, add, commit, and push again\nNeed to resolve via command line?\nAvoid by always starting you work session with a git pull (and make sure you don’t have uncommitted changes)\nAlso communicate who is working on what"
+  },
+  {
+    "objectID": "slides/slides.html#section-6",
+    "href": "slides/slides.html#section-6",
+    "title": "Data Visualization",
+    "section": "",
+    "text": "&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD\nSome content\n=======\nSome conflicted content\n&gt;&gt;&gt;&gt;&gt;&gt;&gt; new_branch"
+  },
+  {
+    "objectID": "slides/slides.html#section-7",
+    "href": "slides/slides.html#section-7",
+    "title": "Data Visualization",
+    "section": "",
+    "text": "&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD\nSome content\n=======\nSome conflicted content\n&gt;&gt;&gt;&gt;&gt;&gt;&gt; new_branch"
+  },
+  {
+    "objectID": "slides/slides.html#recap",
+    "href": "slides/slides.html#recap",
+    "title": "Data Visualization",
+    "section": "Recap",
+    "text": "Recap\n\n\n✓ Keep it simple.\n✓ Don’t mislead.\n✓ Tell one story.\n✓ First impressions matter!"
+  },
+  {
+    "objectID": "slides/slides.html#tips-from-assignment-1",
+    "href": "slides/slides.html#tips-from-assignment-1",
+    "title": "Data Visualization",
+    "section": "Tips from Assignment 1",
+    "text": "Tips from Assignment 1"
+  },
+  {
+    "objectID": "slides/slides.html#from-data-to-viz",
+    "href": "slides/slides.html#from-data-to-viz",
+    "title": "Data Visualization",
+    "section": "from data to viz",
+    "text": "from data to viz"
+  },
+  {
+    "objectID": "slides/slides.html#from-data-to-viz-1",
+    "href": "slides/slides.html#from-data-to-viz-1",
+    "title": "Data Visualization",
+    "section": "from data to viz",
+    "text": "from data to viz"
   }
 ]

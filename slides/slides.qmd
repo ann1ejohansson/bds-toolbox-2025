@@ -412,13 +412,6 @@ More resources: [clauswilke.com](https://clauswilke.com/dataviz/telling-a-story.
 
 # Guiding principles 🪄 {background-color="#8000FF"}
 
-## Tuesday, Sept 30
-
--   Why visualize data?
--   What makes a plot good (and bad)?
--   **Guiding principles**
--   Data Visualization Project
-
 ## Tips for the best viz
 
 -   Is it **explaining** data?
@@ -486,3 +479,71 @@ Your goal is to go from exploring the Prowise data to telling a story with it.
 ## 🔗
 
 [Choose RQ](https://docs.google.com/spreadsheets/d/1ppRe5PKrdawL8Q4QHAJpa6bfQfbVhmHZiWE7AxGaHSE/edit?gid=0#gid=0){target="_blank"}
+
+# Interactive plots 🕹️ {background-color="#8000FF"}
+## Friday, Oct 3
+
+-   Interactive visualizations with plotly
+-   Work on assignment 1
+
+## {.larger .scrollable}
+
+```{txt echo=TRUE}
+<<<<<<< HEAD
+Some content
+=======
+Some conflicted content
+>>>>>>> new_branch
+```
+
+## Git conflicts {.smaller .scrollable}
+
+```{txt echo=TRUE}
+<<<<<<< HEAD
+Some content
+=======
+Some conflicted content
+>>>>>>> new_branch
+```
+
+-   Happens when two people change the same file, and then try to push to GitHub.
+-   Identify the content that you want to keep and delete the rest
+-   Delete the `<<<<<<<`, `=======`, and `>>>>>>>` lines
+-   Save the file, add, commit, and push again
+-   [Need to resolve via command line?](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/resolving-a-merge-conflict-using-the-command-line){target="_blank"}
+-   Avoid by always starting you work session with a `git pull` (and make sure you don't have uncommitted changes)
+-   Also communicate who is working on what 
+
+# Better plots 🥇
+
+## Recap
+
+::::: columns
+::: {.column width="40%"}
+✓ Keep it simple.
+
+✓ Don't mislead.
+
+✓ Tell one story.
+
+✓ **First impressions matter!**
+:::
+
+::: {.column width="60%"}
+![](images/misleading.jpeg){fig-align="center"}
+:::
+:::::
+
+## Tips from Assignment 1
+
+## [from data to viz](https://www.data-to-viz.com/)
+
+![](images/data-to-viz.png){fig.height="600"}
+
+## [from data to viz](https://www.data-to-viz.com/)
+
+![](images/data-to-viz-caveats.png){fig.height="600"}
+
+
+
+
