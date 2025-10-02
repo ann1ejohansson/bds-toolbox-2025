@@ -24,19 +24,18 @@ title-slide-attributes:
 
 ## Tuesday, Oct 7
 
--  Feedback on assignment 1
--  Recap: what makes a good DV?
--  More data visualization features 
--  Work on assignment 2
+-   Feedback on assignment 1
+-   Recap: what makes a good DV?
+-   More data visualization features
+-   Work on assignment 2
 
 ## Tips from Assignment 1
-
 
 ## One dataset, many visualizations
 
 ::::: columns
 ::: {.column width="50%"}
-```{r}
+```{r eval=FALSE}
 #| echo: true
 #| code-fold: true
 library("gt")
@@ -55,7 +54,7 @@ pizza_top %>%
 :::
 
 ::: {.column width="50%"}
-```{r warning=FALSE}
+```{r warning=FALSE, eval=FALSE}
 #| echo: true
 #| code-fold: true
 library("ggplot2")
@@ -72,7 +71,7 @@ pizza_top %>%
 
 ::::: columns
 ::: {.column width="50%"}
-```{r}
+```{r, eval=FALSE}
 #| echo: true
 #| code-fold: true
 library("gt")
@@ -90,7 +89,7 @@ pizza_season %>%
 :::
 
 ::: {.column width="50%"}
-```{r}
+```{r, eval=FALSE}
 #| echo: true
 #| code-fold: true
 #| fig.height: 5
@@ -111,7 +110,6 @@ fig_season_2
 ```
 :::
 :::::
-
 
 ## [from data to viz](https://www.data-to-viz.com/)
 
@@ -141,17 +139,18 @@ fig_season_2
 
 ## More data visualization features
 
--  Chart junk
--  Themes
--  Colors
--  Color blindness
--  Captions
--  Typography
--  File format/size
--  Font embedding
+-   Chart junk
+-   Themes
+-   Colors
+-   Color blindness
+-   Captions
+-   Typography
+-   File format/size
+-   Font embedding
 
 ## Chart junk
-```{r}
+
+```{r, eval =FALSE}
 library(dplyr)
 library(ggplot2)
 
@@ -196,9 +195,9 @@ fig_pizza_iso <- ggplot(pizza_iso, aes(x = icon_id, y = type)) +
 fig_pizza_iso
 ```
 
-##
+## 
 
-```{r}
+```{r, eval=FALSE}
 #| echo: true
 #| code-fold: true
 library("showtext")
@@ -236,4 +235,3 @@ fig_pizza_iso +
                  axis.title.x = element_text(family = "Lobster", size = 16),
                  axis.text.y = element_text(family = "Lobster", size = 16, color = "tomato3"))
 ```
-
