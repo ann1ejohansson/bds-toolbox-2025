@@ -507,13 +507,13 @@ Your goal is to go from exploring the Prowise data to telling a story with it.
 [Choose RQ](https://docs.google.com/spreadsheets/d/1ppRe5PKrdawL8Q4QHAJpa6bfQfbVhmHZiWE7AxGaHSE/edit?gid=0#gid=0){target="_blank"}
 
 # Interactive plots 🕹️ {background-color="#8000FF"}
+
 ## Friday, Oct 3
 
 -   Interactive visualizations with plotly
 -   Work on assignment 1
 
-## {.larger .scrollable}
-
+##  {.larger .scrollable}
 
 &lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
 
@@ -524,17 +524,10 @@ Some content
 Some conflicted content
 
 &gt;&gt;&gt;&gt;&gt;&gt;&gt; new_branch
-
 
 ## Git conflicts {.smaller .scrollable}
 
-```{text echo=TRUE}
-&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-Some content
-=======
-Some conflicted content
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; new_branch
-```
+[![](images/merge_conflict.png)](images/merge_conflict.png)
 
 -   Happens when two people change the same file, and then try to push to GitHub.
 -   Identify the content that you want to keep and delete the rest
@@ -542,5 +535,71 @@ Some conflicted content
 -   Save the file, add, commit, and push again
 -   [Need to resolve via command line?](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/resolving-a-merge-conflict-using-the-command-line){target="_blank"}
 -   Avoid by always starting you work session with a `git pull` (and make sure you don't have uncommitted changes)
--   Also communicate who is working on what 
+-   Also communicate who is working on what
 
+
+# Interactivity 🎮 {background-color="#8000FF"}
+
+## 💬 **Why use interactive visualizations?**
+<br><br>
+
+What advantages/disadvantages do interactive visualizations have over static plots?
+
+## Advantages
+
+::: fragment
+-   Explore data dynamically
+-   Zoom, pan, and hover for details
+-   Reveal extra information without clutter
+-   Enhance engagement in presentations and reports
+-   Useful for exploratory analysis and dashboards
+:::
+
+## Disadvantages
+
+::: fragment
+-   Harder to include in static formats (papers, print)
+-   Accessibility issues (screen readers, non colorblind-friendly defaults)
+-   Can overwhelm the audience if overused
+-   Larger file sizes, slower rendering
+-   Requires additional packages/libraries (e.g., `{plotly}`)
+:::
+
+## {.center background-color="#8000FF"}
+
+🧠 **Interactivity enhances, but does not replace,  
+the fundamentals of good data visualization**
+
+## Plotly 
+<br><br>
+
+-   Free and open-source interactive graphing library
+-   R users can access it via the `{plotly}` package: [plotly.com/r](https://plotly.com/r/)
+
+
+## Plotly in R
+<br><br>
+
+Two main ways to creating a **plotly** object in R:
+
+-   Convert a ggplot2 object with `ggplotly()`
+-   Directly initialize a plotly object with `plot_ly()`
+
+➡️ [**ggplotly() example with Oefenweb data**](https://ann1ejohansson.github.io/data-visualization-2025/documents/ggplotly-handout.html){target="_blank"}
+
+## Additional functionalities in Plotly
+<br><br>
+
+With `plot_ly()`, you can add and control interactive elements such as:
+
+-   [Adding custom controls](https://plotly.com/r/#controls)
+-   [Animations](https://plotly.com/r/#animations)
+
+::: footer
+Source: [plotly.com/r](https://plotly.com/r/)
+:::
+
+## Requirements Assignment 1, part B (individual)
+
+-   Make the static ggplot object interactive using the `{plotly}` package
+-   Add a customized tooltip that displays additional information when you hover over the plot

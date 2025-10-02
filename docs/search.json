@@ -368,7 +368,7 @@
     "href": "slides/slides.html#git-conflicts",
     "title": "Data Visualization",
     "section": "Git conflicts",
-    "text": "Git conflicts\n\n&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD\nSome content\n=======\nSome conflicted content\n&gt;&gt;&gt;&gt;&gt;&gt;&gt; new_branch\n\n\nHappens when two people change the same file, and then try to push to GitHub.\nIdentify the content that you want to keep and delete the rest\nDelete the &lt;&lt;&lt;&lt;&lt;&lt;&lt;, =======, and &gt;&gt;&gt;&gt;&gt;&gt;&gt; lines\nSave the file, add, commit, and push again\nNeed to resolve via command line?\nAvoid by always starting you work session with a git pull (and make sure you don’t have uncommitted changes)\nAlso communicate who is working on what"
+    "text": "Git conflicts\n\n\nHappens when two people change the same file, and then try to push to GitHub.\nIdentify the content that you want to keep and delete the rest\nDelete the &lt;&lt;&lt;&lt;&lt;&lt;&lt;, =======, and &gt;&gt;&gt;&gt;&gt;&gt;&gt; lines\nSave the file, add, commit, and push again\nNeed to resolve via command line?\nAvoid by always starting you work session with a git pull (and make sure you don’t have uncommitted changes)\nAlso communicate who is working on what"
   },
   {
     "objectID": "assignments/assignment-2.html",
@@ -432,5 +432,82 @@
     "title": "Working with Git on the Server",
     "section": "Now you can work in your project",
     "text": "Now you can work in your project\nOpen this project whenever you are working on the group assignments. You do this by either by clicking on the Project: &lt;your-repo-name&gt; button in the top right corner, or by double-clicking the .Rproj file in your project directory.\nCommit, push, and pull changes via the terminal in the online RStudio editor, or in the tab called Git. Remember to always pull changes into your environment before you start working on the project, and push your changes when you are done working on it. This way, you and your team members will always have access to the most recent version of the project, and you (hopefully) avoid merge conflicts.\nIt is good practice to close the project when you are done working on it, to avoid accidentally making changes to the wrong project the next time you open RStudio."
+  },
+  {
+    "objectID": "slides/slides.html#interactive-visualizations",
+    "href": "slides/slides.html#interactive-visualizations",
+    "title": "Data Visualization",
+    "section": "Interactive visualizations",
+    "text": "Interactive visualizations\n💬 Why use interactive visualizations?\nWhat advantages/disadvantages do interactive visualizations have over static plots?"
+  },
+  {
+    "objectID": "slides/slides.html#advantages",
+    "href": "slides/slides.html#advantages",
+    "title": "Data Visualization",
+    "section": "Advantages",
+    "text": "Advantages\n\n\nExplore data dynamically\nZoom, pan, and hover for details\nReveal extra information without clutter\nEnhance engagement in presentations and reports\nUseful for exploratory analysis and dashboards"
+  },
+  {
+    "objectID": "slides/slides.html#disadvantages",
+    "href": "slides/slides.html#disadvantages",
+    "title": "Data Visualization",
+    "section": "Disadvantages",
+    "text": "Disadvantages\n\n\nHarder to include in static formats (papers, print)\nAccessibility issues (screen readers, non colorblind-friendly defaults)\nCan overwhelm the audience if overused\nLarger file sizes, slower rendering\nRequires additional packages/libraries (e.g., {plotly})"
+  },
+  {
+    "objectID": "slides/slides.html#plotly",
+    "href": "slides/slides.html#plotly",
+    "title": "Data Visualization",
+    "section": "Plotly",
+    "text": "Plotly\n\n\nFree and open-source interactive graphing library\nR users can access it via the {plotly} package: plotly.com/r"
+  },
+  {
+    "objectID": "slides/slides.html#plotly-in-r",
+    "href": "slides/slides.html#plotly-in-r",
+    "title": "Data Visualization",
+    "section": "Plotly in R",
+    "text": "Plotly in R\n\nTwo main ways to creating a plotly object in R:\n\nConvert a ggplot2 object with ggplotly()\nDirectly initialize a plotly object with plot_ly()\n\n➡️ ggplotly() example with Oefenweb data"
+  },
+  {
+    "objectID": "slides/slides.html#additional-functionalities-in-plotly",
+    "href": "slides/slides.html#additional-functionalities-in-plotly",
+    "title": "Data Visualization",
+    "section": "Additional functionalities in Plotly",
+    "text": "Additional functionalities in Plotly\n\nWith plot_ly(), you can add and control interactive elements such as:\n\nAdding custom controls\nAnimations\n\n\nSource: plotly.com/r"
+  },
+  {
+    "objectID": "slides/slides.html#requirements-assignment-1-part-b-individual",
+    "href": "slides/slides.html#requirements-assignment-1-part-b-individual",
+    "title": "Data Visualization",
+    "section": "Requirements Assignment 1, part B (individual)",
+    "text": "Requirements Assignment 1, part B (individual)\n\nMake the static ggplot object interactive using the {plotly} package\nAdd a customized tooltip that displays additional information when you hover over the plot"
+  },
+  {
+    "objectID": "slides/slides.html#section-7",
+    "href": "slides/slides.html#section-7",
+    "title": "Data Visualization",
+    "section": "",
+    "text": "🧠 Interactivity enhances, but does not replace,\nthe fundamentals of good data visualization"
+  },
+  {
+    "objectID": "slides/slides.html#section-8",
+    "href": "slides/slides.html#section-8",
+    "title": "Data Visualization",
+    "section": "",
+    "text": "🧠 Interactivy enhances, but does not replace, the fundamentals of good data visualization"
+  },
+  {
+    "objectID": "slides/slides.html#why-use-interactive-visualizations",
+    "href": "slides/slides.html#why-use-interactive-visualizations",
+    "title": "Data Visualization",
+    "section": "💬 Why use interactive visualizations?",
+    "text": "💬 Why use interactive visualizations?\n\nWhat advantages/disadvantages do interactive visualizations have over static plots?"
+  },
+  {
+    "objectID": "slides/slides.html#interactivy-enhances-but-does-not-replace-the-fundamentals-of-good-data-visualization",
+    "href": "slides/slides.html#interactivy-enhances-but-does-not-replace-the-fundamentals-of-good-data-visualization",
+    "title": "Data Visualization",
+    "section": "🧠 Interactivy enhances, but does not replace, the fundamentals of good data visualization",
+    "text": "🧠 Interactivy enhances, but does not replace, the fundamentals of good data visualization"
   }
 ]

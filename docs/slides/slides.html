@@ -688,13 +688,7 @@
 </section>
 <section id="git-conflicts" class="slide level2 smaller scrollable">
 <h2>Git conflicts</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb3-1"><a></a>&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; HEAD</span>
-<span id="cb3-2"><a></a>Some content</span>
-<span id="cb3-3"><a></a>=======</span>
-<span id="cb3-4"><a></a>Some conflicted content</span>
-<span id="cb3-5"><a></a>&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt; new_branch</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<p><a href="images/merge_conflict.png"><img data-src="images/merge_conflict.png"></a></p>
 <ul>
 <li>Happens when two people change the same file, and then try to push to GitHub.</li>
 <li>Identify the content that you want to keep and delete the rest</li>
@@ -703,6 +697,82 @@
 <li><a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/addressing-merge-conflicts/resolving-a-merge-conflict-using-the-command-line" target="_blank">Need to resolve via command line?</a></li>
 <li>Avoid by always starting you work session with a <code>git pull</code> (and make sure you don’t have uncommitted changes)</li>
 <li>Also communicate who is working on what</li>
+</ul>
+</section></section>
+<section>
+<section id="interactivity" class="title-slide slide level1 center" data-background-color="#8000FF">
+<h1>Interactivity 🎮</h1>
+
+</section>
+<section id="why-use-interactive-visualizations" class="slide level2">
+<h2>💬 <strong>Why use interactive visualizations?</strong></h2>
+<p><br><br></p>
+<p>What advantages/disadvantages do interactive visualizations have over static plots?</p>
+</section>
+<section id="advantages" class="slide level2">
+<h2>Advantages</h2>
+<div class="fragment">
+<ul>
+<li>Explore data dynamically</li>
+<li>Zoom, pan, and hover for details</li>
+<li>Reveal extra information without clutter</li>
+<li>Enhance engagement in presentations and reports</li>
+<li>Useful for exploratory analysis and dashboards</li>
+</ul>
+</div>
+</section>
+<section id="disadvantages" class="slide level2">
+<h2>Disadvantages</h2>
+<div class="fragment">
+<ul>
+<li>Harder to include in static formats (papers, print)</li>
+<li>Accessibility issues (screen readers, non colorblind-friendly defaults)</li>
+<li>Can overwhelm the audience if overused</li>
+<li>Larger file sizes, slower rendering</li>
+<li>Requires additional packages/libraries (e.g., <code>{plotly}</code>)</li>
+</ul>
+</div>
+</section>
+<section id="section-7" class="slide level2 center" data-background-color="#8000FF">
+<h2></h2>
+<p>🧠 <strong>Interactivity enhances, but does not replace,<br>
+the fundamentals of good data visualization</strong></p>
+</section>
+<section id="plotly" class="slide level2">
+<h2>Plotly</h2>
+<p><br><br></p>
+<ul>
+<li>Free and open-source interactive graphing library</li>
+<li>R users can access it via the <code>{plotly}</code> package: <a href="https://plotly.com/r/">plotly.com/r</a></li>
+</ul>
+</section>
+<section id="plotly-in-r" class="slide level2">
+<h2>Plotly in R</h2>
+<p><br><br></p>
+<p>Two main ways to creating a <strong>plotly</strong> object in R:</p>
+<ul>
+<li>Convert a ggplot2 object with <code>ggplotly()</code></li>
+<li>Directly initialize a plotly object with <code>plot_ly()</code></li>
+</ul>
+<p>➡️ <a href="https://ann1ejohansson.github.io/data-visualization-2025/documents/ggplotly-handout.html" target="_blank"><strong>ggplotly() example with Oefenweb data</strong></a></p>
+</section>
+<section id="additional-functionalities-in-plotly" class="slide level2">
+<h2>Additional functionalities in Plotly</h2>
+<p><br><br></p>
+<p>With <code>plot_ly()</code>, you can add and control interactive elements such as:</p>
+<ul>
+<li><a href="https://plotly.com/r/#controls">Adding custom controls</a></li>
+<li><a href="https://plotly.com/r/#animations">Animations</a></li>
+</ul>
+<div class="footer">
+<p>Source: <a href="https://plotly.com/r/">plotly.com/r</a></p>
+</div>
+</section>
+<section id="requirements-assignment-1-part-b-individual" class="slide level2">
+<h2>Requirements Assignment 1, part B (individual)</h2>
+<ul>
+<li>Make the static ggplot object interactive using the <code>{plotly}</code> package</li>
+<li>Add a customized tooltip that displays additional information when you hover over the plot</li>
 </ul>
 
 
