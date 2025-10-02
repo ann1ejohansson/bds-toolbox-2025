@@ -76,13 +76,13 @@ In this module, you will learn a wide set of data visualisation tools for both s
 
 [Browse the GitHub repository](https://github.com/ann1ejohansson/data-visualization-2025){target="_blank"}
 
-[ggpltly](documents/ggplotly-handout-2.html){target="_blank"}
+[ggpltly](documents/plotly_2025.html){target="_blank"}
 
 ## 📝 Assignments
 
 [Assignment 1](assignments/assignment-1.html){target="_blank"}
 
-[Assignment 2](assignments/assignment-2.html){target="_blank"}
+[Assignment 2](documents/assignment-2.html){target="_blank"}
 
 You'll be working with Git and GitHub for both assignments. Refer [here](documents/git-workflow.qmd) for instructions on how to set up your data visualization server account with GitHub. 
 
