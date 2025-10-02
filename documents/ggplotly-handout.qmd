@@ -1,5 +1,5 @@
 ---
-title: "ggplotly example with Oefenweb data"
+title: "ggplotly - Example with Oefenweb Data"
 format: html
 ---
 
@@ -7,9 +7,13 @@ This handout provides an example of creating an interactive visualization with `
 
 ```{r setup, message=FALSE, warning=FALSE}
 # Set up environment
-knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+# set eval = TRUE when running on server
+knitr::opts_chunk$set(eval = FALSE, echo = TRUE, message = FALSE, warning = FALSE)
 rm(list = ls())
+```
 
+
+```{r setup-2, message=FALSE, warning=FALSE}
 # Load libraries
 library(tidyverse)
 library(oefenwebDatabase)
