@@ -5,7 +5,7 @@ format: html
 
 This handout provides an example of creating an interactive visualization with `ggplotly()` using data from the Oefenweb learning platform. We first set up the environment.
 
-```{r setup}
+```{r setup, message=FALSE, warning=FALSE}
 # Set up environment
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 rm(list = ls())
@@ -132,6 +132,6 @@ Note: Once you use `tooltip = "text"`, Plotly only displays the contents specifi
 
 And that's it! You have now converted the static plot into an interactive plotly object. 
 
-```{r close connection}
+```{r close connection, message=FALSE, warning=FALSE}
 oefenwebDatabase::close_connections()
 ```

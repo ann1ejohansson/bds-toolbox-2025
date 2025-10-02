@@ -23,7 +23,33 @@ title-slide-attributes:
 ---
 
 ```{r, include=FALSE}
+# Install Packages
+# Find everything that the user currently has installed
+all_installed_packages <- installed.packages()[, "Package"]
+# Install any missing, but required packages
+# nolint start -- trick to omit some lines from the lintr checker, only if you have a good reason!
+if (!"tidyverse" %in% all_installed_packages) {install.packages("tidyverse")}
+if (!"devtools" %in% all_installed_packages) {install.packages("devtools")}
+if (!"cowplot" %in% all_installed_packages) {install.packages("cowplot")}
+if (!"ggplot2" %in% all_installed_packages) {install.packages("ggplot2")}
+if (!"datasauRus" %in% all_installed_packages) {install.packages("datasauRus")}
+if (!"gt" %in% all_installed_packages) {install.packages("gt")}
+#if (!"ggimage" %in% all_installed_packages) {install.packages("ggimage")}
+if (!"RXKCD" %in% all_installed_packages) {install.packages("RXKCD")}
+if (!"plotly" %in% all_installed_packages) {install.packages("plotly")}
+if (!"viridis" %in% all_installed_packages) {install.packages("viridis")}
+# nolint end
+
+# Load Required Packages
 library(tidyverse)
+library(cowplot)
+library(ggplot2)
+library(datasauRus)
+library(gt)
+#library(ggimage)
+library(RXKCD)
+library(plotly)
+library(viridis)
 ```
 
 # 🏠
