@@ -403,96 +403,574 @@
 </div>
 
 </section>
-<section class="slide level2">
-
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="columns">
-<p>Slides made using <a href="https://quarto.org" target="_blank">quarto</a></p><p>Cover photo made in R by <a href="https://art.djnavarro.net" target="_blank">Danielle Navarro</a></p>
-</div>
-</div><div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/coverphoto.jpg" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
-</figure>
-</div>
-</div></div>
-</section>
-<section id="section" class="slide level2">
-<h2>📌</h2>
-<h3 id="data-visualization-2025"><a href="https://ann1ejohansson.github.io/data-visualization-2025" target="_blank"><strong>data-visualization-2025</strong></a></h3>
-</section>
-<section id="tuesday-sept-30" class="slide level2">
-<h2>Tuesday, Sept 30</h2>
-<ul>
-<li>Why visualize data?</li>
-<li>What makes a plot good (and bad)?</li>
-<li>Guiding principles</li>
-<li>Data Visualization Project</li>
-</ul>
-</section>
 <section>
-<section id="why-visualize-data" class="title-slide slide level1 center" data-background-color="#8000FF">
-<h1>Why visualize data? 👀</h1>
+<section id="better-plots" class="title-slide slide level1 center" data-background-color="#8000FF">
+<h1>Better plots 🥇</h1>
 
 </section>
-<section id="tuesday-sept-30-1" class="slide level2">
-<h2>Tuesday, Sept 30</h2>
+<section id="tuesday-oct-7" class="slide level2">
+<h2>Tuesday, Oct 7</h2>
 <ul>
-<li><strong>Why visualize data?</strong></li>
-<li>What makes a plot good (and bad)?</li>
-<li>Guiding principles</li>
-<li>Data Visualization Project</li>
+<li>Feedback on assignment 1</li>
+<li>Recap: what makes a good DV?</li>
+<li>More data visualization features</li>
+<li>Work on assignment 2</li>
 </ul>
 </section>
-<section id="section-1" class="slide level2">
-<h2>💬</h2>
-<h3 id="why-visualize-data-1">Why visualize data?</h3>
+<section id="tips-from-assignment-1" class="slide level2">
+<h2>Tips from Assignment 1</h2>
 </section>
-<section id="why-visualize-data-2" class="slide level2 smaller">
-<h2>Why visualize data?</h2>
-<div class="columns">
-<div class="column" style="width:40%;">
-<p><img data-src="images/why-visualize-01.png"></p>
-</div><div class="column" style="width:60%;">
-<div class="fragment">
-<p><img data-src="images/why-visualize-02.png"></p>
-</div>
-</div></div>
-</section>
-<section id="why-visualize-data-3" class="slide level2 smaller">
-<h2>Why visualize data?</h2>
-<div>
-
-</div>
-<div class="quarto-layout-panel" data-layout-ncol="2">
-<div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<p><a href="images/bandjes1.png" target="_blank"> <img src="images/bandjes1.png" width="500" dpi="1000" style="max-width: 100%;"> </a></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
-<p><a href="images/bandjes2.png" target="_blank"> <img src="images/bandjes2.png" dpi="1000" width="500" style="max-width: 100%;"> </a></p>
-</div>
-</div>
-</div>
-</section>
-<section id="anscombes-quartet" class="slide level2 smaller">
-<h2>Anscombe’s quartet</h2>
+<section id="one-dataset-many-visualizations" class="slide level2">
+<h2>One dataset, many visualizations</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><img data-src="images/anscombe1.png" alt="Source: Same stats, different graphs"> <img data-src="images/anscombe2.png" alt="Source: Wikipedia"></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(<span class="st">"gt"</span>)</span>
+<span id="cb1-2"><a></a><span class="fu">data</span>(<span class="st">"pizzaplace"</span>)</span>
+<span id="cb1-3"><a></a>pizza_top <span class="ot">&lt;-</span> pizzaplace <span class="sc">%&gt;%</span></span>
+<span id="cb1-4"><a></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">size =</span> <span class="fu">factor</span>(size, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"S"</span>, <span class="st">"M"</span>, <span class="st">"L"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb1-5"><a></a>  dplyr<span class="sc">::</span><span class="fu">count</span>(name, type, size, price, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-6"><a></a>  dplyr<span class="sc">::</span><span class="fu">top_n</span>(<span class="at">n =</span> <span class="dv">5</span>)</span>
+<span id="cb1-7"><a></a>pizza_top <span class="sc">%&gt;%</span></span>
+<span id="cb1-8"><a></a>  gt<span class="sc">::</span><span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb1-9"><a></a>  gt<span class="sc">::</span><span class="fu">tab_header</span>(<span class="at">title =</span> <span class="st">"Pizza Top 5"</span>, <span class="at">subtitle =</span> <span class="st">"2015"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-10"><a></a>  gt<span class="sc">::</span><span class="fu">fmt_currency</span>(<span class="at">columns =</span> price, <span class="at">currency =</span> <span class="st">"USD"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb1-11"><a></a>  gt<span class="sc">::</span><span class="fu">tab_source_note</span>(<span class="at">source_note =</span> gt<span class="sc">::</span><span class="fu">md</span>(<span class="st">"Source: [pizzaplace dataset](https://gt.rstudio.com/articles/gt-datasets.html#pizzaplace)"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb1-12"><a></a>  gt<span class="sc">::</span><span class="fu">opt_stylize</span>(<span class="at">style =</span> <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="hyyathlotm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hyyathlotm table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#hyyathlotm thead, #hyyathlotm tbody, #hyyathlotm tfoot, #hyyathlotm tr, #hyyathlotm td, #hyyathlotm th {
+  border-style: none;
+}
+
+#hyyathlotm p {
+  margin: 0;
+  padding: 0;
+}
+
+#hyyathlotm .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#hyyathlotm .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#hyyathlotm .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#hyyathlotm .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#hyyathlotm .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#hyyathlotm .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+}
+
+#hyyathlotm .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#hyyathlotm .gt_col_heading {
+  color: #FFFFFF;
+  background-color: #0076BA;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#hyyathlotm .gt_column_spanner_outer {
+  color: #FFFFFF;
+  background-color: #0076BA;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#hyyathlotm .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#hyyathlotm .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#hyyathlotm .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#hyyathlotm .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#hyyathlotm .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#hyyathlotm .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  vertical-align: middle;
+}
+
+#hyyathlotm .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#hyyathlotm .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#hyyathlotm .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: none;
+  border-top-width: 1px;
+  border-top-color: #D5D5D5;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D5D5D5;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D5D5D5;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#hyyathlotm .gt_stub {
+  color: #333333;
+  background-color: #89D3FE;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D5D5D5;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hyyathlotm .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#hyyathlotm .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#hyyathlotm .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#hyyathlotm .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hyyathlotm .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #5F5F5F;
+}
+
+#hyyathlotm .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#hyyathlotm .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+}
+
+#hyyathlotm .gt_grand_summary_row {
+  color: #333333;
+  background-color: #D5D5D5;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hyyathlotm .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #5F5F5F;
+}
+
+#hyyathlotm .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #5F5F5F;
+}
+
+#hyyathlotm .gt_striped {
+  background-color: #EDF7FC;
+}
+
+#hyyathlotm .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+}
+
+#hyyathlotm .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#hyyathlotm .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hyyathlotm .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#hyyathlotm .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hyyathlotm .gt_left {
+  text-align: left;
+}
+
+#hyyathlotm .gt_center {
+  text-align: center;
+}
+
+#hyyathlotm .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#hyyathlotm .gt_font_normal {
+  font-weight: normal;
+}
+
+#hyyathlotm .gt_font_bold {
+  font-weight: bold;
+}
+
+#hyyathlotm .gt_font_italic {
+  font-style: italic;
+}
+
+#hyyathlotm .gt_super {
+  font-size: 65%;
+}
+
+#hyyathlotm .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#hyyathlotm .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#hyyathlotm .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#hyyathlotm .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#hyyathlotm .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#hyyathlotm .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#hyyathlotm .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#hyyathlotm .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#hyyathlotm div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header gt_heading">
+<th colspan="5" class="gt_heading gt_title gt_font_normal">Pizza Top 5</th>
+</tr>
+<tr class="odd gt_heading">
+<th colspan="5" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">2015</th>
+</tr>
+<tr class="header gt_col_headings">
+<th id="name" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">name</th>
+<th id="type" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">type</th>
+<th id="size" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">size</th>
+<th id="price" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">price</th>
+<th id="n" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">n</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="name">big_meat</td>
+<td class="gt_row gt_left" headers="type">classic</td>
+<td class="gt_row gt_center" headers="size">S</td>
+<td class="gt_row gt_right" headers="price">$12.00</td>
+<td class="gt_row gt_right" headers="n">1914</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="name">thai_ckn</td>
+<td class="gt_row gt_left gt_striped" headers="type">chicken</td>
+<td class="gt_row gt_center gt_striped" headers="size">L</td>
+<td class="gt_row gt_right gt_striped" headers="price">$20.75</td>
+<td class="gt_row gt_right gt_striped" headers="n">1410</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="name">five_cheese</td>
+<td class="gt_row gt_left" headers="type">veggie</td>
+<td class="gt_row gt_center" headers="size">L</td>
+<td class="gt_row gt_right" headers="price">$18.50</td>
+<td class="gt_row gt_right" headers="n">1409</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="name">four_cheese</td>
+<td class="gt_row gt_left gt_striped" headers="type">veggie</td>
+<td class="gt_row gt_center gt_striped" headers="size">L</td>
+<td class="gt_row gt_right gt_striped" headers="price">$17.95</td>
+<td class="gt_row gt_right gt_striped" headers="n">1316</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="name">classic_dlx</td>
+<td class="gt_row gt_left" headers="type">classic</td>
+<td class="gt_row gt_center" headers="size">M</td>
+<td class="gt_row gt_right" headers="price">$16.00</td>
+<td class="gt_row gt_right" headers="n">1181</td>
+</tr>
+</tbody><tfoot class="gt_sourcenotes">
+<tr class="even">
+<td colspan="5" class="gt_sourcenote"><p>Source: <a href="https://gt.rstudio.com/articles/gt-datasets.html#pizzaplace">pizzaplace dataset</a></p></td>
+</tr>
+</tfoot>
+
+</table>
+
+</div>
+</div>
+</div>
 </div><div class="column" style="width:50%;">
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(<span class="st">"datasauRus"</span>)</span>
-<span id="cb1-2"><a></a>datasaurus_dozen <span class="sc">%&gt;%</span> </span>
-<span id="cb1-3"><a></a>  ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">color =</span> dataset)) <span class="sc">+</span></span>
-<span id="cb1-4"><a></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb1-5"><a></a>  ggplot2<span class="sc">::</span><span class="fu">theme_void</span>() <span class="sc">+</span></span>
-<span id="cb1-6"><a></a>  ggplot2<span class="sc">::</span><span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">color =</span> <span class="st">"gray"</span>, <span class="at">fill =</span> <span class="st">"gray"</span>, <span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span></span>
-<span id="cb1-7"><a></a>  ggplot2<span class="sc">::</span><span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>, <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">30</span>)) <span class="sc">+</span></span>
-<span id="cb1-8"><a></a>  ggplot2<span class="sc">::</span><span class="fu">facet_wrap</span>(<span class="sc">~</span>dataset, <span class="at">ncol =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">library</span>(<span class="st">"ggplot2"</span>)</span>
+<span id="cb2-2"><a></a>pizza_top <span class="sc">%&gt;%</span></span>
+<span id="cb2-3"><a></a>  ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(name, n, <span class="at">decreasing =</span> <span class="cn">TRUE</span>), <span class="at">y =</span> n)) <span class="sc">+</span></span>
+<span id="cb2-4"><a></a>  ggplot2<span class="sc">::</span><span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> type, <span class="at">size =</span> size)) <span class="sc">+</span></span>
+<span id="cb2-5"><a></a>  ggplot2<span class="sc">::</span><span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> price), <span class="at">nudge_y =</span> <span class="sc">-</span><span class="dv">30</span>) <span class="sc">+</span></span>
+<span id="cb2-6"><a></a>  ggplot2<span class="sc">::</span><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Pizza Top 5"</span>, <span class="at">subtitle =</span> <span class="st">"2015"</span>, <span class="at">x =</span> <span class="st">"name"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -503,403 +981,712 @@
 </div>
 </div>
 </div></div>
-<div class="footer">
-<p>Packages: <a href="https://jumpingrivers.github.io/datasauRus/">datasauRus</a>, <a href="https://paulnorthrop.github.io/anscombiser/">anscombiser</a>.</p>
-<p>More information: <a href="https://www.autodesk.com/research/publications/same-stats-different-graphs">Same Stats, Different Graphs</a>, <a href="https://socviz.co/lookatdata.html#why-look-at-data">socviz.co</a>.</p>
-</div>
 </section>
-<section id="section-2" class="slide level2">
-<h2>💬</h2>
-<h3 id="what-is-more-important-an-eye-or-an-algorithm">What is more important? An eye or an algorithm?</h3>
-<p>What are the consequences of overrelying on statistical techniques? <br>What are the consequences of overrelying on visualizations?</p>
-</section></section>
-<section>
-<section id="bad-plots" class="title-slide slide level1 center" data-background-color="#8000FF">
-<h1>Bad plots 💩</h1>
-
-</section>
-<section id="tuesday-sept-30-2" class="slide level2">
-<h2>Tuesday, Sept 30</h2>
-<ul>
-<li>Why visualize data?</li>
-<li><strong>What makes a plot good (and bad)?</strong></li>
-<li>Guiding principles</li>
-<li>Data Visualization Project</li>
-</ul>
-</section>
-<section id="what-makes-a-bad-plot-bad" class="slide level2">
-<h2>What makes a bad plot bad?</h2>
-<div class="columns">
-<div class="column" style="width:40%;">
-<ul>
-<li><p>Aesthetic (ugly)</p></li>
-<li><p>Perceptual (bad)</p></li>
-<li><p>Substantive (wrong)</p></li>
-</ul>
-</div><div class="column" style="width:60%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/ugly-bad-wrong.png"></p>
-<figcaption><a href="https://clauswilke.com/dataviz/introduction.html">Claus Wilke - Ugly, bad, and wrong figures</a></figcaption>
-</figure>
-</div>
-</div></div>
-</section>
-<section id="speed-dates" class="slide level2">
-<h2>💬 Speed dates</h2>
-<div class="columns">
-<div class="column" style="width:40%;">
-<ul>
-<li><p>What do you think about this plot?</p></li>
-<li><p>What elements can be improved?</p></li>
-<li><p>Are the problems aesthetic, perceptual, or substantive?</p></li>
-</ul>
-</div><div class="column" style="width:60%;">
-<p><img data-src="images/ireland.png"></p>
-</div></div>
-</section>
-<section class="slide level2">
-
-<p>💬</p>
-<div class="columns">
-<div class="column" style="width:60%;">
-<div class="quarto-figure quarto-figure-left">
-<figure>
-<p><img data-src="images/lidl.png" height="500"></p>
-<figcaption>reddit.com/r/dataisugly</figcaption>
-</figure>
-</div>
-</div><div class="column" style="width:40%;">
-<div class="fragment">
-<ul>
-<li>Misleading (or missing) information?</li>
-<li>Many data visualizations might have a hidden agenda, due to e.g.&nbsp;marketing strategies.</li>
-</ul>
-</div>
-</div></div>
-<div class="footer">
-<p>Check out the classic from Darrel Huff <a href="https://www.penguin.co.uk/books/13565/how-to-lie-with-statistics-by-darrell-huff-with-pictures-by-mel-calman/9780140136296">How to Lie with Statistics</a> <a href="https://towardsdatascience.com/lessons-from-how-to-lie-with-statistics-57060c0d2f19">Lessions from How to Lie with Statistics.</a></p>
-</div>
-</section>
-<section class="slide level2">
-
-<p>💬</p>
-<div class="columns">
-<div class="column" style="width:60%;">
-<div class="quarto-figure quarto-figure-left">
-<figure>
-<p><img data-src="images/data_ink.png" width="544"></p>
-<figcaption><a href="https://www.reddit.com/r/dataisugly/">Source: reddit.com/r/dataisbeautiful</a></figcaption>
-</figure>
-</div>
-</div><div class="column" style="width:40%;">
-<div class="fragment">
-<ul>
-<li>Data to ink ratio?</li>
-</ul>
-</div>
-</div></div>
-<div class="footer">
-<p><a href="https://www.codeconquest.com/blog/data-ink-ratio-explained-with-example/">How to maximize the data-to-ink ratio</a></p>
-</div>
-</section>
-<section class="slide level2">
-
-<h3 id="data-to-ink-ratio">Data to ink ratio</h3>
+<section id="one-dataset-many-visualizations-1" class="slide level2">
+<h2>One dataset, many visualizations</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><img data-src="images/data_ink.png"></p>
-</div><div class="column" style="width:50%;">
-<p><img data-src="images/data_ink2.jpeg" height="500"></p>
-</div></div>
-<div class="footer">
-<p><a href="https://www.codeconquest.com/blog/data-ink-ratio-explained-with-example/">How to maximize the data-to-ink ratio</a></p>
-</div>
-</section>
-<section class="slide level2">
-
-
-<img data-src="images/treemap.png" class="r-stretch"></section>
-<section class="slide level2">
-
-<p>💬</p>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p><img data-src="images/colors.jpg" width="490"></p>
-</div><div class="column" style="width:40%;">
-<div class="fragment">
-<ul>
-<li>Do the colors make sense?</li>
-</ul>
-</div>
-</div></div>
-</section>
-<section class="slide level2">
-
-
-<img data-src="images/colors2.png" class="r-stretch quarto-figure-center"><p class="caption">Do the colors make sense?</p></section>
-<section class="slide level2">
-
-<p>💬</p>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p><img data-src="images/all_elements_needed.jpeg" width="490"></p>
-</div><div class="column" style="width:40%;">
-<div class="fragment">
-<ul>
-<li>Are all elements needed?</li>
-</ul>
-</div>
-</div></div>
-</section>
-<section class="slide level2">
-
-<p>💬</p>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p><img data-src="images/axes_correct.jpeg" height="500"></p>
-</div><div class="column" style="width:40%;">
-<div class="fragment">
-<ul>
-<li>Are the axes correct?</li>
-</ul>
-</div>
-</div></div>
-</section>
-<section class="slide level2">
-
-
-<img data-src="images/ireland.png" class="r-stretch quarto-figure-center"><p class="caption">Is a zero-point needed?</p></section>
-<section class="slide level2">
-
-<p>💬</p>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p><img data-src="images/stacked1.png"></p>
-</div><div class="column" style="width:40%;">
-<div class="fragment">
-<ul>
-<li>Is it simple?</li>
-</ul>
-</div>
-</div></div>
-</section>
-<section class="slide level2">
-
-<h3 id="stacked-bar-charts">⚠️ Stacked bar charts ⚠️</h3>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p><img data-src="images/stacked2.png"></p>
-</div><div class="column" style="width:40%;">
-<p><img data-src="images/brazil.jpeg"></p>
-</div></div>
-</section>
-<section class="slide level2">
-
-<h3 id="pie-charts">⚠️ Pie charts ⚠️</h3>
-
-<img data-src="images/pie1.png" class="r-stretch"></section>
-<section class="slide level2">
-
-<h3 id="visualizing-proportions">Visualizing proportions</h3>
-<ul>
-<li>Pie chart, stacked bar, or side-by-side bars?</li>
-</ul>
-
-<img data-src="images/proportions.png" class="r-stretch"><p><a href="https://clauswilke.com/dataviz/visualizing-proportions.html#" class="uri">https://clauswilke.com/dataviz/visualizing-proportions.html#</a></p>
-</section>
-<section class="slide level2">
-
-
-<img data-src="images/ept.png" class="r-stretch quarto-figure-center"><p class="caption">Elementary Perceptual Tasks</p><div class="footer">
-<p>Original Source: <a href="https://www.tandfonline.com/doi/abs/10.1080/01621459.1984.10478080">Cleveland &amp; McGill (1984). 531-554</a>; <a href="https://bookdown.org/dereksonderegger/141/6-graphing-principles.html">Further summary and examples</a></p>
-</div>
-</section>
-<section class="slide level2">
-
-<p>💬</p>
-<div class="columns">
-<div class="column" style="width:60%;">
-<p><img data-src="images/storytelling_before.png"></p>
-</div><div class="column" style="width:40%;">
-<div class="fragment">
-<ul>
-<li>Does it support one conclusion?</li>
-</ul>
-</div>
-</div></div>
-</section>
-<section class="slide level2">
-
-<h3 id="storytelling-with-data---show-just-one-conclusion">Storytelling with data - show just one conclusion!</h3>
-
-<img data-src="images/storytelling_after.png" class="r-stretch"></section>
-<section id="exploratory-versus-explanatory" class="slide level2 smaller scrollable">
-<h2>Exploratory versus explanatory</h2>
-<aside class="notes">
-<p>Exploratory in the sense of data exploration. Exploratory in the sense of visualization exploration (as in previous example, where the same data can be plotted in several ways). In both cases, you can create ugly plots.</p>
-<p>We focus on explanatory data viz (also bridge to next). Beautiful plots!</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-left">
-<figure>
-<p><img data-src="images/exploratory-explanatory-01.png" width="333"></p>
-<figcaption>Source: <a href="https://eolay.tilda.ws/datavizcomics/en">Natalia Kiseleva</a></figcaption>
-</figure>
-</div>
-</div><div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-left">
-<figure>
-<p><img data-src="images/exploratory-explanatory-02.gif"></p>
-<figcaption>Source: <a href="https://archive.org/details/understanding-comics/">Scott McCloud</a></figcaption>
-</figure>
-</div>
-<ul>
-<li><p><strong>Exploratory</strong>: examine the structure of your data.</p></li>
-<li><p><strong>Explanatory:</strong> tell a story with your data.</p></li>
-</ul>
-</div></div>
-<div class="footer">
-<p>More resources: <a href="https://clauswilke.com/dataviz/telling-a-story.html">clauswilke.com</a> (telling a story and making a point), <a href="https://www.susielu.com/data-viz/storytelling-in-dashboards">susielu.com</a> (different interpretation of exploratory/explanatory).</p>
-</div>
-</section>
-<section id="exploratory-versus-explanatory-1" class="slide level2 smaller scrollable">
-<h2>Exploratory versus explanatory</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><img data-src="images/explore-explain-01.gif" data-fig-height="200"></p>
-</div><div class="column" style="width:50%;">
-<p><img data-src="images/explore-explain-02.gif" data-fig-height="300"></p>
-</div></div>
-<p>Source: <a href="https://www.storytellingwithdata.com/blog/2014/04/exploratory-vs-explanatory-analysis">storytellingwithdata.com</a></p>
-<div class="footer">
-<p>More resources: <a href="https://clauswilke.com/dataviz/telling-a-story.html">clauswilke.com</a> (telling a story and making a point), <a href="https://www.susielu.com/data-viz/storytelling-in-dashboards">susielu.com</a> (different interpretation of exploratory/explanatory).</p>
-</div>
-</section>
-<section id="some-good-examples" class="slide level2 smaller scrollable">
-<h2><span style="font-size: 0.7em;">Some good examples</span></h2>
-<p><a href="images/good1.png"><img data-src="images/good1.png" style="width:100.0%"></a> <a href="https://clauswilke.com/dataviz/histograms-density-plots.html">Distributions are informative</a></p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><a href="images/good2.png"><img data-src="images/good2.png" style="width:100.0%"></a></p>
-</div><div class="column" style="width:50%;">
-<p><a href="images/good3.png"><img data-src="images/good3.png" style="width:100.0%"></a></p>
-</div></div>
-<p><a href="https://www.nytimes.com/interactive/2023/09/05/upshot/medicare-budget-threat-receded.html?pgtype=Article&amp;action=click&amp;module=RelatedLinks">NYT Graphic - Obamacare spending</a></p>
-<p><a href="https://sean.netlify.app/post/how-to-reproduce-a-nyt-graphic/">How to reproduce a NYT graphic</a></p>
-</section></section>
-<section>
-<section id="guiding-principles" class="title-slide slide level1 center" data-background-color="#8000FF">
-<h1>Guiding principles 🪄</h1>
-
-</section>
-<section id="tuesday-sept-30-3" class="slide level2">
-<h2>Tuesday, Sept 30</h2>
-<ul>
-<li>Why visualize data?</li>
-<li>What makes a plot good (and bad)?</li>
-<li><strong>Guiding principles</strong></li>
-<li>Data Visualization Project</li>
-</ul>
-</section>
-<section id="tips-for-the-best-viz" class="slide level2">
-<h2>Tips for the best viz</h2>
-<ul>
-<li><p>Is it <strong>explaining</strong> data?</p></li>
-<li><p>Is the information <strong>complete and correct</strong>?</p></li>
-<li><p>Are <strong>axes</strong> correct? (+ Should they have a zero-point?)</p></li>
-<li><p>Do the <strong>colors</strong> work? ( + Do they map to a relevant attribute?)</p></li>
-<li><p>Are all <strong>elements</strong> needed?</p></li>
-<li><p>What is the <strong>data to ink ratio?</strong></p></li>
-<li><p>Is it <strong>understandable &amp; simple?</strong></p></li>
-<li><p>Does it portray <strong>one conclusion</strong>?</p></li>
-</ul>
-</section>
-<section id="break" class="slide level2">
-<h2>Break</h2>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">library</span>(<span class="st">"RXKCD"</span>)</span>
-<span id="cb2-2"><a></a>RXKCD<span class="sc">::</span><span class="fu">getXKCD</span>(<span class="at">which =</span> <span class="st">"833"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">library</span>(<span class="st">"gt"</span>)</span>
+<span id="cb3-2"><a></a>pizza_season <span class="ot">&lt;-</span> pizzaplace <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a></a>  dplyr<span class="sc">::</span><span class="fu">mutate</span>(<span class="at">month =</span> lubridate<span class="sc">::</span><span class="fu">month</span>(date, <span class="at">label =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-4"><a></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(month) <span class="sc">%&gt;%</span></span>
+<span id="cb3-5"><a></a>  dplyr<span class="sc">::</span><span class="fu">count</span>(type)</span>
+<span id="cb3-6"><a></a>pizza_season <span class="sc">%&gt;%</span></span>
+<span id="cb3-7"><a></a>  tidyr<span class="sc">::</span><span class="fu">pivot_wider</span>(<span class="at">names_from =</span> month, <span class="at">values_from =</span> n) <span class="sc">%&gt;%</span></span>
+<span id="cb3-8"><a></a>  gt<span class="sc">::</span><span class="fu">gt</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb3-9"><a></a>  gt<span class="sc">::</span><span class="fu">tab_header</span>(<span class="at">title =</span> <span class="st">"Pizza Season"</span>, <span class="at">subtitle =</span> <span class="st">"2015"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-10"><a></a>  gt<span class="sc">::</span><span class="fu">tab_source_note</span>(<span class="at">source_note =</span> gt<span class="sc">::</span><span class="fu">md</span>(<span class="st">"Source: [pizzaplace dataset](https://gt.rstudio.com/articles/gt-datasets.html#pizzaplace)"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-11"><a></a>  gt<span class="sc">::</span><span class="fu">opt_stylize</span>(<span class="at">style =</span> <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output-display">
+<div id="hxaneeckut" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hxaneeckut table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#hxaneeckut thead, #hxaneeckut tbody, #hxaneeckut tfoot, #hxaneeckut tr, #hxaneeckut td, #hxaneeckut th {
+  border-style: none;
+}
+
+#hxaneeckut p {
+  margin: 0;
+  padding: 0;
+}
+
+#hxaneeckut .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#hxaneeckut .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#hxaneeckut .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#hxaneeckut .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#hxaneeckut .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#hxaneeckut .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+}
+
+#hxaneeckut .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#hxaneeckut .gt_col_heading {
+  color: #FFFFFF;
+  background-color: #0076BA;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#hxaneeckut .gt_column_spanner_outer {
+  color: #FFFFFF;
+  background-color: #0076BA;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#hxaneeckut .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#hxaneeckut .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#hxaneeckut .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#hxaneeckut .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#hxaneeckut .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#hxaneeckut .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+  vertical-align: middle;
+}
+
+#hxaneeckut .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#hxaneeckut .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#hxaneeckut .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: none;
+  border-top-width: 1px;
+  border-top-color: #D5D5D5;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D5D5D5;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D5D5D5;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#hxaneeckut .gt_stub {
+  color: #333333;
+  background-color: #89D3FE;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D5D5D5;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hxaneeckut .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#hxaneeckut .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#hxaneeckut .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#hxaneeckut .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hxaneeckut .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #5F5F5F;
+}
+
+#hxaneeckut .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#hxaneeckut .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+}
+
+#hxaneeckut .gt_grand_summary_row {
+  color: #333333;
+  background-color: #D5D5D5;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hxaneeckut .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #5F5F5F;
+}
+
+#hxaneeckut .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #5F5F5F;
+}
+
+#hxaneeckut .gt_striped {
+  background-color: #EDF7FC;
+}
+
+#hxaneeckut .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #5F5F5F;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #5F5F5F;
+}
+
+#hxaneeckut .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#hxaneeckut .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hxaneeckut .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#hxaneeckut .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hxaneeckut .gt_left {
+  text-align: left;
+}
+
+#hxaneeckut .gt_center {
+  text-align: center;
+}
+
+#hxaneeckut .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#hxaneeckut .gt_font_normal {
+  font-weight: normal;
+}
+
+#hxaneeckut .gt_font_bold {
+  font-weight: bold;
+}
+
+#hxaneeckut .gt_font_italic {
+  font-style: italic;
+}
+
+#hxaneeckut .gt_super {
+  font-size: 65%;
+}
+
+#hxaneeckut .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#hxaneeckut .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#hxaneeckut .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#hxaneeckut .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#hxaneeckut .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#hxaneeckut .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#hxaneeckut .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#hxaneeckut .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#hxaneeckut div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top" style="width:100%;" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 7%">
+</colgroup>
+<thead>
+<tr class="header gt_heading">
+<th colspan="13" class="gt_heading gt_title gt_font_normal">Pizza Season</th>
+</tr>
+<tr class="odd gt_heading">
+<th colspan="13" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">2015</th>
+</tr>
+<tr class="header gt_col_headings">
+<th id="type" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">type</th>
+<th id="Jan" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Jan</th>
+<th id="Feb" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Feb</th>
+<th id="Mar" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Mar</th>
+<th id="Apr" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Apr</th>
+<th id="May" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">May</th>
+<th id="Jun" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Jun</th>
+<th id="Jul" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Jul</th>
+<th id="Aug" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Aug</th>
+<th id="Sep" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Sep</th>
+<th id="Oct" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Oct</th>
+<th id="Nov" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Nov</th>
+<th id="Dec" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Dec</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="type">chicken</td>
+<td class="gt_row gt_right" headers="Jan">913</td>
+<td class="gt_row gt_right" headers="Feb">875</td>
+<td class="gt_row gt_right" headers="Mar">994</td>
+<td class="gt_row gt_right" headers="Apr">924</td>
+<td class="gt_row gt_right" headers="May">939</td>
+<td class="gt_row gt_right" headers="Jun">910</td>
+<td class="gt_row gt_right" headers="Jul">963</td>
+<td class="gt_row gt_right" headers="Aug">934</td>
+<td class="gt_row gt_right" headers="Sep">900</td>
+<td class="gt_row gt_right" headers="Oct">832</td>
+<td class="gt_row gt_right" headers="Nov">981</td>
+<td class="gt_row gt_right" headers="Dec">885</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="type">classic</td>
+<td class="gt_row gt_right gt_striped" headers="Jan">1257</td>
+<td class="gt_row gt_right gt_striped" headers="Feb">1178</td>
+<td class="gt_row gt_right gt_striped" headers="Mar">1236</td>
+<td class="gt_row gt_right gt_striped" headers="Apr">1253</td>
+<td class="gt_row gt_right gt_striped" headers="May">1324</td>
+<td class="gt_row gt_right gt_striped" headers="Jun">1199</td>
+<td class="gt_row gt_right gt_striped" headers="Jul">1331</td>
+<td class="gt_row gt_right gt_striped" headers="Aug">1283</td>
+<td class="gt_row gt_right gt_striped" headers="Sep">1202</td>
+<td class="gt_row gt_right gt_striped" headers="Oct">1181</td>
+<td class="gt_row gt_right gt_striped" headers="Nov">1262</td>
+<td class="gt_row gt_right gt_striped" headers="Dec">1182</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="type">supreme</td>
+<td class="gt_row gt_right" headers="Jan">1044</td>
+<td class="gt_row gt_right" headers="Feb">964</td>
+<td class="gt_row gt_right" headers="Mar">991</td>
+<td class="gt_row gt_right" headers="Apr">1013</td>
+<td class="gt_row gt_right" headers="May">1045</td>
+<td class="gt_row gt_right" headers="Jun">1040</td>
+<td class="gt_row gt_right" headers="Jul">1041</td>
+<td class="gt_row gt_right" headers="Aug">991</td>
+<td class="gt_row gt_right" headers="Sep">877</td>
+<td class="gt_row gt_right" headers="Oct">998</td>
+<td class="gt_row gt_right" headers="Nov">1050</td>
+<td class="gt_row gt_right" headers="Dec">933</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="type">veggie</td>
+<td class="gt_row gt_right gt_striped" headers="Jan">1018</td>
+<td class="gt_row gt_right gt_striped" headers="Feb">944</td>
+<td class="gt_row gt_right gt_striped" headers="Mar">1040</td>
+<td class="gt_row gt_right gt_striped" headers="Apr">961</td>
+<td class="gt_row gt_right gt_striped" headers="May">1020</td>
+<td class="gt_row gt_right gt_striped" headers="Jun">958</td>
+<td class="gt_row gt_right gt_striped" headers="Jul">1057</td>
+<td class="gt_row gt_right gt_striped" headers="Aug">960</td>
+<td class="gt_row gt_right gt_striped" headers="Sep">911</td>
+<td class="gt_row gt_right gt_striped" headers="Oct">872</td>
+<td class="gt_row gt_right gt_striped" headers="Nov">973</td>
+<td class="gt_row gt_right gt_striped" headers="Dec">935</td>
+</tr>
+</tbody><tfoot class="gt_sourcenotes">
+<tr class="odd">
+<td colspan="13" class="gt_sourcenote"><p>Source: <a href="https://gt.rstudio.com/articles/gt-datasets.html#pizzaplace">pizzaplace dataset</a></p></td>
+</tr>
+</tfoot>
+
+</table>
 
 </div>
-<img data-src="slides-copy_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section></section>
-<section>
-<section id="data-visualization-project" class="title-slide slide level1 center" data-background-color="#8000FF">
-<h1>Data Visualization Project 📊</h1>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">library</span>(<span class="st">"ggplot2"</span>)</span>
+<span id="cb4-2"><a></a><span class="fu">library</span>(<span class="st">"lubridate"</span>)</span>
+<span id="cb4-3"><a></a>fig_season_1 <span class="ot">&lt;-</span> pizza_season <span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a></a>  ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> n, <span class="at">group =</span> type)) <span class="sc">+</span></span>
+<span id="cb4-5"><a></a>  ggplot2<span class="sc">::</span><span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">linetype =</span> type)) <span class="sc">+</span></span>
+<span id="cb4-6"><a></a>  ggplot2<span class="sc">::</span><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Pizza Season"</span>, <span class="at">subtitle =</span> <span class="st">"2015"</span>)</span>
+<span id="cb4-7"><a></a>fig_season_1</span>
+<span id="cb4-8"><a></a></span>
+<span id="cb4-9"><a></a>fig_season_2 <span class="ot">&lt;-</span> pizza_season <span class="sc">%&gt;%</span></span>
+<span id="cb4-10"><a></a>  ggplot2<span class="sc">::</span><span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> month, <span class="at">y =</span> n, <span class="at">group =</span> type)) <span class="sc">+</span></span>
+<span id="cb4-11"><a></a>  ggplot2<span class="sc">::</span><span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">fill =</span> type), <span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="st">"dodge"</span>) <span class="sc">+</span></span>
+<span id="cb4-12"><a></a>  ggplot2<span class="sc">::</span><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Pizza Season"</span>, <span class="at">subtitle =</span> <span class="st">"2015"</span>)</span>
+<span id="cb4-13"><a></a>fig_season_2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="slides-copy_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="slides-copy_files/figure-revealjs/unnamed-chunk-4-2.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+</section>
+<section id="from-data-to-viz" class="slide level2">
+<h2><a href="https://www.data-to-viz.com/">from data to viz</a></h2>
 
+<img data-src="images/data-to-viz.png" data-fig.height="600" class="r-stretch"></section>
+<section id="from-data-to-viz-1" class="slide level2">
+<h2><a href="https://www.data-to-viz.com/">from data to viz</a></h2>
+
+<img data-src="images/data-to-viz-caveats.png" data-fig.height="600" class="r-stretch"></section>
+<section id="recap" class="slide level2">
+<h2>Recap</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p>✓ Keep it simple.</p>
+<p>✓ Don’t mislead.</p>
+<p>✓ Tell one story.</p>
+<p>✓ <strong>First impressions matter!</strong></p>
+</div><div class="column" style="width:60%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/misleading.jpeg" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</div></div>
 </section>
-<section id="tuesday-sept-30-4" class="slide level2">
-<h2>Tuesday, Sept 30</h2>
+<section id="more-data-visualization-features" class="slide level2">
+<h2>More data visualization features</h2>
 <ul>
-<li>Why visualize data?</li>
-<li>What makes a plot good (and bad)?</li>
-<li>Guiding principles</li>
-<li><strong>Data Visualization Project</strong></li>
+<li>Chart junk</li>
+<li>Themes</li>
+<li>Colors</li>
+<li>Color blindness</li>
+<li>Captions</li>
+<li>Typography</li>
+<li>File format/size</li>
+<li>Font embedding</li>
 </ul>
 </section>
-<section id="aims" class="slide level2">
-<h2>Aims</h2>
-<p>Your goal is to go from exploring the Prowise data to telling a story with it.</p>
-<ul>
-<li><p><a href="../assignments/assignment-1.html" target="_blank">Assignment 1</a>: Choose a research question. Explore the data and create a set of visualizations to help you understand the data.</p></li>
-<li><p><a href="../assignments/assignment-2.html" target="_blank">Assignment 2</a>: Create a final data visualization that tells a story with the data. Compiled into a html document, and presented in a GitHub repository.</p></li>
-</ul>
-</section>
-<section id="requirements-assignment-2" class="slide level2">
-<h2>Requirements Assignment 2</h2>
-<ul>
-<li>Use R Markdown (or Quarto) to create your visualizations.</li>
-<li>The markdown document should be in the style of a report: explain your research question, and how you came to your conclusion. Not more than 1000 words.<br>
-</li>
-<li>Include an exploratory graph, and explain how it helped you understand the data.</li>
-<li>Only your final, explanatory graph, will be graded. Clearly mark which graph this is.</li>
-</ul>
-</section>
-<section id="workflow" class="slide level2">
-<h2>Workflow</h2>
-<ul>
-<li>Comment your code clearly. We want to understand your thought process.</li>
-<li>Collaborate within your group using Git &amp; GitHub. You will set up your own project repository connected to the Data Visualization Server.</li>
-<li>Make sure all documents render correctly, and that code is styled and runs.</li>
-<li>️⚠ <strong>Do not push any data to GitHub.</strong></li>
-</ul>
-</section>
-<section id="workflow-1" class="slide level2">
-<h2>Workflow</h2>
-<ul>
-<li><p><a href="../documents/working-on-the-server.html" target="_blank">Working on the server</a></p></li>
-<li><p><a href="../documents/working-with-git.html" target="_blank">Git setup &amp; workflow</a></p></li>
-</ul>
-</section>
-<section id="first-draft-peer-review" class="slide level2">
-<h2>First draft &amp; peer review</h2>
-<ul>
-<li><p>First draft due Friday 10/10 12.30 – No requirements.</p></li>
-<li><p>Peer review due Friday 10/10 23.59 – Review one other group’s work. You will have time for this during Friday’s class.</p></li>
-</ul>
-</section>
-<section id="grading" class="slide level2">
-<h2>Grading</h2>
-<ul>
-<li>Assigment 1: 50%</li>
-<li>Individual part:</li>
-<li>Group part:</li>
-<li>Assigment 2: 50%</li>
-</ul>
+<section id="chart-junk" class="slide level2">
+<h2>Chart junk</h2>
+
+<img data-src="slides-copy_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section>
+<section id="section" class="slide level2">
+<h2></h2>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">library</span>(<span class="st">"showtext"</span>)</span>
+<span id="cb5-2"><a></a>sysfonts<span class="sc">::</span><span class="fu">font_add_google</span>(<span class="st">"Lobster"</span>)</span>
+<span id="cb5-3"><a></a>sysfonts<span class="sc">::</span><span class="fu">font_add_google</span>(<span class="st">"Lexend"</span>)</span>
+<span id="cb5-4"><a></a>showtext<span class="sc">::</span><span class="fu">showtext_auto</span>()</span>
+<span id="cb5-5"><a></a><span class="co"># fig_pizza_iso +</span></span>
+<span id="cb5-6"><a></a><span class="co">#   ggplot2::theme(plot.title = element_text(family = "Lobster", size = 20),</span></span>
+<span id="cb5-7"><a></a><span class="co">#                  axis.title.x = element_text(family = "Lobster", size = 16),</span></span>
+<span id="cb5-8"><a></a><span class="co">#                  axis.text.y = element_text(family = "Lobster", size = 16))</span></span>
+<span id="cb5-9"><a></a></span>
+<span id="cb5-10"><a></a><span class="co"># pizza_iso &lt;- pizza_totals %&gt;%</span></span>
+<span id="cb5-11"><a></a><span class="co">#   rowwise() %&gt;%</span></span>
+<span id="cb5-12"><a></a><span class="co">#   mutate(icon_id = list(1:n_icons)) %&gt;%</span></span>
+<span id="cb5-13"><a></a><span class="co">#   tidyr::unnest(icon_id) %&gt;%</span></span>
+<span id="cb5-14"><a></a><span class="co">#   mutate(highlight = ifelse(type == "classic", TRUE, FALSE))</span></span>
+<span id="cb5-15"><a></a></span>
+<span id="cb5-16"><a></a>fig_pizza_iso <span class="sc">+</span></span>
+<span id="cb5-17"><a></a>  <span class="fu">geom_rect</span>(</span>
+<span id="cb5-18"><a></a>    <span class="at">data =</span> pizza_totals,</span>
+<span id="cb5-19"><a></a>    <span class="fu">aes</span>(<span class="at">xmin =</span> <span class="dv">0</span>, <span class="at">xmax =</span> total<span class="sc">/</span><span class="dv">1000</span>, </span>
+<span id="cb5-20"><a></a>        <span class="at">ymin =</span> <span class="fu">as.numeric</span>(<span class="fu">factor</span>(type)) <span class="sc">-</span> <span class="fl">0.5</span>, </span>
+<span id="cb5-21"><a></a>        <span class="at">ymax =</span> <span class="fu">as.numeric</span>(<span class="fu">factor</span>(type)) <span class="sc">+</span> <span class="fl">0.5</span>,</span>
+<span id="cb5-22"><a></a>        <span class="at">alpha =</span> highlight),</span>
+<span id="cb5-23"><a></a>    <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb5-24"><a></a>    <span class="at">fill =</span> <span class="st">"white"</span></span>
+<span id="cb5-25"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb5-26"><a></a>  <span class="fu">scale_alpha_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"TRUE"</span> <span class="ot">=</span> <span class="dv">0</span>, <span class="st">"FALSE"</span> <span class="ot">=</span> <span class="fl">0.3</span>), <span class="at">guide =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
+<span id="cb5-27"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"The classic is a classic for a reason."</span>,</span>
+<span id="cb5-28"><a></a>       <span class="at">subtitle =</span> <span class="st">"Total Pizza Sales in 2015"</span>,</span>
+<span id="cb5-29"><a></a>       <span class="at">caption =</span> <span class="st">"Source: pizzaplace dataset"</span>) <span class="sc">+</span></span>
+<span id="cb5-30"><a></a>  ggplot2<span class="sc">::</span><span class="fu">theme</span>(<span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"Lexend"</span>, <span class="at">color =</span> <span class="st">"gray30"</span>),</span>
+<span id="cb5-31"><a></a>                 <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"Lobster"</span>, <span class="at">size =</span> <span class="dv">20</span>, <span class="at">color =</span> <span class="st">"tomato3"</span>),</span>
+<span id="cb5-32"><a></a>                 <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"Lexend"</span>, <span class="at">size =</span> <span class="dv">16</span>), </span>
+<span id="cb5-33"><a></a>                 <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"Lobster"</span>, <span class="at">size =</span> <span class="dv">16</span>),</span>
+<span id="cb5-34"><a></a>                 <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"Lobster"</span>, <span class="at">size =</span> <span class="dv">16</span>, <span class="at">color =</span> <span class="st">"tomato3"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="slides-copy_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
 
 <div class="quarto-auto-generated-content">
 <p><img src="images/uva_logo.png" class="slide-logo"></p>
