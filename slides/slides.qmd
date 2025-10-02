@@ -514,22 +514,26 @@ Your goal is to go from exploring the Prowise data to telling a story with it.
 
 ## {.larger .scrollable}
 
-```{txt echo=TRUE}
-<<<<<<< HEAD
+
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+
 Some content
+
 =======
+
 Some conflicted content
->>>>>>> new_branch
-```
+
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; new_branch
+
 
 ## Git conflicts {.smaller .scrollable}
 
-```{txt echo=TRUE}
-<<<<<<< HEAD
+```{text echo=TRUE}
+&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
 Some content
 =======
 Some conflicted content
->>>>>>> new_branch
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; new_branch
 ```
 
 -   Happens when two people change the same file, and then try to push to GitHub.
