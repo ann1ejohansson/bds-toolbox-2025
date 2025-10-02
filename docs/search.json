@@ -445,14 +445,14 @@
     "href": "slides/slides.html#advantages",
     "title": "Data Visualization",
     "section": "Advantages",
-    "text": "Advantages\n\n\nExplore data dynamically\n\n\n\n\nZoom, pan, and hover for details\n\n\n\n\nReveal extra information without clutter\n\n\n\n\nEnhance engagement in presentations and reports\n\n\n\n\nUseful for exploratory analysis and dashboards"
+    "text": "Advantages\n\n\nExplore data dynamically\nZoom, pan, and hover for details\nReveal extra information without clutter\nEnhance engagement in presentations and reports\nUseful for exploratory analysis and dashboards"
   },
   {
     "objectID": "slides/slides.html#disadvantages",
     "href": "slides/slides.html#disadvantages",
     "title": "Data Visualization",
     "section": "Disadvantages",
-    "text": "Disadvantages\n\n\nHarder to include in static formats (papers, print)\n\n\n\n\nAccessibility issues (screen readers, non colorblind-friendly defaults)\n\n\n\n\nCan overwhelm the audience if overused\n\n\n\n\nLarger file sizes, slower rendering\n\n\n\n\nRequires additional packages/libraries (e.g., {plotly})"
+    "text": "Disadvantages\n\n\nHarder to include in static formats (papers, print)\nAccessibility issues (screen readers, non colorblind-friendly defaults)\nCan overwhelm the audience if overused\nLarger file sizes, slower rendering\nRequires additional packages/libraries (e.g., {plotly})"
   },
   {
     "objectID": "slides/slides.html#section-7",
