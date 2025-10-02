@@ -549,9 +549,17 @@ What advantages/disadvantages do interactive visualizations have over static plo
 
 ::: fragment
 -   Explore data dynamically
+:::
+::: fragment
 -   Zoom, pan, and hover for details
+:::
+::: fragment
 -   Reveal extra information without clutter
+:::
+::: fragment
 -   Enhance engagement in presentations and reports
+:::
+::: fragment
 -   Useful for exploratory analysis and dashboards
 :::
 
@@ -559,9 +567,17 @@ What advantages/disadvantages do interactive visualizations have over static plo
 
 ::: fragment
 -   Harder to include in static formats (papers, print)
+:::
+::: fragment
 -   Accessibility issues (screen readers, non colorblind-friendly defaults)
+:::
+::: fragment
 -   Can overwhelm the audience if overused
+:::
+::: fragment
 -   Larger file sizes, slower rendering
+:::
+::: fragment
 -   Requires additional packages/libraries (e.g., `{plotly}`)
 :::
 
