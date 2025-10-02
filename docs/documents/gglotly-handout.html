@@ -224,99 +224,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Load libraries</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   4.0.0     ✔ tibble    3.2.1
-✔ lubridate 1.9.4     ✔ tidyr     1.3.1
-✔ purrr     1.0.4     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(oefenwebDatabase)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'plotly'
-
-The following object is masked from 'package:ggplot2':
-
-    last_plot
-
-The following object is masked from 'package:stats':
-
-    filter
-
-The following object is masked from 'package:graphics':
-
-    layout</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># connect to the Oefenweb server</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> oefenwebDatabase<span class="sc">::</span><span class="fu">connect</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(oefenwebDatabase)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># connect to the Oefenweb server</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> oefenwebDatabase<span class="sc">::</span><span class="fu">connect</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Let’s get started by querying the play data of a single player, specifically the user with <code>user_id = '51'</code>, for the addition game.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get data of specific user</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">get_query</span>(</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SELECT *</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="st">  FROM log_records_1</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="st">  WHERE new_user_id = '51'"</span>,</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">con =</span> con</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># get data of specific user</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">get_query</span>(</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"SELECT *</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="st">  FROM log_records_1</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="st">  WHERE new_user_id = '51'"</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">con =</span> con</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We are now going to make a regular <code>ggplot</code> object that depicts how the player’s ability rating in the addition game develops over time. Additionally, we are plotting for each given response whether that was a correct or an incorrect response to the item’s question.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set custom aesthetics</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># plot theme</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>plot_theme <span class="ot">&lt;-</span> <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">face =</span> <span class="st">"bold"</span>,</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">16</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co"># specify colors (for plotting incorrect vs. correct answers)</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>plot_colors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#E31A1C"</span>, <span class="st">"#33A02C"</span>)</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co"># plot rating development over played items</span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> new_user_domain_modified_count,</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> new_user_domain_rating,</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">colour =</span> <span class="fu">factor</span>(correct_answered),</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">text =</span> <span class="fu">paste0</span>(</span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>        <span class="st">"difficulty: "</span>, difficulty,</span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>        <span class="st">"</span><span class="sc">\n</span><span class="st">reaction time: "</span>, <span class="fu">round</span>(response_in_milliseconds <span class="sc">/</span> <span class="dv">1000</span>, <span class="dv">1</span>), <span class="st">" sec"</span></span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>      )</span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">3</span>,</span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> .<span class="dv">8</span>,</span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">shape =</span> <span class="fu">factor</span>(correct_answered))</span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(</span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">16</span>),</span>
-<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">"Correct answered?"</span></span>
-<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(</span>
-<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> plot_colors,</span>
-<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">"Correct answered?"</span></span>
-<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">paste0</span>(</span>
-<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>      <span class="st">"User "</span>, <span class="fu">unique</span>(data<span class="sc">$</span>new_user_id), <span class="st">"'s performance on the addition game"</span></span>
-<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Play count"</span>,</span>
-<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"User domain rating"</span></span>
-<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a>  plot_theme</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># set custom aesthetics</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># plot theme</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>plot_theme <span class="ot">&lt;-</span> <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">face =</span> <span class="st">"bold"</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">size =</span> <span class="dv">16</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co"># specify colors (for plotting incorrect vs. correct answers)</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>plot_colors <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#E31A1C"</span>, <span class="st">"#33A02C"</span>)</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co"># plot rating development over played items</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> new_user_domain_modified_count,</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> new_user_domain_rating,</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">colour =</span> <span class="fu">factor</span>(correct_answered),</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">text =</span> <span class="fu">paste0</span>(</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>        <span class="st">"difficulty: "</span>, difficulty,</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>        <span class="st">"</span><span class="sc">\n</span><span class="st">reaction time: "</span>, <span class="fu">round</span>(response_in_milliseconds <span class="sc">/</span> <span class="dv">1000</span>, <span class="dv">1</span>), <span class="st">" sec"</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">3</span>,</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> .<span class="dv">8</span>,</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">shape =</span> <span class="fu">factor</span>(correct_answered))</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">16</span>),</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">"Correct answered?"</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> plot_colors,</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">"Correct answered?"</span></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">paste0</span>(</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>      <span class="st">"User "</span>, <span class="fu">unique</span>(data<span class="sc">$</span>new_user_id), <span class="st">"'s performance on the addition game"</span></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Play count"</span>,</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"User domain rating"</span></span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>  plot_theme</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -328,53 +301,53 @@ The following object is masked from 'package:graphics':
 <p>To convert the static ggplot above, you simply call <code>ggplotly(your_plot)</code>, where <code>your_plot</code> is the ggplot object you created. This turns it into an interactive plot with tooltips, zoom, and pan.</p>
 <p>Below, we save the ggplot object we created earlier and wrap it in <code>ggplotly()</code>. We also add a <strong>customized tooltip</strong>, by adding a <code>text</code> aesthetic to the ggplot object. In this example, the customized tooltip depicts additional information for each given response, namely the chosen difficulty level and the player’s reaction time.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot rating development over played items</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>my_plotly <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> new_user_domain_modified_count,</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> new_user_domain_rating,</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">colour =</span> <span class="fu">factor</span>(correct_answered),</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>      <span class="co"># add text aesthetic for customized plotly tooltip:</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">text =</span> <span class="fu">paste0</span>(</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>        <span class="st">"difficulty: "</span>, difficulty,</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">"</span><span class="sc">\n</span><span class="st">reaction time: "</span>, <span class="fu">round</span>(response_in_milliseconds <span class="sc">/</span> <span class="dv">1000</span>, <span class="dv">1</span>), <span class="st">" sec"</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>      )</span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">3</span>,</span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> .<span class="dv">8</span>,</span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">shape =</span> <span class="fu">factor</span>(correct_answered))</span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(</span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">16</span>),</span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">"Correct answered?"</span></span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(</span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> plot_colors,</span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">"Correct answered?"</span></span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">paste0</span>(</span>
-<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>      <span class="st">"User "</span>, <span class="fu">unique</span>(data<span class="sc">$</span>new_user_id), <span class="st">"'s performance on the addition game"</span></span>
-<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Play count"</span>,</span>
-<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"User domain rating"</span></span>
-<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>  plot_theme</span>
-<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a><span class="co"># convert ggplot object into a plotly one, with a customized tooltip</span></span>
-<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplotly</span>(my_plotly, <span class="at">tooltip =</span> <span class="st">"text"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># plot rating development over played items</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>my_plotly <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> new_user_domain_modified_count,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> new_user_domain_rating,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">colour =</span> <span class="fu">factor</span>(correct_answered),</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>      <span class="co"># add text aesthetic for customized plotly tooltip:</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">text =</span> <span class="fu">paste0</span>(</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="st">"difficulty: "</span>, difficulty,</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">"</span><span class="sc">\n</span><span class="st">reaction time: "</span>, <span class="fu">round</span>(response_in_milliseconds <span class="sc">/</span> <span class="dv">1000</span>, <span class="dv">1</span>), <span class="st">" sec"</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">3</span>,</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> .<span class="dv">8</span>,</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">shape =</span> <span class="fu">factor</span>(correct_answered))</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_shape_manual</span>(</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">16</span>),</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">"Correct answered?"</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> plot_colors,</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">"Correct answered?"</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">paste0</span>(</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>      <span class="st">"User "</span>, <span class="fu">unique</span>(data<span class="sc">$</span>new_user_id), <span class="st">"'s performance on the addition game"</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Play count"</span>,</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"User domain rating"</span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>  plot_theme</span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a><span class="co"># convert ggplot object into a plotly one, with a customized tooltip</span></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplotly</span>(my_plotly, <span class="at">tooltip =</span> <span class="st">"text"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="plotly html-widget html-fill-item" id="htmlwidget-160c8d425fe1133f667c" style="width:100%;height:650px;"></div>
-<script type="application/json" data-for="htmlwidget-160c8d425fe1133f667c">{"x":{"data":[{"x":[2,3,18,22,43,48,49],"y":[-18.315071154213999,-18.670073189972999,-16.917351953171,-16.380577352206998,-15.592047957145001,-15.58895875736,-15.702058039498],"text":["difficulty: 0<br />reaction time: 20 sec","difficulty: 0<br />reaction time: 20 sec","difficulty: 0<br />reaction time: 3.4 sec","difficulty: 0<br />reaction time: 20 sec","difficulty: 1<br />reaction time: 18 sec","difficulty: 1<br />reaction time: 9.3 sec","difficulty: 1<br />reaction time: 20 sec"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(227,26,28,1)","opacity":0.80000000000000004,"size":11.338582677165356,"symbol":"x-thin-open","line":{"width":1.8897637795275593,"color":"rgba(227,26,28,1)"}},"hoveron":"points","name":"0","legendgroup":"0","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[1,4,5,6,7,8,9,10,11,12,13,14,15,16,17,19,20,21,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,44,45,46,47],"y":[-17.948639233961998,-18.559054946823,-18.464184938422999,-18.265302396334999,-18.096800093725999,-17.994079989593001,-17.745999001413001,-17.676730352614001,-17.516958416935999,-17.176522339121998,-17.136001714070002,-16.882611904436999,-16.525294306604,-16.412925921121001,-16.481309861473001,-16.704364836536001,-16.497914587979,-16.281204532284999,-16.348316655784998,-16.332709290779999,-16.256901797926002,-16.200810702988001,-16.155040037500001,-16.041655952342001,-15.97205091058,-15.900200066290999,-15.925170928552999,-15.911896792591,-15.854829271581,-15.764683847420001,-15.789734051331999,-15.746770664585,-15.683858985172,-15.684589055543,-15.633373845125,-15.567337465419,-15.540372931070999,-15.489950453009,-15.512859712807,-15.575322460689,-15.522923246701,-15.482882103399],"text":["difficulty: 0<br />reaction time: 13.6 sec","difficulty: 0<br />reaction time: 5.3 sec","difficulty: 0<br />reaction time: 6.3 sec","difficulty: 0<br />reaction time: 3 sec","difficulty: 0<br />reaction time: 3.3 sec","difficulty: 0<br />reaction time: 3.4 sec","difficulty: 0<br />reaction time: 3.8 sec","difficulty: 0<br />reaction time: 5.3 sec","difficulty: 0<br />reaction time: 6 sec","difficulty: 0<br />reaction time: 4.5 sec","difficulty: 0<br />reaction time: 3.9 sec","difficulty: 0<br />reaction time: 5.2 sec","difficulty: 0<br />reaction time: 3.7 sec","difficulty: 0<br />reaction time: 5.9 sec","difficulty: 0<br />reaction time: 8.2 sec","difficulty: 0<br />reaction time: 4 sec","difficulty: 0<br />reaction time: 4.8 sec","difficulty: 0<br />reaction time: 4.7 sec","difficulty: 0<br />reaction time: 6.4 sec","difficulty: 0<br />reaction time: 4.4 sec","difficulty: 0<br />reaction time: 3.4 sec","difficulty: 0<br />reaction time: 5.2 sec","difficulty: 0<br />reaction time: 3.4 sec","difficulty: 0<br />reaction time: 4.2 sec","difficulty: 0<br />reaction time: 4.7 sec","difficulty: 0<br />reaction time: 8.1 sec","difficulty: 0<br />reaction time: 11.6 sec","difficulty: 0<br />reaction time: 6.9 sec","difficulty: 1<br />reaction time: 8 sec","difficulty: 1<br />reaction time: 6.9 sec","difficulty: 1<br />reaction time: 14.5 sec","difficulty: 1<br />reaction time: 5.5 sec","difficulty: 1<br />reaction time: 4.6 sec","difficulty: 1<br />reaction time: 15.7 sec","difficulty: 1<br />reaction time: 4.9 sec","difficulty: 1<br />reaction time: 6.6 sec","difficulty: 1<br />reaction time: 7.5 sec","difficulty: 1<br />reaction time: 7.4 sec","difficulty: 1<br />reaction time: 6.3 sec","difficulty: 1<br />reaction time: 12.6 sec","difficulty: 1<br />reaction time: 4.6 sec","difficulty: 1<br />reaction time: 8.4 sec"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(51,160,44,1)","opacity":0.80000000000000004,"size":11.338582677165356,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(51,160,44,1)"}},"hoveron":"points","name":"1","legendgroup":"1","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":45.887920298879209,"r":8.6342880863428846,"b":44.034869240348712,"l":50.942299709423011},"paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":17.268576172685769},"title":{"text":"<b> User 51's performance on the addition game <\/b>","font":{"color":"rgba(0,0,0,1)","family":"","size":21.253632212536321},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-1.4000000000000004,51.399999999999999],"tickmode":"array","ticktext":["0","10","20","30","40","50"],"tickvals":[0,10,20,30,40,50],"categoryorder":"array","categoryarray":["0","10","20","30","40","50"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":4.3171440431714423,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":13.814860938148612},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0,"zeroline":false,"anchor":"y","title":{"text":"Play count","font":{"color":"rgba(0,0,0,1)","family":"","size":17.268576172685769}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-18.829432744301698,-15.323522549070299],"tickmode":"array","ticktext":["-18","-17","-16"],"tickvals":[-18,-17,-16],"categoryorder":"array","categoryarray":["-18","-17","-16"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":4.3171440431714423,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":13.814860938148612},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0,"zeroline":false,"anchor":"x","title":{"text":"User domain rating","font":{"color":"rgba(0,0,0,1)","family":"","size":17.268576172685769}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","layer":"below","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":13.814860938148612},"title":{"text":"Correct answered?","font":{"color":"rgba(0,0,0,1)","family":"","size":17.268576172685769}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"153a95f0e6494":{"x":{},"y":{},"colour":{},"text":{},"shape":{},"type":"scatter"}},"cur_data":"153a95f0e6494","visdat":{"153a95f0e6494":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-f2c9787860917f6e2f75" style="width:100%;height:650px;"></div>
+<script type="application/json" data-for="htmlwidget-f2c9787860917f6e2f75">{"x":{"data":[{"x":[2,3,18,22,43,48,49],"y":[-18.315071154213999,-18.670073189972999,-16.917351953171,-16.380577352206998,-15.592047957145001,-15.58895875736,-15.702058039498],"text":["difficulty: 0<br />reaction time: 20 sec","difficulty: 0<br />reaction time: 20 sec","difficulty: 0<br />reaction time: 3.4 sec","difficulty: 0<br />reaction time: 20 sec","difficulty: 1<br />reaction time: 18 sec","difficulty: 1<br />reaction time: 9.3 sec","difficulty: 1<br />reaction time: 20 sec"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(227,26,28,1)","opacity":0.80000000000000004,"size":11.338582677165356,"symbol":"x-thin-open","line":{"width":1.8897637795275593,"color":"rgba(227,26,28,1)"}},"hoveron":"points","name":"0","legendgroup":"0","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[1,4,5,6,7,8,9,10,11,12,13,14,15,16,17,19,20,21,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,44,45,46,47],"y":[-17.948639233961998,-18.559054946823,-18.464184938422999,-18.265302396334999,-18.096800093725999,-17.994079989593001,-17.745999001413001,-17.676730352614001,-17.516958416935999,-17.176522339121998,-17.136001714070002,-16.882611904436999,-16.525294306604,-16.412925921121001,-16.481309861473001,-16.704364836536001,-16.497914587979,-16.281204532284999,-16.348316655784998,-16.332709290779999,-16.256901797926002,-16.200810702988001,-16.155040037500001,-16.041655952342001,-15.97205091058,-15.900200066290999,-15.925170928552999,-15.911896792591,-15.854829271581,-15.764683847420001,-15.789734051331999,-15.746770664585,-15.683858985172,-15.684589055543,-15.633373845125,-15.567337465419,-15.540372931070999,-15.489950453009,-15.512859712807,-15.575322460689,-15.522923246701,-15.482882103399],"text":["difficulty: 0<br />reaction time: 13.6 sec","difficulty: 0<br />reaction time: 5.3 sec","difficulty: 0<br />reaction time: 6.3 sec","difficulty: 0<br />reaction time: 3 sec","difficulty: 0<br />reaction time: 3.3 sec","difficulty: 0<br />reaction time: 3.4 sec","difficulty: 0<br />reaction time: 3.8 sec","difficulty: 0<br />reaction time: 5.3 sec","difficulty: 0<br />reaction time: 6 sec","difficulty: 0<br />reaction time: 4.5 sec","difficulty: 0<br />reaction time: 3.9 sec","difficulty: 0<br />reaction time: 5.2 sec","difficulty: 0<br />reaction time: 3.7 sec","difficulty: 0<br />reaction time: 5.9 sec","difficulty: 0<br />reaction time: 8.2 sec","difficulty: 0<br />reaction time: 4 sec","difficulty: 0<br />reaction time: 4.8 sec","difficulty: 0<br />reaction time: 4.7 sec","difficulty: 0<br />reaction time: 6.4 sec","difficulty: 0<br />reaction time: 4.4 sec","difficulty: 0<br />reaction time: 3.4 sec","difficulty: 0<br />reaction time: 5.2 sec","difficulty: 0<br />reaction time: 3.4 sec","difficulty: 0<br />reaction time: 4.2 sec","difficulty: 0<br />reaction time: 4.7 sec","difficulty: 0<br />reaction time: 8.1 sec","difficulty: 0<br />reaction time: 11.6 sec","difficulty: 0<br />reaction time: 6.9 sec","difficulty: 1<br />reaction time: 8 sec","difficulty: 1<br />reaction time: 6.9 sec","difficulty: 1<br />reaction time: 14.5 sec","difficulty: 1<br />reaction time: 5.5 sec","difficulty: 1<br />reaction time: 4.6 sec","difficulty: 1<br />reaction time: 15.7 sec","difficulty: 1<br />reaction time: 4.9 sec","difficulty: 1<br />reaction time: 6.6 sec","difficulty: 1<br />reaction time: 7.5 sec","difficulty: 1<br />reaction time: 7.4 sec","difficulty: 1<br />reaction time: 6.3 sec","difficulty: 1<br />reaction time: 12.6 sec","difficulty: 1<br />reaction time: 4.6 sec","difficulty: 1<br />reaction time: 8.4 sec"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(51,160,44,1)","opacity":0.80000000000000004,"size":11.338582677165356,"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(51,160,44,1)"}},"hoveron":"points","name":"1","legendgroup":"1","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":45.887920298879209,"r":8.6342880863428846,"b":44.034869240348712,"l":50.942299709423011},"paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":17.268576172685769},"title":{"text":"<b> User 51's performance on the addition game <\/b>","font":{"color":"rgba(0,0,0,1)","family":"","size":21.253632212536321},"x":0,"xref":"paper"},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-1.4000000000000004,51.399999999999999],"tickmode":"array","ticktext":["0","10","20","30","40","50"],"tickvals":[0,10,20,30,40,50],"categoryorder":"array","categoryarray":["0","10","20","30","40","50"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":4.3171440431714423,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":13.814860938148612},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0,"zeroline":false,"anchor":"y","title":{"text":"Play count","font":{"color":"rgba(0,0,0,1)","family":"","size":17.268576172685769}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-18.829432744301698,-15.323522549070299],"tickmode":"array","ticktext":["-18","-17","-16"],"tickvals":[-18,-17,-16],"categoryorder":"array","categoryarray":["-18","-17","-16"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":4.3171440431714423,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":13.814860938148612},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0,"zeroline":false,"anchor":"x","title":{"text":"User domain rating","font":{"color":"rgba(0,0,0,1)","family":"","size":17.268576172685769}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","layer":"below","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":13.814860938148612},"title":{"text":"Correct answered?","font":{"color":"rgba(0,0,0,1)","family":"","size":17.268576172685769}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"15c95490495c3":{"x":{},"y":{},"colour":{},"text":{},"shape":{},"type":"scatter"}},"cur_data":"15c95490495c3","visdat":{"15c95490495c3":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Note: Once you use <code>tooltip = "text"</code>, Plotly only displays the contents specified in the text aesthetic – so be sure to include everything you want to see in the tooltip.</p>
 <p>And that’s it! You have now converted the static plot into an interactive plotly object.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>oefenwebDatabase<span class="sc">::</span><span class="fu">close_connections</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>oefenwebDatabase<span class="sc">::</span><span class="fu">close_connections</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
 [1] TRUE</code></pre>
