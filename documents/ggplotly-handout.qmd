@@ -7,8 +7,7 @@ This handout provides an example of creating an interactive visualization with `
 
 ```{r setup, message=FALSE, warning=FALSE}
 # Set up environment
-# set eval = TRUE when running on server
-knitr::opts_chunk$set(eval = FALSE, echo = TRUE, message = FALSE, warning = FALSE)
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 rm(list = ls())
 ```
 
