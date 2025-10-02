@@ -26,6 +26,8 @@ website:
             text: "Working on the server"
           - href: documents/git-workflow.qmd
             text: "Working with Git"
+          - href: documents/plotly_2025.html
+            text: "ggplotly"
           - href: https://socviz.co/
             text: "Data Visualization: A Practical Introduction (Healy)"
           - href: https://r4ds.hadley.nz/data-visualize.html

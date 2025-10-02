@@ -76,8 +76,6 @@ In this module, you will learn a wide set of data visualisation tools for both s
 
 [Browse the GitHub repository](https://github.com/ann1ejohansson/data-visualization-2025){target="_blank"}
 
-[ggpltly](documents/plotly_2025.html){target="_blank"}
-
 ## 📝 Assignments
 
 [Assignment 1](assignments/assignment-1.html){target="_blank"}
