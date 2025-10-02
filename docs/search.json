@@ -235,7 +235,7 @@
     "href": "slides/slides.html#git-conflicts",
     "title": "Data Visualization",
     "section": "Git conflicts",
-    "text": "Git conflicts\n\n&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD\nSome content\n=======\nSome conflicted content\n&gt;&gt;&gt;&gt;&gt;&gt;&gt; new_branch\n\n\nHappens when two people change the same file, and then try to push to GitHub.\nIdentify the content that you want to keep and delete the rest\nDelete the &lt;&lt;&lt;&lt;&lt;&lt;&lt;, =======, and &gt;&gt;&gt;&gt;&gt;&gt;&gt; lines\nSave the file, add, commit, and push again\nNeed to resolve via command line?\nAvoid by always starting you work session with a git pull (and make sure you don’t have uncommitted changes)\nAlso communicate who is working on what"
+    "text": "Git conflicts\n\n\nHappens when two people change the same file, and then try to push to GitHub.\nIdentify the content that you want to keep and delete the rest\nDelete the &lt;&lt;&lt;&lt;&lt;&lt;&lt;, =======, and &gt;&gt;&gt;&gt;&gt;&gt;&gt; lines\nSave the file, add, commit, and push again\nNeed to resolve via command line?\nAvoid by always starting you work session with a git pull (and make sure you don’t have uncommitted changes)\nAlso communicate who is working on what"
   },
   {
     "objectID": "assignments/assignment-1.html",
@@ -329,6 +329,7 @@
     "text": "🔗 Quick links\nLecture Slides\nBrowse the GitHub repository"
   },
   {
+
     "objectID": "index.html#assignments",
     "href": "index.html#assignments",
     "title": "BDS Toolbox: Data Visualization",
