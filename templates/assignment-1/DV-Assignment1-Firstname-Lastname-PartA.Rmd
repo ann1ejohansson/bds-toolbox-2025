@@ -17,7 +17,7 @@ Some tips if you encounter knitting issues:
 **If you make more than one visualization per part, please indicate clearly which visualization we should look at when grading**. 
 
 ## Setup environment
-```{r setup environment, include = TRUE, eval=FALSE}
+```{r setup environment, include = TRUE}
 knitr::opts_chunk$set(echo = TRUE) # set default echo = TRUE for all code blocks
 rm(list = ls()) # Remove any existing objects in memory
 ```
@@ -25,7 +25,7 @@ rm(list = ls()) # Remove any existing objects in memory
 ## A. Replicate this plot
 
 ### Libraries and database connection
-```{r requirements, eval = FALSE}
+```{r requirements}
 # Install Packages
 # Find everything that the user currently has installed
 all_installed_packages <- installed.packages()[, "Package"]
