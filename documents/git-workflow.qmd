@@ -54,6 +54,17 @@ If you look in your `Files` pane, you will see that the folder was selected, whi
 
 If you look in your `Environment` pane, you can now see an extra tab called `Git`. You have now successfully cloned your repository and let Git track your changes!
 
+### Step 3: Configure Git (only the first time)
+
+Git needs to know who you are, so it can keep track of who made which changes. You only have to do this once. Go to the `Terminal` tab in RStudio and type the following commands (replace `<your-name>` and `<your-email>` with your actual name and email address that you use for GitHub):
+
+```bash
+git config --global user.email "<your-email>"
+git config --global user.name "<your-name>"
+```
+
+Enter each command separately. The lines should be entered exactly like this, including the quotation marks, and you should see no output after entering the commands. 
+
 ## Now you can work in your project
 
 Open this project whenever you are working on the group assignments. You do this by either by clicking on the `Project: <your-repo-name>` button in the top right corner, or by double-clicking the `.Rproj` file in your project directory.
