@@ -65,7 +65,7 @@ lint(rstudioapi::getSourceEditorContext()$path)
 
 ## Working with the Oefenweb Server
 
-Before starting the assignment, please look at the handout on [How to connect to the Oefenweb Server](working-on-the-server.qmd). This will help you to get started with retrieving data from the server. It also contains a useful tutorial on how to use SQL to retrieve data. Go through this code and make sure you understand it, as you will need it for this assignment.
+Before starting the assignment, please look at the handout on [How to connect to the Oefenweb Server](../documents/working-on-the-server.qmd). This will help you to get started with retrieving data from the server. It also contains a useful tutorial on how to use SQL to retrieve data. Go through this code and make sure you understand it, as you will need it for this assignment.
 
 ## Part 1: Oefenweb Data & Basic ggplot (Individual)
 
@@ -346,7 +346,7 @@ In class 1 you indicated your preference for a research question for the final p
 
 ### B. Connect to Git and load data
 
-For this project, you will collaborate using Git. Connect your server environment to GitHub and clone your assigned GitHub repository into your online RStudio account by following these instructions: [Connecting RStudio Server to GitHub](https://ann1ejohansson.github.io/data-visualization-2025/documents/git-workflow.html). If this is done correctly, the resulting repository should have the following folder structure:
+For this project, you will collaborate using Git. Connect your server environment to GitHub and clone your assigned GitHub repository into your online RStudio account by following these instructions: [Connecting RStudio Server to GitHub](../documents/git-workflow.qmd). If this is done correctly, the resulting repository should have the following folder structure:
 
 ```         
 your-project-name/
