@@ -1032,6 +1032,47 @@ the fundamentals of good data visualization</strong></p>
 </section>
 <section id="tips-from-assignment-1" class="slide level2">
 <h2>Tips from Assignment 1</h2>
+<ul>
+<li>Use coherent color palettes (more on that today!)</li>
+<li>Use informative titles (for example state your conclusion in the title / subtitle). Make it bold and clearly readable.<br>
+</li>
+<li>What is the added value of a boxplot or violin plot?<br>
+</li>
+<li>Think about sample size within your groupings and how to communicate its effect.<br>
+</li>
+<li>Go from exploratory to <strong>explanatory!</strong><br>
+</li>
+<li>The audience should be able to infer the main conclusion without reading the description.</li>
+</ul>
+<div class="footer">
+<p>The flaw of boxplots: read about it <a href="https://www.r-bloggers.com/2024/06/why-you-shouldnt-use-boxplots/">here</a> and <a href="https://nightingaledvs.com/ive-stopped-using-box-plots-should-you/">here</a>.</p>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><a href="images/explore-explain-01.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-30"><img data-src="images/explore-explain-01.gif" data-fig-height="200"></a></p>
+</div><div class="column" style="width:50%;">
+<p><a href="images/explore-explain-02.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-31"><img data-src="images/explore-explain-02.gif" data-fig-height="300"></a></p>
+</div></div>
+</section>
+<section id="patchwork" class="slide level2 smaller scrollable">
+<h2><a href="https://r-graph-gallery.com/package/patchwork.html"><code>patchwork</code></a></h2>
+<ul>
+<li>Add a general title with <code>plot_annotation(title = "...")</code></li>
+<li>Add a general subtitle with <code>plot_annotation(subtitle = "...")</code></li>
+<li>Change the formatting with <code>plot_annotation(theme = theme(plot.title = element_text(...)))</code></li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><a href="slides_files/figure-revealjs/patchwork-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-32"><img data-src="slides_files/figure-revealjs/patchwork-1.png" width="960"></a></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 <section id="one-dataset-many-visualizations" class="slide level2">
 <h2>One dataset, many visualizations</h2>
@@ -1054,23 +1095,23 @@ the fundamentals of good data visualization</strong></p>
 <span id="cb3-12"><a></a>  <span class="fu">opt_stylize</span>(<span class="at">style =</span> <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div id="aotaxhtadp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#aotaxhtadp table {
+<div id="yinvusftho" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#yinvusftho table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#aotaxhtadp thead, #aotaxhtadp tbody, #aotaxhtadp tfoot, #aotaxhtadp tr, #aotaxhtadp td, #aotaxhtadp th {
+#yinvusftho thead, #yinvusftho tbody, #yinvusftho tfoot, #yinvusftho tr, #yinvusftho td, #yinvusftho th {
   border-style: none;
 }
 
-#aotaxhtadp p {
+#yinvusftho p {
   margin: 0;
   padding: 0;
 }
 
-#aotaxhtadp .gt_table {
+#yinvusftho .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1096,12 +1137,12 @@ the fundamentals of good data visualization</strong></p>
   border-left-color: #D3D3D3;
 }
 
-#aotaxhtadp .gt_caption {
+#yinvusftho .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#aotaxhtadp .gt_title {
+#yinvusftho .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1113,7 +1154,7 @@ the fundamentals of good data visualization</strong></p>
   border-bottom-width: 0;
 }
 
-#aotaxhtadp .gt_subtitle {
+#yinvusftho .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1125,7 +1166,7 @@ the fundamentals of good data visualization</strong></p>
   border-top-width: 0;
 }
 
-#aotaxhtadp .gt_heading {
+#yinvusftho .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1137,13 +1178,13 @@ the fundamentals of good data visualization</strong></p>
   border-right-color: #D3D3D3;
 }
 
-#aotaxhtadp .gt_bottom_border {
+#yinvusftho .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #5F5F5F;
 }
 
-#aotaxhtadp .gt_col_headings {
+#yinvusftho .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #5F5F5F;
@@ -1158,7 +1199,7 @@ the fundamentals of good data visualization</strong></p>
   border-right-color: #D3D3D3;
 }
 
-#aotaxhtadp .gt_col_heading {
+#yinvusftho .gt_col_heading {
   color: #FFFFFF;
   background-color: #0076BA;
   font-size: 100%;
@@ -1178,7 +1219,7 @@ the fundamentals of good data visualization</strong></p>
   overflow-x: hidden;
 }
 
-#aotaxhtadp .gt_column_spanner_outer {
+#yinvusftho .gt_column_spanner_outer {
   color: #FFFFFF;
   background-color: #0076BA;
   font-size: 100%;
@@ -1190,15 +1231,15 @@ the fundamentals of good data visualization</strong></p>
   padding-right: 4px;
 }
 
-#aotaxhtadp .gt_column_spanner_outer:first-child {
+#yinvusftho .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#aotaxhtadp .gt_column_spanner_outer:last-child {
+#yinvusftho .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#aotaxhtadp .gt_column_spanner {
+#yinvusftho .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #5F5F5F;
@@ -1210,11 +1251,11 @@ the fundamentals of good data visualization</strong></p>
   width: 100%;
 }
 
-#aotaxhtadp .gt_spanner_row {
+#yinvusftho .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#aotaxhtadp .gt_group_heading {
+#yinvusftho .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1240,7 +1281,7 @@ the fundamentals of good data visualization</strong></p>
   text-align: left;
 }
 
-#aotaxhtadp .gt_empty_group_heading {
+#yinvusftho .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1255,15 +1296,15 @@ the fundamentals of good data visualization</strong></p>
   vertical-align: middle;
 }
 
-#aotaxhtadp .gt_from_md > :first-child {
+#yinvusftho .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#aotaxhtadp .gt_from_md > :last-child {
+#yinvusftho .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#aotaxhtadp .gt_row {
+#yinvusftho .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1282,7 +1323,7 @@ the fundamentals of good data visualization</strong></p>
   overflow-x: hidden;
 }
 
-#aotaxhtadp .gt_stub {
+#yinvusftho .gt_stub {
   color: #333333;
   background-color: #89D3FE;
   font-size: 100%;
@@ -1295,7 +1336,7 @@ the fundamentals of good data visualization</strong></p>
   padding-right: 5px;
 }
 
-#aotaxhtadp .gt_stub_row_group {
+#yinvusftho .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1309,15 +1350,15 @@ the fundamentals of good data visualization</strong></p>
   vertical-align: top;
 }
 
-#aotaxhtadp .gt_row_group_first td {
+#yinvusftho .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#aotaxhtadp .gt_row_group_first th {
+#yinvusftho .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#aotaxhtadp .gt_summary_row {
+#yinvusftho .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1327,16 +1368,16 @@ the fundamentals of good data visualization</strong></p>
   padding-right: 5px;
 }
 
-#aotaxhtadp .gt_first_summary_row {
+#yinvusftho .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #5F5F5F;
 }
 
-#aotaxhtadp .gt_first_summary_row.thick {
+#yinvusftho .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#aotaxhtadp .gt_last_summary_row {
+#yinvusftho .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1346,7 +1387,7 @@ the fundamentals of good data visualization</strong></p>
   border-bottom-color: #5F5F5F;
 }
 
-#aotaxhtadp .gt_grand_summary_row {
+#yinvusftho .gt_grand_summary_row {
   color: #333333;
   background-color: #D5D5D5;
   text-transform: inherit;
@@ -1356,7 +1397,7 @@ the fundamentals of good data visualization</strong></p>
   padding-right: 5px;
 }
 
-#aotaxhtadp .gt_first_grand_summary_row {
+#yinvusftho .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1366,7 +1407,7 @@ the fundamentals of good data visualization</strong></p>
   border-top-color: #5F5F5F;
 }
 
-#aotaxhtadp .gt_last_grand_summary_row_top {
+#yinvusftho .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1376,11 +1417,11 @@ the fundamentals of good data visualization</strong></p>
   border-bottom-color: #5F5F5F;
 }
 
-#aotaxhtadp .gt_striped {
+#yinvusftho .gt_striped {
   background-color: #EDF7FC;
 }
 
-#aotaxhtadp .gt_table_body {
+#yinvusftho .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #5F5F5F;
@@ -1389,7 +1430,7 @@ the fundamentals of good data visualization</strong></p>
   border-bottom-color: #5F5F5F;
 }
 
-#aotaxhtadp .gt_footnotes {
+#yinvusftho .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1403,7 +1444,7 @@ the fundamentals of good data visualization</strong></p>
   border-right-color: #D3D3D3;
 }
 
-#aotaxhtadp .gt_footnote {
+#yinvusftho .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1412,7 +1453,7 @@ the fundamentals of good data visualization</strong></p>
   padding-right: 5px;
 }
 
-#aotaxhtadp .gt_sourcenotes {
+#yinvusftho .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1426,7 +1467,7 @@ the fundamentals of good data visualization</strong></p>
   border-right-color: #D3D3D3;
 }
 
-#aotaxhtadp .gt_sourcenote {
+#yinvusftho .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1434,72 +1475,72 @@ the fundamentals of good data visualization</strong></p>
   padding-right: 5px;
 }
 
-#aotaxhtadp .gt_left {
+#yinvusftho .gt_left {
   text-align: left;
 }
 
-#aotaxhtadp .gt_center {
+#yinvusftho .gt_center {
   text-align: center;
 }
 
-#aotaxhtadp .gt_right {
+#yinvusftho .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#aotaxhtadp .gt_font_normal {
+#yinvusftho .gt_font_normal {
   font-weight: normal;
 }
 
-#aotaxhtadp .gt_font_bold {
+#yinvusftho .gt_font_bold {
   font-weight: bold;
 }
 
-#aotaxhtadp .gt_font_italic {
+#yinvusftho .gt_font_italic {
   font-style: italic;
 }
 
-#aotaxhtadp .gt_super {
+#yinvusftho .gt_super {
   font-size: 65%;
 }
 
-#aotaxhtadp .gt_footnote_marks {
+#yinvusftho .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#aotaxhtadp .gt_asterisk {
+#yinvusftho .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#aotaxhtadp .gt_indent_1 {
+#yinvusftho .gt_indent_1 {
   text-indent: 5px;
 }
 
-#aotaxhtadp .gt_indent_2 {
+#yinvusftho .gt_indent_2 {
   text-indent: 10px;
 }
 
-#aotaxhtadp .gt_indent_3 {
+#yinvusftho .gt_indent_3 {
   text-indent: 15px;
 }
 
-#aotaxhtadp .gt_indent_4 {
+#yinvusftho .gt_indent_4 {
   text-indent: 20px;
 }
 
-#aotaxhtadp .gt_indent_5 {
+#yinvusftho .gt_indent_5 {
   text-indent: 25px;
 }
 
-#aotaxhtadp .katex-display {
+#yinvusftho .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#aotaxhtadp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#yinvusftho div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1588,7 +1629,7 @@ the fundamentals of good data visualization</strong></p>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/pizza-scatter-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-30"><img data-src="slides_files/figure-revealjs/pizza-scatter-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/pizza-scatter-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-33"><img data-src="slides_files/figure-revealjs/pizza-scatter-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -1615,23 +1656,23 @@ the fundamentals of good data visualization</strong></p>
 <span id="cb5-11"><a></a>  <span class="fu">opt_stylize</span>(<span class="at">style =</span> <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div id="lmpykavdzh" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#lmpykavdzh table {
+<div id="jgsadxomzp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#jgsadxomzp table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#lmpykavdzh thead, #lmpykavdzh tbody, #lmpykavdzh tfoot, #lmpykavdzh tr, #lmpykavdzh td, #lmpykavdzh th {
+#jgsadxomzp thead, #jgsadxomzp tbody, #jgsadxomzp tfoot, #jgsadxomzp tr, #jgsadxomzp td, #jgsadxomzp th {
   border-style: none;
 }
 
-#lmpykavdzh p {
+#jgsadxomzp p {
   margin: 0;
   padding: 0;
 }
 
-#lmpykavdzh .gt_table {
+#jgsadxomzp .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1657,12 +1698,12 @@ the fundamentals of good data visualization</strong></p>
   border-left-color: #D3D3D3;
 }
 
-#lmpykavdzh .gt_caption {
+#jgsadxomzp .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#lmpykavdzh .gt_title {
+#jgsadxomzp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1674,7 +1715,7 @@ the fundamentals of good data visualization</strong></p>
   border-bottom-width: 0;
 }
 
-#lmpykavdzh .gt_subtitle {
+#jgsadxomzp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1686,7 +1727,7 @@ the fundamentals of good data visualization</strong></p>
   border-top-width: 0;
 }
 
-#lmpykavdzh .gt_heading {
+#jgsadxomzp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1698,13 +1739,13 @@ the fundamentals of good data visualization</strong></p>
   border-right-color: #D3D3D3;
 }
 
-#lmpykavdzh .gt_bottom_border {
+#jgsadxomzp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #5F5F5F;
 }
 
-#lmpykavdzh .gt_col_headings {
+#jgsadxomzp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #5F5F5F;
@@ -1719,7 +1760,7 @@ the fundamentals of good data visualization</strong></p>
   border-right-color: #D3D3D3;
 }
 
-#lmpykavdzh .gt_col_heading {
+#jgsadxomzp .gt_col_heading {
   color: #FFFFFF;
   background-color: #0076BA;
   font-size: 100%;
@@ -1739,7 +1780,7 @@ the fundamentals of good data visualization</strong></p>
   overflow-x: hidden;
 }
 
-#lmpykavdzh .gt_column_spanner_outer {
+#jgsadxomzp .gt_column_spanner_outer {
   color: #FFFFFF;
   background-color: #0076BA;
   font-size: 100%;
@@ -1751,15 +1792,15 @@ the fundamentals of good data visualization</strong></p>
   padding-right: 4px;
 }
 
-#lmpykavdzh .gt_column_spanner_outer:first-child {
+#jgsadxomzp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#lmpykavdzh .gt_column_spanner_outer:last-child {
+#jgsadxomzp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#lmpykavdzh .gt_column_spanner {
+#jgsadxomzp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #5F5F5F;
@@ -1771,11 +1812,11 @@ the fundamentals of good data visualization</strong></p>
   width: 100%;
 }
 
-#lmpykavdzh .gt_spanner_row {
+#jgsadxomzp .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#lmpykavdzh .gt_group_heading {
+#jgsadxomzp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1801,7 +1842,7 @@ the fundamentals of good data visualization</strong></p>
   text-align: left;
 }
 
-#lmpykavdzh .gt_empty_group_heading {
+#jgsadxomzp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1816,15 +1857,15 @@ the fundamentals of good data visualization</strong></p>
   vertical-align: middle;
 }
 
-#lmpykavdzh .gt_from_md > :first-child {
+#jgsadxomzp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#lmpykavdzh .gt_from_md > :last-child {
+#jgsadxomzp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#lmpykavdzh .gt_row {
+#jgsadxomzp .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1843,7 +1884,7 @@ the fundamentals of good data visualization</strong></p>
   overflow-x: hidden;
 }
 
-#lmpykavdzh .gt_stub {
+#jgsadxomzp .gt_stub {
   color: #333333;
   background-color: #89D3FE;
   font-size: 100%;
@@ -1856,7 +1897,7 @@ the fundamentals of good data visualization</strong></p>
   padding-right: 5px;
 }
 
-#lmpykavdzh .gt_stub_row_group {
+#jgsadxomzp .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1870,15 +1911,15 @@ the fundamentals of good data visualization</strong></p>
   vertical-align: top;
 }
 
-#lmpykavdzh .gt_row_group_first td {
+#jgsadxomzp .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#lmpykavdzh .gt_row_group_first th {
+#jgsadxomzp .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#lmpykavdzh .gt_summary_row {
+#jgsadxomzp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1888,16 +1929,16 @@ the fundamentals of good data visualization</strong></p>
   padding-right: 5px;
 }
 
-#lmpykavdzh .gt_first_summary_row {
+#jgsadxomzp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #5F5F5F;
 }
 
-#lmpykavdzh .gt_first_summary_row.thick {
+#jgsadxomzp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#lmpykavdzh .gt_last_summary_row {
+#jgsadxomzp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1907,7 +1948,7 @@ the fundamentals of good data visualization</strong></p>
   border-bottom-color: #5F5F5F;
 }
 
-#lmpykavdzh .gt_grand_summary_row {
+#jgsadxomzp .gt_grand_summary_row {
   color: #333333;
   background-color: #D5D5D5;
   text-transform: inherit;
@@ -1917,7 +1958,7 @@ the fundamentals of good data visualization</strong></p>
   padding-right: 5px;
 }
 
-#lmpykavdzh .gt_first_grand_summary_row {
+#jgsadxomzp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1927,7 +1968,7 @@ the fundamentals of good data visualization</strong></p>
   border-top-color: #5F5F5F;
 }
 
-#lmpykavdzh .gt_last_grand_summary_row_top {
+#jgsadxomzp .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1937,11 +1978,11 @@ the fundamentals of good data visualization</strong></p>
   border-bottom-color: #5F5F5F;
 }
 
-#lmpykavdzh .gt_striped {
+#jgsadxomzp .gt_striped {
   background-color: #EDF7FC;
 }
 
-#lmpykavdzh .gt_table_body {
+#jgsadxomzp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #5F5F5F;
@@ -1950,7 +1991,7 @@ the fundamentals of good data visualization</strong></p>
   border-bottom-color: #5F5F5F;
 }
 
-#lmpykavdzh .gt_footnotes {
+#jgsadxomzp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1964,7 +2005,7 @@ the fundamentals of good data visualization</strong></p>
   border-right-color: #D3D3D3;
 }
 
-#lmpykavdzh .gt_footnote {
+#jgsadxomzp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1973,7 +2014,7 @@ the fundamentals of good data visualization</strong></p>
   padding-right: 5px;
 }
 
-#lmpykavdzh .gt_sourcenotes {
+#jgsadxomzp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1987,7 +2028,7 @@ the fundamentals of good data visualization</strong></p>
   border-right-color: #D3D3D3;
 }
 
-#lmpykavdzh .gt_sourcenote {
+#jgsadxomzp .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1995,72 +2036,72 @@ the fundamentals of good data visualization</strong></p>
   padding-right: 5px;
 }
 
-#lmpykavdzh .gt_left {
+#jgsadxomzp .gt_left {
   text-align: left;
 }
 
-#lmpykavdzh .gt_center {
+#jgsadxomzp .gt_center {
   text-align: center;
 }
 
-#lmpykavdzh .gt_right {
+#jgsadxomzp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#lmpykavdzh .gt_font_normal {
+#jgsadxomzp .gt_font_normal {
   font-weight: normal;
 }
 
-#lmpykavdzh .gt_font_bold {
+#jgsadxomzp .gt_font_bold {
   font-weight: bold;
 }
 
-#lmpykavdzh .gt_font_italic {
+#jgsadxomzp .gt_font_italic {
   font-style: italic;
 }
 
-#lmpykavdzh .gt_super {
+#jgsadxomzp .gt_super {
   font-size: 65%;
 }
 
-#lmpykavdzh .gt_footnote_marks {
+#jgsadxomzp .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#lmpykavdzh .gt_asterisk {
+#jgsadxomzp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#lmpykavdzh .gt_indent_1 {
+#jgsadxomzp .gt_indent_1 {
   text-indent: 5px;
 }
 
-#lmpykavdzh .gt_indent_2 {
+#jgsadxomzp .gt_indent_2 {
   text-indent: 10px;
 }
 
-#lmpykavdzh .gt_indent_3 {
+#jgsadxomzp .gt_indent_3 {
   text-indent: 15px;
 }
 
-#lmpykavdzh .gt_indent_4 {
+#jgsadxomzp .gt_indent_4 {
   text-indent: 20px;
 }
 
-#lmpykavdzh .gt_indent_5 {
+#jgsadxomzp .gt_indent_5 {
   text-indent: 25px;
 }
 
-#lmpykavdzh .katex-display {
+#jgsadxomzp .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#lmpykavdzh div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#jgsadxomzp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2192,7 +2233,7 @@ the fundamentals of good data visualization</strong></p>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/pizza-timeseries-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-31"><img data-src="slides_files/figure-revealjs/pizza-timeseries-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/pizza-timeseries-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-34"><img data-src="slides_files/figure-revealjs/pizza-timeseries-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -2211,7 +2252,7 @@ the fundamentals of good data visualization</strong></p>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/pizza-timeseries-2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-32"><img data-src="slides_files/figure-revealjs/pizza-timeseries-2-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/pizza-timeseries-2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-35"><img data-src="slides_files/figure-revealjs/pizza-timeseries-2-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -2221,11 +2262,11 @@ the fundamentals of good data visualization</strong></p>
 </section>
 <section id="from-data-to-viz" class="slide level2">
 <h2><a href="https://www.data-to-viz.com/">from data to viz</a></h2>
-<p><a href="images/data-to-viz.png" class="lightbox" data-gallery="quarto-lightbox-gallery-33"><img data-src="images/data-to-viz.png" data-fig.height="600"></a></p>
+<p><a href="images/data-to-viz.png" class="lightbox" data-gallery="quarto-lightbox-gallery-36"><img data-src="images/data-to-viz.png" data-fig.height="600"></a></p>
 </section>
 <section id="from-data-to-viz-1" class="slide level2">
 <h2><a href="https://www.data-to-viz.com/">from data to viz</a></h2>
-<p><a href="images/data-to-viz-caveats.png" class="lightbox" data-gallery="quarto-lightbox-gallery-34"><img data-src="images/data-to-viz-caveats.png" data-fig.height="600"></a></p>
+<p><a href="images/data-to-viz-caveats.png" class="lightbox" data-gallery="quarto-lightbox-gallery-37"><img data-src="images/data-to-viz-caveats.png" data-fig.height="600"></a></p>
 </section>
 <section id="recap" class="slide level2">
 <h2>Recap</h2>
@@ -2238,7 +2279,7 @@ the fundamentals of good data visualization</strong></p>
 </div><div class="column" style="width:60%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><a href="images/misleading.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-35"><img data-src="images/misleading.jpeg" class="quarto-figure quarto-figure-center"></a></p>
+<p><a href="images/misleading.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-38"><img data-src="images/misleading.jpeg" class="quarto-figure quarto-figure-center"></a></p>
 </figure>
 </div>
 </div></div>
@@ -2340,7 +2381,7 @@ the fundamentals of good data visualization</strong></p>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/chart-junk-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-39"><img data-src="slides_files/figure-revealjs/chart-junk-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/chart-junk-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-42"><img data-src="slides_files/figure-revealjs/chart-junk-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -2361,7 +2402,7 @@ the fundamentals of good data visualization</strong></p>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/themes-cowplot-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-40"><img data-src="slides_files/figure-revealjs/themes-cowplot-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/themes-cowplot-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-43"><img data-src="slides_files/figure-revealjs/themes-cowplot-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -2387,7 +2428,7 @@ the fundamentals of good data visualization</strong></p>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/themes-custom-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-41"><img data-src="slides_files/figure-revealjs/themes-custom-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/themes-custom-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-44"><img data-src="slides_files/figure-revealjs/themes-custom-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -2413,7 +2454,7 @@ the fundamentals of good data visualization</strong></p>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/facets-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-42"><img data-src="slides_files/figure-revealjs/facets-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/facets-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-45"><img data-src="slides_files/figure-revealjs/facets-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -2434,7 +2475,7 @@ the fundamentals of good data visualization</strong></p>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/facets-2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-43"><img data-src="slides_files/figure-revealjs/facets-2-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/facets-2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-46"><img data-src="slides_files/figure-revealjs/facets-2-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -2464,7 +2505,7 @@ the fundamentals of good data visualization</strong></p>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/colors-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-44"><img data-src="slides_files/figure-revealjs/colors-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/colors-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-47"><img data-src="slides_files/figure-revealjs/colors-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -2484,7 +2525,7 @@ the fundamentals of good data visualization</strong></p>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/colors-scales-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-45"><img data-src="slides_files/figure-revealjs/colors-scales-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/colors-scales-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-48"><img data-src="slides_files/figure-revealjs/colors-scales-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -2502,7 +2543,7 @@ the fundamentals of good data visualization</strong></p>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/colors-scales-2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-46"><img data-src="slides_files/figure-revealjs/colors-scales-2-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/colors-scales-2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-49"><img data-src="slides_files/figure-revealjs/colors-scales-2-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -2520,7 +2561,7 @@ the fundamentals of good data visualization</strong></p>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/colors-scales-3-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-47"><img data-src="slides_files/figure-revealjs/colors-scales-3-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/colors-scales-3-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-50"><img data-src="slides_files/figure-revealjs/colors-scales-3-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -2541,7 +2582,7 @@ the fundamentals of good data visualization</strong></p>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/colors-colorblindness-2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-48"><img data-src="slides_files/figure-revealjs/colors-colorblindness-2-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/colors-colorblindness-2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-51"><img data-src="slides_files/figure-revealjs/colors-colorblindness-2-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -2572,7 +2613,7 @@ the fundamentals of good data visualization</strong></p>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/colors-colorblindness-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-49"><img data-src="slides_files/figure-revealjs/colors-colorblindness-4-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/colors-colorblindness-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-52"><img data-src="slides_files/figure-revealjs/colors-colorblindness-4-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -2597,7 +2638,7 @@ the fundamentals of good data visualization</strong></p>
 <figure>
 <div class="quarto-figure quarto-figure-left">
 <figure>
-<p><a href="images/coloraccuracy1.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-50" title="Source: benq.com"><img data-src="images/coloraccuracy1.jpeg" class="quarto-figure quarto-figure-left" alt="Source: benq.com"></a></p>
+<p><a href="images/coloraccuracy1.jpeg" class="lightbox" data-gallery="quarto-lightbox-gallery-53" title="Source: benq.com"><img data-src="images/coloraccuracy1.jpeg" class="quarto-figure quarto-figure-left" alt="Source: benq.com"></a></p>
 </figure>
 </div>
 <figcaption>Source: <a href="https://www.benq.com/en-us/knowledge-center/knowledge/how-to-maintain-color-consistency-on-different-monitors.html">benq.com</a></figcaption>
@@ -2608,7 +2649,7 @@ the fundamentals of good data visualization</strong></p>
 <figure>
 <div class="quarto-figure quarto-figure-left">
 <figure>
-<p><a href="images/coloraccuracy2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-51" title="Source: Savi et al.&nbsp;(2018)"><img data-src="images/coloraccuracy2.png" class="quarto-figure quarto-figure-left" alt="Source: Savi et al.&nbsp;(2018)"></a></p>
+<p><a href="images/coloraccuracy2.png" class="lightbox" data-gallery="quarto-lightbox-gallery-54" title="Source: Savi et al.&nbsp;(2018)"><img data-src="images/coloraccuracy2.png" class="quarto-figure quarto-figure-left" alt="Source: Savi et al.&nbsp;(2018)"></a></p>
 </figure>
 </div>
 <figcaption>Source: <a href="https://doi.org/10.1016/j.compedu.2017.12.008">Savi et al.&nbsp;(2018)</a></figcaption>
@@ -2627,7 +2668,7 @@ the fundamentals of good data visualization</strong></p>
 <figure>
 <div class="quarto-figure quarto-figure-left">
 <figure>
-<p><a href="images/captions.png" class="lightbox" data-gallery="quarto-lightbox-gallery-52" title="Source: sketch.es"><img data-src="images/captions.png" class="quarto-figure quarto-figure-left" alt="Source: sketch.es"></a></p>
+<p><a href="images/captions.png" class="lightbox" data-gallery="quarto-lightbox-gallery-55" title="Source: sketch.es"><img data-src="images/captions.png" class="quarto-figure quarto-figure-left" alt="Source: sketch.es"></a></p>
 </figure>
 </div>
 <figcaption>Source: <a href="https://www.datasketch.es/project/655-frustrations-doing-data-visualization">sketch.es</a></figcaption>
@@ -2665,7 +2706,7 @@ the fundamentals of good data visualization</strong></p>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/typography-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-53"><img data-src="slides_files/figure-revealjs/typography-1.png" width="768"></a></p>
+<p><a href="slides_files/figure-revealjs/typography-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-56"><img data-src="slides_files/figure-revealjs/typography-1.png" width="768"></a></p>
 </figure>
 </div>
 </div>
@@ -2683,7 +2724,7 @@ the fundamentals of good data visualization</strong></p>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/pizza-plot-1-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-54"><img data-src="slides_files/figure-revealjs/pizza-plot-1-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/pizza-plot-1-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-57"><img data-src="slides_files/figure-revealjs/pizza-plot-1-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -2725,7 +2766,7 @@ the fundamentals of good data visualization</strong></p>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/pizza-plot-2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-55"><img data-src="slides_files/figure-revealjs/pizza-plot-2-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/pizza-plot-2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-58"><img data-src="slides_files/figure-revealjs/pizza-plot-2-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -2808,7 +2849,7 @@ the fundamentals of good data visualization</strong></p>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><a href="slides_files/figure-revealjs/pizza-plot-3-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-56"><img data-src="slides_files/figure-revealjs/pizza-plot-3-1.png" width="960"></a></p>
+<p><a href="slides_files/figure-revealjs/pizza-plot-3-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-59"><img data-src="slides_files/figure-revealjs/pizza-plot-3-1.png" width="960"></a></p>
 </figure>
 </div>
 </div>
@@ -2834,7 +2875,7 @@ the fundamentals of good data visualization</strong></p>
 <figure>
 <div class="quarto-figure quarto-figure-left">
 <figure>
-<p><a href="images/file_formats.png" class="lightbox" data-gallery="quarto-lightbox-gallery-57" title="Source: clauswilke.com"><img data-src="images/file_formats.png" class="quarto-figure quarto-figure-left" alt="Source: clauswilke.com"></a></p>
+<p><a href="images/file_formats.png" class="lightbox" data-gallery="quarto-lightbox-gallery-60" title="Source: clauswilke.com"><img data-src="images/file_formats.png" class="quarto-figure quarto-figure-left" alt="Source: clauswilke.com"></a></p>
 </figure>
 </div>
 <figcaption>Source: <a href="https://clauswilke.com/dataviz/image-file-formats.html">clauswilke.com</a></figcaption>
@@ -2872,7 +2913,7 @@ the fundamentals of good data visualization</strong></p>
 <figure>
 <div class="quarto-figure quarto-figure-left">
 <figure>
-<p><a href="images/ggplot2_book.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-58" title="RTFM: ggplot2 Book"><img data-src="images/ggplot2_book.jpg" class="quarto-figure quarto-figure-left" style="width:50.0%" alt="RTFM: ggplot2 Book"></a></p>
+<p><a href="images/ggplot2_book.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-61" title="RTFM: ggplot2 Book"><img data-src="images/ggplot2_book.jpg" class="quarto-figure quarto-figure-left" style="width:50.0%" alt="RTFM: ggplot2 Book"></a></p>
 </figure>
 </div>
 <figcaption>RTFM: ggplot2 Book</figcaption>
@@ -2897,13 +2938,24 @@ the fundamentals of good data visualization</strong></p>
 <figure>
 <div class="quarto-figure quarto-figure-left">
 <figure>
-<p><a href="images/becoming_2.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-59" title="Thomas Lin Pedersen"><img data-src="images/becoming_2.jpg" class="quarto-figure quarto-figure-left" height="500" alt="Thomas Lin Pedersen"></a></p>
+<p><a href="images/becoming_2.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-62" title="Thomas Lin Pedersen"><img data-src="images/becoming_2.jpg" class="quarto-figure quarto-figure-left" height="500" alt="Thomas Lin Pedersen"></a></p>
 </figure>
 </div>
 <figcaption><a href="https://thomaslinpedersen.art/work/becoming/">Thomas Lin Pedersen</a></figcaption>
 </figure>
 </div>
 </div></div>
+</section>
+<section id="a-note-on-fridays-class" class="slide level2">
+<h2>❗️ A note on Friday’s class</h2>
+<ul>
+<li>Hand in your first draft before Friday 12.00.<br>
+</li>
+<li>Peer review is done in class.<br>
+</li>
+<li>You will get one-on-one feedback from us; this is your last chance!</li>
+</ul>
+<p><strong>Attendance is expected!</strong></p>
 
 <div class="quarto-auto-generated-content">
 <p><img src="images/uva_logo.png" class="slide-logo"></p>
@@ -3347,7 +3399,7 @@ the fundamentals of good data visualization</strong></p>
       }
     });
     </script>
-    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","selector":".lightbox","openEffect":"zoom","loop":false});
+    <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","openEffect":"zoom","selector":".lightbox","descPosition":"bottom","loop":false});
     (function() {
       let previousOnload = window.onload;
       window.onload = () => {

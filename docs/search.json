@@ -235,7 +235,7 @@
     "href": "slides/slides.html#tips-from-assignment-1",
     "title": "Data Visualization",
     "section": "Tips from Assignment 1",
-    "text": "Tips from Assignment 1"
+    "text": "Tips from Assignment 1\n\nUse coherent color palettes (more on that today!)\nUse informative titles (for example state your conclusion in the title / subtitle). Make it bold and clearly readable.\n\nWhat is the added value of a boxplot or violin plot?\n\nThink about sample size within your groupings and how to communicate its effect.\n\nGo from exploratory to explanatory!\n\nThe audience should be able to infer the main conclusion without reading the description.\n\n\nThe flaw of boxplots: read about it here and here."
   },
   {
     "objectID": "slides/slides.html#one-dataset-many-visualizations",
@@ -369,5 +369,19 @@
     "title": "Data Visualization",
     "section": "Get inspiration",
     "text": "Get inspiration\n\n\nPodcasts: Data Stories, Explore Explain, Data Viz Today\nBlogs: FlowingData\nJournals: Nightingale\nComics: Matt-Heun Hong, Martin Telefont, Natalia Kiseleva\nGenerative art: Clause O. Wilke, Danielle Navarro, Thomas Lin Pedersen\nAwards: Information is Beautiful\nInteractive visualizations: R Psychologist\nExplorable explanations: Nicky Case, Setosa\n\n\n\n\n\n\n\n\nThomas Lin Pedersen"
+  },
+  {
+    "objectID": "slides/slides.html#patchwork",
+    "href": "slides/slides.html#patchwork",
+    "title": "Data Visualization",
+    "section": "patchwork",
+    "text": "patchwork\n\nAdd a general title with plot_annotation(title = \"...\")\nAdd a general subtitle with plot_annotation(subtitle = \"...\")\nChange the formatting with plot_annotation(theme = theme(plot.title = element_text(...)))"
+  },
+  {
+    "objectID": "slides/slides.html#a-note-on-fridays-class",
+    "href": "slides/slides.html#a-note-on-fridays-class",
+    "title": "Data Visualization",
+    "section": "❗️ A note on Friday’s class",
+    "text": "❗️ A note on Friday’s class\n\nHand in your first draft before Friday 12.00.\n\nPeer review is done in class.\n\nYou will get one-on-one feedback from us; this is your last chance!\n\nAttendance is expected!"
   }
 ]

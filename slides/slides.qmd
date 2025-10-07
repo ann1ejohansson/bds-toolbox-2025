@@ -618,7 +618,67 @@ Source: [plotly.com/r](https://plotly.com/r/)
 -   More data visualization features
 -   Work on assignment 2
 
-## Tips from Assignment 1
+## Tips from Assignment 1 
+
+-  Use coherent color palettes (more on that today!)
+-  Use informative titles (for example state your conclusion in the title / subtitle). Make it bold and clearly readable.  
+-  What is the added value of a boxplot or violin plot?  
+-  Think about sample size within your groupings and how to communicate its effect.    
+-  Go from exploratory to **explanatory!**  
+-  The audience should be able to infer the main conclusion without reading the description.  
+
+
+::: footer
+The flaw of boxplots: read about it [here](https://www.r-bloggers.com/2024/06/why-you-shouldnt-use-boxplots/) and [here](https://nightingaledvs.com/ive-stopped-using-box-plots-should-you/). 
+:::
+------------------------------------------------------------------------
+
+::::: columns
+::: {.column width="50%"}
+![](images/explore-explain-01.gif){fig-height="200"}
+:::
+
+::: {.column width="50%"}
+![](images/explore-explain-02.gif){fig-height="300"}
+:::
+:::::
+
+------------------------------------------------------------------------
+
+## [`patchwork`](https://r-graph-gallery.com/package/patchwork.html) {.smaller .scrollable}
+
+-  Add a general title with `plot_annotation(title = "...")`
+-  Add a general subtitle with `plot_annotation(subtitle = "...")`
+-  Change the formatting with `plot_annotation(theme = theme(plot.title = element_text(...)))`
+
+```{r patchwork, warning=FALSE, message=FALSE}
+library(patchwork)
+# Two example plots
+p1 <- ggplot(mtcars, aes(x = hp, y = mpg)) +
+  geom_point(color = "steelblue", size = 3, alpha = 0.7) +
+  theme_minimal() +
+  labs(title = "Fuel efficiency vs Horsepower")
+
+p2 <- ggplot(mtcars, aes(x = factor(cyl), y = mpg)) +
+  geom_boxplot(fill = "steelblue", alpha = 0.7) +
+  theme_minimal() +
+  labs(title = "MPG by Number of Cylinders") +
+  theme(legend.position = "none")
+
+# Combine with patchwork and add title
+combined <- p1 + p2 + 
+  plot_annotation(
+    title = "Analysis of mtcars dataset",
+    subtitle = "Exploring relationships between engine features and fuel efficiency",
+    caption = "Data source: mtcars",
+    theme = theme(plot.title = element_text(face = "bold", size = 16),
+                  plot.subtitle = element_text(size = 14))
+  ) 
+
+combined
+
+```
+
 
 ## One dataset, many visualizations
 
@@ -1246,3 +1306,13 @@ Explorable explanations: [Nicky Case](https://ncase.me/), [Setosa](https://setos
 ![[Thomas Lin Pedersen](https://thomaslinpedersen.art/work/becoming/)](images/becoming_2.jpg){fig-align="left" height="500"}
 :::
 :::::
+
+## ❗️ A note on Friday's class
+
+-  Hand in your first draft before Friday 12.00.  
+-  Peer review is done in class.  
+-  You will get one-on-one feedback from us; this is your last chance!  
+
+**Attendance is expected!**
+
+
