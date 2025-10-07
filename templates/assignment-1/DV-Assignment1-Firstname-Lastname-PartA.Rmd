@@ -5,6 +5,11 @@ date: "`r Sys.Date()`"
 output: html_document
 ---
 
+```{r setup-hidden, include=FALSE}
+knitr::opts_chunk$set(eval = FALSE)
+```
+
+
 Use this template to help you get started with your assignment. You can add more code chunks as needed. After knitting, a .html document will be generated in the same folder as this .Rmd file. You should download both documents (.Rmd and .html) from the server and submit them following the instructions on the assignment. 
 
 Some tips if you encounter knitting issues:  
