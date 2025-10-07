@@ -647,11 +647,14 @@ The flaw of boxplots: read about it [here](https://www.r-bloggers.com/2024/06/wh
 
 ## [`patchwork`](https://r-graph-gallery.com/package/patchwork.html) {.smaller .scrollable}
 
+-  Plots are combined with a `+`  
 -  Add a general title with `plot_annotation(title = "...")`
 -  Add a general subtitle with `plot_annotation(subtitle = "...")`
 -  Change the formatting with `plot_annotation(theme = theme(plot.title = element_text(...)))`
 
 ```{r patchwork, warning=FALSE, message=FALSE}
+#| echo: true
+#| code-fold: true
 library(patchwork)
 # Two example plots
 p1 <- ggplot(mtcars, aes(x = hp, y = mpg)) +
@@ -678,7 +681,9 @@ combined <- p1 + p2 +
 combined
 
 ```
-
+:::footer
+[Patchwork package](https://r-graph-gallery.com/package/patchwork.html)
+:::
 
 ## One dataset, many visualizations
 
