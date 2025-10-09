@@ -227,7 +227,94 @@ Finally we make a plot with text to have some more information in our visualizat
 
 I used these settings in my rMarkdown code chunk: `fig.height = 8, fig.width = 10, fig.align = "center"`
 
+::: {.panel-tabset}
+
+## Plot
 ![](images/replicate-this-plot-final.png)  
+
+## Solution
+
+#### Plot 1: 
+
+```{r 1A plot-1, fig.align = "center", fig.height=4, fig.width=6}
+plot_theme <- theme(axis.text.x = element_text(angle = 45, hjust = 1),
+                   plot.title = element_text(hjust = 0.5))
+# plots
+grade_bars <- round(apply(table(items_logs$question, items_logs$grade), 1, prop.table), 2) * 100
+grade_bars_df <- data.frame(question = c(rep("10 - 2", dim(grade_bars)[1]), rep("100 - 40", dim(grade_bars)[1])),
+                          grade = c(rep(paste0("Grade ", c(3:8)), 2)),
+                          percentage = c(grade_bars[, 1], grade_bars[, 2]))
+
+ann_text <- data.frame(percentage = 30, grade = "Grade 7", question =  "10 - 2")
+plot1 <- ggplot(data = grade_bars_df, aes(y = percentage, x = grade, fill = question)) +
+  geom_col(position = "dodge") +
+  scale_y_continuous("Percentage", labels = function(x) paste0(x, "%")) +
+  scale_fill_manual("Question", values = c("#1b9e77", "#7570b3")) +
+  labs(title = "Questions answered vs. User Grade", x = "") +
+  geom_text(data = ann_text, aes(x = grade, y = percentage),
+              label = "10 - 2 is mostly practiced by grade 3 users \n and 100 - 40 by users in grade 5",
+            family = "Courier",
+            size = 2) +
+  theme_minimal() +
+  plot_theme
+plot(plot1)
+```
+
+#### Plot 2: 
+
+```{r 1A plot-2, fig.align = "center", fig.height=4, fig.width=6}
+# response time
+plot2 <- ggplot(data = items_logs, aes(x = response_in_seconds,
+                                      linetype = given_answer_type,
+                                      color = given_answer_type)) +
+  facet_grid(. ~ question) +
+  scale_color_manual(values = c("#4daf4a", "#e41a1c", "#377eb8")) +
+  scale_x_continuous(labels = function(x) paste0(x, "s")) +
+  geom_density() +
+  theme_minimal() +
+  labs(title = "Response Time and Answer Given",
+       linetype = "Answer", color = "Answer", x = "Response in Seconds", y  = "Density") +
+  theme(legend.position = "top",
+        strip.text.x = element_text(size = 12, face = "bold")) +
+  plot_theme
+plot(plot2)
+```
+
+#### Plot 3: 
+
+```{r 1A plot-3, fig.align = "center", fig.height=2, fig.width=10}
+text <- paste0("Examination of question '10 - 2' and ",
+               "'100 - 40' of the domain 'Substraction'\n (Domain Id: 2). ",
+               "What are the response times of these items and what is\n the ",
+               "grade of users that practise these items?")
+text1 <- ggplot() +
+  annotate("text", x = 8, y = 25, size = 4, label = text) +
+  theme(panel.grid = element_blank(),
+        panel.background = element_blank(),
+        axis.title = element_blank(),
+        axis.text = element_blank(),
+        axis.ticks = element_blank())
+plot(text1)
+```
+
+#### Combined: 
+
+```{r 1A plot-4, fig.height = 8, fig.width = 12, fig.align = "center"}
+bottomRow <- suppressMessages(plot_grid(plot1, plot2))
+suppressWarnings(plot_grid(text1, bottomRow, ncol = 1, rel_heights = c(1, 2)))
+```
+
+#### Bonus
+A full or half point was given for one or more improvements that contributed to a better understanding of the plot. Such as (but not limited to):  
+
+*  Fixing the mistake in the text inside the barplot (0.5pts)  
+*  Correcting the double aesthetic attribute for answer type in figure 2 (i.e. keeping only the linetype aesthetic or the color aesthetic). Or, making the distributions easier to interpret by filling them and adding an alpha value. (0.5pts)  
+*  Removing the redundancy in the axis labels of figure 2 ("s"), and/or removing the diagonal alignment of the labels (0.5pts) 
+*  Adding statistical elements, such as median or mode values, to the density plots (1pt)  
+*  Reversing axes in figure 1, to improve readability (1pt).  
+*  Changing titles, captions, and/or overall plot title to include the main conclusion (1pt)
+
+:::
 
 Tips:
 
@@ -325,9 +412,65 @@ my_plot <- my_data %>%
 print(my_plot)
 ```
 
+**Now it's your turn! Turn this static ggplot into an interactive plotly object, and add a customized tooltip that shows additional context next to the default values when you hover over the plot.**
+
+::: {.panel-tabset}
+
+## Plot
+
 ![](images/interactive.png)
 
-**Now it's your turn! Turn this static ggplot into an interactive plotly object, and add a customized tooltip that shows additional context next to the default values when you hover over the plot.**
+## Solution
+
+```{r 1B solution}
+my_plot <- my_data %>%
+  ggplot(
+    aes(
+      x = new_user_domain_modified_count,
+      y = new_user_domain_rating,
+      color = reorder(short_name, position), # order by "position" variable
+      # customizing content for hover tooltip:
+      text = paste0(
+        "Play count: ", new_user_domain_modified_count,
+        "<br>User domain rating: ", new_user_domain_rating,
+        "<br>Learning goal ", learning_goal_id, ": ", short_name,
+        "<br>Description: ", description,
+        "<br>Reaction time: ", response_in_milliseconds, " ms"
+      )
+    )
+  ) +
+  geom_point(
+    size = 3,
+    alpha = .5
+  ) +
+  scale_color_viridis_d() +
+  labs(
+    title = paste0(
+      "Development of user ",
+      unique(my_data$new_user_id),
+      "'s ability in Multiplication"
+    ),
+    x = "Play count",
+    y = "User domain rating",
+    color = "Learning goal"
+  ) +
+  theme_bw() +
+  theme(
+    plot.title = element_text(
+      face = "bold",
+      size = 14
+    )
+  )
+
+# convert static plot into an interactive plotly object
+ggplotly(my_plot, tooltip = "text") %>%
+  # nice trick to left align content in tooltip:
+  layout(hoverlabel = list(align = "left"))
+```
+
+Full points were given for the interactive plot if the interactivity was working, and a tooltip with the two default variables plus two extra variables were added. If default or extra variables were missing, or if the tooltip was not formatted in a legible way, 0.5 pts were deducted.  
+
+:::
 
 When you are done, please close the connection to the database:
 
