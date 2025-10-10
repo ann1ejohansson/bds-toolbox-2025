@@ -618,19 +618,19 @@ Source: [plotly.com/r](https://plotly.com/r/)
 -   More data visualization features
 -   Work on assignment 2
 
-## Tips from Assignment 1 
+## Tips from Assignment 1
 
--  Use coherent color palettes (more on that today!)
--  Use informative titles (for example state your conclusion in the title / subtitle). Make it bold and clearly readable.  
--  What is the added value of a boxplot or violin plot?  
--  Think about sample size within your groupings and how to communicate its effect.    
--  Go from exploratory to **explanatory!**  
--  The audience should be able to infer the main conclusion without reading the description.  
-
+-   Use coherent color palettes (more on that today!)
+-   Use informative titles (for example state your conclusion in the title / subtitle). Make it bold and clearly readable.\
+-   What is the added value of a boxplot or violin plot?\
+-   Think about sample size within your groupings and how to communicate its effect.\
+-   Go from exploratory to **explanatory!**\
+-   The audience should be able to infer the main conclusion without reading the description.
 
 ::: footer
-The flaw of boxplots: read about it [here](https://www.r-bloggers.com/2024/06/why-you-shouldnt-use-boxplots/) and [here](https://nightingaledvs.com/ive-stopped-using-box-plots-should-you/). 
+The flaw of boxplots: read about it [here](https://www.r-bloggers.com/2024/06/why-you-shouldnt-use-boxplots/) and [here](https://nightingaledvs.com/ive-stopped-using-box-plots-should-you/).
 :::
+
 ------------------------------------------------------------------------
 
 ::::: columns
@@ -647,10 +647,10 @@ The flaw of boxplots: read about it [here](https://www.r-bloggers.com/2024/06/wh
 
 ## [`patchwork`](https://r-graph-gallery.com/package/patchwork.html) {.smaller .scrollable}
 
--  Plots are combined with a `+`  
--  Add a general title with `plot_annotation(title = "...")`
--  Add a general subtitle with `plot_annotation(subtitle = "...")`
--  Change the formatting with `plot_annotation(theme = theme(plot.title = element_text(...)))`
+-   Plots are combined with a `+`\
+-   Add a general title with `plot_annotation(title = "...")`
+-   Add a general subtitle with `plot_annotation(subtitle = "...")`
+-   Change the formatting with `plot_annotation(theme = theme(plot.title = element_text(...)))`
 
 ```{r patchwork, warning=FALSE, message=FALSE}
 #| echo: true
@@ -681,7 +681,8 @@ combined <- p1 + p2 +
 combined
 
 ```
-:::footer
+
+::: footer
 [Patchwork package](https://r-graph-gallery.com/package/patchwork.html)
 :::
 
@@ -801,16 +802,14 @@ fig_season_2
 :::
 :::::
 
-## Chart junk 
+## Chart junk
 
-::: {layout-ncol=3}
-
+::: {layout-ncol="3"}
 ![[NYT](https://www.nytimes.com/2017/10/09/learning/whats-going-on-in-this-graph-oct-10-2017.html)](images/chart_junk.png){group="chart-junk-gallery" fig-align="center"}
 
 ![Claus Wilke](images/chart_junk2.png){group="chart-junk-gallery" fig-align="center"}
 
 ![[NYT](https://www.nytimes.com/2025/09/11/learning/whats-going-on-in-this-graph-sept-17-2025.html)](images/chart-junk3.png){group="chart-junk-gallery" fig-align="center"}
-
 :::
 
 ------------------------------------------------------------------------
@@ -1154,7 +1153,6 @@ Packages: [showtext](https://github.com/yixuan/showtext).
 
 ### Consider your audience
 
-
 ```{r pizza-plot-3}
 #| echo: true
 #| code-fold: true
@@ -1314,10 +1312,56 @@ Explorable explanations: [Nicky Case](https://ncase.me/), [Setosa](https://setos
 
 ## ❗️ A note on Friday's class
 
--  Hand in your first draft before Friday 12.00.  
--  Peer review is done in class.  
--  You will get one-on-one feedback from us; this is your last chance!  
+-   Hand in your first draft before Friday 12.00.\
+-   Peer review is done in class.\
+-   You will get one-on-one feedback from us; this is your last chance!
 
 **Attendance is expected!**
 
+# Q&A {background-color="#8000FF"}
 
+## Final report formatting {.scrollable}
+
+-  You do not need display all your code  
+-  Hide code with `echo = FALSE` 
+-  or in your pre-amble: 
+
+```{r echo=TRUE, eval=FALSE}
+---
+title: "example rmd"
+author: "Annie Johansson"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    code-folding: hide
+---
+```
+
+-  or in your code chunk: 
+
+```
+#| echo: true
+#| code-fold: true
+
+# your code here 
+```
+
+```{r  echo=TRUE, eval=FALSE}
+#| echo: true
+#| code-fold: true
+
+# your code here 
+```
+
+
+## Friday, Oct 10
+
+🔗 [Peer Review on Canvas](https://canvas.uva.nl/courses/54361/assignments/627402)
+
+![[feedback sessions](https://docs.google.com/spreadsheets/d/1ppRe5PKrdawL8Q4QHAJpa6bfQfbVhmHZiWE7AxGaHSE/edit?gid=822351196#gid=822351196)](images/feedback_slots.png){fig-align="left"}
+
+## Grading
+
+-   Assignment 1: 33% of your final grade\
+-   Assignment 2: 66% of your final grade\
+-   Final grade for data viz counts 30% into your final BDS Toolbox grade & needs to be $\ge$ 5.5
